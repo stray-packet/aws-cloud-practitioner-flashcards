@@ -15,6 +15,10 @@ dist-ssr
 .env.*
 !.env.example
 
+# Raw study-chat exports stay local; only reviewed knowledge is versioned.
+knowledge/inbox/*
+!knowledge/inbox/README.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

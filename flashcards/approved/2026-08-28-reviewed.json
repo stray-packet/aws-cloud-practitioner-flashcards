@@ -356,6 +356,10 @@
     "answer": "Latency to users, regulatory or data-location requirements, and service availability or price.",
     "explanation": "Region choice is a business and technical decision; no single Region is best for every workload.",
     "examCue": "Look for proximity, compliance, features, resilience, and cost.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -382,11 +386,7 @@
       "a",
       "b",
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-031",
@@ -2175,6 +2175,10 @@
     "answer": "Use Amazon SQS for the work queue and Amazon SNS for fan-out notifications.",
     "explanation": "SQS buffers work for consumers; SNS publishes to multiple subscriptions.",
     "examCue": "Choose one queue and one pub/sub topic.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2200,11 +2204,7 @@
     "correctOptions": [
       "a",
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-113",
@@ -2223,6 +2223,10 @@
     "answer": "Enable MFA and use root only for tasks that require it.",
     "explanation": "The root user is unrestricted and should not be used for routine work or programmatic access keys.",
     "examCue": "Protect root and minimize its use.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2248,11 +2252,7 @@
     "correctOptions": [
       "a",
       "d"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-114",
@@ -2270,6 +2270,10 @@
     "answer": "A network ACL.",
     "explanation": "NACLs operate at subnet boundaries and support explicit deny rules; security groups are allow-only.",
     "examCue": "Explicit subnet deny = NACL.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2290,11 +2294,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-115",
@@ -2313,6 +2313,10 @@
     "answer": "A VPC spans Availability Zones in one Region, while each subnet belongs to one AZ.",
     "explanation": "A VPC is Regional and subnets are AZ-scoped.",
     "examCue": "VPC = Region; subnet = AZ.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2333,11 +2337,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-116",
@@ -2356,6 +2356,10 @@
     "answer": "Its data is stored in a selected Region, while its bucket name is globally unique.",
     "explanation": "Global naming and the global console view do not make the bucket’s data automatically global.",
     "examCue": "Global name, Regional data.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2376,11 +2380,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-117",
@@ -2399,6 +2399,10 @@
     "answer": "An S3 gateway VPC endpoint.",
     "explanation": "Gateway endpoints route S3 traffic through selected route tables with no additional endpoint charge.",
     "examCue": "S3 + route table + no endpoint charge.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2419,11 +2423,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-118",
@@ -2443,6 +2443,10 @@
     "answer": "AWS Global Accelerator.",
     "explanation": "Global Accelerator improves network paths for supported TCP/UDP traffic and does not act as a CDN cache.",
     "examCue": "Static anycast plus UDP = Global Accelerator.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2463,11 +2467,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-119",
@@ -2486,6 +2486,10 @@
     "answer": "Amazon EFS.",
     "explanation": "EFS provides shared NFS file storage that multiple compute instances can mount.",
     "examCue": "Shared Linux files = EFS.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2506,11 +2510,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-120",
@@ -2528,6 +2528,10 @@
     "answer": "Patching the guest operating system and configuring security groups.",
     "explanation": "AWS manages the facilities, physical hardware, and virtualization layer.",
     "examCue": "Guest workload and its firewall configuration remain with the customer.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2553,11 +2557,7 @@
     "correctOptions": [
       "a",
       "d"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-121",
@@ -2576,6 +2576,10 @@
     "answer": "EC2 Spot Instances.",
     "explanation": "Spot uses spare capacity at discounted prices and is appropriate for interrupt-tolerant work.",
     "examCue": "Interruptible and flexible = Spot.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2596,11 +2600,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-122",
@@ -2619,6 +2619,10 @@
     "answer": "AWS Budgets.",
     "explanation": "Budgets evaluates actual or forecast cost/usage against configured thresholds.",
     "examCue": "Threshold alert = Budgets.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2639,11 +2643,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-123",
@@ -2664,6 +2664,10 @@
     "answer": "It provides serverless compute capacity for supported ECS and EKS workloads.",
     "explanation": "ECS and EKS orchestrate containers; Fargate supplies managed compute capacity.",
     "examCue": "Fargate is compute, not a third orchestrator.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2684,11 +2688,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-124",
@@ -2705,6 +2705,10 @@
     "answer": "Recovery Point Objective (RPO).",
     "explanation": "RPO expresses acceptable data loss measured in time before the disruption.",
     "examCue": "Data-loss window = RPO.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2725,11 +2729,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-125",
@@ -2746,6 +2746,10 @@
     "answer": "Warm standby.",
     "explanation": "Warm standby keeps reduced-capacity functionality running continuously.",
     "examCue": "Scaled-down but functional = warm standby.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2766,11 +2770,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-126",
@@ -2787,6 +2787,10 @@
     "answer": "It can reduce RTO to near zero, but RPO still depends on the data architecture and replication behavior.",
     "explanation": "Serving traffic from several Regions does not automatically guarantee synchronous writes or zero data loss.",
     "examCue": "Traffic topology does not prove RPO 0.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 4,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2807,11 +2811,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 4,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-127",
@@ -2831,6 +2831,10 @@
     "answer": "A CloudFormation template.",
     "explanation": "CDK constructs written in supported programming languages synthesize into the declarative template deployed by CloudFormation.",
     "examCue": "CDK synth → CloudFormation.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2851,11 +2855,7 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 2,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-128",
@@ -2874,6 +2874,10 @@
     "answer": "Attach an IAM role to the EC2 instance and use temporary credentials.",
     "explanation": "Roles avoid embedding long-lived access keys in application files.",
     "examCue": "AWS workload = role, not hard-coded key.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2894,11 +2898,7 @@
     ],
     "correctOptions": [
       "b"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   },
   {
     "id": "clf-c02-2026-08-28-129",
@@ -2919,6 +2919,10 @@
     "answer": "AWS Outposts.",
     "explanation": "Outposts extends AWS infrastructure and selected services to customer premises.",
     "examCue": "Customer premises = Outposts.",
+    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
     "options": [
       {
         "id": "a",
@@ -2939,10 +2943,6 @@
     ],
     "correctOptions": [
       "c"
-    ],
-    "sourceRef": "knowledge/daily/2026-08-28-reviewed.md",
-    "difficulty": 3,
-    "status": "approved",
-    "version": 1
+    ]
   }
 ]
