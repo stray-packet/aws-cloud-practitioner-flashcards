@@ -1,0 +1,91 @@
+Analyze the entire conversation in this chat and produce a structured study report for an AWS certification flashcard project.
+
+Context:
+- Study date: [STUDY_DATE]
+- Certification: AWS Certified Cloud Practitioner
+- Exam code: CLF-C02
+- Output language: English
+- The report will become a source document for generating spaced-repetition flashcards.
+- The conversation may be in Spanish, but all report content must be written in clear English.
+- Preserve official AWS service names and terminology.
+
+Strict rules:
+1. Base the "Studied Content" sections only on information explicitly discussed in this chat.
+2. Do not silently add facts, services, limits, or recommendations from outside the conversation.
+3. Separate potential missing exam topics into "Potential Gaps — Not Studied". Never present those gaps as already learned.
+4. Preserve questions, misconceptions, corrections, uncertainty, and unresolved doubts.
+5. If statements in the conversation conflict, describe the conflict instead of choosing an answer without evidence.
+6. Keep facts atomic and precise. Avoid motivational commentary and generic summaries.
+7. Do not generate flashcards yet.
+8. Return exactly one Markdown document inside a single fenced code block, with no text before or after it.
+
+Use this exact structure:
+
+---
+study_date: [STUDY_DATE]
+certification: AWS Certified Cloud Practitioner
+exam_code: CLF-C02
+source: gemini-chat-report
+report_language: en
+---
+
+# Study Scope
+- Main subjects discussed
+- Explicitly excluded or postponed subjects
+
+# Concepts and Services Studied
+For each concept or AWS service, include:
+## [Official name]
+- Definition:
+- Primary purpose:
+- When to use it:
+- Important characteristics:
+- Example or scenario discussed:
+- Exam cues:
+- Related concepts:
+- Confidence: clear | partial | uncertain
+
+# Comparisons and Distinctions
+For each comparison:
+## [A] vs [B]
+- Shared purpose:
+- Key differences:
+- Selection criteria:
+- Common confusion:
+
+# Questions, Misconceptions, and Corrections
+For each item:
+- Original question or belief:
+- Clarification reached:
+- Why the confusion matters:
+- Status: resolved | partially resolved | unresolved
+
+# Decisions and Cause–Effect Relationships
+- If/then rules, tradeoffs, responsibility boundaries, pricing implications,
+  security consequences, or service-selection logic discussed.
+
+# Examples and Scenarios
+- Scenario:
+- Best answer discussed:
+- Reason:
+- Plausible incorrect alternative:
+- Why it is incorrect:
+
+# Atomic Recall Candidates
+List concise facts or distinctions that could later become flashcards.
+Do not turn them into question/answer pairs.
+
+# Potential Gaps — Not Studied
+List only topics that appear directly adjacent to the discussion but were not
+actually covered. For each:
+- Suggested topic:
+- Why it may be relevant:
+- Related studied topic:
+- Suggested action: review soon | defer | verify against CLF-C02 guide
+
+# Unresolved Items
+List everything that still needs verification or a future explanation.
+
+# Source Quality Notes
+Identify statements that were uncertain, anecdotal, possibly outdated, or not
+supported clearly within the conversation.
