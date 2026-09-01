@@ -7,7 +7,8 @@ const escapeField = (value) => `"${String(value).replaceAll('"', '""').replaceAl
 const rows = ['#separator:Tab', '#html:true', '#columns:ID\tFront\tBack\tExplanation\tTags', '#tags column:5']
 
 for (const card of cards) {
-  const tags = [card.certification, card.domain, `day::${card.studyDate}`, `type::${card.type}`, ...card.topics.map((topic) => `topic::${topic.replaceAll(' ', '_')}`)].join(' ')
+  const chatTag = card.sourceChat.replaceAll(' ', '_').replaceAll('·', '-')
+  const tags = [card.certification, card.domain, `day::${card.studyDate}`, `chat::${chatTag}`, `type::${card.type}`, ...card.topics.map((topic) => `topic::${topic.replaceAll(' ', '_')}`)].join(' ')
   rows.push([card.id, card.prompt, card.answer, card.explanation, tags].map(escapeField).join('\t'))
 }
 

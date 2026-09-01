@@ -9,6 +9,7 @@ import { ReviewView } from './components/ReviewView'
 import { SettingsView } from './components/SettingsView'
 import { StatsView } from './components/StatsView'
 import { reviewCard, type RatingName } from './lib/scheduler'
+import { defaultStudySession, type StudySessionOptions } from './lib/studySession'
 import { exportProgress, loadStore, saveStore, type ReviewEvent, type StudySettings, type StudyStore } from './lib/storage'
 import { flashcardListSchema, type Flashcard } from './types/card'
 import './App.css'
@@ -26,6 +27,7 @@ function App() {
   const [store, setStore] = useState<StudyStore>(() => loadStore())
   const [user, setUser] = useState<User | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
+  const [studySession, setStudySession] = useState<StudySessionOptions>(defaultStudySession)
 
   useEffect(() => {
     if (!firebaseConfigured) return
@@ -79,19 +81,29 @@ function App() {
     if (user) void import('./lib/firebase').then(({ saveCloudSettings }) => saveCloudSettings(user, settings)).catch(() => setNotice('Settings saved locally.'))
   }, [user])
 
+  const navigate = useCallback((nextView: ViewName) => {
+    if (nextView === 'study') setStudySession(defaultStudySession)
+    setView(nextView)
+  }, [])
+
+  const startStudy = useCallback((options: StudySessionOptions) => {
+    setStudySession(options)
+    setView('study')
+  }, [])
+
   const content = useMemo(() => {
     switch (view) {
-      case 'study': return <ReviewView cards={cards} store={store} onRate={rateCard} onFinished={() => setView('overview')} />
+      case 'study': return <ReviewView cards={cards} store={store} options={studySession} onRate={rateCard} onFinished={() => setView('overview')} />
       case 'exam': return <ExamView cards={cards} onAttempt={recordExamAttempt} onExit={() => setView('overview')} />
       case 'browse': return <BrowseView cards={cards} />
       case 'stats': return <StatsView cards={cards} store={store} />
       case 'settings': return <SettingsView settings={store.settings} user={user} firebaseConfigured={firebaseConfigured} onChange={updateSettings} onSignIn={() => void import('./lib/firebase').then(({ signInWithGoogle }) => signInWithGoogle()).catch(() => setNotice('Google sign-in was not completed.'))} onSignOut={() => void import('./lib/firebase').then(({ signOutUser }) => signOutUser())} onExport={() => exportProgress(store)} />
-      default: return <Overview cards={cards} store={store} onNavigate={setView} />
+      default: return <Overview cards={cards} store={store} onNavigate={navigate} onStartStudy={startStudy} />
     }
-  }, [recordExamAttempt, rateCard, store, updateSettings, user, view])
+  }, [navigate, recordExamAttempt, rateCard, startStudy, store, studySession, updateSettings, user, view])
 
   return (
-    <Layout view={view} user={user} firebaseConfigured={firebaseConfigured} onNavigate={setView}>
+    <Layout view={view} user={user} firebaseConfigured={firebaseConfigured} onNavigate={navigate}>
       {notice && <div className="notice" role="status">{notice}</div>}
       {content}
     </Layout>

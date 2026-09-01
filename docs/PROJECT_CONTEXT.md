@@ -11,6 +11,8 @@ AWS Study is a public, English-language flashcard PWA for AWS certifications. Th
 5. Generate cards in `flashcards/drafts/`; only user-approved cards move to `flashcards/approved/`.
 6. Run `npm run content:build` and `npm run export:anki`.
 
+Approved cards carry both `studyDate` and `sourceChat`. The PWA can start an FSRS review session filtered by chat/day, exam domain, and topic, with either scheduled or randomized ordering.
+
 Potential gaps never count as studied and never enter the review queue without approval.
 
 ## Product rules

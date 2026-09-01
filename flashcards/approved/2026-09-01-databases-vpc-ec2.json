@@ -1,0 +1,1411 @@
+[
+  {
+    "id": "clf-c02-2026-09-01-001",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Relational databases"
+    ],
+    "services": [
+      "Amazon RDS"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon RDS?",
+    "answer": "To run managed relational databases using supported database engines.",
+    "explanation": "AWS manages much of the database infrastructure and routine operations while the customer manages data, access, schema, and workload choices.",
+    "examCue": "Managed relational database engines point to RDS.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-002",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Amazon RDS"
+    ],
+    "services": [
+      "Amazon RDS"
+    ],
+    "type": "recall",
+    "prompt": "Name four database engines supported by Amazon RDS.",
+    "answer": "Any four of PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server, and IBM Db2.",
+    "explanation": "RDS is a managed service layer for familiar relational engines.",
+    "examCue": "Existing relational engine is an RDS cue.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-003",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Migration"
+    ],
+    "services": [
+      "Amazon RDS"
+    ],
+    "type": "scenario",
+    "prompt": "A company wants to move an existing Microsoft SQL Server application to a managed AWS database with minimal application change. Which service should it evaluate first?",
+    "answer": "Amazon RDS for SQL Server.",
+    "explanation": "RDS supports familiar commercial and open-source engines, making it suitable for many lift-and-shift relational migrations.",
+    "examCue": "Existing named relational engine points to RDS.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-004",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Aurora"
+    ],
+    "services": [
+      "Amazon Aurora"
+    ],
+    "type": "recall",
+    "prompt": "What is Amazon Aurora?",
+    "answer": "An AWS-built relational database engine compatible with MySQL and PostgreSQL.",
+    "explanation": "Aurora is cloud-native rather than a hosted copy of the MySQL or PostgreSQL engine.",
+    "examCue": "AWS-built + MySQL/PostgreSQL compatibility = Aurora.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-005",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Relational databases"
+    ],
+    "services": [
+      "Amazon RDS",
+      "Amazon Aurora"
+    ],
+    "type": "comparison",
+    "prompt": "How does Aurora differ from the other engines available through Amazon RDS?",
+    "answer": "Aurora is an AWS-built cloud-native engine; the other RDS choices are existing third-party or open-source engines.",
+    "explanation": "Both are managed relational options, but their engine origins and architectures differ.",
+    "examCue": "Do not describe Aurora as merely hosted MySQL.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-006",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "High availability"
+    ],
+    "services": [
+      "Amazon Aurora"
+    ],
+    "type": "recall",
+    "prompt": "Across how many Availability Zones does Aurora store copies of data in a typical Aurora cluster?",
+    "answer": "Three Availability Zones.",
+    "explanation": "Aurora’s distributed storage maintains copies across three AZs for durability and availability.",
+    "examCue": "Three AZs is the architecture cue; avoid confusing copies with read replicas.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-007",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Service selection"
+    ],
+    "services": [
+      "Amazon Aurora"
+    ],
+    "type": "scenario",
+    "prompt": "A new relational workload needs MySQL compatibility and an AWS-built, highly available cloud-native engine. Which service fits?",
+    "answer": "Amazon Aurora MySQL-Compatible Edition.",
+    "explanation": "Aurora combines familiar MySQL or PostgreSQL compatibility with an AWS-designed distributed architecture.",
+    "examCue": "Compatibility plus AWS-built points to Aurora.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-008",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Service selection"
+    ],
+    "services": [
+      "Amazon RDS",
+      "Amazon Aurora"
+    ],
+    "type": "single-choice",
+    "prompt": "Which option best supports a lift-and-shift application that must retain its Oracle Database engine?",
+    "answer": "Amazon RDS for Oracle.",
+    "explanation": "Aurora supports MySQL and PostgreSQL compatibility, not the Oracle engine.",
+    "examCue": "A named existing engine narrows the managed database choice.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
+    "options": [
+      {
+        "id": "a",
+        "text": "Amazon Aurora PostgreSQL-Compatible"
+      },
+      {
+        "id": "b",
+        "text": "Amazon RDS for Oracle"
+      },
+      {
+        "id": "c",
+        "text": "Amazon Neptune"
+      },
+      {
+        "id": "d",
+        "text": "Amazon Timestream"
+      }
+    ],
+    "correctOptions": [
+      "b"
+    ]
+  },
+  {
+    "id": "clf-c02-2026-09-01-009",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Data warehouse"
+    ],
+    "services": [
+      "Amazon Redshift"
+    ],
+    "type": "recall",
+    "prompt": "What workload is Amazon Redshift designed for?",
+    "answer": "Data warehousing and large-scale analytical SQL workloads.",
+    "explanation": "Redshift supports OLAP and business-intelligence analysis over large datasets.",
+    "examCue": "Data warehouse, OLAP, and BI point to Redshift.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-010",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Business intelligence"
+    ],
+    "services": [
+      "Amazon Redshift"
+    ],
+    "type": "scenario",
+    "prompt": "Executives need complex SQL reports across terabytes or petabytes of historical sales data. Which service is the best fit?",
+    "answer": "Amazon Redshift.",
+    "explanation": "This is an analytical data-warehouse workload rather than an operational transaction database workload.",
+    "examCue": "Massive analytical SQL points to Redshift.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-011",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Analytics"
+    ],
+    "services": [
+      "Amazon RDS",
+      "Amazon Redshift"
+    ],
+    "type": "comparison",
+    "prompt": "What is the exam-level distinction between Amazon RDS and Amazon Redshift?",
+    "answer": "RDS serves relational operational workloads; Redshift is a data warehouse for analytics.",
+    "explanation": "The distinction is primarily OLTP-style application work versus OLAP-style analysis.",
+    "examCue": "Transactions = RDS; warehouse analytics = Redshift.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-012",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Caching",
+      "In-memory"
+    ],
+    "services": [
+      "Amazon ElastiCache"
+    ],
+    "type": "recall",
+    "prompt": "What does Amazon ElastiCache provide?",
+    "answer": "A managed in-memory cache using Valkey, Memcached, or Redis OSS.",
+    "explanation": "Keeping frequently accessed data in memory can lower latency and reduce load on backing databases.",
+    "examCue": "In-memory cache points to ElastiCache.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-013",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Caching",
+      "Performance"
+    ],
+    "services": [
+      "Amazon ElastiCache"
+    ],
+    "type": "scenario",
+    "prompt": "A web application repeatedly reads the same product catalog rows and is overloading its database. What should be added?",
+    "answer": "An Amazon ElastiCache caching layer.",
+    "explanation": "Frequently accessed results can be served from memory instead of repeatedly querying the database.",
+    "examCue": "Reduce repeated reads and latency with a cache.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-014",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Caching",
+      "Engines"
+    ],
+    "services": [
+      "Amazon ElastiCache"
+    ],
+    "type": "multiple-response",
+    "prompt": "Which THREE engines are current Amazon ElastiCache choices?",
+    "answer": "Valkey, Memcached, and Redis OSS.",
+    "explanation": "The service is not limited to only the two engines historically emphasized in older learning material.",
+    "examCue": "Know the current engine set.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1,
+    "options": [
+      {
+        "id": "a",
+        "text": "Valkey"
+      },
+      {
+        "id": "b",
+        "text": "Memcached"
+      },
+      {
+        "id": "c",
+        "text": "Redis OSS"
+      },
+      {
+        "id": "d",
+        "text": "Oracle Database"
+      },
+      {
+        "id": "e",
+        "text": "Amazon Neptune"
+      }
+    ],
+    "correctOptions": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "id": "clf-c02-2026-09-01-015",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Graph database"
+    ],
+    "services": [
+      "Amazon Neptune"
+    ],
+    "type": "recall",
+    "prompt": "What data model is Amazon Neptune designed for?",
+    "answer": "Graph data made of highly connected entities and relationships.",
+    "explanation": "Graph databases make relationship traversal a first-class workload.",
+    "examCue": "Graph and connected relationships point to Neptune.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-016",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Fraud detection"
+    ],
+    "services": [
+      "Amazon Neptune"
+    ],
+    "type": "scenario",
+    "prompt": "A fraud team needs to traverse relationships among accounts, devices, addresses, and transactions. Which database fits?",
+    "answer": "Amazon Neptune.",
+    "explanation": "The core requirement is exploring a highly connected graph of entities.",
+    "examCue": "Fraud rings and relationship paths point to Neptune.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-017",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Time series"
+    ],
+    "services": [
+      "Amazon Timestream"
+    ],
+    "type": "recall",
+    "prompt": "What kind of data is Amazon Timestream for LiveAnalytics designed to store?",
+    "answer": "Time-series data: values associated with timestamps and analyzed over time.",
+    "explanation": "Operational metrics, application telemetry, and IoT measurements are common examples.",
+    "examCue": "Timestamped measurements point to Timestream.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-018",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "IoT"
+    ],
+    "services": [
+      "Amazon Timestream"
+    ],
+    "type": "scenario",
+    "prompt": "Millions of sensors send temperature readings every minute for time-based analysis. Which database is the best fit?",
+    "answer": "Amazon Timestream for LiveAnalytics.",
+    "explanation": "The workload is a high-volume sequence of measurements indexed by time.",
+    "examCue": "IoT metrics changing over time point to Timestream.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-019",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases",
+      "Service selection"
+    ],
+    "services": [
+      "Amazon Redshift",
+      "Amazon Timestream"
+    ],
+    "type": "single-choice",
+    "prompt": "Which service is the most direct fit for ingesting and querying timestamped IoT telemetry?",
+    "answer": "Amazon Timestream for LiveAnalytics.",
+    "explanation": "Redshift can analyze large datasets, but Timestream is purpose-built for time-series measurements.",
+    "examCue": "Choose the purpose-built time-series service.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
+    "options": [
+      {
+        "id": "a",
+        "text": "Amazon Timestream for LiveAnalytics"
+      },
+      {
+        "id": "b",
+        "text": "Amazon Neptune"
+      },
+      {
+        "id": "c",
+        "text": "Amazon ElastiCache"
+      },
+      {
+        "id": "d",
+        "text": "Amazon RDS for Oracle"
+      }
+    ],
+    "correctOptions": [
+      "a"
+    ]
+  },
+  {
+    "id": "clf-c02-2026-09-01-020",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS Database Migration Service"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Database Migration Service (AWS DMS)?",
+    "answer": "To migrate or replicate databases to AWS with minimal downtime.",
+    "explanation": "DMS supports both homogeneous and heterogeneous database moves.",
+    "examCue": "Database migration with minimal downtime points to DMS.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-021",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS Database Migration Service"
+    ],
+    "type": "scenario",
+    "prompt": "A company must keep its source database available while continuously replicating changes during migration to AWS. Which service fits?",
+    "answer": "AWS Database Migration Service (AWS DMS).",
+    "explanation": "DMS can perform an initial load and ongoing change replication to reduce migration downtime.",
+    "examCue": "Ongoing replication during migration points to DMS.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-022",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Migration",
+      "Schema conversion"
+    ],
+    "services": [
+      "AWS Database Migration Service"
+    ],
+    "type": "recall",
+    "prompt": "Why might a heterogeneous DMS migration need schema conversion?",
+    "answer": "Different database engines can use different schema objects, data types, and SQL features.",
+    "explanation": "DMS moves data, but engine differences may require a separate schema-conversion step.",
+    "examCue": "Different source and target engines can require conversion.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-023",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "VPC scope"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "Can one Amazon VPC span Regions or Availability Zones?",
+    "answer": "It can span Availability Zones within one Region, but it cannot span Regions.",
+    "explanation": "Subnets provide AZ-level partitions inside the Regional VPC.",
+    "examCue": "VPC = Regional; subnet = one AZ.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-024",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Subnets"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "Can a subnet span multiple Availability Zones?",
+    "answer": "No. A subnet belongs to exactly one Availability Zone.",
+    "explanation": "An AZ may contain multiple subnets, but a subnet cannot cross AZ boundaries.",
+    "examCue": "Subnet scope is one AZ.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-025",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Subnets"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "comparison",
+    "prompt": "What routing property distinguishes a public subnet from a private subnet?",
+    "answer": "A public subnet has a route to an internet gateway; a private subnet has no direct route to an internet gateway.",
+    "explanation": "Public addressing and security rules are additional requirements for an instance to communicate directly with the internet.",
+    "examCue": "The subnet label comes from its route table.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-026",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Public subnets"
+    ],
+    "services": [
+      "Amazon VPC",
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "An EC2 instance is in a subnet with a route to an internet gateway but has only a private IPv4 address. Is it directly reachable from the internet over IPv4?",
+    "answer": "No. It also needs a public IPv4 address or Elastic IP and traffic must be allowed by security controls.",
+    "explanation": "A public-subnet route alone does not give the instance a public address or open firewall rules.",
+    "examCue": "Routing, addressing, and filtering must all align.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-027",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Internet gateway"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "What does an internet gateway do?",
+    "answer": "It enables communication between a VPC and the internet when routing, addressing, and security rules permit it.",
+    "explanation": "An internet gateway is a managed, redundant, highly available VPC component.",
+    "examCue": "Direct internet route target = internet gateway.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-028",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "NAT gateway"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "scenario",
+    "prompt": "Private-subnet EC2 instances need outbound IPv4 access for operating-system updates without accepting internet-initiated connections. What should be used?",
+    "answer": "A NAT gateway, with the private subnet routed to it.",
+    "explanation": "The NAT gateway initiates outbound translation and permits return traffic, but not unsolicited inbound sessions.",
+    "examCue": "Private outbound IPv4 points to NAT gateway.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-029",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Gateways"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "comparison",
+    "prompt": "What is the core difference between an internet gateway and a NAT gateway?",
+    "answer": "An internet gateway supports direct internet connectivity for publicly addressed resources; a NAT gateway gives private resources outbound connectivity through address translation.",
+    "explanation": "They serve different routing and addressing patterns and are not interchangeable.",
+    "examCue": "Public direct access vs. private outbound access.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-030",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Route tables"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "What information does a VPC route-table rule contain?",
+    "answer": "A destination and a target.",
+    "explanation": "The most specific matching destination determines where traffic is sent.",
+    "examCue": "Route tables answer “where does this destination go?”",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-031",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Route tables"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "Do VPC route tables assign IP addresses or act as firewalls?",
+    "answer": "No. They select network paths; address configuration and traffic filtering are separate functions.",
+    "explanation": "DHCP-related settings help configure hosts, while security groups and NACLs filter traffic.",
+    "examCue": "Path selection is not permission evaluation.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-032",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Local route"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "What is the purpose of the local route in a VPC route table?",
+    "answer": "It enables communication among resources within the VPC CIDR blocks.",
+    "explanation": "Every VPC route table contains local routing for intra-VPC communication.",
+    "examCue": "Local route = traffic inside the VPC.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-033",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Route selection"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "scenario",
+    "prompt": "A route table has 10.0.0.0/16 → local and 0.0.0.0/0 → internet gateway. Where does traffic for 10.0.2.15 go?",
+    "answer": "Through the local route.",
+    "explanation": "Route selection uses the most specific matching destination; /16 is more specific than /0.",
+    "examCue": "Longest-prefix match wins.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-034",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "DHCP"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "What role do DHCP options play in a VPC?",
+    "answer": "They provide network configuration such as DNS-related settings to instances.",
+    "explanation": "DHCP configuration is separate from the subnet route table, which selects traffic paths.",
+    "examCue": "Host configuration and routing are different jobs.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-035",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Security groups"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "At what level does a security group apply, and is it stateful?",
+    "answer": "It applies to supported resource network interfaces and is stateful.",
+    "explanation": "Allowed flow responses are automatically permitted, and security groups contain allow rules rather than deny rules.",
+    "examCue": "Resource/ENI level + stateful = security group.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-036",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Network ACLs"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "At what level does a network ACL apply, and is it stateful?",
+    "answer": "It applies at the subnet boundary and is stateless.",
+    "explanation": "Inbound and outbound rules are evaluated separately, and NACLs support both allow and deny rules.",
+    "examCue": "Subnet level + stateless = NACL.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-037",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "comparison",
+    "prompt": "Contrast security groups with network ACLs.",
+    "answer": "Security groups are stateful allow-only controls on resource ENIs; NACLs are stateless allow/deny controls at subnet boundaries.",
+    "explanation": "They can be used together for layered protection.",
+    "examCue": "SG = resource/stateful; NACL = subnet/stateless.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-038",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Stateful filtering"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "scenario",
+    "prompt": "A security group allows an inbound HTTPS request. Does the response require a separate outbound rule for that flow?",
+    "answer": "No. Return traffic is automatically allowed because the security group is stateful.",
+    "explanation": "State tracking recognizes response traffic for an allowed connection.",
+    "examCue": "Stateful means return traffic is remembered.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-039",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Stateless filtering"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "scenario",
+    "prompt": "A NACL allows an inbound request. What must be considered for the response?",
+    "answer": "An applicable outbound rule must also allow the response traffic.",
+    "explanation": "NACLs are stateless and evaluate each direction independently.",
+    "examCue": "Stateless means configure both directions.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-040",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Security groups"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "Can one security group be associated with resources in different subnets of the same VPC?",
+    "answer": "Yes. A security group is associated with resource network interfaces, not owned by one subnet.",
+    "explanation": "The same group can protect supported resources across multiple subnets in its VPC.",
+    "examCue": "Security groups are not subnet-level controls.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-041",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Network security",
+      "Explicit deny"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "single-choice",
+    "prompt": "Which VPC control can explicitly deny a malicious source CIDR at a subnet boundary?",
+    "answer": "A network ACL.",
+    "explanation": "Security groups do not contain deny rules; NACLs can allow or deny and apply to the subnet boundary.",
+    "examCue": "Explicit subnet deny points to NACL.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
+    "options": [
+      {
+        "id": "a",
+        "text": "Route table"
+      },
+      {
+        "id": "b",
+        "text": "Security group"
+      },
+      {
+        "id": "c",
+        "text": "Network ACL"
+      },
+      {
+        "id": "d",
+        "text": "DHCP option set"
+      }
+    ],
+    "correctOptions": [
+      "c"
+    ]
+  },
+  {
+    "id": "clf-c02-2026-09-01-042",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "VPC endpoints"
+    ],
+    "services": [
+      "Amazon VPC"
+    ],
+    "type": "recall",
+    "prompt": "What problem does a VPC endpoint solve?",
+    "answer": "It lets resources privately access supported services without requiring public internet connectivity.",
+    "explanation": "The client does not need an internet gateway, NAT device, VPN, or public IP for that service path.",
+    "examCue": "Private access to a supported service points to a VPC endpoint.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-043",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "Interface endpoints"
+    ],
+    "services": [
+      "AWS PrivateLink"
+    ],
+    "type": "recall",
+    "prompt": "How is an interface VPC endpoint implemented?",
+    "answer": "With endpoint network interfaces that have private IP addresses in selected subnets, powered by AWS PrivateLink.",
+    "explanation": "Security groups can control access to the endpoint interfaces, and endpoint charges normally apply.",
+    "examCue": "ENI + private IP + PrivateLink = interface endpoint.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-044",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "Gateway endpoints"
+    ],
+    "services": [
+      "Amazon S3",
+      "Amazon DynamoDB"
+    ],
+    "type": "recall",
+    "prompt": "Which services support gateway VPC endpoints?",
+    "answer": "Amazon S3 and Amazon DynamoDB.",
+    "explanation": "Gateway endpoints add routes to selected route tables and do not use AWS PrivateLink.",
+    "examCue": "Gateway endpoint = S3 or DynamoDB.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-045",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "VPC endpoints"
+    ],
+    "services": [
+      "AWS PrivateLink",
+      "Amazon S3",
+      "Amazon DynamoDB"
+    ],
+    "type": "comparison",
+    "prompt": "How do interface and gateway VPC endpoints differ?",
+    "answer": "Interface endpoints use PrivateLink ENIs with private IPs; gateway endpoints add route-table entries and support S3 and DynamoDB.",
+    "explanation": "The endpoint types differ in implementation, supported services, security integration, and pricing.",
+    "examCue": "ENI vs. route-table target.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-046",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "Amazon S3"
+    ],
+    "services": [
+      "Amazon S3",
+      "Amazon VPC"
+    ],
+    "type": "scenario",
+    "prompt": "Private EC2 instances need same-Region S3 access without NAT and without an endpoint-hour charge. Which endpoint is the usual choice?",
+    "answer": "An S3 gateway VPC endpoint.",
+    "explanation": "Gateway endpoints add S3 routes and have no additional endpoint charge.",
+    "examCue": "S3 + route table + no endpoint-hour charge = gateway endpoint.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-047",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "Interface endpoints"
+    ],
+    "services": [
+      "AWS PrivateLink"
+    ],
+    "type": "scenario",
+    "prompt": "A private subnet must access a supported AWS service through private IP addresses and control access with a security group. Which endpoint type fits?",
+    "answer": "An interface VPC endpoint.",
+    "explanation": "Interface endpoints create ENIs in selected subnets and can have security groups.",
+    "examCue": "Private IP and security group point to interface endpoint.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-048",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Private connectivity",
+      "VPC endpoints"
+    ],
+    "services": [
+      "AWS PrivateLink",
+      "Amazon DynamoDB"
+    ],
+    "type": "single-choice",
+    "prompt": "Which statement is correct?",
+    "answer": "A DynamoDB gateway endpoint uses route-table entries and does not use AWS PrivateLink.",
+    "explanation": "Interface endpoints use PrivateLink; S3 and DynamoDB gateway endpoints use a different route-table implementation.",
+    "examCue": "Do not claim every endpoint uses PrivateLink.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1,
+    "options": [
+      {
+        "id": "a",
+        "text": "Every VPC endpoint is powered by AWS PrivateLink"
+      },
+      {
+        "id": "b",
+        "text": "A DynamoDB gateway endpoint uses route-table entries and does not use PrivateLink"
+      },
+      {
+        "id": "c",
+        "text": "Gateway endpoints create ENIs in every subnet"
+      },
+      {
+        "id": "d",
+        "text": "Interface endpoints are available only for S3 and DynamoDB"
+      }
+    ],
+    "correctOptions": [
+      "b"
+    ]
+  },
+  {
+    "id": "clf-c02-2026-09-01-049",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Instance categories"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "recall",
+    "prompt": "Which EC2 category balances compute, memory, and networking for diverse workloads?",
+    "answer": "General purpose instances, with families such as T and M.",
+    "explanation": "Use workload characteristics rather than treating family letters as official acronym expansions.",
+    "examCue": "Balanced resources point to general purpose.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-050",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Compute optimized"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A batch-processing workload is CPU intensive. Which EC2 category should be evaluated?",
+    "answer": "Compute optimized instances, such as C families.",
+    "explanation": "These instances provide a higher ratio of compute resources for CPU-bound work.",
+    "examCue": "CPU intensive points to compute optimized.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-051",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Memory optimized"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "An in-memory database needs very large RAM capacity. Which EC2 category fits?",
+    "answer": "Memory optimized instances, such as R or X families.",
+    "explanation": "The workload is constrained primarily by memory rather than CPU or local disk.",
+    "examCue": "Large in-memory dataset points to memory optimized.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-052",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Accelerated computing"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A machine-learning training workload needs GPUs. Which EC2 category fits?",
+    "answer": "Accelerated computing instances, such as P or G families.",
+    "explanation": "Hardware accelerators handle specialized operations more efficiently than general-purpose CPUs.",
+    "examCue": "GPU or accelerator points to accelerated computing.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-053",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Storage optimized"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A workload needs very high local NVMe IOPS. Which EC2 category should be evaluated?",
+    "answer": "Storage optimized instances, such as I families.",
+    "explanation": "These instances are designed for workloads whose performance depends on local storage throughput or IOPS.",
+    "examCue": "High local IOPS points to storage optimized.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-054",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Tenancy"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "Contrast Shared tenancy, Dedicated Instances, and Dedicated Hosts.",
+    "answer": "Shared is multi-account hardware by default; Dedicated Instances use single-account hardware without host control; Dedicated Hosts give one customer an entire physical server with host visibility and placement control.",
+    "explanation": "Tenancy describes how physical infrastructure is allocated.",
+    "examCue": "Increasing host control: Shared → Dedicated Instance → Dedicated Host.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-055",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "BYOL"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A license is bound to physical sockets and cores and requires host-level auditing. Which EC2 tenancy option is the best fit?",
+    "answer": "A Dedicated Host.",
+    "explanation": "Dedicated Hosts expose host identity, sockets, and cores and support targeted placement for server-bound licensing scenarios.",
+    "examCue": "Physical host visibility or strict BYOL points to Dedicated Host.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-01-056",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-01",
+    "sourceChat": "2026-09-01 · Databases, VPC & EC2",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "EC2",
+      "Pricing",
+      "Tenancy"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "How does EC2 tenancy differ from EC2 purchasing models?",
+    "answer": "Tenancy describes physical hardware sharing or dedication; purchasing models describe price, interruption, or commitment.",
+    "explanation": "Dedicated Host and Dedicated Instance answer an isolation question, while On-Demand, Spot, Reserved Instances, and Savings Plans answer cost-model questions.",
+    "examCue": "Do not confuse hardware allocation with pricing commitment.",
+    "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  }
+]

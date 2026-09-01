@@ -5,18 +5,20 @@ import type { Flashcard } from '../types/card'
 export function BrowseView({ cards }: { cards: Flashcard[] }) {
   const [query, setQuery] = useState('')
   const [domain, setDomain] = useState('All domains')
+  const [sourceChat, setSourceChat] = useState('All chats')
   const [selected, setSelected] = useState(cards[0]?.id)
   const domains = ['All domains', ...new Set(cards.map((card) => card.domain))]
+  const sourceChats = ['All chats', ...new Set(cards.map((card) => card.sourceChat))]
   const filtered = useMemo(() => cards.filter((card) => {
-    const haystack = `${card.prompt} ${card.answer} ${card.topics.join(' ')} ${card.services.join(' ')}`.toLowerCase()
-    return (domain === 'All domains' || card.domain === domain) && haystack.includes(query.toLowerCase())
-  }), [cards, domain, query])
+    const haystack = `${card.prompt} ${card.answer} ${card.topics.join(' ')} ${card.services.join(' ')} ${card.sourceChat}`.toLowerCase()
+    return (domain === 'All domains' || card.domain === domain) && (sourceChat === 'All chats' || card.sourceChat === sourceChat) && haystack.includes(query.toLowerCase())
+  }), [cards, domain, query, sourceChat])
   const current = cards.find((card) => card.id === selected) ?? filtered[0]
 
   return (
     <div className="browser-layout">
       <aside className="browser-list">
-        <div className="browser-toolbar"><label className="search-field"><Search size={15} /><input aria-label="Search cards" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search cards" /></label><select value={domain} onChange={(event) => setDomain(event.target.value)}>{domains.map((item) => <option key={item}>{item}</option>)}</select></div>
+        <div className="browser-toolbar"><label className="search-field"><Search size={15} /><input aria-label="Search cards" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search cards" /></label><select aria-label="Filter by domain" value={domain} onChange={(event) => setDomain(event.target.value)}>{domains.map((item) => <option key={item}>{item}</option>)}</select><select aria-label="Filter by chat" value={sourceChat} onChange={(event) => setSourceChat(event.target.value)}>{sourceChats.map((item) => <option key={item}>{item}</option>)}</select></div>
         <div className="browser-count">{filtered.length} {filtered.length === 1 ? 'card' : 'cards'}</div>
         <div className="card-list">{filtered.map((card) => <button className={card.id === current?.id ? 'active' : ''} type="button" key={card.id} onClick={() => setSelected(card.id)}><span>{card.prompt}</span><small>{card.domain} · {card.studyDate}</small></button>)}</div>
       </aside>

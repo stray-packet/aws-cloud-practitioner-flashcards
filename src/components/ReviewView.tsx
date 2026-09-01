@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { MoreHorizontal, Pencil, RotateCcw } from 'lucide-react'
 import type { Flashcard } from '../types/card'
 import type { StudyStore } from '../lib/storage'
-import { getIntervals, isDue, type RatingName } from '../lib/scheduler'
+import { getIntervals, type RatingName } from '../lib/scheduler'
+import { buildStudyQueue, type StudySessionOptions } from '../lib/studySession'
 
 const ratings: Array<{ key: string; name: RatingName; label: string }> = [
   { key: '1', name: 'again', label: 'Again' },
@@ -14,16 +15,13 @@ const ratings: Array<{ key: string; name: RatingName; label: string }> = [
 interface ReviewViewProps {
   cards: Flashcard[]
   store: StudyStore
+  options: StudySessionOptions
   onRate: (card: Flashcard, rating: RatingName) => void
   onFinished: () => void
 }
 
-export function ReviewView({ cards, store, onRate, onFinished }: ReviewViewProps) {
-  const [queue] = useState(() => {
-    const reviews = cards.filter((card) => store.cards[card.id] && isDue(store.cards[card.id]))
-    const newCards = cards.filter((card) => !store.cards[card.id]).slice(0, store.settings.newCardsPerDay)
-    return [...reviews, ...newCards]
-  })
+export function ReviewView({ cards, store, options, onRate, onFinished }: ReviewViewProps) {
+  const [queue] = useState(() => buildStudyQueue(cards, store, options))
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const card = queue[index]
@@ -66,7 +64,7 @@ export function ReviewView({ cards, store, onRate, onFinished }: ReviewViewProps
   return (
     <div className="review-layout">
       <div className="review-meta">
-        <span>AWS Cloud Practitioner</span>
+        <span>AWS Cloud Practitioner · {options.sourceChat === 'all' ? 'All chats' : options.sourceChat} · {options.domain === 'all' ? 'All domains' : options.domain}{options.topic === 'all' ? '' : ` · ${options.topic}`}{options.order === 'random' ? ' · Randomized' : ''}</span>
         <div className="queue-counts" aria-label="Cards remaining"><span className="new-count">{queue.length - index}</span><span className="review-count">{index}</span></div>
       </div>
       <section className="review-card" aria-live="polite">

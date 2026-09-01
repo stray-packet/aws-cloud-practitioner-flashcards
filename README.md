@@ -2,6 +2,8 @@
 
 An Anki-inspired progressive web app for studying AWS certifications with versioned knowledge, reviewed flashcards, FSRS scheduling, exam practice, optional Firebase sync, and Anki export.
 
+Study sessions can be scoped by Gemini chat/study day, CLF-C02 exam domain, or topic, then kept in scheduled order or randomized. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review.
+
 ## Local development
 
 Requirements: Node.js 24+ and npm.
@@ -32,6 +34,8 @@ The generated Anki import is `exports/anki/aws-cloud-practitioner.tsv`. Import i
 3. Review and normalize it into `knowledge/daily/`.
 4. Keep unstudied suggestions in `knowledge/gaps/`.
 5. Review generated cards in `flashcards/drafts/` before moving approved cards into `flashcards/approved/`.
+
+Each approved card includes a stable `sourceChat` label. This keeps cards traceable to a particular chat even when multiple chats share the same study date.
 
 See `docs/PROJECT_CONTEXT.md` for the full content contract and `docs/UI_RESEARCH.md` for the visual guardrails.
 

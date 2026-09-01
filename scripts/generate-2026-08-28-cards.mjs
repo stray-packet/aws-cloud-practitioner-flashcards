@@ -3,6 +3,7 @@ import path from 'node:path'
 
 const studyDate = '2026-08-28'
 const source = 'knowledge/daily/2026-08-28-reviewed.md'
+const sourceChat = '2026-08-28 · Gemini reports 1–7 (consolidated)'
 const D = {
   cloud: 'Cloud Concepts',
   security: 'Security and Compliance',
@@ -134,6 +135,7 @@ const cards = defs.map(([n, domain, type, difficulty, topics, services, prompt, 
     id: `clf-c02-${studyDate}-${String(n).padStart(3, '0')}`,
     certification: 'CLF-C02',
     studyDate,
+    sourceChat,
     domain,
     topics,
     services,
