@@ -2,8 +2,27 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 const studyDate = '2026-08-28'
-const source = 'knowledge/daily/2026-08-28-reviewed.md'
-const sourceChat = '2026-08-28 · Gemini reports 1–7 (consolidated)'
+const chats = {
+  1: '2026-08-28 · Chat 1 — Cloud Foundations & IaC',
+  2: '2026-08-28 · Chat 2 — IAM, CloudFront & Monitoring',
+  3: '2026-08-28 · Chat 3 — Global Infrastructure & VPC',
+  4: '2026-08-28 · Chat 4 — Edge, Private Connectivity & Compliance',
+  5: '2026-08-28 · Chat 5 — Disaster Recovery & AWS APIs',
+  6: '2026-08-28 · Chat 6 — CloudFormation, CDK & Responsibility',
+  7: '2026-08-28 · Chat 7 — Compute, Containers, HPC & Storage',
+}
+const cardsByChat = {
+  1: [14,15,17,18,19,20,21,22,112],
+  2: [16,31,32,33,34,35,36,56,57,63,70,71,72,73,74,113,122],
+  3: [23,24,25,26,27,28,29,30,46,47,48,49,50,51,114,115,116],
+  4: [42,43,44,45,52,53,54,55,58,59,60,61,62,95,117,118,129],
+  5: [96,97,98,99,100,101,102,108,109,110,124,125,126],
+  6: [37,38,39,40,41,69,103,104,105,106,107,111,120,127,128],
+  7: [64,65,66,67,68,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,119,121,123],
+}
+const chatFor = (number) => Number(Object.entries(cardsByChat).find(([, ids]) => ids.includes(number))?.[0])
+const sourceChatFor = (number) => chats[chatFor(number)]
+const sourceRefFor = (number) => `knowledge/daily/2026-08-28-chat-${chatFor(number)}-reviewed.md`
 const D = {
   cloud: 'Cloud Concepts',
   security: 'Security and Compliance',
@@ -135,7 +154,7 @@ const cards = defs.map(([n, domain, type, difficulty, topics, services, prompt, 
     id: `clf-c02-${studyDate}-${String(n).padStart(3, '0')}`,
     certification: 'CLF-C02',
     studyDate,
-    sourceChat,
+    sourceChat: sourceChatFor(n),
     domain,
     topics,
     services,
@@ -144,7 +163,7 @@ const cards = defs.map(([n, domain, type, difficulty, topics, services, prompt, 
     answer,
     explanation,
     examCue,
-    sourceRef: source,
+    sourceRef: sourceRefFor(n),
     difficulty,
     status: 'approved',
     version: 1,

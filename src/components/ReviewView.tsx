@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { MoreHorizontal, Pencil, RotateCcw } from 'lucide-react'
 import type { Flashcard } from '../types/card'
 import type { StudyStore } from '../lib/storage'
-import { getIntervals, type RatingName } from '../lib/scheduler'
-import { buildStudyQueue, type StudySessionOptions } from '../lib/studySession'
+import { getIntervals, isDue, type RatingName } from '../lib/scheduler'
+import { buildStudyQueue, filterStudyCards, type StudySessionOptions } from '../lib/studySession'
 
 const ratings: Array<{ key: string; name: RatingName; label: string }> = [
   { key: '1', name: 'again', label: 'Again' },
@@ -26,6 +26,7 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
   const [revealed, setRevealed] = useState(false)
   const card = queue[index]
   const intervals = card ? getIntervals(store.cards[card.id], store.settings.retention) : null
+  const matchingCount = filterStudyCards(cards, options).length
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -48,8 +49,11 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
     return (
       <div className="finished-state">
         <div className="finished-mark">✓</div>
-        <h1>Congratulations!</h1>
-        <p>You have finished this deck for now.</p>
+        <h1>Session complete</h1>
+        <p>You reviewed {queue.length} {queue.length === 1 ? 'card' : 'cards'}.</p>
+        {options.mode === 'custom' && matchingCount > queue.length && <p className="finished-detail">{matchingCount - queue.length} matching cards were outside this batch. Start another session whenever you are ready.</p>}
+        {options.mode === 'custom' && matchingCount === queue.length && <p className="finished-detail">You reached every card matching these filters.</p>}
+        {options.mode === 'daily' && <p className="finished-detail">The new-card allowance is shared across the whole day. Cards rated Again or Hard can return when their displayed interval becomes due.</p>}
         <button className="primary-button" type="button" onClick={onFinished}>Return to Decks</button>
       </div>
     )
@@ -64,11 +68,11 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
   return (
     <div className="review-layout">
       <div className="review-meta">
-        <span>AWS Cloud Practitioner · {options.sourceChat === 'all' ? 'All chats' : options.sourceChat} · {options.domain === 'all' ? 'All domains' : options.domain}{options.topic === 'all' ? '' : ` · ${options.topic}`}{options.order === 'random' ? ' · Randomized' : ''}</span>
+        <span>{options.mode === 'daily' ? 'Daily Review' : 'Custom Study'} · {options.sourceChat === 'all' ? 'All chats' : options.sourceChat} · {options.domain === 'all' ? 'All domains' : options.domain}{options.topic === 'all' ? '' : ` · ${options.topic}`}{options.order === 'random' ? ' · Randomized' : ''}</span>
         <div className="queue-counts" aria-label="Cards remaining"><span className="new-count">{queue.length - index}</span><span className="review-count">{index}</span></div>
       </div>
       <section className="review-card" aria-live="polite">
-        <div className="card-label">{card.domain} · {card.topics[0]}</div>
+        <div className="card-label"><span>{card.domain} · {card.topics[0]}</span><span className="card-schedule-state">{!store.cards[card.id] ? 'New' : isDue(store.cards[card.id]) ? 'Due review' : 'Scheduled practice'}</span></div>
         <div className="question-block"><p className="eyebrow">{card.type.replace('-', ' ')}</p><h1>{card.prompt}</h1></div>
         {revealed && (
           <div className="answer-block">

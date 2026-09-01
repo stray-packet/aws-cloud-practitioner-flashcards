@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 const studyDate = '2026-09-01'
-const sourceChat = '2026-09-01 · Databases, VPC & EC2'
+const sourceChat = '2026-09-01 · Chat 8 — Databases, VPC & EC2'
 const sourceRef = 'knowledge/daily/2026-09-01-databases-vpc-ec2.md'
 const T = 'Cloud Technology and Services'
 const S = 'Security and Compliance'

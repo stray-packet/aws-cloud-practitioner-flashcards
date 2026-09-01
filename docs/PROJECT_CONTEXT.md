@@ -11,13 +11,15 @@ AWS Study is a public, English-language flashcard PWA for AWS certifications. Th
 5. Generate cards in `flashcards/drafts/`; only user-approved cards move to `flashcards/approved/`.
 6. Run `npm run content:build` and `npm run export:anki`.
 
-Approved cards carry both `studyDate` and `sourceChat`. The PWA can start an FSRS review session filtered by chat/day, exam domain, and topic, with either scheduled or randomized ordering.
+Approved cards carry both `studyDate` and `sourceChat`. Reports that happen on the same date remain distinct chats. Daily Review enforces the configured new-card allowance across the whole local calendar day; Custom Study supports 10/20/50/all matching cards filtered by chat, exam domain, and topic, with scheduled or randomized ordering.
 
 Potential gaps never count as studied and never enter the review queue without approval.
 
 ## Product rules
 
 - Daily Review uses FSRS and self-ratings. Exam Practice records separate correctness metrics and does not change FSRS state.
+- A repeated Daily Review card must be due according to FSRS; Custom Study may intentionally include future-scheduled cards and labels them as scheduled practice.
+- Local mode autosaves in browser storage and supports portable JSON export and import.
 - The public repository contains only curated study material, never raw personal chats or secrets.
 - Firebase is optional at runtime. Without its environment variables the app must remain fully usable in local mode.
 - Preserve the Anki-inspired visual rules in `docs/UI_RESEARCH.md`.

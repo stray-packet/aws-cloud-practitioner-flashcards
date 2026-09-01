@@ -4,7 +4,7 @@ certification: AWS Certified Cloud Practitioner
 exam_code: CLF-C02
 status: reviewed
 source: Gemini chat report supplied in project conversation
-source_chat: 2026-09-01 · Databases, VPC & EC2
+source_chat: 2026-09-01 · Chat 8 — Databases, VPC & EC2
 reviewed_against_official_aws_docs: 2026-09-01
 ---
 
@@ -77,4 +77,3 @@ Amazon QLDB reached end of support on July 31, 2025. The source report correctly
 - [AWS PrivateLink concepts](https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html)
 - [Create an interface endpoint](https://docs.aws.amazon.com/vpc/latest/privatelink/create-interface-endpoint.html)
 - [Dedicated Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html)
-

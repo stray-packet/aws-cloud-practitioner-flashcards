@@ -44,7 +44,7 @@ h2 { font-size: 17px; font-weight: 600; margin: 0; }
 .custom-study-section { margin-top: 34px; }
 .custom-study-section .section-heading { align-items: end; }
 .custom-study-section .section-heading p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
-.study-options { display: grid; grid-template-columns: 1.35fr 1.05fr .9fr .9fr auto; gap: 10px; align-items: end; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-top: 0; }
+.study-options { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 12px; align-items: end; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-top: 0; }
 .study-options label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
 .study-options select { width: 100%; }
 .custom-study-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
@@ -66,7 +66,8 @@ h2 { font-size: 17px; font-weight: 600; margin: 0; }
 .review-meta { width: min(880px, 100%); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; min-height: 32px; color: var(--muted); font-size: 13px; }
 .queue-counts { display: flex; gap: 10px; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; }
 .review-card { width: min(880px, 100%); margin: 10px auto 18px; align-self: center; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; min-height: 390px; display: flex; flex-direction: column; }
-.card-label { padding: 10px 14px; background: var(--surface-muted); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+.card-label { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--surface-muted); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+.card-schedule-state { color: var(--accent); white-space: nowrap; }
 .question-block { padding: clamp(38px, 7vh, 76px) clamp(24px, 7vw, 88px); text-align: center; flex: 1; display: grid; align-content: center; }
 .eyebrow { margin: 0 0 16px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
 .question-block h1 { margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.35; font-weight: 500; letter-spacing: -.015em; }
@@ -96,6 +97,7 @@ kbd { font: 11px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; padding:
 .finished-state { min-height: calc(100vh - 48px); display: grid; place-content: center; justify-items: center; gap: 12px; text-align: center; padding: 30px; }
 .finished-state h1 { margin: 0; font-size: 28px; }
 .finished-state p { margin: 0 0 12px; color: var(--muted); }
+.finished-state .finished-detail { max-width: 560px; margin-top: -4px; line-height: 1.5; }
 .finished-mark { width: 54px; height: 54px; display: grid; place-items: center; border: 2px solid var(--review); color: var(--review); border-radius: 50%; font-size: 26px; }
 
 .exam-page { max-width: 900px; }
@@ -165,6 +167,9 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
 .setting-row output { font-variant-numeric: tabular-nums; }
 .setting-row input[type="range"] { width: 180px; accent-color: var(--accent); }
 .number-input { width: 82px; }
+.backup-actions { display: flex; gap: 8px; }
+.import-button { display: inline-flex; align-items: center; justify-content: center; }
+.import-button input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
 @media (max-width: 760px) {
   .app-shell { grid-template-rows: 46px 1fr 58px; }
@@ -211,4 +216,5 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
   .answer-row { grid-template-columns: 120px 1fr 30px; gap: 8px; }
   .setting-row { grid-template-columns: 1fr auto; }
   .setting-row input[type="range"] { grid-column: 1 / -1; width: 100%; }
+  .backup-actions { grid-column: 1 / -1; flex-wrap: wrap; }
 }

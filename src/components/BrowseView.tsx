@@ -8,7 +8,7 @@ export function BrowseView({ cards }: { cards: Flashcard[] }) {
   const [sourceChat, setSourceChat] = useState('All chats')
   const [selected, setSelected] = useState(cards[0]?.id)
   const domains = ['All domains', ...new Set(cards.map((card) => card.domain))]
-  const sourceChats = ['All chats', ...new Set(cards.map((card) => card.sourceChat))]
+  const sourceChats = ['All chats', ...[...new Set(cards.map((card) => card.sourceChat))].sort()]
   const filtered = useMemo(() => cards.filter((card) => {
     const haystack = `${card.prompt} ${card.answer} ${card.topics.join(' ')} ${card.services.join(' ')} ${card.sourceChat}`.toLowerCase()
     return (domain === 'All domains' || card.domain === domain) && (sourceChat === 'All chats' || card.sourceChat === sourceChat) && haystack.includes(query.toLowerCase())

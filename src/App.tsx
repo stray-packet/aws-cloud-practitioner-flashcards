@@ -10,7 +10,7 @@ import { SettingsView } from './components/SettingsView'
 import { StatsView } from './components/StatsView'
 import { reviewCard, type RatingName } from './lib/scheduler'
 import { defaultStudySession, type StudySessionOptions } from './lib/studySession'
-import { exportProgress, loadStore, saveStore, type ReviewEvent, type StudySettings, type StudyStore } from './lib/storage'
+import { exportProgress, loadStore, parseProgressJson, saveStore, type ReviewEvent, type StudySettings, type StudyStore } from './lib/storage'
 import { flashcardListSchema, type Flashcard } from './types/card'
 import './App.css'
 
@@ -62,11 +62,11 @@ function App() {
     return () => window.clearTimeout(timeout)
   }, [notice])
 
-  const rateCard = useCallback((card: Flashcard, rating: RatingName) => {
+  const rateCard = useCallback((card: Flashcard, rating: RatingName, mode: StudySessionOptions['mode']) => {
     const reviewedAt = new Date()
     setStore((current) => {
       const result = reviewCard(current.cards[card.id], rating, current.settings.retention, reviewedAt)
-      const event: ReviewEvent = { id: crypto.randomUUID(), cardId: card.id, rating, reviewedAt: reviewedAt.toISOString(), mode: 'daily-review' }
+      const event: ReviewEvent = { id: crypto.randomUUID(), cardId: card.id, rating, reviewedAt: reviewedAt.toISOString(), mode: mode === 'daily' ? 'daily-review' : 'custom-study' }
       if (user) void import('./lib/firebase').then(({ saveCloudReview }) => saveCloudReview(user, card.id, result.card, event)).catch(() => setNotice('Review saved locally; cloud sync will retry later.'))
       return { ...current, cards: { ...current.cards, [card.id]: result.card }, reviewLogs: [...current.reviewLogs, event] }
     })
@@ -91,16 +91,25 @@ function App() {
     setView('study')
   }, [])
 
+  const importLocalProgress = useCallback(async (file: File) => {
+    try {
+      setStore(parseProgressJson(await file.text()))
+      setNotice('Local progress imported successfully.')
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : 'Progress could not be imported.')
+    }
+  }, [])
+
   const content = useMemo(() => {
     switch (view) {
-      case 'study': return <ReviewView cards={cards} store={store} options={studySession} onRate={rateCard} onFinished={() => setView('overview')} />
+      case 'study': return <ReviewView cards={cards} store={store} options={studySession} onRate={(card, rating) => rateCard(card, rating, studySession.mode)} onFinished={() => setView('overview')} />
       case 'exam': return <ExamView cards={cards} onAttempt={recordExamAttempt} onExit={() => setView('overview')} />
       case 'browse': return <BrowseView cards={cards} />
       case 'stats': return <StatsView cards={cards} store={store} />
-      case 'settings': return <SettingsView settings={store.settings} user={user} firebaseConfigured={firebaseConfigured} onChange={updateSettings} onSignIn={() => void import('./lib/firebase').then(({ signInWithGoogle }) => signInWithGoogle()).catch(() => setNotice('Google sign-in was not completed.'))} onSignOut={() => void import('./lib/firebase').then(({ signOutUser }) => signOutUser())} onExport={() => exportProgress(store)} />
+      case 'settings': return <SettingsView settings={store.settings} store={store} user={user} firebaseConfigured={firebaseConfigured} onChange={updateSettings} onSignIn={() => void import('./lib/firebase').then(({ signInWithGoogle }) => signInWithGoogle()).catch(() => setNotice('Google sign-in was not completed.'))} onSignOut={() => void import('./lib/firebase').then(({ signOutUser }) => signOutUser())} onExport={() => exportProgress(store)} onImport={importLocalProgress} />
       default: return <Overview cards={cards} store={store} onNavigate={navigate} onStartStudy={startStudy} />
     }
-  }, [navigate, recordExamAttempt, rateCard, startStudy, store, studySession, updateSettings, user, view])
+  }, [importLocalProgress, navigate, recordExamAttempt, rateCard, startStudy, store, studySession, updateSettings, user, view])
 
   return (
     <Layout view={view} user={user} firebaseConfigured={firebaseConfigured} onNavigate={navigate}>

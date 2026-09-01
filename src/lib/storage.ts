@@ -13,7 +13,7 @@ export interface ReviewEvent {
   cardId: string
   rating: RatingName
   reviewedAt: string
-  mode: 'daily-review'
+  mode: 'daily-review' | 'custom-study'
 }
 
 export interface ExamAttempt {
@@ -60,6 +60,24 @@ export function exportProgress(store: StudyStore) {
   anchor.download = `aws-study-progress-${new Date().toISOString().slice(0, 10)}.json`
   anchor.click()
   URL.revokeObjectURL(url)
+}
+
+export function parseProgressJson(text: string): StudyStore {
+  const parsed = JSON.parse(text) as Partial<StudyStore>
+  if (!parsed || typeof parsed !== 'object' || !parsed.cards || !Array.isArray(parsed.reviewLogs) || !Array.isArray(parsed.examAttempts)) {
+    throw new Error('This file is not a valid AWS Study progress backup.')
+  }
+  for (const card of Object.values(parsed.cards)) {
+    if (!card || typeof card !== 'object' || typeof card.due !== 'string' || Number.isNaN(new Date(card.due).getTime())) {
+      throw new Error('The backup contains an invalid scheduled card.')
+    }
+  }
+  return {
+    cards: parsed.cards,
+    reviewLogs: parsed.reviewLogs,
+    examAttempts: parsed.examAttempts,
+    settings: { ...defaultSettings, ...parsed.settings },
+  }
 }
 
 function emptyStore(): StudyStore {
