@@ -2,7 +2,7 @@
 
 An Anki-inspired progressive web app for studying AWS certifications with versioned knowledge, reviewed flashcards, FSRS scheduling, exam practice, optional Firebase sync, and Anki export. Every approved card combines a concise answer, a plain-language explanation, and a separate practical example.
 
-Daily Review enforces one new-card allowance across the entire local calendar day. Custom Study can be scoped by individual Gemini chat, CLF-C02 exam domain, or topic; sessions can contain 10, 20, 50, or every matching card in scheduled or randomized order. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review.
+Daily Review enforces one new-card allowance across the entire local calendar day. Custom Study can be scoped by individual Gemini chat, CLF-C02 exam domain, or topic; sessions can contain 10, 20, 50, or every matching card in scheduled or randomized order. During review, `EN / ES` switches the complete card between English and Spanish, and selecting the information icon explains what the question is asking without revealing its answer. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review.
 
 ## Local development
 
@@ -20,10 +20,13 @@ The app works without Firebase and saves progress in the browser. Copy `.env.exa
 
 ```bash
 npm run content:validate
+npm run content:translate:es
 npm run export:anki
 npm test
 npm run build
 ```
+
+Spanish translations are generated ahead of time and committed with the content. The public app never sends study text to a translation service while the learner is reviewing.
 
 The generated Anki import is `exports/anki/aws-cloud-practitioner.tsv`. Import it as UTF-8 with HTML enabled. The first field is a stable note ID used for updates.
 

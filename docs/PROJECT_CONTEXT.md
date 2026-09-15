@@ -15,6 +15,8 @@ Approved cards carry both `studyDate` and `sourceChat`. Reports that happen on t
 
 Card answers should be concise and understandable without sacrificing accuracy. Use `explanation` for the why and `example` for a concrete situation; every approved card currently carries all three layers, and the UI and Anki export render them.
 
+Review mode is bilingual. Every approved card must have a complete static Spanish translation, while AWS product names remain in their official English form. The question information control offers type-specific beginner guidance without exposing the answer.
+
 Potential gaps never count as studied and never enter the review queue without approval.
 
 ## Product rules

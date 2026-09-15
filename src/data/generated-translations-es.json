@@ -1,0 +1,2050 @@
+[
+  {
+    "id": "clf-c02-2026-08-28-014",
+    "prompt": "¿Cuál es la diferencia principal entre Amazon SQS y Amazon SNS?",
+    "answer": "SQS almacena mensajes en una cola para que los consumidores los consulten y procesen; SNS envía cada publicación a los endpoints suscritos.",
+    "explanation": "SQS admite colas de trabajo desacopladas, mientras que SNS admite publicación/suscripción distribuida.",
+    "example": "Se realiza un pedido en SQS para que lo procese un trabajador, mientras que un tema de SNS envía la notificación del pedido al correo electrónico, a Lambda y a otra cola.",
+    "examCue": "Cola y encuesta = SQS; Tema y distribución = SNS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-015",
+    "prompt": "Un servicio de procesamiento de pedidos debe absorber los picos de tráfico y permitir que los trabajadores procesen los trabajos de forma independiente. ¿Qué servicio es el más adecuado?",
+    "answer": "Amazon SQS. Almacena en búfer cada trabajo en una cola hasta que un trabajador esté listo para procesarlo.",
+    "explanation": "Una cola amortigua el trabajo y desacopla a los productores de los consumidores para que cada lado pueda escalar de forma independiente.",
+    "example": "Una tienda en línea coloca cada pedido en una cola y los trabajadores disponibles procesan los pedidos a su propio ritmo.",
+    "examCue": "Los trabajos asincrónicos almacenados en búfer apuntan a SQS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-016",
+    "prompt": "Una alarma debe notificar a los destinatarios del correo electrónico, a una función Lambda y a una cola SQS al mismo tiempo. ¿Qué servicio encaja?",
+    "answer": "Amazon SNS. Publica un mensaje a múltiples destinos suscritos.",
+    "explanation": "Un tema de SNS puede distribuir una publicación en varios endpoints suscritos.",
+    "example": "Una alarma CloudWatch se publica en un tema de SNS cuyos suscriptores incluyen una dirección de correo electrónico, una función Lambda y una cola SQS.",
+    "examCue": "Un mensaje para muchos suscriptores apunta al SNS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-017",
+    "prompt": "¿Qué proporciona Amazon EC2?",
+    "answer": "Instancias de cómputo virtual redimensionables en AWS.",
+    "explanation": "EC2 brinda a los clientes control del sistema operativo invitado y la pila de aplicaciones en máquinas virtuales.",
+    "example": "Un equipo lanza una instancia EC2 de Linux, selecciona su CPU y tamaño de memoria e instala su propia aplicación web.",
+    "examCue": "Los servidores o instancias virtuales apuntan a EC2."
+  },
+  {
+    "id": "clf-c02-2026-08-28-018",
+    "prompt": "Un equipo necesita MySQL pero quiere que AWS administre la infraestructura de la base de datos subyacente y las operaciones rutinarias de la plataforma. ¿Qué servicio debería evaluar?",
+    "answer": "Amazon RDS. Ejecuta motores de bases de datos relacionales familiares, mientras que AWS maneja gran parte del trabajo de infraestructura.",
+    "explanation": "RDS es un servicio de base de datos relacional administrado; el cliente aún posee datos, acceso, esquemas y opciones de configuración.",
+    "example": "Una empresa ejecuta PostgreSQL en RDS, por lo que AWS maneja las copias de seguridad y la infraestructura de la base de datos mientras el equipo administra su esquema y sus datos.",
+    "examCue": "Los motores relacionales administrados apuntan a RDS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-019",
+    "prompt": "¿Qué proporciona Infrastructure as a Service y qué control principal queda en manos del cliente?",
+    "answer": "Proporciona infraestructura virtualizada; el cliente conserva el control del sistema operativo invitado, las aplicaciones, los datos y muchas configuraciones.",
+    "explanation": "IaaS elimina la propiedad del hardware físico sin eliminar la administración de la carga de trabajo.",
+    "example": "AWS proporciona el hardware y la virtualización de EC2, mientras que el cliente parchea el sistema operativo invitado y administra la aplicación.",
+    "examCue": "Un mayor control del cliente también significa una mayor responsabilidad del cliente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-020",
+    "prompt": "¿Cómo se relacionan las herramientas AWS Management Console, CLI, SDK e IaC con las API de servicios de AWS?",
+    "answer": "Son interfaces diferentes que, en última instancia, invocan las API de servicios de AWS.",
+    "explanation": "La “API unificada única” es sólo un modelo mental; no es el nombre de un producto de AWS ni de un endpoint literal.",
+    "example": "La creación de un bucket a través de la consola o CLI finalmente da como resultado una solicitud a la API del servicio S3.",
+    "examCue": "Los clics en la consola también se convierten en solicitudes de API."
+  },
+  {
+    "id": "clf-c02-2026-08-28-021",
+    "prompt": "¿Qué beneficios ofrece Infrastructure as Code?",
+    "answer": "Aprovisionamiento de infraestructura repetible, controlado por versiones, revisable y automatizado.",
+    "explanation": "Las definiciones legibles por máquina reducen la desviación de la configuración manual y admiten entornos consistentes.",
+    "example": "Una plantilla con versión controlada crea la misma red en desarrollo y producción en lugar de depender de clics manuales.",
+    "examCue": "La repetibilidad y el control de versiones apuntan a IaC."
+  },
+  {
+    "id": "clf-c02-2026-08-28-022",
+    "prompt": "¿Por qué se describe mejor a Terraform como un orquestador que como un compilador de aplicaciones?",
+    "answer": "Crea un plan y llama a las API del proveedor para alcanzar el estado de infraestructura deseado; no produce un binario de aplicación.",
+    "explanation": "Terraform lee HCL y coordina los cambios de recursos a través de las API del proveedor.",
+    "example": "Terraform compara la configuración con la infraestructura actual, crea un plan y llama a las API del proveedor; nunca compila la aplicación web en sí.",
+    "examCue": "Plan más llamadas API del proveedor, no binarios ejecutables."
+  },
+  {
+    "id": "clf-c02-2026-08-28-023",
+    "prompt": "Complete la relación: Una región de AWS contiene varios ________ aislados.",
+    "answer": "Availability Zones.",
+    "explanation": "Las regiones son áreas geográficas separadas y el diseño multi-AZ proporciona aislamiento dentro de una región.",
+    "example": "Una carga de trabajo se ejecuta en dos AZ en la misma región, por lo que una falla del centro de datos no detiene el servicio.",
+    "examCue": "Región → múltiples AZ."
+  },
+  {
+    "id": "clf-c02-2026-08-28-024",
+    "prompt": "¿Qué es un Availability Zone?",
+    "answer": "Uno o más centros de datos discretos con energía, redes y conectividad redundantes dentro de una región de AWS.",
+    "explanation": "Las AZ están diseñadas para aislar fallas y al mismo tiempo mantener una conectividad de baja latencia con otras AZ de la región.",
+    "example": "Una carga de trabajo se ejecuta en dos AZ en la misma región, por lo que una falla del centro de datos no detiene el servicio.",
+    "examCue": "Una AZ puede contener más de un centro de datos."
+  },
+  {
+    "id": "clf-c02-2026-08-28-025",
+    "prompt": "¿Cuál es el alcance geográfico de un Amazon VPC?",
+    "answer": "Una VPC pertenece a una región de AWS y puede abarcar el Availability Zones de esa región.",
+    "explanation": "Las subredes dividen la VPC en el nivel AZ.",
+    "example": "Una VPC en eu-west-1 puede contener subredes en varias AZ allí, pero no puede extenderse a eu-central-1.",
+    "examCue": "CPV = Regional; subred = una AZ."
+  },
+  {
+    "id": "clf-c02-2026-08-28-026",
+    "prompt": "¿Puede una subred abarcar varios Availability Zones?",
+    "answer": "No. Una subred reside completamente dentro de un Availability Zone.",
+    "explanation": "Un Availability Zone puede contener varias subredes, pero una subred no puede cruzar los límites AZ.",
+    "example": "Una empresa crea una subred pública y una privada en cada una de dos Availability Zones para lograr resiliencia.",
+    "examCue": "El alcance de la subred es una AZ."
+  },
+  {
+    "id": "clf-c02-2026-08-28-027",
+    "prompt": "Una instancia EC2 se coloca en una subred cuya tabla de rutas tiene una ruta a una internet gateway. ¿Se puede acceder automáticamente a la instancia desde Internet?",
+    "answer": "No. También necesita una dirección IP pública adecuada y reglas de seguridad que permitan el tráfico.",
+    "explanation": "Una ruta hace que la subred sea pública, pero la accesibilidad a Internet depende del enrutamiento, el direccionamiento y el filtrado en conjunto.",
+    "example": "Un servidor web público necesita una IP pública, una ruta a la internet gateway y reglas de seguridad que permitan HTTPS.",
+    "examCue": "La ubicación de una subred pública por sí sola no es suficiente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-028",
+    "prompt": "¿Por qué \"us-east-1a\" podría referirse a diferentes zonas físicas en dos cuentas de AWS?",
+    "answer": "Las asignaciones de letras Availability Zone pueden diferir según la cuenta.",
+    "explanation": "Utilice ID de AZ cuando diferentes cuentas deban coordinarse en el mismo Availability Zone físico.",
+    "example": "Dos cuentas comparan el ID de AZ use1-az2 porque la etiqueta us-east-1a puede asignarse de manera diferente en cada cuenta.",
+    "examCue": "Las letras AZ son relativas a la cuenta."
+  },
+  {
+    "id": "clf-c02-2026-08-28-029",
+    "prompt": "¿Cómo puede un bucket S3 ser regional mientras su nombre es globalmente único?",
+    "answer": "Los datos del bucket residen en una región seleccionada, mientras que su nombre debe ser único en todo el espacio de nombres del bucket de uso general.",
+    "explanation": "Una vista de consola global y un nombre global no significan que los datos del bucket se almacenen automáticamente en todo el mundo.",
+    "example": "El nombre company-receipts debe ser globalmente único, pero sus objetos aún pueden residir solo en la región eu-west-1 seleccionada.",
+    "examCue": "Nombre global, datos regionales."
+  },
+  {
+    "id": "clf-c02-2026-08-28-030",
+    "prompt": "¿Qué TRES factores suelen influir en la selección de la región de AWS?",
+    "answer": "Latencia para los usuarios, requisitos regulatorios o de ubicación de datos y disponibilidad o precio del servicio.",
+    "explanation": "La elección de la región es una decisión comercial y técnica; Ninguna región es la mejor para cada carga de trabajo.",
+    "example": "Una empresa elige Frankfurt porque sus usuarios están cerca, los servicios necesarios están disponibles y los datos deben permanecer en la UE.",
+    "examCue": "Busque proximidad, cumplimiento, características, resiliencia y costo."
+  },
+  {
+    "id": "clf-c02-2026-08-28-031",
+    "prompt": "¿Qué dos prácticas protegen mejor la cuenta de AWS root user?",
+    "answer": "Habilite MFA y reserve root user para tareas que lo requieran explícitamente.",
+    "explanation": "El root user tiene acceso a la cuenta sin restricciones y no debe usarse para la administración de rutina.",
+    "example": "Un administrador utiliza un rol normal todos los días y abre la cuenta raíz solo para una tarea que requiere específicamente raíz.",
+    "examCue": "Proteger la raíz; no lo utilices a diario."
+  },
+  {
+    "id": "clf-c02-2026-08-28-032",
+    "prompt": "¿Un IAM user requiere su propia dirección de correo electrónico externa o método de pago?",
+    "answer": "No. Es una identidad definida dentro de una cuenta de AWS.",
+    "explanation": "El uso realizado por IAM user se factura a la cuenta de AWS.",
+    "example": "Un desarrollador puede tener una identidad de IAM dentro de la cuenta de la empresa sin tener una cuenta de AWS, una suscripción de correo electrónico o un método de pago independientes.",
+    "examCue": "IAM users son identidades locales de cuenta."
+  },
+  {
+    "id": "clf-c02-2026-08-28-033",
+    "prompt": "Distinga la autenticación de la autorización.",
+    "answer": "La autenticación verifica quién es la persona que llama; La autorización determina lo que esa identidad puede hacer.",
+    "explanation": "Ambos son necesarios para evaluar de forma segura las solicitudes de AWS.",
+    "example": "Iniciar sesión prueba la identidad de Alice; Luego, sus políticas deciden si puede leer un bucket S3 en particular.",
+    "examCue": "¿Quién eres? vs. ¿qué puedes hacer?"
+  },
+  {
+    "id": "clf-c02-2026-08-28-034",
+    "prompt": "¿Qué permisos recibe una identidad IAM recién creada simplemente por existir?",
+    "answer": "Ninguno. Los permisos deben otorgarse a través de políticas y mecanismos de autorización aplicables.",
+    "explanation": "El acceso a AWS no se otorga automáticamente a una nueva identidad.",
+    "example": "Un usuario analista recién creado no puede abrir un informe de S3 hasta que una política aplicable otorgue explícitamente acceso de lectura.",
+    "examCue": "Nueva identidad no significa identidad autorizada."
+  },
+  {
+    "id": "clf-c02-2026-08-28-035",
+    "prompt": "Complete los elementos comunes de la política de IAM: Efecto, Acción, Recurso y ________ opcional.",
+    "answer": "Condición.",
+    "explanation": "Las condiciones se reducen cuando se aplica una declaración, como por fuente, hora, etiquetas u otras claves de contexto.",
+    "example": "Una política permite una acción administrativa solo cuando la solicitud está autenticada con MFA.",
+    "examCue": "Efecto + Acción + Recurso + Condición."
+  },
+  {
+    "id": "clf-c02-2026-08-28-036",
+    "prompt": "Un desarrollador necesita acceso de lectura a un bucket de S3 para un proyecto. ¿Qué enfoque sigue el menor privilegio?",
+    "answer": "Otorgue solo las acciones de lectura requeridas en ese bucket, no permisos amplios de administrador o de S3.",
+    "explanation": "El privilegio mínimo limita los permisos a la tarea y al recurso realmente necesarios.",
+    "example": "Un usuario que informa solo recibe acceso de lectura a un bucket de informes, no acceso de administrador a la cuenta.",
+    "examCue": "Prefiera la política suficiente más estrecha."
+  },
+  {
+    "id": "clf-c02-2026-08-28-037",
+    "prompt": "¿Cuáles son las dos partes de una clave de acceso IAM?",
+    "answer": "Un ID de clave de acceso y una clave de acceso secreta.",
+    "explanation": "Ambos se utilizan para firmar solicitudes programáticas; la clave de acceso secreta sólo se puede recuperar cuando se crea.",
+    "example": "Un perfil CLI puede contener AKIA… como ID de clave de acceso y un valor secreto separado que se usa en conjunto para firmar solicitudes.",
+    "examCue": "La identificación de la clave de acceso identifica; signos de clave secreta."
+  },
+  {
+    "id": "clf-c02-2026-08-28-038",
+    "prompt": "¿Cómo puede un IAM user rotar una clave de acceso sin una interrupción abrupta de la aplicación?",
+    "answer": "Cree la segunda clave, actualice y pruebe la aplicación, luego desactive y elimine la clave anterior.",
+    "explanation": "Un IAM user puede tener como máximo dos claves de acceso, lo que admite una superposición durante la rotación.",
+    "example": "Cree una segunda clave, cambie y pruebe la aplicación con ella, y solo entonces desactive y elimine la primera clave.",
+    "examCue": "Nueva clave primero; la llave vieja al final."
+  },
+  {
+    "id": "clf-c02-2026-08-28-039",
+    "prompt": "¿Cuál es la alternativa preferida a las claves de acceso de larga duración para las cargas de trabajo de AWS?",
+    "answer": "IAM roles y credenciales de seguridad temporales.",
+    "explanation": "Las credenciales temporales reducen el riesgo y la carga de mantenimiento de los secretos estáticos.",
+    "example": "Una aplicación EC2 asume una función y recibe credenciales temporales en lugar de almacenar una clave secreta en un archivo.",
+    "examCue": "Prefiera roles a claves integradas."
+  },
+  {
+    "id": "clf-c02-2026-08-28-040",
+    "prompt": "¿Quién parchea el sistema operativo invitado en una instancia Amazon EC2?",
+    "answer": "El cliente.",
+    "explanation": "AWS protege la infraestructura física y la capa de virtualización; el cliente gestiona las aplicaciones y el sistema operativo invitado.",
+    "example": "Para EC2, AWS mantiene el host físico, pero el cliente instala las actualizaciones de seguridad del sistema operativo.",
+    "examCue": "SO invitado en EC2 = cliente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-041",
+    "prompt": "¿Qué responsabilidades de seguridad de Lambda quedan en manos del cliente?",
+    "answer": "Código de función y bibliotecas, datos, permisos de IAM y configuración de recursos.",
+    "explanation": "AWS administra la infraestructura subyacente, el sistema operativo y la plataforma de tiempo de ejecución administrada.",
+    "example": "AWS parchea la infraestructura de Lambda, mientras el cliente repara una biblioteca vulnerable incluida con la función.",
+    "examCue": "Sin servidor reduce las operaciones; no elimina la responsabilidad del cliente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-042",
+    "prompt": "¿Las políticas de control de servicios otorgan permisos?",
+    "answer": "No. Los SCP establecen los permisos máximos disponibles para los principales en las cuentas de los miembros.",
+    "explanation": "Las políticas de IAM o de recursos aún deben otorgar acceso, y una restricción explícita de un SCP aplicable limita el resultado.",
+    "example": "Un SCP impide que las cuentas de los miembros deshabiliten CloudTrail, pero un IAM role aún necesita su propio permiso para usar CloudTrail.",
+    "examCue": "SCP = barandilla, no concesión."
+  },
+  {
+    "id": "clf-c02-2026-08-28-043",
+    "prompt": "Una empresa necesita registrar las configuraciones de recursos y evaluarlas continuamente según las reglas. ¿Qué servicio encaja?",
+    "answer": "AWS Config. Registra el historial de configuración de recursos y evalúa los recursos según las reglas de cumplimiento.",
+    "explanation": "AWS Config registra el historial de configuración admitido y evalúa el cumplimiento. La corrección es opcional y debe configurarse.",
+    "example": "La configuración muestra que un grupo de seguridad dejó de cumplir después de que alguien abrió el puerto 22 a todo Internet.",
+    "examCue": "El historial de configuración y las reglas apuntan a Config."
+  },
+  {
+    "id": "clf-c02-2026-08-28-044",
+    "prompt": "Distinguir la residencia de datos de la soberanía de los datos.",
+    "answer": "La residencia es donde se almacenan físicamente los datos; La soberanía es la jurisdicción legal y la autoridad que la gobierna.",
+    "explanation": "Los requisitos de cumplimiento pueden imponer controles basados tanto en la ubicación como en la jurisdicción.",
+    "example": "Los registros de los clientes pueden residir físicamente en Alemania, mientras que la ley aplicable determina qué gobierno tiene autoridad legal sobre ellos.",
+    "examCue": "Dónde se almacena versus cuya ley se aplica."
+  },
+  {
+    "id": "clf-c02-2026-08-28-045",
+    "prompt": "¿Qué entorno de AWS está diseñado para cargas de trabajo elegibles del gobierno de EE. UU. y altamente reguladas con regiones aisladas?",
+    "answer": "AWS GovCloud (US).",
+    "explanation": "GovCloud tiene requisitos específicos de elegibilidad y acceso; no es simplemente una Región general disponible para cualquier individuo.",
+    "example": "Un contratista elegible del gobierno de EE. UU. ejecuta una carga de trabajo regulada en una región AWS GovCloud (US) aislada.",
+    "examCue": "Las cargas de trabajo gubernamentales reguladas de EE. UU. apuntan a GovCloud."
+  },
+  {
+    "id": "clf-c02-2026-08-28-046",
+    "prompt": "Enumere las características que definen a un grupo de seguridad.",
+    "answer": "Tiene estado, se aplica en el nivel de interfaz de red de recursos y solo admite reglas de permiso.",
+    "explanation": "Los grupos de seguridad evalúan todas las reglas aplicables y permiten automáticamente el tráfico de respuesta para un flujo permitido.",
+    "example": "Un grupo de seguridad del servidor web permite HTTPS entrante y el tráfico de respuesta se permite automáticamente.",
+    "examCue": "Con estado + solo permitir + nivel de recurso/ENI."
+  },
+  {
+    "id": "clf-c02-2026-08-28-047",
+    "prompt": "Enumere las características que definen una ACL de red.",
+    "answer": "No tiene estado, se aplica en los límites de la subred, admite reglas de permitir y denegar y procesa reglas numeradas en orden ascendente.",
+    "explanation": "El tráfico entrante y saliente se evalúa por separado.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "Sin estado + permitir/denegar + nivel de subred."
+  },
+  {
+    "id": "clf-c02-2026-08-28-048",
+    "prompt": "¿Cuándo se debe preferir un grupo de seguridad a una ACL de red?",
+    "answer": "Utilice grupos de seguridad para un acceso detallado a los recursos; utilice NACLs como barreras de seguridad de subred generales o defensa en profundidad.",
+    "explanation": "Los grupos de seguridad son más versátiles porque tienen estado y pueden hacer referencia a otros grupos de seguridad.",
+    "example": "Utilice un grupo de seguridad para permitir HTTPS a servidores seleccionados; agregue un NACL cuando toda la subred necesite una regla aproximada, como negar un CIDR.",
+    "examCue": "Firewall de recurso principal = grupo de seguridad."
+  },
+  {
+    "id": "clf-c02-2026-08-28-049",
+    "prompt": "Un grupo de seguridad permite una solicitud HTTPS entrante. ¿Debe una regla de salida separada permitir la respuesta a esa solicitud?",
+    "answer": "No. El tráfico de respuesta se permite automáticamente porque los grupos de seguridad tienen estado.",
+    "explanation": "El seguimiento del estado permite el flujo de retorno independientemente de las reglas de salida.",
+    "example": "Un grupo de seguridad del servidor web permite HTTPS entrante y el tráfico de respuesta se permite automáticamente.",
+    "examCue": "Las respuestas de flujo permitidas omiten las coincidencias salientes independientes."
+  },
+  {
+    "id": "clf-c02-2026-08-28-050",
+    "prompt": "¿Qué control de VPC puede denegar explícitamente un rango de IP malicioso conocido para una subred completa?",
+    "answer": "Una ACL de red. Puede aplicar una regla de denegación explícita al tráfico que cruza el límite de la subred.",
+    "explanation": "NACLs admite reglas de denegación en los límites de la subred; Los grupos de seguridad admiten solo reglas de permiso.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "La denegación de subred explícita apunta a NACL."
+  },
+  {
+    "id": "clf-c02-2026-08-28-051",
+    "prompt": "¿Se coloca un bucket S3 dentro de una subred de VPC del cliente?",
+    "answer": "No. S3 es un servicio regional administrado fuera de las subredes de los clientes.",
+    "explanation": "Los recursos de VPC pueden llegar a S3 a través de puntos de enlace de servicio público o puntos de enlace de VPC compatibles.",
+    "example": "No se lanza un bucket de S3 en 10.0.1.0/24; Los recursos privados de VPC llegan al servicio Regional S3 a través de un endpoint.",
+    "examCue": "Los buckets no reciben direcciones CIDR de subred."
+  },
+  {
+    "id": "clf-c02-2026-08-28-052",
+    "prompt": "¿Qué servicios admiten puntos de enlace de VPC de puerta de enlace y cuál es el cargo por punto de enlace?",
+    "answer": "Amazon S3 y DynamoDB; no hay ningún cargo adicional por el endpoint de la puerta de enlace.",
+    "explanation": "Los puntos de enlace de puerta de enlace agregan rutas de prefijo de servicio a tablas de rutas de VPC seleccionadas.",
+    "example": "Una tabla de rutas puede enviar tráfico privado de S3 o DynamoDB a través de un endpoint de puerta de enlace gratuito en lugar de una NAT gateway.",
+    "examCue": "S3/DynamoDB + tabla de rutas + sin cargo por endpoint."
+  },
+  {
+    "id": "clf-c02-2026-08-28-053",
+    "prompt": "¿Cómo conecta un endpoint de VPC de interfaz una VPC de forma privada a un servicio?",
+    "answer": "Crea interfaces de red elásticas con direcciones IP privadas y utiliza AWS PrivateLink.",
+    "explanation": "Los endpoints de interfaz pueden utilizar grupos de seguridad y normalmente incurren en cargos por hora de endpoint y por procesamiento de datos.",
+    "example": "Una aplicación privada llega a Secrets Manager a través de direcciones IP de endpoints privados protegidas por un grupo de seguridad.",
+    "examCue": "ENI + IP privada + PrivateLink."
+  },
+  {
+    "id": "clf-c02-2026-08-28-054",
+    "prompt": "Las instancias EC2 en una subred privada necesitan acceso ordinario de la misma región a S3 sin una NAT gateway y sin un cargo por hora de endpoint. ¿Qué se debe utilizar?",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "explanation": "Un endpoint de puerta de enlace enruta el tráfico S3 a través de tablas de rutas seleccionadas sin cargo adicional por endpoint.",
+    "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
+    "examCue": "Acceso privado a S3 y sin punto de carga del endpoint al endpoint de la puerta de enlace."
+  },
+  {
+    "id": "clf-c02-2026-08-28-055",
+    "prompt": "Una empresa necesita una conexión de red dedicada y predecible desde su centro de datos a AWS. ¿Qué servicio encaja?",
+    "answer": "AWS Direct Connect.",
+    "explanation": "Direct Connect establece conectividad dedicada para requisitos de coherencia y ancho de banda híbrido.",
+    "example": "Un centro de datos utiliza un enlace dedicado a AWS para lograr un rendimiento de red híbrida más consistente que una conexión basada en Internet.",
+    "examCue": "Conectividad privada dedicada desde puntos locales a Direct Connect."
+  },
+  {
+    "id": "clf-c02-2026-08-28-056",
+    "prompt": "¿Qué servicio almacena en caché el contenido HTTP/HTTPS en ubicaciones perimetrales cercanas a los espectadores?",
+    "answer": "Amazon CloudFront. Almacena en caché el contenido web cerca de los espectadores para reducir la latencia y la carga de origen.",
+    "explanation": "CloudFront es la red de entrega de contenido de AWS y reduce la carga de origen y la latencia del espectador.",
+    "example": "Un sitio web almacena imágenes en caché en ubicaciones de borde para que los visitantes distantes no obtengan todas las imágenes de la región de origen.",
+    "examCue": "CDN y caché perimetral apuntan a CloudFront."
+  },
+  {
+    "id": "clf-c02-2026-08-28-057",
+    "prompt": "¿Qué hace una invalidación CloudFront?",
+    "answer": "Elimina objetos seleccionados de las cachés CloudFront antes de su vencimiento normal.",
+    "explanation": "Utilice la invalidación cuando el contenido actualizado deba recuperarse del origen antes de que caduque su TTL.",
+    "example": "Después de corregir un archivo CSS, un equipo invalida esa ruta para que los espectadores reciban la nueva versión antes de que expire el TTL anterior.",
+    "examCue": "Forzar la eliminación anticipada del caché."
+  },
+  {
+    "id": "clf-c02-2026-08-28-058",
+    "prompt": "¿Qué proporciona AWS Global Accelerator para un acelerador IPv4 de forma predeterminada?",
+    "answer": "Dos direcciones IPv4 estáticas de difusión directa que enrutan el tráfico admitido a través de la red global de AWS.",
+    "explanation": "Global Accelerator mejora el rendimiento de la ruta de red y la conmutación por error sin almacenar en caché el contenido de la aplicación.",
+    "example": "Un juego global utiliza dos direcciones IP fijas anycast para enrutar jugadores UDP a la red AWS sin almacenar contenido en caché.",
+    "examCue": "IP estáticas anycast y sin caché."
+  },
+  {
+    "id": "clf-c02-2026-08-28-059",
+    "prompt": "¿Cuándo se debe seleccionar CloudFront en lugar de Global Accelerator?",
+    "answer": "Elija CloudFront cuando el contenido HTTP/HTTPS deba almacenarse en caché; elija Global Accelerator para aceleración de red y puntos de entrada estáticos de difusión directa sin almacenamiento en caché.",
+    "explanation": "Ambos utilizan infraestructura de borde, pero resuelven diferentes capas del problema.",
+    "example": "CloudFront almacena en caché las imágenes del sitio web cerca de los espectadores; Global Accelerator en cambio acelera una conexión de juego que no se puede almacenar en caché a través de IP estáticas anycast.",
+    "examCue": "Caché = CloudFront; ruta = Global Accelerator."
+  },
+  {
+    "id": "clf-c02-2026-08-28-060",
+    "prompt": "Los usuarios distribuidos globalmente deben cargar archivos grandes a un bucket S3 distante más rápido. ¿Qué característica se debe evaluar?",
+    "answer": "S3 Transfer Acceleration. Utiliza ubicaciones de borde de AWS y rutas de red optimizadas para acelerar las transferencias S3 de larga distancia.",
+    "explanation": "Utiliza la infraestructura de borde de AWS y rutas de red optimizadas para transferencias S3 de larga distancia.",
+    "example": "Los usuarios de varios continentes cargan archivos de vídeo de gran tamaño en un bucket S3 distante a través de ubicaciones de borde de AWS cercanas.",
+    "examCue": "La carga S3 de larga distancia apunta a Transfer Acceleration."
+  },
+  {
+    "id": "clf-c02-2026-08-28-061",
+    "prompt": "Distinga AWS Local Zones de AWS Wavelength.",
+    "answer": "Local Zones ubicar la infraestructura de AWS seleccionada cerca de áreas metropolitanas; Wavelength coloca la infraestructura dentro de las redes de proveedores de comunicaciones para cargas de trabajo en el borde del operador.",
+    "explanation": "Ambos reducen la latencia, pero el entorno de acceso de destino difiere.",
+    "example": "Una carga de trabajo de renderizado metropolitano puede usar un Local Zone, mientras que una aplicación de vehículo 5G puede usar un Wavelength Zone dentro de una red de operador.",
+    "examCue": "Extensión del metro versus borde de la red del operador."
+  },
+  {
+    "id": "clf-c02-2026-08-28-062",
+    "prompt": "Una carga de trabajo necesita una infraestructura administrada por AWS instalada en las instalaciones del cliente para su procesamiento local. ¿Qué servicio encaja?",
+    "answer": "AWS Outposts. Lleva la infraestructura administrada por AWS y los servicios seleccionados a las propias instalaciones del cliente.",
+    "explanation": "Outposts extiende la infraestructura, las API y los servicios seleccionados de AWS a las ubicaciones de los clientes.",
+    "example": "Una fábrica procesa datos localmente en bastidores administrados por AWS instalados en su propio edificio porque necesita una latencia local muy baja.",
+    "examCue": "El hardware y los servicios de AWS locales apuntan a Outposts."
+  },
+  {
+    "id": "clf-c02-2026-08-28-063",
+    "prompt": "¿Qué modelo de almacenamiento proporciona Amazon S3?",
+    "answer": "Almacenamiento de objetos regional al que se accede a través de API.",
+    "explanation": "S3 almacena objetos en buckets; Los prefijos crean una vista similar a una carpeta, pero no un sistema de archivos montado tradicional.",
+    "example": "Una foto se almacena como un objeto en un bucket y se recupera mediante una solicitud de API de S3 en lugar de montarse como un bloque de disco.",
+    "examCue": "Objeto = S3."
+  },
+  {
+    "id": "clf-c02-2026-08-28-064",
+    "prompt": "¿Qué modelo de almacenamiento proporciona Amazon EBS?",
+    "answer": "Volúmenes de almacenamiento en bloque duraderos para Amazon EC2.",
+    "explanation": "Un volumen de EBS se comporta como un dispositivo de bloque y debe estar en la misma zona de disponibilidad que la instancia adjunta.",
+    "example": "Un servidor de base de datos adjunta un volumen de EBS como dispositivo de bloque en el mismo Availability Zone.",
+    "examCue": "Volumen de bloque para EC2 = EBS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-065",
+    "prompt": "¿Es siempre cierto que un volumen de EBS se puede adjuntar a una sola instancia EC2?",
+    "answer": "No. Ese es el modelo normal, pero los volúmenes io1/io2 compatibles pueden usar Multi-Attach con múltiples instancias basadas en Nitro en la misma zona de disponibilidad.",
+    "explanation": "Multi-Attach está restringido y requiere aplicaciones o sistemas de archivos agrupados que coordinen las escrituras de forma segura.",
+    "example": "Dos instancias Nitro compatibles en una AZ conectan el mismo volumen io2, mientras que una aplicación compatible con clústeres coordina sus escrituras.",
+    "examCue": "Conozca la excepción sin tratarla como predeterminada."
+  },
+  {
+    "id": "clf-c02-2026-08-28-066",
+    "prompt": "¿Qué modelo y protocolo de almacenamiento proporciona Amazon EFS?",
+    "answer": "Almacenamiento elástico de archivos compartidos mediante NFS.",
+    "explanation": "Varias instancias informáticas pueden montar el mismo sistema de archivos EFS. EFS no proporciona SMB.",
+    "example": "Cientos de instancias EC2 de Linux montan el mismo directorio EFS a través de NFS.",
+    "examCue": "Sistema de archivos compartido Linux/NFS = EFS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-067",
+    "prompt": "Haga coincidir S3, EBS y EFS con sus modelos de acceso principal.",
+    "answer": "S3 = objeto/API; EBS = dispositivo de bloqueo EC2; EFS = sistema de archivos NFS compartido.",
+    "explanation": "Elija el almacenamiento según la semántica de acceso, el uso compartido y las necesidades de carga de trabajo.",
+    "example": "Almacene fotografías como objetos S3, conecte EBS como el disco de un servidor y monte EFS cuando muchos servidores Linux necesiten el mismo directorio.",
+    "examCue": "Objeto, bloque, archivo."
+  },
+  {
+    "id": "clf-c02-2026-08-28-068",
+    "prompt": "¿Un volumen de EBS siempre sobrevive a la terminación de su instancia EC2?",
+    "answer": "No siempre. EBS puede persistir de forma independiente, pero una configuración de eliminación al finalizar puede eliminarlo.",
+    "explanation": "La capacidad de persistencia y la configuración del ciclo de vida son hechos diferentes.",
+    "example": "Un volumen raíz de EBS marcado como eliminado al finalizar desaparece con la instancia, mientras que un volumen de datos retenidos puede sobrevivir.",
+    "examCue": "Marque la eliminación al finalizar."
+  },
+  {
+    "id": "clf-c02-2026-08-28-069",
+    "prompt": "¿Qué almacenamiento persistente proporciona un entorno AWS CloudShell estándar?",
+    "answer": "Un directorio de inicio de 1 GB por región admitida, retenido hasta 120 días de inactividad en esa región.",
+    "explanation": "El almacenamiento temporal fuera del directorio de inicio se recicla; Los entornos CloudShell VPC no tienen el mismo almacenamiento doméstico persistente.",
+    "example": "Un script guardado en el directorio principal de CloudShell permanece disponible cuando el usuario regresa a esa región más tarde.",
+    "examCue": "El inicio estándar de CloudShell es regional y tiene un límite de tiempo por inactividad."
+  },
+  {
+    "id": "clf-c02-2026-08-28-070",
+    "prompt": "¿Cuáles son las funciones principales de Amazon CloudWatch?",
+    "answer": "Recopile métricas y registros, visualice paneles y cree alarmas y respuestas automatizadas.",
+    "explanation": "CloudWatch se centra en la telemetría operativa y el estado de las aplicaciones/recursos.",
+    "example": "Una alarma CloudWatch envía una notificación cuando la métrica de error de una aplicación excede su umbral.",
+    "examCue": "Métricas, registros, alarmas, paneles."
+  },
+  {
+    "id": "clf-c02-2026-08-28-071",
+    "prompt": "Un administrador desea utilizar la memoria de invitado de EC2 en CloudWatch. ¿Está disponible como métrica EC2 estándar?",
+    "answer": "No. Instale el agente CloudWatch o publique una métrica personalizada.",
+    "explanation": "El servicio EC2 expone métricas de infraestructura como la CPU, pero la memoria del sistema operativo invitado requiere telemetría en la instancia.",
+    "example": "El agente CloudWatch que se ejecuta dentro de una instancia EC2 publica la utilización de la memoria que EC2 no proporciona de forma predeterminada.",
+    "examCue": "La memoria de los invitados necesita un agente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-072",
+    "prompt": "¿La creación de un presupuesto de AWS impone automáticamente un límite de gasto estricto?",
+    "answer": "No. Los presupuestos monitorean los umbrales y notifican; Las acciones presupuestarias opcionales deben configurarse por separado.",
+    "explanation": "Los recursos siguen ejecutándose de forma predeterminada después de que se cruza un umbral de presupuesto.",
+    "example": "Cruzar un umbral de presupuesto de $500 envía una alerta, pero las instancias EC2 en ejecución continúan a menos que se configure una acción presupuestaria separada.",
+    "examCue": "El presupuesto no es un interruptor de apagado predeterminado."
+  },
+  {
+    "id": "clf-c02-2026-08-28-073",
+    "prompt": "¿Cuándo se debe utilizar AWS Budgets en lugar de AWS Cost Explorer?",
+    "answer": "Utilice Presupuestos para umbrales, alertas y acciones opcionales; Utilice Cost Explorer para analizar y visualizar tendencias de costos y uso.",
+    "explanation": "Uno mira contra un objetivo; el otro apoya la investigación y el análisis.",
+    "example": "Utilice Cost Explorer para descubrir el aumento del mes pasado y luego cree un presupuesto de AWS para alertar cuando el pronóstico del próximo mes alcance los $500.",
+    "examCue": "Umbral = Presupuestos; análisis = Explorador de costos."
+  },
+  {
+    "id": "clf-c02-2026-08-28-074",
+    "prompt": "Distinga CloudWatch de AWS Budgets.",
+    "answer": "CloudWatch monitorea la telemetría operativa; AWS Budgets rastrea el costo o el uso frente a umbrales financieros o de consumo.",
+    "explanation": "Ambos pueden alertar, pero observan datos diferentes y responden preguntas diferentes.",
+    "example": "CloudWatch emite una alarma cuando aumenta la latencia de la aplicación; AWS Budgets alerta cuando el gasto mensual previsto cruza un umbral financiero.",
+    "examCue": "Salud técnica versus umbral presupuestario."
+  },
+  {
+    "id": "clf-c02-2026-08-28-075",
+    "prompt": "Una carga de trabajo EC2 irregular y de corto plazo no se puede interrumpir y no tiene una base predecible a largo plazo. ¿Qué modelo de precios encaja?",
+    "answer": "On-Demand Instances. No requieren compromiso a largo plazo y se facturan por la capacidad utilizada.",
+    "explanation": "On-Demand no requiere compromiso a largo plazo y se adapta al uso irregular no interrumpible.",
+    "example": "Un servidor de prueba temporal se ejecuta durante dos días sin compromiso y luego se cancela.",
+    "examCue": "Sin compromiso y no se puede interrumpir = On-Demand."
+  },
+  {
+    "id": "clf-c02-2026-08-28-076",
+    "prompt": "Una carga de trabajo por lotes tolerante a fallas puede manejar las interrupciones y debería minimizar el costo de EC2. ¿Qué capacidad encaja?",
+    "answer": "EC2 Spot Instances. Utilizan capacidad sobrante con descuento, pero deben tolerar posibles interrupciones.",
+    "explanation": "Spot utiliza capacidad sobrante con un gran descuento, pero puede interrumpirse.",
+    "example": "Un trabajo de renderizado guarda puntos de control para que pueda reanudarse en otro lugar si AWS interrumpe su instancia Spot con descuento.",
+    "examCue": "Flexible e interrumpible = Spot."
+  },
+  {
+    "id": "clf-c02-2026-08-28-077",
+    "prompt": "¿Qué compromiso se canjea por Savings Plans descuentos?",
+    "answer": "Una cantidad constante de uso informático elegible, medido en dólares por hora, durante uno o tres años.",
+    "explanation": "Savings Plans son más flexibles que EC2 Reserved Instances en el uso informático elegible.",
+    "example": "Una empresa se compromete a realizar una cantidad predecible de uso de cómputo por hora durante un año para recibir precios más bajos.",
+    "examCue": "Compromiso de gasto por horas durante 1 o 3 años."
+  },
+  {
+    "id": "clf-c02-2026-08-28-078",
+    "prompt": "¿EC2 Reserved Instances son servidores físicos separados?",
+    "answer": "No. Son un descuento de facturación aplicado al uso On-Demand que coincida; algunas RI zonales también reservan capacidad.",
+    "explanation": "El término describe un beneficio de precio, no un objeto de instancia especial que se ejecuta por sí solo.",
+    "example": "Una instancia EC2 coincidente en ejecución recibe un descuento de facturación RI; La compra de RI no creó ni dedicó ese servidor.",
+    "examCue": "RI = descuento, no una máquina."
+  },
+  {
+    "id": "clf-c02-2026-08-28-079",
+    "prompt": "¿En qué se diferencia un contenedor de una máquina virtual?",
+    "answer": "Un contenedor comparte un kernel de sistema operativo host, mientras que una máquina virtual incluye un sistema operativo invitado en hardware virtualizado.",
+    "explanation": "Los contenedores suelen ser más ligeros y arrancan más rápido; Las máquinas virtuales proporcionan un límite independiente para el sistema operativo invitado.",
+    "example": "Varios contenedores comparten un kernel host, mientras que cada máquina virtual arranca y mantiene su propio sistema operativo invitado.",
+    "examCue": "Kernel compartido versus sistema operativo invitado."
+  },
+  {
+    "id": "clf-c02-2026-08-28-080",
+    "prompt": "¿Es un clúster en sí mismo un orquestador?",
+    "answer": "No. Un clúster es una agrupación lógica o un límite de capacidad; ECS o EKS proporciona orquestación.",
+    "explanation": "El escalado de la capacidad y la distribución del tráfico son manejados por servicios como Auto Scaling y Elastic Load Balancing, no por la palabra \"clúster\" en sí.",
+    "example": "Un grupo de capacidad EC2 forma un clúster, pero ECS o Kubernetes deciden dónde deben ejecutarse los contenedores.",
+    "examCue": "El cluster es el grupo, el orquestador es el cerebro."
+  },
+  {
+    "id": "clf-c02-2026-08-28-081",
+    "prompt": "Distinga ECS, EKS y Fargate.",
+    "answer": "ECS es la orquestación de contenedores de AWS, EKS es Kubernetes administrado y Fargate proporciona capacidad informática sin servidor para cargas de trabajo ECS o EKS compatibles.",
+    "explanation": "Fargate es una opción informática, no un tercer orquestador competidor.",
+    "example": "Utilice ECS para la orquestación nativa de AWS, EKS para la compatibilidad con Kubernetes y Fargate con cualquiera de ellos cuando no desee administrar servidores de trabajo.",
+    "examCue": "ECS/EKS orquestan; Fargate suministra computación."
+  },
+  {
+    "id": "clf-c02-2026-08-28-082",
+    "prompt": "¿Qué servicio de AWS almacena imágenes de contenedores privados para su posterior implementación?",
+    "answer": "Registro de contenedores elásticos de Amazon (Amazon ECR). Almacena de forma segura imágenes de contenedores que ECS o EKS pueden implementar posteriormente.",
+    "explanation": "ECR es un registro de imágenes de contenedores administrado e integrado con los servicios de contenedores de AWS.",
+    "example": "Una canalización de CI envía la versión 2.0 de una imagen a ECR y, posteriormente, un servicio ECS extrae esa imagen para su implementación.",
+    "examCue": "Las imágenes del contenedor apuntan a ECR."
+  },
+  {
+    "id": "clf-c02-2026-08-28-083",
+    "prompt": "Los desarrolladores quieren cargar el código de la aplicación web mientras AWS proporciona equilibrio de carga, escalamiento y monitoreo del estado. ¿Qué servicio encaja?",
+    "answer": "AWS Elastic Beanstalk. Implementa código de aplicación mientras administra recursos como computación, escalamiento y equilibrio de carga.",
+    "explanation": "Beanstalk organiza los recursos subyacentes de AWS mientras el equipo conserva la visibilidad y el control de ellos.",
+    "example": "Los desarrolladores cargan una aplicación web y Beanstalk crea y monitorea el entorno EC2, de escalado y de equilibrio de carga.",
+    "examCue": "Cargar el código de la aplicación; Beanstalk construye el medio ambiente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-084",
+    "prompt": "Una pequeña empresa quiere un VPS simple con precios mensuales predecibles para un sitio web básico. ¿Qué servicio encaja?",
+    "answer": "Amazon Lightsail. Combina recursos comunes de la nube en un paquete simplificado con precios predecibles.",
+    "explanation": "Lightsail paquetes de computación, almacenamiento, redes y planes simplificados para cargas de trabajo sencillas.",
+    "example": "Una pequeña empresa lanza un sitio web básico utilizando un paquete que incluye un servidor virtual, almacenamiento y asignación de transferencia.",
+    "examCue": "VPS incluido simple = Lightsail."
+  },
+  {
+    "id": "clf-c02-2026-08-28-085",
+    "prompt": "¿Cuándo se debe elegir Lightsail en lugar de Elastic Beanstalk?",
+    "answer": "Elija Lightsail para obtener un VPS incluido simple y un plan predecible; Elija Beanstalk para una implementación centrada en el código en recursos de AWS estándar escalables.",
+    "explanation": "Ambos simplifican la implementación, pero sus modelos de abstracción y escalamiento difieren.",
+    "example": "El sitio web básico de una empresa puede utilizar un paquete Lightsail fijo; una aplicación web que necesite ajuste de escala automático y equilibrio de carga configurables puede utilizar Beanstalk.",
+    "examCue": "Paquete VPS simple versus entorno de aplicaciones administradas."
+  },
+  {
+    "id": "clf-c02-2026-08-28-086",
+    "prompt": "¿Qué servicio programa trabajos por lotes y aprovisiona entornos informáticos compatibles para ejecutarlos?",
+    "answer": "AWS Batch. Programa trabajos por lotes y aprovisiona la capacidad informática compatible necesaria para ejecutarlos.",
+    "explanation": "AWS Batch está diseñado para cargas de trabajo por lotes en cola y puede utilizar capacidad puntual cuando las interrupciones son aceptables.",
+    "example": "Una carga de trabajo científica nocturna envía miles de trabajos y AWS Batch los programa en la capacidad informática adecuada.",
+    "examCue": "La programación de trabajos por lotes apunta a AWS Batch."
+  },
+  {
+    "id": "clf-c02-2026-08-28-087",
+    "prompt": "Una empresa quiere recomendaciones de ajuste de tamaño basadas en la utilización sin cambiar automáticamente los recursos. ¿Qué servicio encaja?",
+    "answer": "AWS Compute Optimizer. Analiza la utilización y recomienda recursos de mejor tamaño sin cambiarlos automáticamente.",
+    "explanation": "Compute Optimizer analiza métricas y configuraciones para generar recomendaciones; el cliente decide si aplicarlos.",
+    "example": "Compute Optimizer detecta una instancia EC2 poco utilizada y recomienda un tipo más pequeño; el propietario decide si cambiarlo.",
+    "examCue": "Recomendaciones, no cambio de tamaño automático."
+  },
+  {
+    "id": "clf-c02-2026-08-28-088",
+    "prompt": "¿Cuál es el papel de AWS Nitro System en el EC2 moderno?",
+    "answer": "Utiliza hardware dedicado y una arquitectura de hipervisor liviana para descargar y aislar muchas funciones de red, almacenamiento, administración y seguridad.",
+    "explanation": "Nitro reduce los gastos generales de virtualización y permite capacidades como la integración completa de EC2.",
+    "example": "El hardware Nitro descarga las tareas de red y almacenamiento para que una mayor cantidad de recursos del host puedan atender las cargas de trabajo de EC2 de forma segura.",
+    "examCue": "Arquitectura EC2 subyacente, no un complemento pago."
+  },
+  {
+    "id": "clf-c02-2026-08-28-089",
+    "prompt": "Una carga de trabajo requiere acceso directo al hardware del servidor físico y al mismo tiempo conservar la integración de VPC y EBS. ¿Qué opción EC2 encaja?",
+    "answer": "Una instancia EC2 bare metal. Proporciona acceso directo al servidor físico manteniendo las integraciones de AWS.",
+    "explanation": "El metal desnudo basado en Nitro proporciona acceso directo al hardware dentro del modelo de servicio EC2.",
+    "example": "Una carga de trabajo de licencia o rendimiento accede al procesador físico directamente mientras sigue utilizando la red VPC y EBS.",
+    "examCue": "Acceso directo al hardware = metal desnudo."
+  },
+  {
+    "id": "clf-c02-2026-08-28-090",
+    "prompt": "¿Qué es Bottlerocket?",
+    "answer": "Un sistema operativo mínimo basado en Linux patrocinado por AWS y diseñado para alojar contenedores.",
+    "explanation": "Su superficie de paquete reducida y su modelo de actualización transaccional están dirigidos a hosts de contenedores seguros.",
+    "example": "Un nodo ECS ejecuta Bottlerocket con una huella de software mínima centrada en alojar contenedores.",
+    "examCue": "Bottlerocket es un sistema operativo, no un cuello de botella en el rendimiento."
+  },
+  {
+    "id": "clf-c02-2026-08-28-091",
+    "prompt": "¿Qué automatiza AWS ParallelCluster?",
+    "answer": "Creación y gestión de clusters HPC en AWS desde configuración y flujos de trabajo de línea de comandos.",
+    "explanation": "Aprovisiona componentes como nodos principales y de computación y se integra con programadores HPC.",
+    "example": "Un investigador describe un clúster HPC en configuración y ParallelCluster crea su programador, instancias y redes.",
+    "examCue": "Gestión automatizada de clústeres HPC."
+  },
+  {
+    "id": "clf-c02-2026-08-28-092",
+    "prompt": "Los nodos HPC estrechamente acoplados necesitan una latencia entre instancias muy baja. ¿Qué combinación se debe evaluar?",
+    "answer": "Un grupo de ubicación de clúster con Elastic Fabric Adapter en instancias EC2 compatibles.",
+    "explanation": "La ubicación en clúster proporciona una ubicación cercana en una AZ; EFA admite la comunicación entre instancias de alto rendimiento.",
+    "example": "Los nodos de simulación utilizan un grupo de ubicación de clúster y EFA para intercambiar datos con una latencia muy baja.",
+    "examCue": "HPC estrechamente acoplado apunta a la ubicación del clúster más EFA."
+  },
+  {
+    "id": "clf-c02-2026-08-28-093",
+    "prompt": "¿Qué servicio proporciona un sistema de archivos paralelo de alto rendimiento comúnmente utilizado por las cargas de trabajo de HPC?",
+    "answer": "Amazon FSx for Lustre. Proporciona un sistema de archivos paralelo de alto rendimiento para cargas de trabajo HPC y con uso intensivo de datos.",
+    "explanation": "FSx for Lustre está optimizado para un acceso paralelo rápido a grandes conjuntos de datos.",
+    "example": "Los nodos informáticos leen y escriben un conjunto de datos compartido de alto rendimiento a través de un sistema de archivos FSx para Lustre.",
+    "examCue": "Sistema de archivos HPC paralelo = FSx para Lustre."
+  },
+  {
+    "id": "clf-c02-2026-08-28-094",
+    "prompt": "¿Qué proporciona AWS Ground Station?",
+    "answer": "Capacidades administradas de estaciones terrestres satelitales integradas con servicios de AWS.",
+    "explanation": "Permite a los clientes programar contactos satelitales y mover los datos recibidos a AWS para su procesamiento y almacenamiento.",
+    "example": "Un operador de satélite programa un contacto de antena y envía los datos recibidos directamente a los servicios de AWS.",
+    "examCue": "Las comunicaciones por satélite como servicio."
+  },
+  {
+    "id": "clf-c02-2026-08-28-095",
+    "prompt": "Distinga la alta disponibilidad de la tolerancia a fallos sin utilizar porcentajes fijos.",
+    "answer": "La alta disponibilidad minimiza el tiempo de inactividad mediante redundancia y recuperación; La tolerancia a fallas tiene como objetivo continuar funcionando a pesar de la falla de los componentes.",
+    "explanation": "Ninguno de los términos garantiza un SLA universal o una disponibilidad literal del 100 %.",
+    "example": "Un servicio de alta disponibilidad se recupera rápidamente después de que falla un nodo; un diseño tolerante a fallas continúa funcionando sin interrupción.",
+    "examCue": "Recuperación rápida versus operación continua a través de fallas."
+  },
+  {
+    "id": "clf-c02-2026-08-28-096",
+    "prompt": "Distinga RTO de RPO.",
+    "answer": "RTO es el tiempo máximo aceptable para restaurar el servicio; RPO es la pérdida de datos máxima aceptable medida en el tiempo.",
+    "explanation": "RTO espera desde la disrupción hasta la recuperación; RPO mira hacia atrás hasta el último punto recuperable.",
+    "example": "Un RPO de 15 minutos permite 15 minutos de cambios perdidos, mientras que un RTO de una hora permite una hora para restaurar el servicio.",
+    "examCue": "Tiempo de inactividad frente a pérdida de datos."
+  },
+  {
+    "id": "clf-c02-2026-08-28-097",
+    "prompt": "¿Qué estrategia de recuperación ante desastres estudiada tiene generalmente el costo continuo más bajo pero el tiempo de recuperación más largo?",
+    "answer": "Copia de seguridad y restauración. Los recursos se recrean a partir de copias de seguridad después del incidente, lo que mantiene bajos los costos continuos pero la recuperación es más lenta.",
+    "explanation": "La infraestructura y los datos se restauran después del evento, intercambiando un bajo costo de espera por un mayor RTO y, a menudo, un mayor RPO.",
+    "example": "Después de un desastre, el equipo restaura las copias de seguridad de la base de datos y vuelve a implementar los servidores, aceptando una recuperación más lenta por un costo de espera muy bajo.",
+    "examCue": "Más barato y más lento = copia de seguridad y restauración."
+  },
+  {
+    "id": "clf-c02-2026-08-28-098",
+    "prompt": "¿Qué queda listo en una estrategia piloto de recuperación ante desastres?",
+    "answer": "El núcleo crítico de la carga de trabajo, incluidos los datos replicados, mientras se inicia o implementa infraestructura de aplicaciones adicional durante la recuperación.",
+    "explanation": "La luz piloto cuesta menos que mantener un entorno reducido y completamente funcional.",
+    "example": "La región de recuperación mantiene listos los datos replicados y los servicios principales esenciales y luego inicia la aplicación restante durante la conmutación por error.",
+    "examCue": "Núcleo listo; la capacidad total de aplicación no lo es."
+  },
+  {
+    "id": "clf-c02-2026-08-28-099",
+    "prompt": "¿Qué distingue el modo de espera cálido del piloto?",
+    "answer": "El modo de espera en caliente mantiene una copia reducida pero funcional de la carga de trabajo que se ejecuta en la ubicación de recuperación.",
+    "explanation": "Cuesta más durante el funcionamiento normal pero normalmente se recupera más rápido.",
+    "example": "La luz piloto mantiene listo sólo el núcleo crítico; El modo de espera cálido mantiene en ejecución una aplicación reducida pero completa.",
+    "examCue": "Funcional a capacidad reducida."
+  },
+  {
+    "id": "clf-c02-2026-08-28-100",
+    "prompt": "Una empresa requiere una recuperación más rápida que la luz piloto y acepta el costo de un pequeño entorno funcional funcionando continuamente. ¿Qué estrategia encaja?",
+    "answer": "Espera cálida. Se ejecuta continuamente una copia más pequeña pero completamente funcional y se amplía durante la recuperación.",
+    "explanation": "El entorno de recuperación ya sirve como una copia funcional reducida y puede escalarse después de la conmutación por error.",
+    "example": "Un entorno de trabajo pequeño ofrece una capacidad mínima en la región de recuperación y se amplía cuando falla la región principal.",
+    "examCue": "Reducido y siempre en funcionamiento = modo de espera cálido."
+  },
+  {
+    "id": "clf-c02-2026-08-28-101",
+    "prompt": "¿El multisitio activo/activo garantiza automáticamente RPO 0?",
+    "answer": "No. Puede reducir el tiempo de recuperación casi a cero, pero RPO depende de la arquitectura de datos y el comportamiento de replicación.",
+    "explanation": "Es posible que la corrupción de datos aún requiera copias de seguridad y el tráfico activo en varias regiones no demuestra escrituras sincrónicas.",
+    "example": "Es posible que dos regiones ya atiendan tráfico, pero la replicación asincrónica de la base de datos aún puede dejar la copia de recuperación varios segundos atrás.",
+    "examCue": "Activo/activo describe el tráfico, no la pérdida automática de datos cero."
+  },
+  {
+    "id": "clf-c02-2026-08-28-102",
+    "prompt": "¿Cómo afecta la replicación sincrónica y asincrónica a RPO?",
+    "answer": "La replicación síncrona puede tener como objetivo RPO 0 pero agrega latencia y restricciones; La replicación asincrónica puede dejar un retraso en la replicación.",
+    "explanation": "El método de replicación afecta la exposición a la pérdida de datos independientemente de la rapidez con la que se recupere la computación.",
+    "example": "Una escritura sincrónica espera ambas copias y puede tener como objetivo cero pérdida de datos; una réplica asincrónica puede quedarse varios segundos atrás.",
+    "examCue": "El retraso de replicación afecta a RPO."
+  },
+  {
+    "id": "clf-c02-2026-08-28-103",
+    "prompt": "¿Qué hace AWS CloudFormation?",
+    "answer": "Aprovisiona y administra recursos de AWS desde plantillas declarativas JSON o YAML.",
+    "explanation": "Los recursos implementados se administran en pilas como unidades lógicas.",
+    "example": "La misma plantilla YAML revisada crea un entorno de prueba y un entorno de producción idénticos.",
+    "examCue": "Plantillas y pilas nativas de AWS = CloudFormation."
+  },
+  {
+    "id": "clf-c02-2026-08-28-104",
+    "prompt": "¿Qué es una pila CloudFormation?",
+    "answer": "Una colección de recursos de AWS administrados como una sola unidad a partir de una plantilla.",
+    "explanation": "La creación, actualización y eliminación de la pila gestiona los recursos relacionados y sus dependencias.",
+    "example": "Una pila gestiona una VPC, un equilibrador de carga y servidores juntos, mientras que una base de datos retenida puede sobrevivir a la eliminación de la pila.",
+    "examCue": "Instancia de plantilla administrada como una unidad."
+  },
+  {
+    "id": "clf-c02-2026-08-28-105",
+    "prompt": "¿La eliminación de una pila CloudFormation siempre elimina todos los recursos que alguna vez administró?",
+    "answer": "No. Las políticas de eliminación, los recursos retenidos, las dependencias o los errores de eliminación pueden dejar recursos atrás.",
+    "explanation": "CloudFormation elimina los recursos administrados de forma predeterminada, pero los controles y fallas del ciclo de vida son excepciones importantes.",
+    "example": "Una pila gestiona una VPC, un equilibrador de carga y servidores juntos, mientras que una base de datos retenida puede sobrevivir a la eliminación de la pila.",
+    "examCue": "La eliminación predeterminada tiene excepciones."
+  },
+  {
+    "id": "clf-c02-2026-08-28-106",
+    "prompt": "¿Qué sucede cuando se ejecuta `cdk synth`?",
+    "answer": "AWS CDK sintetiza las construcciones de la aplicación en una plantilla CloudFormation.",
+    "explanation": "CloudFormation sigue siendo el motor de implementación para la definición de infraestructura sintetizada.",
+    "example": "Una definición de TypeScript CDK de un bucket se convierte en una plantilla declarativa CloudFormation cuando se ejecuta cdk synth.",
+    "examCue": "Código CDK → plantilla CloudFormation."
+  },
+  {
+    "id": "clf-c02-2026-08-28-107",
+    "prompt": "Distinga un AWS SDK de AWS CDK.",
+    "answer": "Un SDK invoca las API de AWS desde el código de aplicación o automatización; CDK define la infraestructura y sintetiza CloudFormation plantillas.",
+    "explanation": "Utilice un SDK para operaciones de servicios en tiempo de ejecución y un CDK para definiciones de infraestructura.",
+    "example": "El código de la aplicación utiliza un SDK para cargar un objeto; El código de infraestructura utiliza CDK para definir el bucket y sintetizar CloudFormation.",
+    "examCue": "Operar servicios versus definir infraestructura."
+  },
+  {
+    "id": "clf-c02-2026-08-28-108",
+    "prompt": "¿Para qué se utiliza un nombre de recurso de Amazon (ARN)?",
+    "answer": "Identificar un recurso de AWS en API, políticas e integraciones de servicios utilizando un formato específico del servicio.",
+    "explanation": "Los segmentos de ARN y las porciones de recursos varían y los ARN de recursos globales pueden omitir el segmento de Región.",
+    "example": "Una política de IAM utiliza un ARN de bucket para otorgar acceso exactamente a ese recurso.",
+    "examCue": "La referencia de recursos en IAM a menudo significa ARN."
+  },
+  {
+    "id": "clf-c02-2026-08-28-109",
+    "prompt": "¿Qué proporciona AWS Signature Version 4 para las solicitudes de API?",
+    "answer": "Autentica a la persona que llama con credenciales y protege la integridad de la solicitud mediante la firma de los datos de la solicitud.",
+    "explanation": "Los SDK y la CLI normalmente crean la firma automáticamente a partir de las credenciales.",
+    "example": "AWS CLI procesa y firma una solicitud para que AWS pueda verificar tanto la persona que llama como el contenido de la solicitud.",
+    "examCue": "Solicitud firmada = identidad más integridad."
+  },
+  {
+    "id": "clf-c02-2026-08-28-110",
+    "prompt": "¿Cuál es la diferencia entre un endpoint de servicio regional y un endpoint global?",
+    "answer": "Un endpoint regional apunta al comportamiento de la API del servicio en una región nombrada; un endpoint global no tiene región en el nombre de host y ofrece un comportamiento global o centralizado.",
+    "explanation": "El alcance del endpoint y el alcance del recurso están relacionados pero no siempre son idénticos, así que evite asumir que cada URL sigue una regla.",
+    "example": "Una llamada a la API de EC2 se dirige a una región con nombre, como us-west-2, mientras que un servicio global centralizado puede exponer un endpoint sin una región en su nombre de host.",
+    "examCue": "La región en el nombre del endpoint es una pista importante, no una ley de arquitectura universal."
+  },
+  {
+    "id": "clf-c02-2026-08-28-111",
+    "prompt": "¿Por qué llamar a AWS CDK puramente \"IaC imperativo\" está incompleto?",
+    "answer": "El código CDK puede utilizar características de lenguaje imperativo, pero sintetiza una plantilla declarativa CloudFormation que CloudFormation implementa.",
+    "explanation": "El idioma de origen y el modelo de implementación son capas diferentes.",
+    "example": "El código CDK puede usar bucles y funciones, pero el resultado implementado por CloudFormation sigue siendo una plantilla declarativa.",
+    "examCue": "Entrada de lenguaje de programación, salida de plantilla declarativa."
+  },
+  {
+    "id": "clf-c02-2026-08-28-112",
+    "prompt": "Una empresa necesita desacoplar el procesamiento de pedidos y notificar de forma independiente a varios suscriptores. ¿Qué DOS servicios satisfacen estas necesidades separadas?",
+    "answer": "Utilice Amazon SQS para la cola de trabajos y Amazon SNS para notificaciones distribuidas.",
+    "explanation": "Los buffers SQS funcionan para los consumidores; SNS publica en múltiples suscripciones.",
+    "example": "SQS almacena cada pedido de un trabajador, mientras que SNS publica de forma independiente un evento de pedido para varios suscriptores interesados.",
+    "examCue": "Elija una cola y un tema de publicación/sub."
+  },
+  {
+    "id": "clf-c02-2026-08-28-113",
+    "prompt": "¿Qué DOS acciones se recomiendan para la cuenta de AWS root user?",
+    "answer": "Habilite MFA y use root solo para tareas que lo requieran.",
+    "explanation": "root user no tiene restricciones y no debe usarse para trabajos de rutina o claves de acceso programáticas.",
+    "example": "Un administrador utiliza un rol normal todos los días y abre la cuenta raíz solo para una tarea que requiere específicamente raíz.",
+    "examCue": "Proteger la raíz y minimizar su uso."
+  },
+  {
+    "id": "clf-c02-2026-08-28-114",
+    "prompt": "Un equipo de seguridad debe denegar explícitamente un rango de IP malicioso para cada recurso en una subred. ¿Qué control debería configurar?",
+    "answer": "Una ACL de red. Puede aplicar una regla de denegación explícita al tráfico que cruza el límite de la subred.",
+    "explanation": "NACLs opera en límites de subred y admite reglas de denegación explícitas; Los grupos de seguridad solo están permitidos.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "Denegación de subred explícita = NACL."
+  },
+  {
+    "id": "clf-c02-2026-08-28-115",
+    "prompt": "¿Qué afirmación sobre el alcance de la red VPC es correcta?",
+    "answer": "Una VPC abarca Availability Zones en una región, mientras que cada subred pertenece a una AZ.",
+    "explanation": "Una VPC es regional y las subredes tienen alcance AZ.",
+    "example": "Una empresa crea una subred pública y una privada en cada una de dos Availability Zones para lograr resiliencia.",
+    "examCue": "VPC = Región; subred = AZ."
+  },
+  {
+    "id": "clf-c02-2026-08-28-116",
+    "prompt": "¿Qué afirmación describe correctamente un bucket S3 de uso general?",
+    "answer": "Sus datos se almacenan en una región seleccionada, mientras que el nombre de su bucket es globalmente único.",
+    "explanation": "Los nombres globales y la vista de consola global no hacen que los datos del bucket sean automáticamente globales.",
+    "example": "Los recibos de empresa con nombre de bucket único a nivel mundial aún pueden almacenar sus objetos solo en la región eu-west-1 seleccionada.",
+    "examCue": "Nombre global, datos regionales."
+  },
+  {
+    "id": "clf-c02-2026-08-28-117",
+    "prompt": "Las instancias EC2 privadas necesitan acceso a la misma región S3 sin una NAT gateway ni cargo de endpoint adicional. ¿Qué opción es mejor?",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "explanation": "Los endpoints de puerta de enlace enrutan el tráfico S3 a través de tablas de rutas seleccionadas sin cargo adicional por endpoint.",
+    "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
+    "examCue": "S3 + tabla de rutas + sin cargo por endpoint."
+  },
+  {
+    "id": "clf-c02-2026-08-28-118",
+    "prompt": "Una aplicación de juegos necesita direcciones IP estáticas anycast y tráfico UDP acelerado sin almacenamiento en caché de contenido. ¿Qué servicio encaja?",
+    "answer": "AWS Global Accelerator.",
+    "explanation": "Global Accelerator mejora las rutas de red para el tráfico TCP/UDP admitido y no actúa como caché CDN.",
+    "example": "Un juego multijugador global utiliza las IP estáticas anycast de Global Accelerator para mejorar las rutas UDP sin almacenar en caché los paquetes.",
+    "examCue": "Anycast estático más UDP = Global Accelerator."
+  },
+  {
+    "id": "clf-c02-2026-08-28-119",
+    "prompt": "Cientos de instancias EC2 de Linux necesitan acceso simultáneo a la misma jerarquía de directorios compartidos. ¿Qué servicio de almacenamiento encaja?",
+    "answer": "Amazon EFS.",
+    "explanation": "EFS proporciona almacenamiento de archivos NFS compartido que pueden montar varias instancias informáticas.",
+    "example": "Cientos de instancias EC2 de Linux montan el mismo directorio EFS a través de NFS.",
+    "examCue": "Archivos compartidos de Linux = EFS."
+  },
+  {
+    "id": "clf-c02-2026-08-28-120",
+    "prompt": "Una empresa ejecuta una aplicación en Amazon EC2. ¿Qué DOS tareas son responsabilidades del cliente?",
+    "answer": "Parchear el sistema operativo invitado y configurar grupos de seguridad.",
+    "explanation": "AWS gestiona las instalaciones, el hardware físico y la capa de virtualización.",
+    "example": "AWS mantiene el host EC2 físico, mientras el cliente parchea el sistema operativo invitado y decide qué tráfico de grupo de seguridad permitir.",
+    "examCue": "La carga de trabajo del invitado y su configuración de firewall permanecen en manos del cliente."
+  },
+  {
+    "id": "clf-c02-2026-08-28-121",
+    "prompt": "Una carga de trabajo de renderizado puede controlar el progreso y tolerar interrupciones. ¿Qué opción de compra de EC2 puede ofrecer el mayor descuento sin compromiso a largo plazo?",
+    "answer": "EC2 Spot Instances. Utilizan capacidad sobrante con descuento, pero deben tolerar posibles interrupciones.",
+    "explanation": "Spot utiliza capacidad sobrante a precios reducidos y es apropiado para trabajos tolerantes a interrupciones.",
+    "example": "Un trabajo de renderizado guarda puntos de control para que pueda reanudarse en otro lugar si AWS interrumpe su instancia Spot con descuento.",
+    "examCue": "Interrumpible y flexible = Spot."
+  },
+  {
+    "id": "clf-c02-2026-08-28-122",
+    "prompt": "Un equipo de finanzas quiere recibir un correo electrónico cuando el costo mensual previsto supere un umbral. ¿Qué servicio debería utilizar?",
+    "answer": "AWS Budgets. Compara el costo o el uso con los umbrales y puede notificarle o ejecutar acciones configuradas por separado.",
+    "explanation": "Los presupuestos evalúan el costo/uso real o previsto frente a los umbrales configurados.",
+    "example": "Finanzas explora el gasto del mes pasado en Cost Explorer y crea una alerta de presupuesto para el pronóstico del próximo mes.",
+    "examCue": "Alerta de umbral = Presupuestos."
+  },
+  {
+    "id": "clf-c02-2026-08-28-123",
+    "prompt": "¿Qué afirmación sobre AWS Fargate es correcta?",
+    "answer": "Proporciona capacidad informática sin servidor para cargas de trabajo ECS y EKS compatibles.",
+    "explanation": "ECS y EKS organizan contenedores; Fargate proporciona capacidad informática gestionada.",
+    "example": "Un equipo utiliza EKS para Kubernetes y Fargate, por lo que no tiene que aprovisionar los servidores de trabajo.",
+    "examCue": "Fargate es informático, no un tercer orquestador."
+  },
+  {
+    "id": "clf-c02-2026-08-28-124",
+    "prompt": "Una empresa puede tolerar perder como máximo 15 minutos de transacciones después de un desastre. ¿Qué objetivo se está especificando?",
+    "answer": "Recovery Point Objective (RPO).",
+    "explanation": "RPO expresa una pérdida de datos aceptable medida en el tiempo antes de la interrupción.",
+    "example": "Un RPO de 15 minutos permite hasta 15 minutos de cambios perdidos, mientras que un RTO de una hora permite una hora para restaurar el servicio.",
+    "examCue": "Ventana de pérdida de datos = RPO."
+  },
+  {
+    "id": "clf-c02-2026-08-28-125",
+    "prompt": "Una región de recuperación ejecuta una copia pequeña pero completamente funcional de la carga de trabajo y se amplía después de la conmutación por error. ¿Qué estrategia es esta?",
+    "answer": "Espera cálida. Se ejecuta continuamente una copia más pequeña pero completamente funcional y se amplía durante la recuperación.",
+    "explanation": "El modo de espera en caliente mantiene funcionando continuamente la funcionalidad de capacidad reducida.",
+    "example": "Una copia de trabajo pequeña ofrece una capacidad mínima en la región de recuperación y se amplía cuando falla la región principal.",
+    "examCue": "Reducido pero funcional = espera cálida."
+  },
+  {
+    "id": "clf-c02-2026-08-28-126",
+    "prompt": "¿Qué afirmación sobre multisitio activo/activo es más precisa?",
+    "answer": "Puede reducir RTO a casi cero, pero RPO aún depende de la arquitectura de datos y el comportamiento de replicación.",
+    "explanation": "Servir tráfico de varias regiones no garantiza automáticamente escrituras sincrónicas ni pérdida de datos cero.",
+    "example": "Las regiones activas/activas pueden hacer que la conmutación por error de la aplicación sea casi inmediata, pero las escrituras asincrónicas en la base de datos aún pueden crear un RPO distinto de cero.",
+    "examCue": "La topología del tráfico no demuestra que RPO 0."
+  },
+  {
+    "id": "clf-c02-2026-08-28-127",
+    "prompt": "¿Cuál es la salida directa de \"cdk synth\"?",
+    "answer": "Una plantilla CloudFormation. CDK convierte las construcciones en esta descripción declarativa para su implementación.",
+    "explanation": "Las construcciones de CDK escritas en lenguajes de programación compatibles se sintetizan en la plantilla declarativa implementada por CloudFormation.",
+    "example": "La ejecución de cdk synth en una pila de TypeScript genera la plantilla CloudFormation que describe sus recursos.",
+    "examCue": "Sintetizador CDK → CloudFormation."
+  },
+  {
+    "id": "clf-c02-2026-08-28-128",
+    "prompt": "Una aplicación se ejecuta en EC2 y necesita acceso a S3. ¿Cuál es el enfoque de credenciales preferido?",
+    "answer": "Adjunte un IAM role a la instancia EC2 y use credenciales temporales.",
+    "explanation": "Los roles evitan incrustar claves de acceso de larga duración en los archivos de la aplicación.",
+    "example": "Una aplicación EC2 asume una función y recibe credenciales temporales en lugar de almacenar una clave secreta en un archivo.",
+    "examCue": "Carga de trabajo de AWS = rol, no clave codificada."
+  },
+  {
+    "id": "clf-c02-2026-08-28-129",
+    "prompt": "Una fábrica debe ejecutar una infraestructura administrada por AWS dentro de sus propias instalaciones para el procesamiento local. ¿Qué servicio está diseñado para esto?",
+    "answer": "AWS Outposts. Lleva la infraestructura administrada por AWS y los servicios seleccionados a las propias instalaciones del cliente.",
+    "explanation": "Outposts extiende la infraestructura de AWS y los servicios seleccionados a las instalaciones del cliente.",
+    "example": "Una fábrica procesa datos en bastidores Outposts administrados por AWS instalados dentro de sus propias instalaciones.",
+    "examCue": "Instalaciones del cliente = Outposts."
+  },
+  {
+    "id": "clf-c02-2026-09-01-001",
+    "prompt": "¿Cuál es el propósito principal de Amazon RDS?",
+    "answer": "Ejecutar bases de datos relacionales administradas utilizando motores de bases de datos compatibles.",
+    "explanation": "AWS administra gran parte de la infraestructura de la base de datos y las operaciones de rutina, mientras que el cliente administra las opciones de datos, acceso, esquemas y cargas de trabajo.",
+    "example": "Una empresa ejecuta PostgreSQL en RDS, por lo que AWS maneja las copias de seguridad y la infraestructura de la base de datos mientras el equipo administra su esquema y sus datos.",
+    "examCue": "Los motores de bases de datos relacionales administrados apuntan a RDS."
+  },
+  {
+    "id": "clf-c02-2026-09-01-002",
+    "prompt": "Nombre cuatro motores de bases de datos compatibles con Amazon RDS.",
+    "answer": "Cuatro de PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server e IBM Db2.",
+    "explanation": "RDS es una capa de servicio gestionada para motores relacionales familiares.",
+    "example": "Una empresa ejecuta PostgreSQL en RDS, por lo que AWS maneja las copias de seguridad y la infraestructura de la base de datos mientras el equipo administra su esquema y sus datos.",
+    "examCue": "El motor relacional existente es una señal RDS."
+  },
+  {
+    "id": "clf-c02-2026-09-01-003",
+    "prompt": "Una empresa desea trasladar una aplicación de Microsoft SQL Server existente a una base de datos administrada de AWS con un cambio mínimo en la aplicación. ¿Qué servicio debería evaluar primero?",
+    "answer": "Amazon RDS para SQL Server.",
+    "explanation": "RDS admite motores comerciales y de código abierto conocidos, lo que lo hace adecuado para muchas migraciones relacionales de tipo lift-and-shift.",
+    "example": "Una aplicación heredada mantiene Microsoft SQL Server mientras se pasa a RDS para que AWS administre las copias de seguridad y la infraestructura de la base de datos.",
+    "examCue": "El motor relacional con nombre existente apunta a RDS."
+  },
+  {
+    "id": "clf-c02-2026-09-01-004",
+    "prompt": "¿Qué es Amazon Aurora?",
+    "answer": "Un motor de base de datos relacional creado por AWS compatible con MySQL y PostgreSQL.",
+    "explanation": "Aurora es nativa de la nube en lugar de una copia alojada del motor MySQL o PostgreSQL.",
+    "example": "Una nueva aplicación de pago utiliza Aurora PostgreSQL para SQL relacional con almacenamiento diseñado para permanecer disponible en múltiples AZ.",
+    "examCue": "Creado por AWS + compatibilidad con MySQL/PostgreSQL = Aurora."
+  },
+  {
+    "id": "clf-c02-2026-09-01-005",
+    "prompt": "¿En qué se diferencia Aurora de los otros motores disponibles a través de Amazon RDS?",
+    "answer": "Aurora es un motor nativo de la nube creado por AWS; las otras opciones de RDS son motores de código abierto o de terceros existentes.",
+    "explanation": "Ambas son opciones relacionales administradas, pero los orígenes y arquitecturas de sus motores difieren.",
+    "example": "Elija Aurora para un diseño compatible con MySQL creado en AWS; Elija RDS para SQL Server cuando la aplicación deba mantener el motor de Microsoft.",
+    "examCue": "No describa Aurora simplemente como MySQL alojado."
+  },
+  {
+    "id": "clf-c02-2026-09-01-006",
+    "prompt": "¿En cuántos Availability Zones almacena Aurora copias de datos en un clúster de Aurora típico?",
+    "answer": "Tres Availability Zones.",
+    "explanation": "El almacenamiento distribuido de Aurora mantiene copias en tres AZ para mayor durabilidad y disponibilidad.",
+    "example": "Una nueva aplicación de pago utiliza Aurora PostgreSQL para SQL relacional con almacenamiento diseñado para permanecer disponible en múltiples AZ.",
+    "examCue": "Tres AZ es la señal de arquitectura; Evite confundir copias con réplicas leídas."
+  },
+  {
+    "id": "clf-c02-2026-09-01-007",
+    "prompt": "Una nueva carga de trabajo relacional necesita compatibilidad con MySQL y un motor nativo de la nube de alta disponibilidad creado por AWS. ¿Qué servicio encaja?",
+    "answer": "Amazon Aurora Edición compatible con MySQL. Combina la compatibilidad de MySQL con el almacenamiento distribuido diseñado por AWS.",
+    "explanation": "Aurora combina la compatibilidad familiar de MySQL o PostgreSQL con una arquitectura distribuida diseñada por AWS.",
+    "example": "Una nueva aplicación mantiene el protocolo MySQL pero utiliza Aurora MySQL-Compatible Edition para un diseño relacional creado por AWS.",
+    "examCue": "Compatibilidad más puntos creados por AWS para Aurora."
+  },
+  {
+    "id": "clf-c02-2026-09-01-008",
+    "prompt": "¿Qué opción admite mejor una aplicación de elevación y cambio que debe conservar su motor de base de datos Oracle?",
+    "answer": "Amazon RDS para Oracle. Preserva el motor de Oracle mientras AWS administra gran parte de la infraestructura de la base de datos.",
+    "explanation": "Aurora admite compatibilidad con MySQL y PostgreSQL, no con el motor de Oracle.",
+    "example": "Una aplicación que depende de características específicas de Oracle se traslada a RDS para Oracle en lugar de cambiar los motores de la base de datos.",
+    "examCue": "Un motor existente con nombre limita las opciones de base de datos administrada."
+  },
+  {
+    "id": "clf-c02-2026-09-01-009",
+    "prompt": "¿Para qué carga de trabajo está diseñado Amazon Redshift?",
+    "answer": "Almacenamiento de datos y cargas de trabajo SQL analíticas a gran escala.",
+    "explanation": "Redshift admite OLAP y análisis de inteligencia empresarial en grandes conjuntos de datos.",
+    "example": "Un minorista carga años de datos de ventas en Redshift para que los analistas puedan ejecutar grandes informes de inteligencia empresarial.",
+    "examCue": "El almacén de datos, OLAP y BI apuntan a Redshift."
+  },
+  {
+    "id": "clf-c02-2026-09-01-010",
+    "prompt": "Los ejecutivos necesitan informes SQL complejos que abarquen terabytes o petabytes de datos históricos de ventas. ¿Qué servicio es el más adecuado?",
+    "answer": "Amazon Redshift. Está diseñado para SQL analítico y generación de informes de almacén de datos sobre grandes conjuntos de datos.",
+    "explanation": "Se trata de una carga de trabajo de almacén de datos analíticos en lugar de una carga de trabajo de base de datos de transacciones operativas.",
+    "example": "Un minorista carga años de datos de ventas en Redshift para que los analistas puedan ejecutar grandes informes de inteligencia empresarial.",
+    "examCue": "SQL analítico masivo apunta a Redshift."
+  },
+  {
+    "id": "clf-c02-2026-09-01-011",
+    "prompt": "¿Cuál es la distinción a nivel de examen entre Amazon RDS y Amazon Redshift?",
+    "answer": "RDS atiende cargas de trabajo operativas relacionales; Redshift es un almacén de datos para análisis.",
+    "explanation": "La distinción es principalmente el trabajo de aplicaciones de estilo OLTP versus el análisis de estilo OLAP.",
+    "example": "Una aplicación registra pedidos individuales en RDS y luego los analistas resumen años de historial de pedidos en un almacén de Redshift.",
+    "examCue": "Transacciones = RDS; análisis de almacén = Redshift."
+  },
+  {
+    "id": "clf-c02-2026-09-01-012",
+    "prompt": "¿Qué proporciona Amazon ElastiCache?",
+    "answer": "Un caché en memoria administrado mediante Valkey, Memcached o Redis OSS.",
+    "explanation": "Mantener en la memoria los datos a los que se accede con frecuencia puede reducir la latencia y la carga en las bases de datos de respaldo.",
+    "example": "Una página de catálogo lee detalles de productos populares de memoria en lugar de consultar la base de datos en cada visita.",
+    "examCue": "La caché en memoria apunta a ElastiCache."
+  },
+  {
+    "id": "clf-c02-2026-09-01-013",
+    "prompt": "Una aplicación web lee repetidamente las mismas filas del catálogo de productos y sobrecarga su base de datos. ¿Qué debería agregarse?",
+    "answer": "Amazon ElastiCache. Mantiene los resultados solicitados con frecuencia en la memoria para que la aplicación realice menos lecturas de la base de datos.",
+    "explanation": "Los resultados a los que se accede con frecuencia se pueden servir desde la memoria en lugar de consultar repetidamente la base de datos.",
+    "example": "Una página de catálogo lee detalles de productos populares de memoria en lugar de consultar la base de datos en cada visita.",
+    "examCue": "Reduzca las lecturas repetidas y la latencia con un caché."
+  },
+  {
+    "id": "clf-c02-2026-09-01-014",
+    "prompt": "¿Qué TRES motores son las opciones Amazon ElastiCache actuales?",
+    "answer": "Valkey, Memcached y Redis OSS.",
+    "explanation": "El servicio no se limita sólo a los dos motores históricamente destacados en el material de aprendizaje más antiguo.",
+    "example": "Una aplicación puede elegir Valkey o Redis OSS para un almacenamiento en caché con muchas funciones, o Memcached para un caché distribuido más simple.",
+    "examCue": "Conozca el conjunto de motores actual."
+  },
+  {
+    "id": "clf-c02-2026-09-01-015",
+    "prompt": "¿Para qué modelo de datos está diseñado Amazon Neptune?",
+    "answer": "Grafique datos compuestos de entidades y relaciones altamente conectadas.",
+    "explanation": "Las bases de datos de gráficos hacen que el recorrido de relaciones sea una carga de trabajo de primera clase.",
+    "example": "Un analista de fraude sigue los vínculos entre cuentas, dispositivos, direcciones y transacciones para descubrir una red de fraude.",
+    "examCue": "El gráfico y las relaciones conectadas apuntan a Neptuno."
+  },
+  {
+    "id": "clf-c02-2026-09-01-016",
+    "prompt": "Un equipo antifraude debe analizar las relaciones entre cuentas, dispositivos, direcciones y transacciones. ¿Qué base de datos encaja?",
+    "answer": "Amazon Neptune. Su modelo gráfico está diseñado para atravesar relaciones entre entidades altamente conectadas.",
+    "explanation": "El requisito principal es explorar un gráfico de entidades altamente conectado.",
+    "example": "Un analista de fraude sigue los vínculos entre cuentas, dispositivos, direcciones y transacciones para descubrir una red de fraude.",
+    "examCue": "Los círculos de fraude y las rutas de relación apuntan a Neptuno."
+  },
+  {
+    "id": "clf-c02-2026-09-01-017",
+    "prompt": "¿Qué tipo de datos está diseñado para almacenar Amazon Timestream para LiveAnalytics?",
+    "answer": "Datos de series temporales: valores asociados a marcas de tiempo y analizados a lo largo del tiempo.",
+    "explanation": "Las métricas operativas, la telemetría de aplicaciones y las mediciones de IoT son ejemplos comunes.",
+    "example": "Millones de sensores almacenan lecturas de temperatura con marca de tiempo para analizarlas a lo largo del tiempo.",
+    "examCue": "Las mediciones con marca de tiempo apuntan a Timestream."
+  },
+  {
+    "id": "clf-c02-2026-09-01-018",
+    "prompt": "Millones de sensores envían lecturas de temperatura cada minuto para realizar análisis basados ​​en el tiempo. ¿Qué base de datos es la más adecuada?",
+    "answer": "Amazon Timestream para LiveAnalytics. Almacena y analiza medidas organizadas por tiempo.",
+    "explanation": "La carga de trabajo es una secuencia de mediciones de gran volumen indexadas por tiempo.",
+    "example": "Millones de sensores almacenan lecturas de temperatura con marca de tiempo para analizarlas a lo largo del tiempo.",
+    "examCue": "Las métricas de IoT que cambian con el tiempo apuntan a Timestream."
+  },
+  {
+    "id": "clf-c02-2026-09-01-019",
+    "prompt": "¿Qué servicio es el más adecuado para ingerir y consultar telemetría de IoT con marca de tiempo?",
+    "answer": "Amazon Timestream para LiveAnalytics. Almacena y analiza medidas organizadas por tiempo.",
+    "explanation": "Redshift puede analizar grandes conjuntos de datos, pero Timestream está diseñado específicamente para mediciones de series temporales.",
+    "example": "Millones de dispositivos escriben lecturas con marca de tiempo en Timestream para que los operadores puedan consultar cómo cambiaron las mediciones con el tiempo.",
+    "examCue": "Elija el servicio de series temporales especialmente diseñado."
+  },
+  {
+    "id": "clf-c02-2026-09-01-020",
+    "prompt": "¿Cuál es el propósito principal de AWS Database Migration Service (AWS DMS)?",
+    "answer": "Migrar o replicar bases de datos a AWS con un tiempo de inactividad mínimo.",
+    "explanation": "DMS admite movimientos de bases de datos tanto homogéneos como heterogéneos.",
+    "example": "Una empresa copia su base de datos local en AWS mientras los cambios en curso se siguen replicando hasta la transición.",
+    "examCue": "Migración de bases de datos con puntos mínimos de inactividad a DMS."
+  },
+  {
+    "id": "clf-c02-2026-09-01-021",
+    "prompt": "Una empresa debe mantener disponible su base de datos de origen mientras replica continuamente los cambios durante la migración a AWS. ¿Qué servicio encaja?",
+    "answer": "AWS Database Migration Service (AWS DMS). Copia y puede replicar continuamente los datos de la base de datos para reducir el tiempo de inactividad de la migración.",
+    "explanation": "DMS puede realizar una carga inicial y una replicación continua de cambios para reducir el tiempo de inactividad de la migración.",
+    "example": "Una empresa copia su base de datos local en AWS mientras los cambios en curso se siguen replicando hasta la transición.",
+    "examCue": "La replicación continua durante la migración apunta a DMS."
+  },
+  {
+    "id": "clf-c02-2026-09-01-022",
+    "prompt": "¿Por qué una migración de DMS heterogénea podría necesitar una conversión de esquema?",
+    "answer": "Diferentes motores de bases de datos pueden utilizar diferentes objetos de esquema, tipos de datos y funciones SQL.",
+    "explanation": "DMS mueve datos, pero las diferencias en el motor pueden requerir un paso de conversión de esquema por separado.",
+    "example": "Una migración de Oracle a PostgreSQL convierte definiciones de tablas incompatibles y código almacenado antes de que DMS mueva los datos.",
+    "examCue": "Diferentes motores de origen y de destino pueden requerir conversión."
+  },
+  {
+    "id": "clf-c02-2026-09-01-023",
+    "prompt": "¿Se puede Amazon VPC abarcar regiones o Availability Zones?",
+    "answer": "Puede abarcar Availability Zones dentro de una región, pero no puede abarcar regiones.",
+    "explanation": "Las subredes proporcionan particiones de nivel AZ dentro de la VPC regional.",
+    "example": "Una VPC en us-east-1 puede contener subredes en us-east-1a y us-east-1b, pero no puede extenderse a us-west-2.",
+    "examCue": "CPV = Regional; subred = una AZ."
+  },
+  {
+    "id": "clf-c02-2026-09-01-024",
+    "prompt": "¿Puede una subred abarcar varios Availability Zones?",
+    "answer": "No. Una subred pertenece exactamente a un Availability Zone.",
+    "explanation": "Una AZ puede contener varias subredes, pero una subred no puede cruzar los límites de la AZ.",
+    "example": "Una empresa crea una subred pública y una privada en cada una de dos Availability Zones para lograr resiliencia.",
+    "examCue": "El alcance de la subred es una AZ."
+  },
+  {
+    "id": "clf-c02-2026-09-01-025",
+    "prompt": "¿Qué propiedad de enrutamiento distingue una subred pública de una subred privada?",
+    "answer": "Una subred pública tiene una ruta hacia una internet gateway; una subred privada no tiene una ruta directa a una internet gateway.",
+    "explanation": "Las reglas de seguridad y direcciones públicas son requisitos adicionales para que una instancia se comunique directamente con Internet.",
+    "example": "Una subred web tiene una ruta predeterminada a una internet gateway; una subred de base de datos no tiene una ruta directa de puerta de enlace a Internet.",
+    "examCue": "La etiqueta de subred proviene de su tabla de rutas."
+  },
+  {
+    "id": "clf-c02-2026-09-01-026",
+    "prompt": "Una instancia EC2 está en una subred con una ruta a una internet gateway, pero solo tiene una dirección IPv4 privada. ¿Se puede acceder directamente desde Internet a través de IPv4?",
+    "answer": "No. También necesita una dirección IPv4 pública o IP elástica y el tráfico debe estar permitido mediante controles de seguridad.",
+    "explanation": "Una ruta de subred pública por sí sola no le da a la instancia una dirección pública ni reglas de firewall abiertas.",
+    "example": "Un servidor web público necesita una IP pública, una ruta a la internet gateway y reglas de seguridad que permitan HTTPS.",
+    "examCue": "El enrutamiento, el direccionamiento y el filtrado deben estar alineados."
+  },
+  {
+    "id": "clf-c02-2026-09-01-027",
+    "prompt": "¿Qué hace una puerta de enlace a Internet?",
+    "answer": "Permite la comunicación entre una VPC e Internet cuando el enrutamiento, el direccionamiento y las reglas de seguridad lo permiten.",
+    "explanation": "Una internet gateway es un componente VPC administrado, redundante y de alta disponibilidad.",
+    "example": "Un servidor web público necesita una IP pública, una ruta a la internet gateway y reglas de seguridad que permitan HTTPS.",
+    "examCue": "Destino de ruta directa de Internet = internet gateway."
+  },
+  {
+    "id": "clf-c02-2026-09-01-028",
+    "prompt": "Las instancias EC2 de subred privada necesitan acceso IPv4 saliente para actualizaciones del sistema operativo sin aceptar conexiones iniciadas por Internet. ¿Qué se debe utilizar?",
+    "answer": "Una NAT gateway, a la que se dirige la subred privada. Esto brinda a las instancias privadas acceso IPv4 saliente sin aceptar nuevas sesiones entrantes de Internet.",
+    "explanation": "La NAT gateway inicia la traducción saliente y permite el tráfico de retorno, pero no las sesiones entrantes no solicitadas.",
+    "example": "Los servidores de aplicaciones privados descargan actualizaciones del sistema operativo a través de una NAT gateway, pero no pueden recibir conexiones a Internet no solicitadas.",
+    "examCue": "El IPv4 saliente privado apunta a la NAT gateway."
+  },
+  {
+    "id": "clf-c02-2026-09-01-029",
+    "prompt": "¿Cuál es la diferencia principal entre una internet gateway y una NAT gateway?",
+    "answer": "Una puerta de enlace a Internet admite la conectividad directa a Internet para recursos de acceso público; una NAT gateway proporciona conectividad saliente a recursos privados mediante la traducción de direcciones.",
+    "explanation": "Sirven diferentes patrones de enrutamiento y direccionamiento y no son intercambiables.",
+    "example": "Un servidor web de dirección pública se conecta directamente a través de una internet gateway; un servidor privado descarga actualizaciones a través de una NAT gateway.",
+    "examCue": "Acceso directo público versus acceso saliente privado."
+  },
+  {
+    "id": "clf-c02-2026-09-01-030",
+    "prompt": "¿Qué información contiene una regla de tabla de rutas de VPC?",
+    "answer": "Un destino y una meta.",
+    "explanation": "El destino coincidente más específico determina dónde se envía el tráfico.",
+    "example": "La regla 0.0.0.0/0 → internet gateway empareja el rango de destino con el componente que recibe tráfico coincidente.",
+    "examCue": "Las tablas de rutas responden \"¿adónde va este destino?\""
+  },
+  {
+    "id": "clf-c02-2026-09-01-031",
+    "prompt": "¿Las tablas de rutas de VPC asignan direcciones IP o actúan como firewalls?",
+    "answer": "No. Seleccionan rutas de red; La configuración de direcciones y el filtrado de tráfico son funciones independientes.",
+    "explanation": "Las configuraciones relacionadas con DHCP ayudan a configurar los hosts, mientras que los grupos de seguridad y NACLs filtran el tráfico.",
+    "example": "Una tabla de rutas envía tráfico hacia una internet gateway; un grupo de seguridad decide por separado si se permite HTTPS.",
+    "examCue": "La selección de ruta no es una evaluación de permisos."
+  },
+  {
+    "id": "clf-c02-2026-09-01-032",
+    "prompt": "¿Cuál es el propósito de la ruta local en una tabla de rutas de VPC?",
+    "answer": "Permite la comunicación entre recursos dentro de los bloques CIDR de VPC.",
+    "explanation": "Cada tabla de rutas de VPC contiene enrutamiento local para la comunicación dentro de la VPC.",
+    "example": "El tráfico de 10.0.2.15 sigue la ruta local 10.0.0.0/16 en lugar de la ruta 0.0.0.0/0, menos específica.",
+    "examCue": "Ruta local = tráfico dentro de la VPC."
+  },
+  {
+    "id": "clf-c02-2026-09-01-033",
+    "prompt": "Una tabla de rutas tiene 10.0.0.0/16 → local y 0.0.0.0/0 → internet gateway. ¿A dónde va el tráfico de 10.0.2.15?",
+    "answer": "Por la ruta local. La ruta /16 de la VPC es más específica que la ruta de Internet /0.",
+    "explanation": "La selección de ruta utiliza el destino coincidente más específico; /16 es más específico que /0.",
+    "example": "El tráfico para 10.0.2.15 elige la ruta local 10.0.0.0/16 porque /16 es más específica que la ruta de Internet /0.",
+    "examCue": "Gana la coincidencia con el prefijo más largo."
+  },
+  {
+    "id": "clf-c02-2026-09-01-034",
+    "prompt": "¿Qué papel juegan las opciones de DHCP en una VPC?",
+    "answer": "Proporcionan configuración de red, como configuraciones relacionadas con DNS, a las instancias.",
+    "explanation": "La configuración de DHCP está separada de la tabla de rutas de subred, que selecciona las rutas de tráfico.",
+    "example": "Un conjunto de opciones de DHCP de VPC proporciona configuraciones de DNS a una instancia EC2 recién lanzada.",
+    "examCue": "La configuración del host y el enrutamiento son trabajos diferentes."
+  },
+  {
+    "id": "clf-c02-2026-09-01-035",
+    "prompt": "¿A qué nivel se aplica un grupo de seguridad? ¿Tiene estado?",
+    "answer": "Se aplica a las interfaces de red de recursos admitidas y tiene estado.",
+    "explanation": "Las respuestas de flujo permitidas se permiten automáticamente y los grupos de seguridad contienen reglas de autorización en lugar de reglas de denegación.",
+    "example": "Un grupo de seguridad del servidor web permite HTTPS entrante y el tráfico de respuesta se permite automáticamente.",
+    "examCue": "Nivel de recurso/ENI + estado = grupo de seguridad."
+  },
+  {
+    "id": "clf-c02-2026-09-01-036",
+    "prompt": "¿A qué nivel se aplica una ACL de red? ¿Tiene estado?",
+    "answer": "Se aplica en el límite de la subred y no tiene estado.",
+    "explanation": "Las reglas de entrada y salida se evalúan por separado y NACLs admite reglas de permitir y denegar.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "Nivel de subred + sin estado = NACL."
+  },
+  {
+    "id": "clf-c02-2026-09-01-037",
+    "prompt": "Compare los grupos de seguridad con las ACL de red.",
+    "answer": "Los grupos de seguridad son controles con estado que solo permiten permisos en ENI de recursos; NACLs son controles de permitir/denegar sin estado en los límites de la subred.",
+    "explanation": "Se pueden usar juntos para una protección en capas.",
+    "example": "Un grupo de seguridad permite HTTPS a un servidor y permite respuestas automáticamente; una subred NACL permite o niega por separado ambas direcciones de tráfico.",
+    "examCue": "SG = recurso/con estado; NACL = subred/sin estado."
+  },
+  {
+    "id": "clf-c02-2026-09-01-038",
+    "prompt": "Un grupo de seguridad permite una solicitud HTTPS entrante. ¿La respuesta requiere una regla de salida separada para ese flujo?",
+    "answer": "No. El tráfico de retorno se permite automáticamente porque el grupo de seguridad tiene estado.",
+    "explanation": "El seguimiento de estado reconoce el tráfico de respuesta para una conexión permitida.",
+    "example": "Un grupo de seguridad del servidor web permite HTTPS entrante y el tráfico de respuesta se permite automáticamente.",
+    "examCue": "Con estado significa que se recuerda el tráfico de retorno."
+  },
+  {
+    "id": "clf-c02-2026-09-01-039",
+    "prompt": "Un NACL permite una solicitud entrante. ¿Qué se debe considerar para la respuesta?",
+    "answer": "Una regla de salida aplicable también debe permitir el tráfico de respuesta.",
+    "explanation": "NACLs no tienen estado y evalúan cada dirección de forma independiente.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "Sin estado significa configurar ambas direcciones."
+  },
+  {
+    "id": "clf-c02-2026-09-01-040",
+    "prompt": "¿Se puede asociar un grupo de seguridad con recursos en diferentes subredes de la misma VPC?",
+    "answer": "Sí. Un grupo de seguridad está asociado con interfaces de red de recursos, no propiedad de una subred.",
+    "explanation": "El mismo grupo puede proteger los recursos admitidos en múltiples subredes en su VPC.",
+    "example": "El mismo grupo de seguridad WebServers puede proteger instancias EC2 en dos subredes diferentes de la misma VPC.",
+    "examCue": "Los grupos de seguridad no son controles a nivel de subred."
+  },
+  {
+    "id": "clf-c02-2026-09-01-041",
+    "prompt": "¿Qué control de VPC puede denegar explícitamente un CIDR de origen malicioso en un límite de subred?",
+    "answer": "Una ACL de red. Puede aplicar una regla de denegación explícita al tráfico que cruza el límite de la subred.",
+    "explanation": "Los grupos de seguridad no contienen reglas de denegación; NACLs puede permitir o denegar y aplicar al límite de la subred.",
+    "example": "Una subred NACL niega un CIDR malicioso conocido y permite por separado el tráfico entrante y saliente requerido.",
+    "examCue": "La denegación de subred explícita apunta a NACL."
+  },
+  {
+    "id": "clf-c02-2026-09-01-042",
+    "prompt": "¿Qué problema resuelve un endpoint de VPC?",
+    "answer": "Permite que los recursos accedan de forma privada a los servicios compatibles sin necesidad de conectividad pública a Internet.",
+    "explanation": "El cliente no necesita una internet gateway, un dispositivo NAT, una VPN o una IP pública para esa ruta de servicio.",
+    "example": "Una instancia EC2 privada llega a un servicio de AWS compatible a través de un endpoint de VPC sin una IP pública, una NAT gateway o una internet gateway.",
+    "examCue": "El acceso privado a un servicio compatible apunta a un endpoint de la VPC."
+  },
+  {
+    "id": "clf-c02-2026-09-01-043",
+    "prompt": "¿Cómo se implementa un endpoint de VPC de interfaz?",
+    "answer": "Con interfaces de red de terminales que tienen direcciones IP privadas en subredes seleccionadas, con tecnología de AWS PrivateLink.",
+    "explanation": "Los grupos de seguridad pueden controlar el acceso a las interfaces de los terminales y normalmente se aplican cargos por los terminales.",
+    "example": "Una aplicación privada llega a Secrets Manager a través de direcciones IP de endpoints privados protegidas por un grupo de seguridad.",
+    "examCue": "ENI + IP privada + PrivateLink = endpoint de la interfaz."
+  },
+  {
+    "id": "clf-c02-2026-09-01-044",
+    "prompt": "¿Qué servicios admiten endpoints de VPC de puerta de enlace?",
+    "answer": "Amazon S3 y Amazon DynamoDB.",
+    "explanation": "Los puntos de enlace de puerta de enlace agregan rutas a tablas de rutas seleccionadas y no utilizan AWS PrivateLink.",
+    "example": "Una VPC puede agregar endpoints de puerta de enlace basados en tablas de rutas para S3 y DynamoDB; otros servicios generalmente utilizan endpoints de interfaz.",
+    "examCue": "endpoint de puerta de enlace = S3 o DynamoDB."
+  },
+  {
+    "id": "clf-c02-2026-09-01-045",
+    "prompt": "¿En qué se diferencian los endpoints de la VPC de interfaz y de puerta de enlace?",
+    "answer": "Los endpoints de interfaz utilizan PrivateLink ENI con IP privadas; Los endpoints de puerta de enlace agregan entradas de tabla de rutas y admiten S3 y DynamoDB.",
+    "explanation": "Los tipos de endpoints difieren en implementación, servicios admitidos, integración de seguridad y precios.",
+    "example": "El tráfico privado de S3 puede utilizar una ruta de endpoint de puerta de enlace, mientras que el tráfico privado de Secrets Manager puede utilizar un endpoint de interfaz ENI.",
+    "examCue": "ENI frente al objetivo de la tabla de rutas."
+  },
+  {
+    "id": "clf-c02-2026-09-01-046",
+    "prompt": "Las instancias EC2 privadas necesitan acceso a la misma región S3 sin NAT y sin cargo por hora de endpoint. ¿Qué criterio de valoración es la elección habitual?",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "explanation": "Los endpoints de puerta de enlace agregan rutas S3 y no tienen ningún cargo adicional por endpoint.",
+    "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
+    "examCue": "S3 + tabla de rutas + sin cargo por hora de endpoint = endpoint de puerta de enlace."
+  },
+  {
+    "id": "clf-c02-2026-09-01-047",
+    "prompt": "Una subred privada debe acceder a un servicio de AWS compatible a través de direcciones IP privadas y controlar el acceso con un grupo de seguridad. ¿Qué tipo de endpoint encaja?",
+    "answer": "Un endpoint de VPC de interfaz. Crea interfaces de red IP privadas que se pueden proteger con grupos de seguridad.",
+    "explanation": "Los endpoints de interfaz crean ENI en subredes seleccionadas y pueden tener grupos de seguridad.",
+    "example": "Una aplicación privada llega a Secrets Manager a través de las IP privadas de un endpoint de interfaz y restringe el acceso con su grupo de seguridad.",
+    "examCue": "La IP privada y el grupo de seguridad apuntan al endpoint de la interfaz."
+  },
+  {
+    "id": "clf-c02-2026-09-01-048",
+    "prompt": "¿Qué afirmación es correcta?",
+    "answer": "Un punto de enlace de puerta de enlace de DynamoDB utiliza entradas de la tabla de rutas y no utiliza AWS PrivateLink.",
+    "explanation": "Los endpoints de la interfaz utilizan PrivateLink; Los endpoints de puerta de enlace de S3 y DynamoDB utilizan una implementación de tabla de rutas diferente.",
+    "example": "Un endpoint de puerta de enlace de DynamoDB agrega rutas de servicio a tablas de rutas seleccionadas en lugar de crear PrivateLink interfaces de red.",
+    "examCue": "No afirme que todos los endpoints utilizan PrivateLink."
+  },
+  {
+    "id": "clf-c02-2026-09-01-049",
+    "prompt": "¿Qué categoría de EC2 equilibra la computación, la memoria y las redes para diversas cargas de trabajo?",
+    "answer": "Instancias de propósito general, con familias como T y M.",
+    "explanation": "Utilice características de la carga de trabajo en lugar de tratar las cartas familiares como ampliaciones de acrónimos oficiales.",
+    "example": "Una instancia de la familia M de uso general se adapta a una aplicación web que necesita una combinación equilibrada de CPU, memoria y redes.",
+    "examCue": "Los recursos equilibrados apuntan a un propósito general."
+  },
+  {
+    "id": "clf-c02-2026-09-01-050",
+    "prompt": "Una carga de trabajo de procesamiento por lotes consume mucha CPU. ¿Qué categoría EC2 debería evaluarse?",
+    "answer": "Compute instancias optimizadas, como familias C.",
+    "explanation": "Estas instancias proporcionan una mayor proporción de recursos informáticos para el trabajo vinculado a la CPU.",
+    "example": "Un trabajo de codificación de medios que requiere mucha CPU utiliza una instancia de la familia C.",
+    "examCue": "Puntos intensivos de CPU para computación optimizada."
+  },
+  {
+    "id": "clf-c02-2026-09-01-051",
+    "prompt": "Una base de datos en memoria necesita una capacidad de RAM muy grande. ¿Qué categoría EC2 encaja?",
+    "answer": "Instancias optimizadas para memoria, como las familias R o X.",
+    "explanation": "La carga de trabajo está limitada principalmente por la memoria y no por la CPU o el disco local.",
+    "example": "Una base de datos grande en memoria utiliza una instancia de la familia R porque la RAM es la principal limitación.",
+    "examCue": "Un gran conjunto de datos en memoria apunta a una memoria optimizada."
+  },
+  {
+    "id": "clf-c02-2026-09-01-052",
+    "prompt": "Una carga de trabajo de capacitación en aprendizaje automático necesita GPU. ¿Qué categoría EC2 encaja?",
+    "answer": "Instancias de computación acelerada, como las familias P o G.",
+    "explanation": "Los aceleradores de hardware manejan operaciones especializadas de manera más eficiente que las CPU de uso general.",
+    "example": "Un trabajo de capacitación en aprendizaje automático utiliza instancias de la familia P respaldadas por GPU para acelerar los cálculos matriciales.",
+    "examCue": "GPU o acelerador apunta a computación acelerada."
+  },
+  {
+    "id": "clf-c02-2026-09-01-053",
+    "prompt": "Una carga de trabajo necesita IOPS NVMe locales muy altas. ¿Qué categoría EC2 debería evaluarse?",
+    "answer": "Instancias optimizadas para almacenamiento, como familias I.",
+    "explanation": "Estas instancias están diseñadas para cargas de trabajo cuyo rendimiento depende del rendimiento del almacenamiento local o IOPS.",
+    "example": "Una base de datos local con alto IOPS evalúa una instancia de la familia I con almacenamiento de instancia NVMe.",
+    "examCue": "Un IOPS local alto apunta a un almacenamiento optimizado."
+  },
+  {
+    "id": "clf-c02-2026-09-01-054",
+    "prompt": "Contraste el arrendamiento compartido, Dedicated Instances y Dedicated Hosts.",
+    "answer": "Compartido es hardware multicuenta de forma predeterminada; Dedicated Instances utiliza hardware de cuenta única sin control de host; Dedicated Hosts ofrece a un cliente un servidor físico completo con visibilidad del host y control de ubicación.",
+    "explanation": "El arrendamiento describe cómo se asigna la infraestructura física.",
+    "example": "Un servidor normal usa arrendamiento compartido, una carga de trabajo de cumplimiento puede usar Dedicated Instances y una licencia vinculada a socket usa Dedicated Host.",
+    "examCue": "Aumento del control del host: Compartido → Dedicated Instance → Dedicated Host."
+  },
+  {
+    "id": "clf-c02-2026-09-01-055",
+    "prompt": "Una licencia está vinculada a núcleos y sockets físicos y requiere una auditoría a nivel de host. ¿Qué opción de arrendamiento de EC2 es la más adecuada?",
+    "answer": "Un Dedicated Host. Expone el host físico, los sockets y los núcleos necesarios para las licencias vinculadas al servidor.",
+    "explanation": "Dedicated Hosts expone la identidad del host, los sockets y los núcleos y admite la ubicación específica para escenarios de licencias vinculadas al servidor.",
+    "example": "Una licencia de base de datos vinculada a sockets físicos se ejecuta en Dedicated Host para que la empresa pueda auditar los núcleos y la ubicación del host.",
+    "examCue": "La visibilidad física del host o BYOL estricto apunta a Dedicated Host."
+  },
+  {
+    "id": "clf-c02-2026-09-01-056",
+    "prompt": "¿En qué se diferencia el arrendamiento de EC2 de los modelos de compra de EC2?",
+    "answer": "El arrendamiento describe el uso compartido o la dedicación de hardware físico; Los modelos de compra describen precio, interrupción o compromiso.",
+    "explanation": "Dedicated Host y Dedicated Instance responden a una pregunta de aislamiento, mientras que On-Demand, Spot, Reserved Instances y Savings Plans responden a preguntas sobre modelos de costos.",
+    "example": "Un servidor puede utilizar un arrendamiento dedicado para el aislamiento y al mismo tiempo utilizar una On-Demand o una opción de compra basada en compromiso para el costo.",
+    "examCue": "No confunda la asignación de hardware con el compromiso de precios."
+  },
+  {
+    "id": "clf-c02-2026-09-15-001",
+    "prompt": "¿En qué se diferencian Regional Reserved Instance y Zonal Reserved Instance?",
+    "answer": "Un Regional RI proporciona un descuento en facturación en toda una región, pero no reserva de capacidad. Se aplica un Zonal RI en un Availability Zone y se reserva la capacidad coincidente allí.",
+    "explanation": "Separe el descuento de la promesa de capacidad: solo Zonal RI incluye ambos.",
+    "example": "Una empresa que espera un uso constante en cualquier parte de us-east-1 puede elegir Regional; uno que deba lanzarse en us-east-1a puede elegir Zonal.",
+    "examCue": "Regional = descuento flexible; Zonal = descuento más capacidad AZ."
+  },
+  {
+    "id": "clf-c02-2026-09-15-002",
+    "prompt": "¿La compra de un Regional Reserved Instance crea o reserva una instancia EC2?",
+    "answer": "No. Es un beneficio de facturación que AWS aplica automáticamente al uso en ejecución coincidente.",
+    "explanation": "La instancia todavía se ejecuta con capacidad EC2 normal; RI cambia la forma en que se factura el uso elegible.",
+    "example": "Comprar diez Regional RIs no inicia diez servidores.",
+    "examCue": "RI significa compromiso de descuento, no un objeto de servidor."
+  },
+  {
+    "id": "clf-c02-2026-09-15-003",
+    "prompt": "Una carga de trabajo debe poder iniciarse en un Availability Zone específico durante una escasez de capacidad. ¿Qué opción reserva directamente esa capacidad?",
+    "answer": "Un Zonal Reserved Instance o un On-Demand Capacity Reservation.",
+    "explanation": "Ambos reservan la capacidad EC2 coincidente en un Availability Zone particular; un Regional RI no lo hace.",
+    "example": "Se debe garantizar espacio a un servidor de recuperación ante desastres en us-west-2b.",
+    "examCue": "Busque AZ específico más capacidad garantizada."
+  },
+  {
+    "id": "clf-c02-2026-09-15-004",
+    "prompt": "¿Qué sucede financieramente cuando un On-Demand Capacity Reservation no se utiliza?",
+    "answer": "Aún pagas por la capacidad reservada.",
+    "explanation": "AWS reserva esa capacidad para usted, por lo que una reserva no utilizada se factura de manera muy similar a una instancia en ejecución no utilizada.",
+    "example": "Reservar capacidad para cinco instancias y ejecutar solo tres deja dos espacios facturados pero no utilizados.",
+    "examCue": "La capacidad retenida para usted es facturable."
+  },
+  {
+    "id": "clf-c02-2026-09-15-005",
+    "prompt": "¿Cuándo es generalmente preferible un Standard RI a un Convertible RI?",
+    "answer": "Elija Estándar cuando la carga de trabajo sea predecible y la prioridad sea un descuento mayor; Elija Convertible cuando las necesidades de instancias futuras puedan cambiar.",
+    "explanation": "Convertible RIs permiten intercambios para diferentes configuraciones elegibles, intercambiando algún descuento por flexibilidad.",
+    "example": "Un servidor de producción estable favorece el Estándar; una creciente carga de trabajo que puede cambiar las familias puede favorecer al Convertible.",
+    "examCue": "Estándar = descuento; Convertible = flexibilidad cambiaria."
+  },
+  {
+    "id": "clf-c02-2026-09-15-006",
+    "prompt": "Un trabajo de renderizado por lotes puede detenerse y reiniciarse sin dañar el negocio. ¿Qué opción de compra de EC2 suele ser más económica?",
+    "answer": "Spot Instances.",
+    "explanation": "Spot utiliza capacidad EC2 sobrante con un gran descuento, pero AWS puede interrumpirla. La aplicación debe tolerar interrupciones.",
+    "example": "Un renderizador controla cada fotograma y lo reanuda en otra instancia.",
+    "examCue": "Carga de trabajo flexible y tolerante a fallos = Spot."
+  },
+  {
+    "id": "clf-c02-2026-09-15-007",
+    "prompt": "¿Cuál es la diferencia clave entre Savings Plans y Reserved Instances a nivel de examen?",
+    "answer": "Savings Plans se compromete a una cantidad por hora de uso elegible; RIs proporciona un descuento por atributos de instancia coincidentes y puede ser regional o zonal.",
+    "explanation": "Ambos reducen el costo por un uso predecible, pero definen el compromiso de manera diferente.",
+    "example": "Un Compute Savings Plan puede seguir los cambios informáticos elegibles de manera más flexible que un EC2 estándar RI.",
+    "examCue": "Gaste puntos de compromiso en Savings Plans."
+  },
+  {
+    "id": "clf-c02-2026-09-15-008",
+    "prompt": "¿Qué cuatro tipos de Savings Plans documenta AWS actualmente?",
+    "answer": "Computación, Instancia EC2, SageMaker AI y Database Savings Plans.",
+    "explanation": "El material de estudio más antiguo puede incluir menos tipos. La idea duradera es que cada plan descuenta una familia definida de uso elegible.",
+    "example": "Se puede aplicar un plan de ahorro de base de datos al uso de bases de datos elegibles en lugar de a la computación EC2.",
+    "examCue": "No confíe en la lista anterior de tres tipos."
+  },
+  {
+    "id": "clf-c02-2026-09-15-009",
+    "prompt": "Una empresa debe realizar un seguimiento de los núcleos y sockets físicos para las licencias de software vinculadas al servidor. ¿Qué opción de arrendamiento de EC2 es adecuada?",
+    "answer": "Un Dedicated Host.",
+    "explanation": "Un Dedicated Host brinda visibilidad y control sobre un servidor físico. Dedicated Instances aísla el hardware pero abstrae los detalles del host.",
+    "example": "Una licencia es válida sólo para un número de sockets físicos con nombre.",
+    "examCue": "BYOL más sockets o núcleos = Dedicated Host."
+  },
+  {
+    "id": "clf-c02-2026-09-15-010",
+    "prompt": "¿En qué se diferencia Dedicated Instances de Dedicated Hosts?",
+    "answer": "Ambos aíslan el hardware de un cliente, pero Dedicated Hosts exponen y controlan el host físico; Dedicated Instances no lo hace.",
+    "explanation": "Dedicated Instances puede moverse entre hosts controlados por AWS, mientras que Dedicated Host es un servidor físico asignado.",
+    "example": "El aislamiento de cumplimiento general puede utilizar Dedicated Instances; Las licencias estrictas vinculadas al host utilizan Dedicated Host.",
+    "examCue": "La visibilidad del anfitrión es la pista decisiva."
+  },
+  {
+    "id": "clf-c02-2026-09-15-011",
+    "prompt": "¿Qué hace una condición de política de IAM?",
+    "answer": "Restringe las circunstancias en las que se aplica una declaración de política.",
+    "explanation": "Las condiciones pueden requerir contexto como MFA, una IP de origen, una etiqueta de recurso o un rango de tiempo.",
+    "example": "Permita una acción solo cuando la solicitud llegue a través de MFA.",
+    "examCue": "Condición = cuándo o bajo qué contexto."
+  },
+  {
+    "id": "clf-c02-2026-09-15-012",
+    "prompt": "¿Las políticas de control de servicios otorgan permisos a usuarios o roles?",
+    "answer": "No. Los SCP establecen los permisos máximos disponibles en las cuentas de los miembros; una política de IAM aún debe otorgar la acción.",
+    "explanation": "Una acción debe estar permitida por los límites de la organización y por la identidad relevante o la política de recursos.",
+    "example": "Un SCP permite S3, pero una función sin permiso de S3 aún no puede leer un bucket.",
+    "examCue": "El CPS es un límite máximo, no una subvención."
+  },
+  {
+    "id": "clf-c02-2026-09-15-013",
+    "prompt": "¿Cómo funcionan juntos CloudTrail, GuardDuty y Detective?",
+    "answer": "CloudTrail registra la actividad, GuardDuty detecta comportamientos sospechosos y Detective ayuda a investigar relaciones y cronogramas.",
+    "explanation": "Responden a diferentes preguntas: ¿qué pasó, si es sospechoso y cómo está relacionado?",
+    "example": "GuardDuty genera un hallazgo de abuso de credenciales; El detective ayuda a rastrear los recursos y eventos relacionados.",
+    "examCue": "Registrar → detectar → investigar."
+  },
+  {
+    "id": "clf-c02-2026-09-15-014",
+    "prompt": "¿Qué amenazas abordan principalmente AWS WAF y AWS Shield?",
+    "answer": "WAF filtra solicitudes web maliciosas; Shield protege contra ataques distribuidos de denegación de servicio.",
+    "explanation": "WAF utiliza reglas de capa web como IP, ruta o patrones de inyección SQL. Shield se centra en la resistencia a DDoS.",
+    "example": "Bloquee una solicitud HTTP incorrecta con WAF; absorber una inundación de tráfico con Shield.",
+    "examCue": "Reglas de solicitud web = WAF; DDoS = Escudo."
+  },
+  {
+    "id": "clf-c02-2026-09-15-015",
+    "prompt": "¿Cuál es el objetivo principal de AWS KMS?",
+    "answer": "Crear y controlar claves de cifrado utilizadas para proteger los datos.",
+    "explanation": "KMS se integra con muchos servicios de AWS y registra el uso de claves a través de CloudTrail.",
+    "example": "Un bucket de S3 puede utilizar una clave KMS para el cifrado del lado del servidor.",
+    "examCue": "Claves de cifrado administradas = KMS."
+  },
+  {
+    "id": "clf-c02-2026-09-15-016",
+    "prompt": "Los empleados necesitan un inicio de sesión para varias cuentas de AWS. ¿Qué servicio se debe evaluar?",
+    "answer": "AWS IAM Identity Center.",
+    "explanation": "Asigna de forma centralizada el acceso de la fuerza laboral a las cuentas de AWS y las aplicaciones compatibles.",
+    "example": "Un desarrollador inicia sesión una vez y selecciona la cuenta de desarrollo o producción.",
+    "examCue": "Acceso a la fuerza laboral de múltiples cuentas = IAM Identity Center."
+  },
+  {
+    "id": "clf-c02-2026-09-15-017",
+    "prompt": "¿Qué envuelve un contenedor?",
+    "answer": "Una aplicación junto con las bibliotecas y dependencias que necesita para ejecutarse de forma coherente.",
+    "explanation": "Los contenedores hacen que la aplicación sea portátil entre entornos que admitan el tiempo de ejecución del contenedor.",
+    "example": "La misma imagen se puede ejecutar en una computadora portátil y luego como una tarea de ECS.",
+    "examCue": "Aplicación más dependencias = contenedor."
+  },
+  {
+    "id": "clf-c02-2026-09-15-018",
+    "prompt": "¿Qué es un Kubernetes Pod?",
+    "answer": "La unidad de Kubernetes implementable más pequeña, que contiene uno o más contenedores estrechamente relacionados.",
+    "explanation": "Los contenedores en Pod comparten redes y pueden compartir almacenamiento; el examen no requiere la sintaxis de Dockerfile.",
+    "example": "Un contenedor web y un sidecar de registro estrechamente acoplado pueden compartir un Pod.",
+    "examCue": "Pod es una unidad de implementación de Kubernetes, no un registro."
+  },
+  {
+    "id": "clf-c02-2026-09-15-019",
+    "prompt": "¿Cuándo debería elegir Amazon ECS en lugar de Amazon EKS?",
+    "answer": "Elija ECS para la orquestación de contenedores nativa de AWS; Elija EKS cuando la carga de trabajo o el equipo necesite específicamente compatibilidad con Kubernetes.",
+    "explanation": "ECS y EKS programan contenedores, pero EKS expone el ecosistema y las API de Kubernetes.",
+    "example": "Un equipo que ya utiliza manifiestos de Kubernetes puede preferir EKS; un equipo exclusivo de AWS puede preferir la simplicidad de ECS.",
+    "examCue": "Requisito de Kubernetes = EKS."
+  },
+  {
+    "id": "clf-c02-2026-09-15-020",
+    "prompt": "¿Qué elimina AWS Fargate de las operaciones de contenedores?",
+    "answer": "La necesidad de aprovisionar y gestionar los servidores subyacentes.",
+    "explanation": "Fargate proporciona capacidad informática sin servidor para ECS o EKS; usted aún define y opera los contenedores.",
+    "example": "Una tarea de ECS se ejecuta sin que el equipo cree un clúster EC2.",
+    "examCue": "Computación de contenedor sin servidor = Fargate."
+  },
+  {
+    "id": "clf-c02-2026-09-15-021",
+    "prompt": "¿Qué se almacena en Amazon ECR?",
+    "answer": "Imágenes de contenedores.",
+    "explanation": "ECR es un registro de imágenes administrado. ECS o EKS pueden extraer imágenes para ejecutar contenedores.",
+    "example": "Una canalización de CI envía la versión 2.1 de una imagen de aplicación a ECR.",
+    "examCue": "Registro = ECR; orquestación = ECS/EKS."
+  },
+  {
+    "id": "clf-c02-2026-09-15-022",
+    "prompt": "¿En qué se diferencian Elastic Beanstalk y Lightsail?",
+    "answer": "Elastic Beanstalk gestiona la implementación de aplicaciones en recursos configurables de AWS; Lightsail proporciona paquetes simplificados y predecibles para cargas de trabajo pequeñas.",
+    "explanation": "Beanstalk ofrece más acceso a los servicios subyacentes de AWS, mientras que Lightsail reduce las opciones y la configuración.",
+    "example": "Un sitio de folletos pequeño puede utilizar Lightsail; una aplicación web que necesite políticas de escalado automático puede utilizar Beanstalk.",
+    "examCue": "Paquete simple = Lightsail; plataforma de aplicación administrada = Beanstalk."
+  },
+  {
+    "id": "clf-c02-2026-09-15-023",
+    "prompt": "¿En qué se diferencian AWS Amplify y Elastic Beanstalk?",
+    "answer": "Amplify se centra en el desarrollo y alojamiento de interfaces web/móviles; Beanstalk implementa aplicaciones web generales en una infraestructura administrada de AWS.",
+    "explanation": "La elección del servicio depende de la experiencia del desarrollador y del tipo de aplicación.",
+    "example": "Una interfaz de React con alojamiento administrado se adapta a Amplify; un servicio web Java puede adaptarse a Beanstalk.",
+    "examCue": "Frontend/móvil = Amplificar."
+  },
+  {
+    "id": "clf-c02-2026-09-15-024",
+    "prompt": "Una aplicación distribuida es lenta y el equipo necesita ver qué llamada de servicio causa el retraso. ¿Qué servicio ayuda?",
+    "answer": "AWS X-Ray.",
+    "explanation": "X-Ray rastrea una solicitud a medida que avanza a través de los componentes de la aplicación y muestra latencia y errores.",
+    "example": "Una solicitud de pago tarda dos segundos en una API descendente.",
+    "examCue": "Seguimiento de solicitudes distribuidas = X-Ray."
+  },
+  {
+    "id": "clf-c02-2026-09-15-025",
+    "prompt": "¿Cuál es la diferencia entre una cuenta IAM user y una cuenta de miembro de AWS?",
+    "answer": "Un IAM user es una identidad dentro de una cuenta de AWS; una cuenta de miembro es una cuenta de AWS independiente gobernada a través de Organizaciones.",
+    "explanation": "Las cuentas de miembros tienen recursos y límites de seguridad separados. IAM users comparten el contexto de su cuenta.",
+    "example": "La creación de un IAM user denominado dev no crea una cuenta de desarrollo de AWS.",
+    "examCue": "La identidad no es una cuenta."
+  },
+  {
+    "id": "clf-c02-2026-09-15-026",
+    "prompt": "¿Qué es una unidad organizativa en AWS Organizations?",
+    "answer": "Un grupo lógico de cuentas de AWS que se utiliza para organizar y aplicar la gobernanza.",
+    "explanation": "Las unidades organizativas se pueden anidar y recibir políticas como las SCP.",
+    "example": "Las cuentas de producción se pueden agrupar bajo una unidad organizativa de producción.",
+    "examCue": "La unidad organizativa agrupa cuentas, no recursos individuales."
+  },
+  {
+    "id": "clf-c02-2026-09-15-027",
+    "prompt": "¿Dónde deberían ejecutarse las cargas de trabajo de producción ordinarias en una organización de AWS?",
+    "answer": "En cuentas de miembros, no en la cuenta de gestión.",
+    "explanation": "Mantener la cuenta de administración centrada en la facturación y la administración de la organización reduce el riesgo y sigue las mejores prácticas de AWS.",
+    "example": "La aplicación de comercio electrónico se ejecuta en una cuenta de miembro de Producción.",
+    "examCue": "Proteja la cuenta de administración de cargas de trabajo."
+  },
+  {
+    "id": "clf-c02-2026-09-15-028",
+    "prompt": "¿En qué se diferencian AWS Organizations y AWS Control Tower?",
+    "answer": "Organizaciones proporciona la jerarquía y las políticas de múltiples cuentas; Control Tower construye encima una zona de aterrizaje gobernada y obstinada.",
+    "explanation": "Control Tower combina organizaciones con aprovisionamiento de cuentas, controles y gobernanza centralizada.",
+    "example": "Utilice Organizaciones para la estructura de la cuenta; agregue Control Tower para una configuración de cuenta estandarizada y una gestión continua.",
+    "examCue": "Control Tower organiza un entorno gobernado."
+  },
+  {
+    "id": "clf-c02-2026-09-15-029",
+    "prompt": "¿Qué es una zona de aterrizaje en AWS Control Tower?",
+    "answer": "Un entorno multicuenta gobernado y listo para usar.",
+    "explanation": "Establece cuentas fundamentales, estructura organizativa, registros y controles.",
+    "example": "Una empresa comienza con cuentas de auditoría, archivo de registros y carga de trabajo independientes.",
+    "examCue": "Zona de aterrizaje = fundación multicuenta gobernada."
+  },
+  {
+    "id": "clf-c02-2026-09-15-030",
+    "prompt": "¿Qué hace Account Factory en AWS Control Tower?",
+    "answer": "Aprovisiona cuentas de AWS estandarizadas mediante configuraciones aprobadas.",
+    "explanation": "Esto hace que las nuevas cuentas sean repetibles en lugar de reconstruir manualmente la gestión cada vez.",
+    "example": "Un equipo solicita una cuenta de espacio aislado con la línea base de la red de la empresa.",
+    "examCue": "Creación de cuenta repetible = Account Factory."
+  },
+  {
+    "id": "clf-c02-2026-09-15-031",
+    "prompt": "¿Qué son los controles Control Tower preventivos, de detección y proactivos?",
+    "answer": "Los controles preventivos bloquean acciones no permitidas; los controles de detección informan sobre el incumplimiento; Los controles proactivos verifican los recursos antes de la implementación.",
+    "explanation": "AWS ahora utiliza el término controles; barandilla es un sinónimo más antiguo.",
+    "example": "Negar la configuración pública de S3 es preventivo; marcar la deriva es detective; rechazar una plantilla incorrecta antes de su creación es proactivo.",
+    "examCue": "Bloquear, detectar o verificar previamente."
+  },
+  {
+    "id": "clf-c02-2026-09-15-032",
+    "prompt": "¿En qué se diferencian CloudWatch, CloudTrail y AWS Config?",
+    "answer": "CloudWatch monitorea el comportamiento, CloudTrail registra la actividad de la API y Config rastrea la configuración y el cumplimiento de los recursos.",
+    "explanation": "Responden cómo se ejecuta, quién lo cambió y qué configuración existe a lo largo del tiempo.",
+    "example": "Se activa una alarma en CloudWatch; CloudTrail nombra a la persona que llama; La configuración muestra el grupo de seguridad antes y después.",
+    "examCue": "Comportamiento, actividad, configuración."
+  },
+  {
+    "id": "clf-c02-2026-09-15-033",
+    "prompt": "¿Qué son las etiquetas de recursos de AWS?",
+    "answer": "Etiquetas de valores clave adjuntas a recursos para organización, asignación de costos, automatización y control de acceso.",
+    "explanation": "Las etiquetas son metadatos flexibles, no filas relacionales con uniones y restricciones.",
+    "example": "Etiquete una instancia EC2 Environment=Production y CostCenter=42.",
+    "examCue": "Etiqueta de metadatos = etiqueta."
+  },
+  {
+    "id": "clf-c02-2026-09-15-034",
+    "prompt": "¿Cuál es el propósito de AWS Resource Groups?",
+    "answer": "Crear una vista lógica de recursos relacionados seleccionados por etiquetas o consultas.",
+    "explanation": "Un grupo ayuda a operar recursos juntos incluso cuando son tipos de servicios diferentes.",
+    "example": "Mostrar todos los recursos etiquetados Aplicación=Pagos en un grupo.",
+    "examCue": "Agrupar recursos mediante metadatos."
+  },
+  {
+    "id": "clf-c02-2026-09-15-035",
+    "prompt": "¿En qué se diferencian AWS CAF y Well-Architected Framework?",
+    "answer": "CAF guía la transformación de la nube en toda la organización; Well-Architected evalúa cómo se diseña y opera una carga de trabajo.",
+    "explanation": "CAF trata de la adopción entre personas, gobernanza, negocios, plataformas, seguridad y operaciones. Well-Architected utiliza seis pilares de carga de trabajo.",
+    "example": "Ejecutivos planifican programa migratorio con CAF; Los arquitectos revisan una carga de trabajo de pago con Well-Architected.",
+    "examCue": "Transformación = CAF; calidad de la carga de trabajo = buena arquitectura."
+  },
+  {
+    "id": "clf-c02-2026-09-15-036",
+    "prompt": "¿En qué se diferencian los pares de claves EC2, las claves de acceso de IAM y las etiquetas de recursos?",
+    "answer": "Los pares de claves EC2 autentican el inicio de sesión del sistema operativo, las claves de acceso de IAM firman solicitudes de API de AWS y las etiquetas etiquetan los recursos.",
+    "explanation": "Resuelven tres problemas no relacionados: inicio de sesión de la máquina, identidad programática de AWS y organización.",
+    "example": "SSH utiliza una clave privada; una CLI utiliza una clave de acceso; Cost Explorer puede agrupar por etiqueta.",
+    "examCue": "Inicio de sesión, credencial API, etiqueta."
+  },
+  {
+    "id": "clf-c02-2026-09-15-037",
+    "prompt": "Una empresa necesita un centro de contacto en la nube para las llamadas y el chat de los clientes. ¿Qué servicio encaja?",
+    "answer": "Amazon Connect.",
+    "explanation": "Connect proporciona capacidades de centro de contacto, como enrutamiento, colas y experiencias de agentes.",
+    "example": "Los clientes llaman a un número de soporte y son redirigidos a los agentes disponibles.",
+    "examCue": "Centro de contacto = Amazon Connect."
+  },
+  {
+    "id": "clf-c02-2026-09-15-038",
+    "prompt": "Los empleados necesitan escritorios virtuales Windows administrados de forma centralizada. ¿Qué servicio encaja?",
+    "answer": "Amazon WorkSpaces.",
+    "explanation": "WorkSpaces ofrece escritorios virtuales administrados sin que la empresa opere una plataforma VDI tradicional.",
+    "example": "Un contratista abre un escritorio corporativo seguro desde una computadora portátil personal.",
+    "examCue": "Escritorio virtual = WorkSpaces."
+  },
+  {
+    "id": "clf-c02-2026-09-15-039",
+    "prompt": "Una aplicación debe enviar un gran volumen de correos electrónicos transaccionales, como recibos. ¿Qué servicio encaja?",
+    "answer": "Servicio de correo electrónico simple de Amazon (SES).",
+    "explanation": "SES está diseñado para el envío y recepción de correo electrónico de aplicaciones escalables.",
+    "example": "Una tienda en línea envía por correo electrónico una confirmación del pedido después del pago.",
+    "examCue": "Correo electrónico de solicitud = SES."
+  },
+  {
+    "id": "clf-c02-2026-09-15-040",
+    "prompt": "Los usuarios empresariales necesitan paneles interactivos sobre los datos de la empresa. ¿Qué servicio de AWS encaja?",
+    "answer": "Amazon QuickSight.",
+    "explanation": "QuickSight es un servicio de visualización e inteligencia empresarial gestionado por AWS.",
+    "example": "Un panel de finanzas muestra los ingresos mensuales por región.",
+    "examCue": "Paneles de BI = QuickSight."
+  },
+  {
+    "id": "clf-c02-2026-09-15-041",
+    "prompt": "¿Cómo se relacionan CloudFormation y AWS CDK?",
+    "answer": "CloudFormation implementa plantillas de infraestructura declarativa; CDK le permite definir la infraestructura en código y sintetiza una plantilla CloudFormation.",
+    "explanation": "CDK cambia la forma en que se crea la plantilla, mientras que CloudFormation sigue siendo el motor de implementación.",
+    "example": "Una pila CDK de TypeScript se convierte en una plantilla CloudFormation antes de la implementación.",
+    "examCue": "CDK produce CloudFormation."
+  },
+  {
+    "id": "clf-c02-2026-09-15-042",
+    "prompt": "¿En qué se diferencian Elastic Beanstalk y App Runner?",
+    "answer": "Beanstalk ofrece implementación administrada con más acceso a los recursos subyacentes de AWS; App Runner proporciona una ruta más sencilla desde la imagen fuente o del contenedor hasta un servicio web administrado.",
+    "explanation": "Ambos reducen el trabajo operativo, pero App Runner esconde más opciones de infraestructura.",
+    "example": "Una API HTTP en contenedores con operaciones mínimas se adapta a App Runner.",
+    "examCue": "Fuente/imagen directamente al servicio web = App Runner."
+  },
+  {
+    "id": "clf-c02-2026-09-15-043",
+    "prompt": "¿Cuál es la diferencia entre AWS Marketplace y AWS Architecture Center?",
+    "answer": "Marketplace ofrece software y servicios de terceros para adquirir e implementar; El Centro de arquitectura proporciona patrones, arquitecturas de referencia y orientación.",
+    "explanation": "Uno es un catálogo de ofertas; el otro es un recurso de aprendizaje y diseño.",
+    "example": "Compre un dispositivo de firewall en Marketplace; Estudie una arquitectura de referencia de tres niveles en el Centro de Arquitectura.",
+    "examCue": "Comprar/implementar versus aprender/diseñar."
+  },
+  {
+    "id": "clf-c02-2026-09-15-044",
+    "prompt": "¿Qué ayuda a controlar AWS License Manager?",
+    "answer": "Uso de licencias de software en AWS y entornos locales.",
+    "explanation": "Puede realizar un seguimiento de reglas de licencia, como núcleos, sockets o instancias, para reducir el riesgo de cumplimiento.",
+    "example": "Evite el lanzamiento de más servidores de bases de datos con licencia de los que permite el contrato.",
+    "examCue": "Gobernanza de licencias de software = Administrador de licencias."
+  },
+  {
+    "id": "clf-c02-2026-09-15-045",
+    "prompt": "Un analista quiere ejecutar SQL directamente sobre archivos CSV y Parquet en Amazon S3 sin administrar servidores. ¿Qué servicio encaja?",
+    "answer": "Amazon Athena.",
+    "explanation": "Athena es un servicio de consulta interactivo sin servidor para datos en S3.",
+    "example": "Ejecute una consulta SQL sobre un año de registros de acceso almacenados en S3.",
+    "examCue": "SQL en S3 = Athena."
+  },
+  {
+    "id": "clf-c02-2026-09-15-046",
+    "prompt": "¿Cuándo elegirías DynamoDB, DocumentDB, Keyspaces o Redshift?",
+    "answer": "DynamoDB para acceso a documentos/valor clave sin servidor, DocumentDB para documentos compatibles con MongoDB, Keyspaces para cargas de trabajo compatibles con Cassandra y Redshift para almacenamiento analítico.",
+    "explanation": "El examen suele proporcionar un modelo de datos o una pista de compatibilidad.",
+    "example": "Una migración de Cassandra apunta a Keyspaces; un almacén de BI apunta a Redshift.",
+    "examCue": "Haga coincidir el modelo de datos y la carga de trabajo."
+  },
+  {
+    "id": "clf-c02-2026-09-15-047",
+    "prompt": "¿En qué se diferencian AWS Glue y Lake Formation?",
+    "answer": "Glue descubre, cataloga y transforma datos; Lake Formation ayuda a construir y gobernar centralmente un lago de datos.",
+    "explanation": "A menudo trabajan juntos: Glue proporciona metadatos y ETL, mientras que Lake Formation gestiona los permisos y la gobernanza del lago de datos.",
+    "example": "Un rastreador cataloga los datos de S3 y luego Lake Formation controla qué analistas pueden acceder a ellos.",
+    "examCue": "ETL/catálogo = Pegamento; Gobernanza del lago de datos = Formación del lago."
+  },
+  {
+    "id": "clf-c02-2026-09-15-048",
+    "prompt": "¿Qué gestiona Amazon MSK?",
+    "answer": "Clústeres de Apache Kafka.",
+    "explanation": "MSK es para aplicaciones que necesitan el ecosistema Kafka sin operar los propios corredores.",
+    "example": "Una plataforma de eventos Kafka existente se traslada a corredores administrados en AWS.",
+    "examCue": "Kafka administrado = MSK."
+  },
+  {
+    "id": "clf-c02-2026-09-15-049",
+    "prompt": "¿Para qué se utiliza AWS Data Exchange?",
+    "answer": "Encontrar, suscribirse y utilizar productos de datos de terceros.",
+    "explanation": "Los proveedores publican conjuntos de datos y los suscriptores acceden a ellos bajo términos definidos.",
+    "example": "Un equipo de riesgo se suscribe a un conjunto de datos meteorológicos comerciales.",
+    "examCue": "Conjuntos de datos de terceros = Intercambio de datos."
+  },
+  {
+    "id": "clf-c02-2026-09-15-050",
+    "prompt": "¿En qué se diferencian Amazon Athena y AWS Glue?",
+    "answer": "Athena consulta datos con SQL; Glue descubre, cataloga y transforma datos.",
+    "explanation": "Athena es el motor de consultas. Glue prepara metadatos y canalizaciones de datos que Athena y otros servicios de análisis pueden utilizar.",
+    "example": "Glue cataloga archivos S3 y luego Athena consulta la tabla catalogada.",
+    "examCue": "Consulta = Athena; catálogo/ETL = Pegamento."
+  },
+  {
+    "id": "clf-c02-2026-09-15-051",
+    "prompt": "¿Qué hace un AWS Glue crawler?",
+    "answer": "Escanea fuentes de datos, infiere su estructura y crea o actualiza metadatos en Glue Data Catalog.",
+    "explanation": "El rastreador no analiza principalmente los resultados comerciales; hace que los conjuntos de datos sean reconocibles como tablas y esquemas.",
+    "example": "Un rastreador reconoce las columnas de Parquet en S3 y agrega una tabla al catálogo.",
+    "examCue": "Descubrimiento automático de esquemas = rastreador."
+  },
+  {
+    "id": "clf-c02-2026-09-15-052",
+    "prompt": "¿Qué significa ETL?",
+    "answer": "Extraiga datos de fuentes, transfórmelos en un formato útil y cárguelos en un destino.",
+    "explanation": "ETL es un patrón de procesamiento de datos, no un producto de AWS específico.",
+    "example": "Lea archivos de ventas, limpie campos de moneda y escriba datos de Parquet listos para análisis.",
+    "examCue": "Extraer, transformar, cargar."
+  },
+  {
+    "id": "clf-c02-2026-09-15-053",
+    "prompt": "¿Qué es un trabajador en un trabajo ETL AWS Glue?",
+    "answer": "Capacidad de cómputo que ejecuta el trabajo de procesamiento de datos.",
+    "explanation": "Los trabajadores proporcionan CPU y memoria para el trabajo; no son operadores humanos.",
+    "example": "Una transformación mayor puede necesitar más o más trabajadores.",
+    "examCue": "Trabajador = cálculo ETL."
+  },
+  {
+    "id": "clf-c02-2026-09-15-054",
+    "prompt": "¿Cuál es la diferencia entre RPO y RTO?",
+    "answer": "RPO es la cantidad de pérdida de datos aceptable, medida en el tiempo; RTO es el tiempo que puede tardar la restauración del servicio.",
+    "explanation": "RPO busca los datos utilizables más recientes. RTO espera que el servicio vuelva a funcionar.",
+    "example": "Un RPO de 15 minutos permite 15 minutos de actualizaciones perdidas; un RTO de una hora permite que se recupere una hora.",
+    "examCue": "Pérdida de datos = RPO; tiempo de inactividad = RTO."
+  },
+  {
+    "id": "clf-c02-2026-09-15-055",
+    "prompt": "Ordene las cuatro estrategias comunes de recuperación ante desastres de AWS, desde el costo más bajo/recuperación más lenta hasta el costo más alto/recuperación más rápida.",
+    "answer": "Copia de seguridad y restauración, luz piloto, espera en caliente, multisitio activo/activo.",
+    "explanation": "Mantener una mayor parte del entorno de recuperación en funcionamiento continuo generalmente acorta la recuperación pero aumenta el costo.",
+    "example": "Una luz piloto mantiene vivos sólo los núcleos críticos; El modo de espera cálido mantiene un entorno completo reducido.",
+    "examCue": "Más recursos siempre disponibles generalmente significan una recuperación más rápida."
+  },
+  {
+    "id": "clf-c02-2026-09-15-056",
+    "prompt": "Una empresa acepta horas de inactividad y quiere la estrategia de recuperación ante desastres más barata. ¿Qué enfoque encaja?",
+    "answer": "Copia de seguridad y restauración.",
+    "explanation": "Los recursos se pueden reconstruir a partir de copias de seguridad después de un desastre, lo que minimiza el costo constante pero aumenta el tiempo de recuperación.",
+    "example": "Restaure una instantánea de la base de datos y vuelva a implementar la infraestructura después de una interrupción.",
+    "examCue": "El costo más bajo y el más largo RTO = copia de seguridad y restauración."
+  },
+  {
+    "id": "clf-c02-2026-09-15-057",
+    "prompt": "¿Por qué se firman las solicitudes de API de AWS?",
+    "answer": "Para que AWS pueda autenticar a la persona que llama y verificar que la solicitud no haya sido alterada.",
+    "explanation": "La firma se evalúa junto con la autorización IAM.",
+    "example": "AWS CLI firma una solicitud utilizando credenciales configuradas antes de llamar a un endpoint de API.",
+    "examCue": "Solicitud firmada = llamada API autenticada."
+  },
+  {
+    "id": "clf-c02-2026-09-15-058",
+    "prompt": "¿Qué es un nombre de recurso de Amazon (ARN)?",
+    "answer": "Un identificador estandarizado que nombra de forma exclusiva un recurso de AWS.",
+    "explanation": "Las políticas y las API utilizan ARN para hacer referencia precisamente a los recursos.",
+    "example": "Una política de IAM puede nombrar un ARN de bucket de S3 específico.",
+    "examCue": "Identificador único de recursos de AWS = ARN."
+  },
+  {
+    "id": "clf-c02-2026-09-15-059",
+    "prompt": "¿En qué se diferencian los endpoints de la VPC de puerta de enlace y de interfaz?",
+    "answer": "Los endpoints de puerta de enlace utilizan entradas de la tabla de rutas y son compatibles con S3 y DynamoDB; Los endpoints de interfaz utilizan PrivateLink e interfaces de red de IP privada para muchos servicios.",
+    "explanation": "Ambos brindan acceso a servicios privados, pero su implementación y los servicios admitidos difieren.",
+    "example": "Una subred privada llega a S3 a través de un endpoint de puerta de enlace y a Secrets Manager a través de un endpoint de interfaz.",
+    "examCue": "Ruta S3/DynamoDB = puerta de enlace; ENI privado = interfaz."
+  },
+  {
+    "id": "clf-c02-2026-09-15-060",
+    "prompt": "¿En qué se diferencian Amazon SQS y Amazon SNS?",
+    "answer": "SQS almacena mensajes en una cola para que los consumidores los extraigan; SNS envía cada publicación a los endpoints suscritos.",
+    "explanation": "SQS desacopla el trabajo y permite a los consumidores procesar a su ritmo. SNS es útil para la distribución en abanico.",
+    "example": "Una orden ingresa a una cola de trabajadores de SQS; SNS envía una alarma al correo electrónico, Lambda y SQS.",
+    "examCue": "Cola = SQS; distribución = SNS."
+  },
+  {
+    "id": "clf-c02-2026-09-15-061",
+    "prompt": "¿En qué se diferencia Amazon Kinesis de Amazon SQS?",
+    "answer": "Kinesis es un flujo de datos en tiempo real que puede retener registros ordenados para múltiples lectores; SQS es una cola de trabajo donde se procesan y eliminan mensajes.",
+    "explanation": "Elija basándose en análisis de flujo versus procesamiento de tareas desacopladas.",
+    "example": "El análisis de clickstream utiliza Kinesis; Los trabajos de cambio de tamaño de imagen utilizan SQS.",
+    "examCue": "Corriente = Kinesis; cola de tareas = SQS."
+  },
+  {
+    "id": "clf-c02-2026-09-15-062",
+    "prompt": "¿Cuándo es Amazon MQ más adecuado que Amazon SQS?",
+    "answer": "Al migrar una aplicación existente que depende de los protocolos y el comportamiento estándar del agente ActiveMQ o RabbitMQ.",
+    "explanation": "SQS es nativo de AWS y más simple; Amazon MQ reduce la reescritura de aplicaciones compatibles con broker.",
+    "example": "Una aplicación JMS heredada se traslada a ActiveMQ administrado en Amazon MQ.",
+    "examCue": "Compatibilidad de intermediario = Amazon MQ."
+  },
+  {
+    "id": "clf-c02-2026-09-15-063",
+    "prompt": "¿En qué se diferencian los flujos de datos Amazon MSK y Amazon Kinesis?",
+    "answer": "MSK proporciona compatibilidad administrada con Apache Kafka; Kinesis es un servicio de transmisión nativo de AWS.",
+    "explanation": "Los clientes y herramientas de Kafka existentes apuntan a MSK; una nueva corriente nativa de AWS puede favorecer a Kinesis.",
+    "example": "Una empresa mantiene las API de Kafka con MSK en lugar de reescribir a los productores.",
+    "examCue": "Kafka = MSK; Flujo nativo de AWS = Kinesis."
+  },
+  {
+    "id": "clf-c02-2026-09-15-064",
+    "prompt": "¿En qué se diferencian AWS AppSync y Amazon API Gateway?",
+    "answer": "AppSync proporciona API GraphQL administradas y funciones de datos en tiempo real; API Gateway publica y administra las API REST, HTTP y WebSocket.",
+    "explanation": "El estilo de API en la pregunta suele ser la pista más sólida.",
+    "example": "Un backend móvil GraphQL utiliza AppSync; una API REST Lambda utiliza API Gateway.",
+    "examCue": "GraphQL = sincronización de aplicaciones; REST/HTTP/WebSocket = Puerta de enlace API."
+  },
+  {
+    "id": "clf-c02-2026-09-15-065",
+    "prompt": "¿Cuándo debería una carga de trabajo utilizar RDS, DynamoDB o Redshift?",
+    "answer": "RDS para transacciones relacionales, DynamoDB para acceso a documentos/valor clave sin servidor a escala y Redshift para almacenamiento analítico.",
+    "explanation": "Estos servicios optimizan diferentes modelos de datos y patrones de acceso.",
+    "example": "Los pedidos con relaciones SQL utilizan RDS; las sesiones usan DynamoDB; BI en toda la empresa utiliza Redshift.",
+    "examCue": "Transacciones, valor clave, análisis."
+  },
+  {
+    "id": "clf-c02-2026-09-15-066",
+    "prompt": "¿En qué se diferencian AWS Local Zones y AWS Wavelength Zones?",
+    "answer": "Local Zones coloca la infraestructura de AWS cerca de un área metropolitana; Wavelength Zones coloca los servicios de AWS dentro de las redes de telecomunicaciones para aplicaciones 5G de baja latencia.",
+    "explanation": "Ambos acercan AWS a los usuarios, pero Wavelength está específicamente vinculado a las redes de operadores.",
+    "example": "Los medios interactivos en una ciudad pueden utilizar un Local Zone; una aplicación de vehículo conectado 5G puede utilizar Wavelength.",
+    "examCue": "Proximidad del metro = Local Zone; portadora 5G = Longitud de onda."
+  },
+  {
+    "id": "clf-c02-2026-09-15-067",
+    "prompt": "¿Qué hace AWS Trusted Advisor?",
+    "answer": "Inspecciona un entorno de AWS y recomienda mejoras basadas en las mejores prácticas de AWS.",
+    "explanation": "Sus recomendaciones cubren costos, rendimiento, seguridad, tolerancia a fallas, límites de servicio y excelencia operativa.",
+    "example": "Puede identificar recursos inactivos o una configuración de seguridad expuesta.",
+    "examCue": "Recomendaciones de mejores prácticas a nivel de cuenta = Trusted Advisor."
+  },
+  {
+    "id": "clf-c02-2026-09-15-068",
+    "prompt": "¿Qué seis categorías utiliza actualmente Trusted Advisor?",
+    "answer": "Optimización de costos, rendimiento, seguridad, tolerancia a fallas, límites de servicio y excelencia operativa.",
+    "explanation": "El material más antiguo a veces enumera cinco categorías y omite la excelencia operativa.",
+    "example": "Una advertencia de cuota de servicio pertenece a los Límites de servicio.",
+    "examCue": "Trusted Advisor tiene seis categorías actuales."
+  },
+  {
+    "id": "clf-c02-2026-09-15-069",
+    "prompt": "¿En qué se diferencian Trusted Advisor y Well-Architected Tool?",
+    "answer": "Trusted Advisor verifica automáticamente los recursos de la cuenta; Well-Architected Tool guía una revisión estructurada de una carga de trabajo.",
+    "explanation": "Uno saca a la luz recomendaciones operativas de los recursos observados; el otro registra las respuestas de la revisión de la arquitectura y los elementos de mejora.",
+    "example": "Trusted Advisor marca el proceso inactivo; Una revisión de buena arquitectura cuestiona el diseño de recuperación de la carga de trabajo.",
+    "examCue": "Verificaciones de cuentas versus revisión de carga de trabajo."
+  },
+  {
+    "id": "clf-c02-2026-09-15-070",
+    "prompt": "¿En qué se diferencian CloudWatch y Trusted Advisor?",
+    "answer": "CloudWatch monitorea datos operativos en vivo y genera alarmas; Trusted Advisor recomienda periódicamente mejoras en las mejores prácticas.",
+    "explanation": "CloudWatch responde lo que está sucediendo ahora. Trusted Advisor identifica oportunidades de optimización.",
+    "example": "CloudWatch alarmas en CPU alta; Trusted Advisor sugiere cambiar un recurso infrautilizado.",
+    "examCue": "Monitoreo = CloudWatch; consejo = Trusted Advisor."
+  },
+  {
+    "id": "clf-c02-2026-09-15-071",
+    "prompt": "¿Qué preguntas responden CloudWatch, CloudTrail y AWS Config?",
+    "answer": "CloudWatch: ¿cómo se comporta? CloudTrail: ¿quién llamó a la API? Configuración: ¿qué se configuró y cumplía?",
+    "explanation": "Los tres servicios se complementan durante las operaciones y la investigación.",
+    "example": "Aparece una alarma de interrupción en CloudWatch, el actor de cambio en CloudTrail y el historial de configuración en Config.",
+    "examCue": "Comportamiento, actor, configuración."
+  },
+  {
+    "id": "clf-c02-2026-09-15-072",
+    "prompt": "¿Cuál es la diferencia entre el estado general del servicio de AWS y la información AWS Health específica de la cuenta?",
+    "answer": "El estado general del servicio informa eventos amplios del servicio de AWS; El estado específico de la cuenta muestra eventos que pueden afectar sus recursos o su cuenta.",
+    "explanation": "La información de salud personalizada ayuda a priorizar eventos relevantes para el cliente.",
+    "example": "Una interrupción del servicio regional es pública; El mantenimiento programado en su instancia EC2 es específico de la cuenta.",
+    "examCue": "Evento público de AWS versus sus recursos afectados."
+  },
+  {
+    "id": "clf-c02-2026-09-15-073",
+    "prompt": "¿Qué plan AWS Support está incluido para cada cliente?",
+    "answer": "Soporte Básico.",
+    "explanation": "Los planes premium agregan soporte técnico y funciones más amplias; Los nombres y los detalles pueden cambiar, así que utilice la página actual del plan de AWS para conocer los derechos exactos.",
+    "example": "Una nueva cuenta de AWS tiene soporte básico sin comprar una actualización.",
+    "examCue": "Básico está incluido."
+  },
+  {
+    "id": "clf-c02-2026-09-15-074",
+    "prompt": "¿Qué planes premium AWS Support presenta actualmente AWS?",
+    "answer": "Soporte empresarial+, soporte empresarial y operaciones unificadas.",
+    "explanation": "El material anterior de Developer, Business y Enterprise On-Ramp está en transición y no debe tratarse como la alineación actual duradera.",
+    "example": "Una empresa compara Business Support+ con Enterprise Support para las necesidades de producción.",
+    "examCue": "Utilice los nombres de los planes actuales, no una hoja de referencia antigua."
+  },
+  {
+    "id": "clf-c02-2026-09-15-075",
+    "prompt": "¿Es confiable hoy en día la antigua regla “Basic obtiene siete Trusted Advisor controles y Business obtiene todos los controles”?",
+    "answer": "No. El acceso y las funciones de Trusted Advisor han cambiado y dependen del plan de soporte actual y el tipo de recomendación.",
+    "explanation": "Conozca el propósito y las categorías de Trusted Advisor; verificar los derechos actuales en lugar de memorizar el antiguo atajo.",
+    "example": "Una página del plan actual, no una diapositiva del curso heredado, decide el acceso a las funciones.",
+    "examCue": "Evite la obsoleta regla de los siete cheques."
+  },
+  {
+    "id": "clf-c02-2026-09-15-076",
+    "prompt": "Un recurso de AWS parece estar enviando spam o alojando contenido abusivo. ¿Dónde se debe informar?",
+    "answer": "AWS Trust & Safety a través del proceso de informes de abuso de AWS.",
+    "explanation": "AWS investiga los abusos reportados de los recursos de AWS mientras que los clientes siguen siendo responsables de su contenido y la seguridad de su cuenta.",
+    "example": "Un destinatario informa mensajes de phishing que se originan en un recurso alojado en AWS.",
+    "examCue": "Informe de abuso de AWS = Confianza y seguridad."
+  },
+  {
+    "id": "clf-c02-2026-09-15-077",
+    "prompt": "¿Cuál es la solución habitual cuando un servicio de AWS no cumple con un SLA elegible?",
+    "answer": "Créditos de servicio, luego de que el cliente cumpla con las condiciones del SLA y el proceso de reclamo.",
+    "explanation": "Un SLA normalmente no promete un reembolso automático en efectivo ni una compensación por todas las pérdidas comerciales.",
+    "example": "Un reclamo aprobado aplica un crédito a futuros cargos por servicio elegibles.",
+    "examCue": "La solución SLA generalmente significa crédito de servicio."
+  },
+  {
+    "id": "clf-c02-2026-09-15-078",
+    "prompt": "¿Cuándo debería utilizar la Calculadora de precios, el Explorador de costos o AWS Budgets?",
+    "answer": "Utilice la Calculadora de precios antes de la implementación para realizar una estimación; Cost Explorer para analizar el gasto real y previsto; Presupuestos para alertar o actuar sobre umbrales.",
+    "explanation": "Abarcan la planificación, el análisis y el control.",
+    "example": "Calcule una nueva arquitectura, inspeccione el mes pasado y luego reciba $ 500.",
+    "examCue": "Estimar, analizar, alertar."
+  },
+  {
+    "id": "clf-c02-2026-09-15-079",
+    "prompt": "Un equipo quiere recibir un correo electrónico antes de que el gasto mensual en AWS supere la cantidad elegida. ¿Qué servicio debería configurar?",
+    "answer": "AWS Budgets.",
+    "explanation": "Los presupuestos comparan el costo y el uso reales o previstos con los umbrales y pueden notificar o activar acciones configuradas.",
+    "example": "Envíe una alerta cuando el costo mensual previsto alcance el 80% de $1000.",
+    "examCue": "Alerta de umbral = Presupuestos."
+  },
+  {
+    "id": "clf-c02-2026-09-15-080",
+    "prompt": "Un arquitecto quiere estimar el costo mensual de un diseño que no se ha implementado. ¿Qué herramienta encaja?",
+    "answer": "AWS Pricing Calculator.",
+    "explanation": "Modela los servicios y el uso esperado antes de que existan los recursos.",
+    "example": "Compare los costos estimados para dos EC2 y diseños de almacenamiento.",
+    "examCue": "Estimación previa a la implementación = Calculadora de precios."
+  },
+  {
+    "id": "clf-c02-2026-09-15-081",
+    "prompt": "Finanzas quiere encontrar qué servicio causó el aumento de costos del mes pasado. ¿Qué herramienta encaja?",
+    "answer": "AWS Cost Explorer.",
+    "explanation": "Cost Explorer analiza el uso y el costo históricos y puede agrupar o filtrar los datos.",
+    "example": "Agrupe el gasto del mes pasado por servicio y cuenta vinculada.",
+    "examCue": "Análisis de costos históricos = Explorador de costos."
+  },
+  {
+    "id": "clf-c02-2026-09-15-082",
+    "prompt": "¿Cómo funcionan juntos AWS DMS y DMS Schema Conversion en una migración de base de datos heterogénea?",
+    "answer": "DMS mueve o replica los datos; DMS Schema Conversion evalúa y convierte el esquema y el código de la base de datos para el motor de destino.",
+    "explanation": "Cambiar los motores de bases de datos a menudo requiere tanto el movimiento de datos como la conversión de esquemas.",
+    "example": "Mueva datos de Oracle a PostgreSQL mientras convierte objetos de esquema incompatibles.",
+    "examCue": "Movimiento de datos más conversión de esquemas."
+  },
+  {
+    "id": "clf-c02-2026-09-15-083",
+    "prompt": "¿Cuál es el servicio de AWS preferido actualmente para la conversión de esquemas de bases de datos heterogéneas?",
+    "answer": "DMS Schema Conversion.",
+    "explanation": "La herramienta de conversión de esquemas de AWS es ahora la ruta heredada; El nuevo material de estudio debería preferir la capacidad DMS.",
+    "example": "Evalúe un esquema de Oracle a Aurora PostgreSQL dentro de AWS DMS.",
+    "examCue": "Prefiera DMS Schema Conversion a SCT heredado."
+  },
+  {
+    "id": "clf-c02-2026-09-15-084",
+    "prompt": "¿En qué se diferencian AWS Architecture Center y AWS Marketplace?",
+    "answer": "Centro de Arquitectura enseña diseños y mejores prácticas; Marketplace permite a los clientes obtener software, datos y servicios de terceros.",
+    "explanation": "El Centro de arquitectura es una guía, mientras que Marketplace es un catálogo de adquisición e implementación.",
+    "example": "Lea un patrón sin servidor en el Centro de arquitectura; suscribirse a un producto de seguridad en Marketplace.",
+    "examCue": "Orientación versus catálogo."
+  }
+]

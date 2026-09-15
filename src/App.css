@@ -64,13 +64,23 @@ h2 { font-size: 17px; font-weight: 600; margin: 0; }
 
 .review-layout { min-height: calc(100vh - 48px); display: grid; grid-template-rows: auto 1fr auto; padding: 10px 24px 0; }
 .review-meta { width: min(880px, 100%); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; min-height: 32px; color: var(--muted); font-size: 13px; }
+.review-meta-actions { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
+.language-toggle { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; padding: 3px 7px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--surface); color: var(--muted); cursor: pointer; font-size: 11px; }
+.language-toggle:hover { background: var(--surface-muted); color: var(--text); }
+.language-toggle .active { color: var(--accent); font-weight: 700; }
 .queue-counts { display: flex; gap: 10px; font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; }
 .review-card { width: min(880px, 100%); margin: 10px auto 18px; align-self: center; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; min-height: 390px; display: flex; flex-direction: column; }
 .card-label { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--surface-muted); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 12px; }
 .card-schedule-state { color: var(--accent); white-space: nowrap; }
 .question-block { padding: clamp(38px, 7vh, 76px) clamp(24px, 7vw, 88px); text-align: center; flex: 1; display: grid; align-content: center; }
 .eyebrow { margin: 0 0 16px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
-.question-block h1 { margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.35; font-weight: 500; letter-spacing: -.015em; }
+.question-help-trigger { display: inline-flex; align-items: flex-start; justify-content: center; gap: 10px; margin: 0; padding: 4px; border: 0; background: transparent; color: var(--text); cursor: pointer; font: inherit; }
+.question-help-trigger > span { font-size: clamp(23px, 3vw, 32px); line-height: 1.35; font-weight: 500; letter-spacing: -.015em; }
+.question-help-trigger svg { flex: 0 0 auto; margin-top: 9px; color: var(--muted); }
+.question-help-trigger:hover svg, .question-help-trigger[aria-expanded="true"] svg { color: var(--accent); }
+.question-help-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.simple-help { width: min(620px, 100%); margin: 20px auto 0; padding: 12px 14px; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 4px; background: var(--surface-muted); text-align: left; font-size: 14px; line-height: 1.5; }
+.simple-help p { margin: 4px 0 0; color: var(--muted); }
 .answer-block { margin: 0 clamp(24px, 7vw, 88px); padding: 28px 0 34px; border-top: 1px solid var(--border-strong); text-align: left; font-size: 16px; line-height: 1.58; }
 .answer-block p { margin: 0 0 14px; }
 .answer-title { font-size: 21px; font-weight: 600; color: var(--review); }
@@ -196,7 +206,11 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
   .review-layout { min-height: calc(100vh - 104px); padding: 8px 10px 0; }
   .review-card { min-height: 0; align-self: stretch; margin-bottom: 10px; }
   .question-block { padding: 42px 20px; }
-  .question-block h1 { font-size: 23px; }
+  .review-meta { align-items: flex-start; gap: 8px; }
+  .review-meta > span { max-width: 65%; }
+  .review-meta-actions { gap: 8px; }
+  .question-help-trigger > span { font-size: 23px; }
+  .question-help-trigger svg { margin-top: 6px; }
   .answer-block { margin: 0 20px; padding: 22px 0 28px; }
   .review-footer { position: sticky; bottom: 0; min-height: 82px; margin: 0 -10px; padding: 8px 10px max(10px, env(safe-area-inset-bottom)); grid-template-columns: 1fr; gap: 6px; }
   .footer-actions, .more-button { display: none; }
