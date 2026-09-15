@@ -13,7 +13,7 @@ AWS Study is a public, English-language flashcard PWA for AWS certifications. Th
 
 Approved cards carry both `studyDate` and `sourceChat`. Reports that happen on the same date remain distinct chats. Daily Review enforces the configured new-card allowance across the whole local calendar day; Custom Study supports 10/20/50/all matching cards filtered by chat, exam domain, and topic, with scheduled or randomized ordering.
 
-Card answers should be concise and understandable without sacrificing accuracy. Use `explanation` for the why and optional `example` for a concrete situation; the UI and Anki export render both.
+Card answers should be concise and understandable without sacrificing accuracy. Use `explanation` for the why and `example` for a concrete situation; every approved card currently carries all three layers, and the UI and Anki export render them.
 
 Potential gaps never count as studied and never enter the review queue without approval.
 

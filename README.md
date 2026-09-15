@@ -1,6 +1,6 @@
 # AWS Study
 
-An Anki-inspired progressive web app for studying AWS certifications with versioned knowledge, reviewed flashcards, FSRS scheduling, exam practice, optional Firebase sync, and Anki export. Answers use plain language and can include a separate practical example.
+An Anki-inspired progressive web app for studying AWS certifications with versioned knowledge, reviewed flashcards, FSRS scheduling, exam practice, optional Firebase sync, and Anki export. Every approved card combines a concise answer, a plain-language explanation, and a separate practical example.
 
 Daily Review enforces one new-card allowance across the entire local calendar day. Custom Study can be scoped by individual Gemini chat, CLF-C02 exam domain, or topic; sessions can contain 10, 20, 50, or every matching card in scheduled or randomized order. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review.
 

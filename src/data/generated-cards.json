@@ -17,11 +17,12 @@
     "prompt": "What is the core difference between Amazon SQS and Amazon SNS?",
     "answer": "SQS stores messages in a queue for consumers to poll and process; SNS pushes each publication to subscribed endpoints.",
     "explanation": "SQS supports decoupled work queues, while SNS supports publish/subscribe fan-out.",
+    "example": "An order is placed in SQS for one worker to process, while an SNS topic sends the order notification to email, Lambda, and another queue.",
     "examCue": "Queue and poll = SQS; topic and fan-out = SNS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-015",
@@ -38,13 +39,14 @@
     ],
     "type": "scenario",
     "prompt": "An order-processing service must absorb traffic spikes and let workers process jobs independently. Which service is the best fit?",
-    "answer": "Amazon SQS.",
+    "answer": "Amazon SQS. It buffers each job in a queue until a worker is ready to process it.",
     "explanation": "A queue buffers work and decouples producers from consumers so each side can scale independently.",
+    "example": "An online store places each order in a queue, and available workers process the orders at their own pace.",
     "examCue": "Buffered asynchronous jobs point to SQS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-016",
@@ -61,13 +63,14 @@
     ],
     "type": "scenario",
     "prompt": "One alarm must notify email recipients, a Lambda function, and an SQS queue at the same time. Which service fits?",
-    "answer": "Amazon SNS.",
+    "answer": "Amazon SNS. It publishes one message to multiple subscribed destinations.",
     "explanation": "An SNS topic can fan one publication out to multiple subscribed endpoints.",
+    "example": "One CloudWatch alarm publishes to an SNS topic whose subscribers include an email address, a Lambda function, and an SQS queue.",
     "examCue": "One message to many subscribers points to SNS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-017",
@@ -86,11 +89,12 @@
     "prompt": "What does Amazon EC2 provide?",
     "answer": "Resizable virtual compute instances in AWS.",
     "explanation": "EC2 gives customers control of the guest operating system and application stack on virtual machines.",
+    "example": "A team launches a Linux EC2 instance, selects its CPU and memory size, and installs its own web application.",
     "examCue": "Virtual servers or instances point to EC2.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-018",
@@ -107,13 +111,14 @@
     ],
     "type": "scenario",
     "prompt": "A team needs MySQL but wants AWS to manage the underlying database infrastructure and routine platform operations. Which service should it evaluate?",
-    "answer": "Amazon RDS.",
+    "answer": "Amazon RDS. It runs familiar relational database engines while AWS handles much of the infrastructure work.",
     "explanation": "RDS is a managed relational database service; the customer still owns data, access, schemas, and configuration choices.",
+    "example": "A company runs PostgreSQL on RDS so AWS handles backups and database infrastructure while the team manages its schema and data.",
     "examCue": "Managed relational engines point to RDS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-019",
@@ -130,11 +135,12 @@
     "prompt": "What does Infrastructure as a Service provide, and what major control remains with the customer?",
     "answer": "It provides virtualized infrastructure; the customer retains control of the guest operating system, applications, data, and many configurations.",
     "explanation": "IaaS removes physical-hardware ownership without removing workload administration.",
+    "example": "AWS supplies the EC2 hardware and virtualization, while the customer patches the guest OS and manages the application.",
     "examCue": "More customer control also means more customer responsibility.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-020",
@@ -151,11 +157,12 @@
     "prompt": "How are the AWS Management Console, CLI, SDKs, and IaC tools related to AWS service APIs?",
     "answer": "They are different interfaces that ultimately invoke AWS service APIs.",
     "explanation": "“Single unified API” is only a mental model; it is not the name of one AWS product or one literal endpoint.",
+    "example": "Creating a bucket through the console or CLI ultimately results in a request to the S3 service API.",
     "examCue": "Console clicks also become API requests.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-021",
@@ -172,11 +179,12 @@
     "prompt": "What benefits does Infrastructure as Code provide?",
     "answer": "Repeatable, version-controlled, reviewable, and automated infrastructure provisioning.",
     "explanation": "Machine-readable definitions reduce manual configuration drift and support consistent environments.",
+    "example": "A version-controlled template creates the same network in development and production instead of relying on manual clicks.",
     "examCue": "Repeatability and version control point to IaC.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-022",
@@ -195,11 +203,12 @@
     "prompt": "Why is Terraform better described as an orchestrator than as an application compiler?",
     "answer": "It builds a plan and calls provider APIs to reach a desired infrastructure state; it does not produce an application binary.",
     "explanation": "Terraform reads HCL and coordinates resource changes through provider APIs.",
+    "example": "Terraform compares configuration with current infrastructure, creates a plan, and calls provider APIs; it never compiles the web application itself.",
     "examCue": "Plan plus provider API calls, not executable binaries.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-023",
@@ -216,11 +225,12 @@
     "prompt": "Complete the relationship: An AWS Region contains multiple isolated ________.",
     "answer": "Availability Zones.",
     "explanation": "Regions are separate geographic areas, and multi-AZ design provides isolation within a Region.",
+    "example": "A workload runs in two AZs in the same Region so one data-center failure does not stop the service.",
     "examCue": "Region → multiple AZs.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-024",
@@ -237,11 +247,12 @@
     "prompt": "What is an Availability Zone?",
     "answer": "One or more discrete data centers with redundant power, networking, and connectivity within an AWS Region.",
     "explanation": "AZs are designed for fault isolation while maintaining low-latency connectivity to other AZs in the Region.",
+    "example": "A workload runs in two AZs in the same Region so one data-center failure does not stop the service.",
     "examCue": "An AZ can contain more than one data center.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-025",
@@ -260,11 +271,12 @@
     "prompt": "What is the geographic scope of an Amazon VPC?",
     "answer": "A VPC belongs to one AWS Region and can span that Region’s Availability Zones.",
     "explanation": "Subnets divide the VPC at the AZ level.",
+    "example": "A VPC in eu-west-1 can contain subnets in several AZs there, but it cannot extend into eu-central-1.",
     "examCue": "VPC = Regional; subnet = one AZ.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-026",
@@ -283,11 +295,12 @@
     "prompt": "Can one subnet span multiple Availability Zones?",
     "answer": "No. A subnet resides entirely within one Availability Zone.",
     "explanation": "An Availability Zone can contain multiple subnets, but a subnet cannot cross AZ boundaries.",
+    "example": "A company creates one public and one private subnet in each of two Availability Zones for resilience.",
     "examCue": "Subnet scope is one AZ.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-027",
@@ -307,11 +320,12 @@
     "prompt": "An EC2 instance is placed in a subnet whose route table has a route to an internet gateway. Is the instance automatically reachable from the internet?",
     "answer": "No. It also needs an appropriate public address and security rules that allow the traffic.",
     "explanation": "A route makes the subnet public, but internet reachability depends on routing, addressing, and filtering together.",
+    "example": "A public web server needs a public IP, a route to the internet gateway, and security rules allowing HTTPS.",
     "examCue": "Public subnet placement alone is insufficient.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-028",
@@ -328,11 +342,12 @@
     "prompt": "Why might `us-east-1a` refer to different physical zones in two AWS accounts?",
     "answer": "Availability Zone letter mappings can differ by account.",
     "explanation": "Use AZ IDs when different accounts must coordinate on the same physical Availability Zone.",
+    "example": "Two accounts compare the AZ ID use1-az2 because the label us-east-1a may map differently in each account.",
     "examCue": "AZ letters are account-relative.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-029",
@@ -351,11 +366,12 @@
     "prompt": "How can an S3 bucket be Regional while its name is globally unique?",
     "answer": "The bucket’s data resides in a selected Region, while its name must be unique across the general-purpose bucket namespace.",
     "explanation": "A global console view and global naming do not mean that bucket data is automatically stored worldwide.",
+    "example": "The name company-receipts must be globally unique, but its objects can still reside only in the selected eu-west-1 Region.",
     "examCue": "Global name, Regional data.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-030",
@@ -372,6 +388,7 @@
     "prompt": "Which THREE factors commonly influence AWS Region selection?",
     "answer": "Latency to users, regulatory or data-location requirements, and service availability or price.",
     "explanation": "Region choice is a business and technical decision; no single Region is best for every workload.",
+    "example": "A company chooses Frankfurt because its users are nearby, required services are available, and data must remain in the EU.",
     "examCue": "Look for proximity, compliance, features, resilience, and cost.",
     "options": [
       {
@@ -403,7 +420,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-031",
@@ -422,11 +439,12 @@
     "prompt": "Which two practices best protect the AWS account root user?",
     "answer": "Enable MFA and reserve the root user for tasks that explicitly require it.",
     "explanation": "The root user has unrestricted account access and should not be used for routine administration.",
+    "example": "An administrator uses a normal role every day and opens the root account only for a task that specifically requires root.",
     "examCue": "Protect root; do not use it daily.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-032",
@@ -445,11 +463,12 @@
     "prompt": "Does an IAM user require its own external email address or payment method?",
     "answer": "No. It is an identity defined inside one AWS account.",
     "explanation": "Usage performed by the IAM user is billed to the AWS account.",
+    "example": "A developer can have an IAM identity inside the company account without owning a separate AWS account, email subscription, or payment method.",
     "examCue": "IAM users are account-local identities.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-033",
@@ -468,11 +487,12 @@
     "prompt": "Distinguish authentication from authorization.",
     "answer": "Authentication verifies who the caller is; authorization determines what that identity may do.",
     "explanation": "Both are required to securely evaluate AWS requests.",
+    "example": "Signing in proves Alice’s identity; her policies then decide whether she may read a particular S3 bucket.",
     "examCue": "Who are you? vs. what may you do?",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-034",
@@ -491,11 +511,12 @@
     "prompt": "What permissions does a newly created IAM identity receive merely by existing?",
     "answer": "None. Permissions must be granted through applicable authorization policies and mechanisms.",
     "explanation": "AWS access is not granted automatically to a new identity.",
+    "example": "A newly created analyst user cannot open an S3 report until an applicable policy explicitly grants read access.",
     "examCue": "New identity does not mean authorized identity.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-035",
@@ -514,11 +535,12 @@
     "prompt": "Complete the common IAM policy elements: Effect, Action, Resource, and optional ________.",
     "answer": "Condition.",
     "explanation": "Conditions narrow when a statement applies, such as by source, time, tags, or other context keys.",
+    "example": "A policy permits an administrative action only when the request is authenticated with MFA.",
     "examCue": "Effect + Action + Resource + Condition.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-036",
@@ -537,11 +559,12 @@
     "prompt": "A developer needs read access to one S3 bucket for one project. Which approach follows least privilege?",
     "answer": "Grant only the required read actions on that bucket, not broad administrator or all-S3 permissions.",
     "explanation": "Least privilege limits permissions to the task and resource actually required.",
+    "example": "A reporting user receives only read access to one reports bucket, not administrator access to the account.",
     "examCue": "Prefer the narrowest sufficient policy.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-037",
@@ -560,11 +583,12 @@
     "prompt": "What are the two parts of an IAM access key?",
     "answer": "An access key ID and a secret access key.",
     "explanation": "Both are used to sign programmatic requests; the secret access key is retrievable only when created.",
+    "example": "A CLI profile may contain AKIA… as the access key ID and a separate secret value used together to sign requests.",
     "examCue": "Access key ID identifies; secret key signs.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-038",
@@ -583,11 +607,12 @@
     "prompt": "How can an IAM user rotate an access key without an abrupt application outage?",
     "answer": "Create the second key, update and test the application, then deactivate and delete the old key.",
     "explanation": "An IAM user can have at most two access keys, which supports an overlap during rotation.",
+    "example": "Create a second key, switch and test the application with it, and only then deactivate and remove the first key.",
     "examCue": "New key first; old key last.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-039",
@@ -606,11 +631,12 @@
     "prompt": "What is the preferred alternative to long-lived access keys for AWS workloads?",
     "answer": "IAM roles and temporary security credentials.",
     "explanation": "Temporary credentials reduce the risk and maintenance burden of static secrets.",
+    "example": "An EC2 application assumes a role and receives temporary credentials instead of storing a secret key in a file.",
     "examCue": "Prefer roles over embedded keys.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-040",
@@ -629,11 +655,12 @@
     "prompt": "Who patches the guest operating system on an Amazon EC2 instance?",
     "answer": "The customer.",
     "explanation": "AWS secures the physical infrastructure and virtualization layer; the customer manages the guest OS and applications.",
+    "example": "For EC2, AWS maintains the physical host, but the customer installs operating-system security updates.",
     "examCue": "Guest OS on EC2 = customer.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-041",
@@ -652,11 +679,12 @@
     "prompt": "Which Lambda security responsibilities remain with the customer?",
     "answer": "Function code and libraries, data, IAM permissions, and resource configuration.",
     "explanation": "AWS manages the underlying infrastructure, operating system, and managed runtime platform.",
+    "example": "AWS patches Lambda infrastructure, while the customer fixes a vulnerable library bundled with the function.",
     "examCue": "Serverless reduces operations; it does not remove customer responsibility.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-042",
@@ -675,11 +703,12 @@
     "prompt": "Do service control policies grant permissions?",
     "answer": "No. SCPs set the maximum available permissions for principals in member accounts.",
     "explanation": "IAM or resource policies must still grant access, and an explicit restriction from an applicable SCP limits the result.",
+    "example": "An SCP blocks member accounts from disabling CloudTrail, but an IAM role still needs its own permission to use CloudTrail.",
     "examCue": "SCP = guardrail, not grant.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-043",
@@ -696,13 +725,14 @@
     ],
     "type": "scenario",
     "prompt": "A company needs to record resource configurations and evaluate them continuously against rules. Which service fits?",
-    "answer": "AWS Config.",
+    "answer": "AWS Config. It records resource configuration history and evaluates resources against compliance rules.",
     "explanation": "AWS Config records supported configuration history and evaluates compliance. Remediation is optional and must be configured.",
+    "example": "Config shows that a security group became noncompliant after someone opened port 22 to the whole internet.",
     "examCue": "Configuration history and rules point to Config.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-044",
@@ -719,11 +749,12 @@
     "prompt": "Distinguish data residency from data sovereignty.",
     "answer": "Residency is where data is physically stored; sovereignty is the legal jurisdiction and authority governing it.",
     "explanation": "Compliance requirements may impose controls based on both location and jurisdiction.",
+    "example": "Customer records may physically reside in Germany, while applicable law determines which government has legal authority over them.",
     "examCue": "Where stored vs. whose law applies.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-045",
@@ -742,11 +773,12 @@
     "prompt": "Which AWS environment is designed for eligible U.S. government and highly regulated workloads with isolated Regions?",
     "answer": "AWS GovCloud (US).",
     "explanation": "GovCloud has specific eligibility and access requirements; it is not simply a general Region available to any individual.",
+    "example": "An eligible U.S. government contractor runs a regulated workload in an isolated AWS GovCloud (US) Region.",
     "examCue": "U.S. regulated government workloads point to GovCloud.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-046",
@@ -765,11 +797,12 @@
     "prompt": "List the defining characteristics of a security group.",
     "answer": "It is stateful, applies at the resource network-interface level, and supports allow rules only.",
     "explanation": "Security groups evaluate all applicable rules and automatically allow response traffic for an allowed flow.",
+    "example": "A web server security group permits inbound HTTPS, and the response traffic is allowed automatically.",
     "examCue": "Stateful + allow-only + resource/ENI level.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-047",
@@ -788,11 +821,12 @@
     "prompt": "List the defining characteristics of a network ACL.",
     "answer": "It is stateless, applies at subnet boundaries, supports allow and deny rules, and processes numbered rules in ascending order.",
     "explanation": "Inbound and outbound traffic are evaluated separately.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Stateless + allow/deny + subnet level.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-048",
@@ -810,11 +844,12 @@
     "prompt": "When should a security group be preferred over a network ACL?",
     "answer": "Use security groups for fine-grained resource access; use NACLs as coarse-grained subnet guardrails or defense in depth.",
     "explanation": "Security groups are more versatile because they are stateful and can reference other security groups.",
+    "example": "Use a security group to allow HTTPS to selected servers; add a NACL when the whole subnet needs a coarse rule such as denying one CIDR.",
     "examCue": "Primary resource firewall = security group.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-049",
@@ -833,11 +868,12 @@
     "prompt": "A security group allows an inbound HTTPS request. Must a separate outbound rule allow the response to that request?",
     "answer": "No. Response traffic is automatically allowed because security groups are stateful.",
     "explanation": "State tracking permits the return flow regardless of outbound rules.",
+    "example": "A web server security group permits inbound HTTPS, and the response traffic is allowed automatically.",
     "examCue": "Allowed flow responses bypass separate outbound matching.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-050",
@@ -854,13 +890,14 @@
     ],
     "type": "scenario",
     "prompt": "Which VPC control can explicitly deny a known malicious IP range for an entire subnet?",
-    "answer": "A network ACL.",
+    "answer": "A network ACL. It can apply an explicit deny rule to traffic crossing the subnet boundary.",
     "explanation": "NACLs support deny rules at subnet boundaries; security groups support allow rules only.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Explicit subnet deny points to NACL.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-051",
@@ -880,11 +917,12 @@
     "prompt": "Is an S3 bucket placed inside a customer VPC subnet?",
     "answer": "No. S3 is a managed Regional service outside customer subnets.",
     "explanation": "VPC resources can reach S3 through public service endpoints or supported VPC endpoints.",
+    "example": "An S3 bucket is not launched into 10.0.1.0/24; private VPC resources reach the Regional S3 service through an endpoint.",
     "examCue": "Buckets do not receive subnet CIDR addresses.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-052",
@@ -904,11 +942,12 @@
     "prompt": "Which services support gateway VPC endpoints, and what is the endpoint charge?",
     "answer": "Amazon S3 and DynamoDB; there is no additional charge for the gateway endpoint.",
     "explanation": "Gateway endpoints add service-prefix routes to selected VPC route tables.",
+    "example": "A route table can send private S3 or DynamoDB traffic through a free gateway endpoint instead of a NAT gateway.",
     "examCue": "S3/DynamoDB + route table + no endpoint charge.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-053",
@@ -927,11 +966,12 @@
     "prompt": "How does an interface VPC endpoint connect a VPC privately to a service?",
     "answer": "It creates elastic network interfaces with private IP addresses and uses AWS PrivateLink.",
     "explanation": "Interface endpoints can use security groups and normally incur endpoint-hour and data-processing charges.",
+    "example": "A private application reaches Secrets Manager through private endpoint IP addresses protected by a security group.",
     "examCue": "ENI + private IP + PrivateLink.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-054",
@@ -949,13 +989,14 @@
     ],
     "type": "scenario",
     "prompt": "EC2 instances in a private subnet need ordinary same-Region access to S3 without a NAT gateway and without an endpoint-hour charge. What should be used?",
-    "answer": "An S3 gateway VPC endpoint.",
+    "answer": "An S3 gateway VPC endpoint. It provides private S3 access through route-table entries without an hourly endpoint charge.",
     "explanation": "A gateway endpoint routes S3 traffic through selected route tables with no additional endpoint charge.",
+    "example": "Private instances reach S3 through a route-table entry without using a NAT gateway.",
     "examCue": "Private S3 access and no endpoint charge point to gateway endpoint.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-055",
@@ -973,11 +1014,12 @@
     "prompt": "A company needs a dedicated, predictable network connection from its data center to AWS. Which service fits?",
     "answer": "AWS Direct Connect.",
     "explanation": "Direct Connect establishes dedicated connectivity for hybrid bandwidth and consistency requirements.",
+    "example": "A data center uses a dedicated link to AWS for more consistent hybrid network performance than an internet-based connection.",
     "examCue": "Dedicated private connectivity from premises points to Direct Connect.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-056",
@@ -994,13 +1036,14 @@
     ],
     "type": "scenario",
     "prompt": "Which service caches HTTP/HTTPS content at edge locations close to viewers?",
-    "answer": "Amazon CloudFront.",
+    "answer": "Amazon CloudFront. It caches web content near viewers to reduce latency and origin load.",
     "explanation": "CloudFront is AWS’s content delivery network and reduces origin load and viewer latency.",
+    "example": "A website caches images at edge locations so distant visitors do not fetch every image from the origin Region.",
     "examCue": "CDN and edge cache point to CloudFront.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-057",
@@ -1019,11 +1062,12 @@
     "prompt": "What does a CloudFront invalidation do?",
     "answer": "It removes selected objects from CloudFront caches before their normal expiration.",
     "explanation": "Use invalidation when updated content must be fetched from the origin before its TTL expires.",
+    "example": "After correcting a CSS file, a team invalidates that path so viewers receive the new version before the old TTL expires.",
     "examCue": "Force early cache removal.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-058",
@@ -1042,11 +1086,12 @@
     "prompt": "What does AWS Global Accelerator provide for an IPv4 accelerator by default?",
     "answer": "Two static anycast IPv4 addresses that route supported traffic through the AWS global network.",
     "explanation": "Global Accelerator improves network-path performance and failover without caching application content.",
+    "example": "A global game uses two fixed anycast IP addresses to route UDP players onto the AWS network without caching content.",
     "examCue": "Static anycast IPs and no cache.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-059",
@@ -1066,11 +1111,12 @@
     "prompt": "When should CloudFront be selected instead of Global Accelerator?",
     "answer": "Choose CloudFront when HTTP/HTTPS content should be cached; choose Global Accelerator for network acceleration and static anycast entry points without caching.",
     "explanation": "Both use edge infrastructure, but they solve different layers of the problem.",
+    "example": "CloudFront caches website images near viewers; Global Accelerator instead speeds a non-cacheable game connection through static anycast IPs.",
     "examCue": "Cache = CloudFront; route = Global Accelerator.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-060",
@@ -1087,13 +1133,14 @@
     ],
     "type": "scenario",
     "prompt": "Globally distributed users must upload large files to one distant S3 bucket faster. Which feature should be evaluated?",
-    "answer": "S3 Transfer Acceleration.",
+    "answer": "S3 Transfer Acceleration. It uses AWS edge locations and optimized network paths to speed long-distance S3 transfers.",
     "explanation": "It uses AWS edge infrastructure and optimized network paths for long-distance S3 transfers.",
+    "example": "Users in several continents upload large video files to one distant S3 bucket through nearby AWS edge locations.",
     "examCue": "Long-distance S3 upload points to Transfer Acceleration.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-061",
@@ -1112,11 +1159,12 @@
     "prompt": "Distinguish AWS Local Zones from AWS Wavelength.",
     "answer": "Local Zones place selected AWS infrastructure near metro areas; Wavelength places infrastructure within communications-provider networks for carrier-edge workloads.",
     "explanation": "Both reduce latency, but the target access environment differs.",
+    "example": "A metro rendering workload may use a Local Zone, while a 5G vehicle application may use a Wavelength Zone inside a carrier network.",
     "examCue": "Metro extension vs. carrier network edge.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-062",
@@ -1133,13 +1181,14 @@
     ],
     "type": "scenario",
     "prompt": "A workload needs AWS-managed infrastructure installed at the customer’s premises for local processing. Which service fits?",
-    "answer": "AWS Outposts.",
+    "answer": "AWS Outposts. It brings AWS-managed infrastructure and selected services into the customer’s own facility.",
     "explanation": "Outposts extends AWS infrastructure, APIs, and selected services to customer locations.",
+    "example": "A factory processes data locally on AWS-managed racks installed in its own building because it needs very low on-premises latency.",
     "examCue": "AWS hardware and services on premises point to Outposts.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-063",
@@ -1158,11 +1207,12 @@
     "prompt": "What storage model does Amazon S3 provide?",
     "answer": "Regional object storage accessed through APIs.",
     "explanation": "S3 stores objects in buckets; prefixes create a folder-like view but not a traditional mounted file system.",
+    "example": "A photo is stored as an object in a bucket and retrieved through an S3 API request rather than mounted as a disk block.",
     "examCue": "Object = S3.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-064",
@@ -1181,11 +1231,12 @@
     "prompt": "What storage model does Amazon EBS provide?",
     "answer": "Durable block storage volumes for Amazon EC2.",
     "explanation": "An EBS volume behaves like a block device and must be in the same AZ as the attached instance.",
+    "example": "A database server attaches an EBS volume as a block device in the same Availability Zone.",
     "examCue": "Block volume for EC2 = EBS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-065",
@@ -1204,11 +1255,12 @@
     "prompt": "Is it always true that one EBS volume can attach to only one EC2 instance?",
     "answer": "No. That is the normal model, but supported io1/io2 volumes can use Multi-Attach with multiple Nitro-based instances in the same AZ.",
     "explanation": "Multi-Attach is constrained and requires applications or clustered file systems that safely coordinate writes.",
+    "example": "Two supported Nitro instances in one AZ attach the same io2 volume, while a cluster-aware application coordinates their writes.",
     "examCue": "Know the exception without treating it as the default.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-066",
@@ -1227,11 +1279,12 @@
     "prompt": "What storage model and protocol does Amazon EFS provide?",
     "answer": "Elastic shared file storage using NFS.",
     "explanation": "Multiple compute instances can mount the same EFS file system. EFS does not provide SMB.",
+    "example": "Hundreds of Linux EC2 instances mount the same EFS directory over NFS.",
     "examCue": "Shared Linux/NFS file system = EFS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-067",
@@ -1252,11 +1305,12 @@
     "prompt": "Match S3, EBS, and EFS to their primary access models.",
     "answer": "S3 = object/API; EBS = EC2 block device; EFS = shared NFS file system.",
     "explanation": "Choose storage by access semantics, sharing, and workload needs.",
+    "example": "Store photos as S3 objects, attach EBS as one server’s disk, and mount EFS when many Linux servers need the same directory.",
     "examCue": "Object, block, file.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-068",
@@ -1276,11 +1330,12 @@
     "prompt": "Does an EBS volume always survive termination of its EC2 instance?",
     "answer": "Not always. EBS can persist independently, but a delete-on-termination setting may remove it.",
     "explanation": "Persistence capability and lifecycle configuration are different facts.",
+    "example": "A root EBS volume marked delete-on-termination disappears with the instance, while a retained data volume can survive.",
     "examCue": "Check delete-on-termination.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-069",
@@ -1299,11 +1354,12 @@
     "prompt": "What persistent storage does a standard AWS CloudShell environment provide?",
     "answer": "A 1 GB home directory per supported Region, retained until 120 days of inactivity in that Region.",
     "explanation": "Temporary storage outside the home directory is recycled; CloudShell VPC environments do not have the same persistent home storage.",
+    "example": "A script saved in the CloudShell home directory remains available when the user returns to that Region later.",
     "examCue": "Standard CloudShell home is Regional and time-limited by inactivity.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-070",
@@ -1322,11 +1378,12 @@
     "prompt": "What are the main functions of Amazon CloudWatch?",
     "answer": "Collect metrics and logs, visualize dashboards, and create alarms and automated responses.",
     "explanation": "CloudWatch focuses on operational telemetry and application/resource health.",
+    "example": "A CloudWatch alarm sends a notification when an application’s error metric exceeds its threshold.",
     "examCue": "Metrics, logs, alarms, dashboards.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-071",
@@ -1346,11 +1403,12 @@
     "prompt": "An administrator wants EC2 guest-memory utilization in CloudWatch. Is it available as a standard EC2 metric?",
     "answer": "No. Install the CloudWatch agent or publish a custom metric.",
     "explanation": "The EC2 service exposes infrastructure metrics such as CPU, but guest OS memory requires in-instance telemetry.",
+    "example": "The CloudWatch agent running inside an EC2 instance publishes memory utilization that EC2 does not provide by default.",
     "examCue": "Guest memory needs an agent.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-072",
@@ -1369,11 +1427,12 @@
     "prompt": "Does creating an AWS Budget automatically impose a hard spending cap?",
     "answer": "No. Budgets monitor thresholds and notify; optional budget actions must be configured separately.",
     "explanation": "Resources keep running by default after a budget threshold is crossed.",
+    "example": "Crossing an $500 Budget threshold sends an alert, but the running EC2 instances continue unless a separate budget action is configured.",
     "examCue": "Budget is not a default kill switch.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-073",
@@ -1392,11 +1451,12 @@
     "prompt": "When should AWS Budgets be used instead of AWS Cost Explorer?",
     "answer": "Use Budgets for thresholds, alerts, and optional actions; use Cost Explorer to analyze and visualize cost and usage trends.",
     "explanation": "One watches against a target; the other supports investigation and analysis.",
+    "example": "Use Cost Explorer to discover last month’s increase, then create an AWS Budget to alert when next month’s forecast reaches $500.",
     "examCue": "Threshold = Budgets; analysis = Cost Explorer.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-074",
@@ -1416,11 +1476,12 @@
     "prompt": "Distinguish CloudWatch from AWS Budgets.",
     "answer": "CloudWatch monitors operational telemetry; AWS Budgets tracks cost or usage against financial or consumption thresholds.",
     "explanation": "Both can alert, but they observe different data and answer different questions.",
+    "example": "CloudWatch alarms when application latency rises; AWS Budgets alerts when forecasted monthly spending crosses a financial threshold.",
     "examCue": "Technical health vs. budget threshold.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-075",
@@ -1437,13 +1498,14 @@
     ],
     "type": "scenario",
     "prompt": "A short-term, irregular EC2 workload cannot be interrupted and has no predictable long-term baseline. Which pricing model fits?",
-    "answer": "On-Demand Instances.",
+    "answer": "On-Demand Instances. They require no long-term commitment and are billed for the capacity used.",
     "explanation": "On-Demand requires no long-term commitment and suits irregular non-interruptible use.",
+    "example": "A temporary test server runs for two days with no commitment and is then terminated.",
     "examCue": "No commitment and cannot interrupt = On-Demand.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-076",
@@ -1460,13 +1522,14 @@
     ],
     "type": "scenario",
     "prompt": "A fault-tolerant batch workload can handle interruption and should minimize EC2 cost. Which capacity fits?",
-    "answer": "EC2 Spot Instances.",
+    "answer": "EC2 Spot Instances. They use discounted spare capacity but must tolerate possible interruption.",
     "explanation": "Spot uses spare capacity at a large discount but can be interrupted.",
+    "example": "A rendering job saves checkpoints so it can resume elsewhere if AWS interrupts its discounted Spot instance.",
     "examCue": "Flexible and interruptible = Spot.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-077",
@@ -1485,11 +1548,12 @@
     "prompt": "What commitment is exchanged for Savings Plans discounts?",
     "answer": "A consistent amount of eligible compute usage, measured in dollars per hour, for one or three years.",
     "explanation": "Savings Plans are more flexible than EC2 Reserved Instances across eligible compute usage.",
+    "example": "A company commits to a predictable hourly amount of compute usage for one year to receive lower prices.",
     "examCue": "Hourly spend commitment for 1 or 3 years.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-078",
@@ -1508,11 +1572,12 @@
     "prompt": "Are EC2 Reserved Instances separate physical servers?",
     "answer": "No. They are a billing discount applied to matching On-Demand usage; some zonal RIs also provide a capacity-reservation benefit.",
     "explanation": "The term describes a pricing benefit, not a special instance object running by itself.",
+    "example": "A running matching EC2 instance receives an RI billing discount; purchasing the RI did not create or dedicate that server.",
     "examCue": "RI = discount, not a machine.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-079",
@@ -1531,11 +1596,12 @@
     "prompt": "How does a container differ from a virtual machine?",
     "answer": "A container shares a host OS kernel, while a virtual machine includes a guest OS on virtualized hardware.",
     "explanation": "Containers are typically lighter and start faster; VMs provide a separate guest OS boundary.",
+    "example": "Several containers share one host kernel, while each virtual machine boots and maintains its own guest operating system.",
     "examCue": "Shared kernel vs. guest OS.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-080",
@@ -1555,11 +1621,12 @@
     "prompt": "Is a cluster itself an orchestrator?",
     "answer": "No. A cluster is a logical grouping or capacity boundary; ECS or EKS provides orchestration.",
     "explanation": "Scaling capacity and distributing traffic are handled by services such as Auto Scaling and Elastic Load Balancing, not by the word “cluster” itself.",
+    "example": "A group of EC2 capacity forms a cluster, but ECS or Kubernetes decides where the containers should run.",
     "examCue": "Cluster is the group, orchestrator is the brain.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-081",
@@ -1580,11 +1647,12 @@
     "prompt": "Distinguish ECS, EKS, and Fargate.",
     "answer": "ECS is AWS container orchestration, EKS is managed Kubernetes, and Fargate provides serverless compute capacity for supported ECS or EKS workloads.",
     "explanation": "Fargate is a compute option, not a third competing orchestrator.",
+    "example": "Use ECS for AWS-native orchestration, EKS for Kubernetes compatibility, and Fargate with either when you do not want to manage worker servers.",
     "examCue": "ECS/EKS orchestrate; Fargate supplies compute.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-082",
@@ -1601,13 +1669,14 @@
     ],
     "type": "scenario",
     "prompt": "Which AWS service stores private container images for later deployment?",
-    "answer": "Amazon Elastic Container Registry (Amazon ECR).",
+    "answer": "Amazon Elastic Container Registry (Amazon ECR). It securely stores container images that ECS or EKS can later deploy.",
     "explanation": "ECR is a managed container image registry integrated with AWS container services.",
+    "example": "A CI pipeline pushes version 2.0 of an image to ECR, and an ECS service later pulls that image for deployment.",
     "examCue": "Container images point to ECR.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-083",
@@ -1624,13 +1693,14 @@
     ],
     "type": "scenario",
     "prompt": "Developers want to upload web application code while AWS provisions load balancing, scaling, and health monitoring. Which service fits?",
-    "answer": "AWS Elastic Beanstalk.",
+    "answer": "AWS Elastic Beanstalk. It deploys application code while managing resources such as compute, scaling, and load balancing.",
     "explanation": "Beanstalk orchestrates underlying AWS resources while the team retains visibility and control of them.",
+    "example": "Developers upload a web application, and Beanstalk creates and monitors the EC2, scaling, and load-balancing environment.",
     "examCue": "Upload application code; Beanstalk builds the environment.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-084",
@@ -1647,13 +1717,14 @@
     ],
     "type": "scenario",
     "prompt": "A small business wants a simple bundled VPS with predictable monthly pricing for a basic website. Which service fits?",
-    "answer": "Amazon Lightsail.",
+    "answer": "Amazon Lightsail. It combines common cloud resources into a simplified bundle with predictable pricing.",
     "explanation": "Lightsail packages simplified compute, storage, networking, and plans for straightforward workloads.",
+    "example": "A small company launches a basic website using a bundle that includes a virtual server, storage, and transfer allowance.",
     "examCue": "Simple bundled VPS = Lightsail.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-085",
@@ -1672,11 +1743,12 @@
     "prompt": "When should Lightsail be chosen instead of Elastic Beanstalk?",
     "answer": "Choose Lightsail for a simple bundled VPS and predictable plan; choose Beanstalk for code-centric deployment on scalable standard AWS resources.",
     "explanation": "Both simplify deployment, but their abstraction and scaling models differ.",
+    "example": "A basic company website may use a fixed Lightsail bundle; a web application needing configurable autoscaling and load balancing may use Beanstalk.",
     "examCue": "Simple VPS bundle vs. managed application environment.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-086",
@@ -1692,13 +1764,14 @@
     ],
     "type": "scenario",
     "prompt": "Which service schedules batch jobs and provisions supported compute environments to run them?",
-    "answer": "AWS Batch.",
+    "answer": "AWS Batch. It schedules batch jobs and provisions the supported compute capacity needed to run them.",
     "explanation": "AWS Batch is designed for queued batch workloads and can use Spot capacity when interruptions are acceptable.",
+    "example": "A nightly scientific workload submits thousands of jobs, and AWS Batch schedules them onto suitable compute capacity.",
     "examCue": "Batch job scheduling points to AWS Batch.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-087",
@@ -1715,13 +1788,14 @@
     ],
     "type": "scenario",
     "prompt": "A company wants utilization-based rightsizing recommendations without automatically changing resources. Which service fits?",
-    "answer": "AWS Compute Optimizer.",
+    "answer": "AWS Compute Optimizer. It analyzes utilization and recommends better-sized resources without changing them automatically.",
     "explanation": "Compute Optimizer analyzes metrics and configurations to produce recommendations; the customer decides whether to apply them.",
+    "example": "Compute Optimizer notices a lightly used EC2 instance and recommends a smaller type; the owner decides whether to change it.",
     "examCue": "Recommendations, not automatic resizing.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-088",
@@ -1740,11 +1814,12 @@
     "prompt": "What is the AWS Nitro System’s role in modern EC2?",
     "answer": "It uses dedicated hardware and a lightweight hypervisor architecture to offload and isolate many networking, storage, management, and security functions.",
     "explanation": "Nitro reduces virtualization overhead and enables capabilities such as EC2 bare metal integration.",
+    "example": "Nitro hardware offloads networking and storage tasks so more of the host resources can serve EC2 workloads securely.",
     "examCue": "Underlying EC2 architecture, not a paid add-on.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-089",
@@ -1761,13 +1836,14 @@
     ],
     "type": "scenario",
     "prompt": "A workload requires direct access to physical server hardware while retaining VPC and EBS integration. Which EC2 option fits?",
-    "answer": "An EC2 bare metal instance type.",
+    "answer": "An EC2 bare metal instance. It provides direct access to the physical server while retaining AWS integrations.",
     "explanation": "Nitro-based bare metal provides direct hardware access within the EC2 service model.",
+    "example": "A licensing or performance workload accesses the physical processor directly while still using VPC networking and EBS.",
     "examCue": "Direct hardware access = bare metal.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-090",
@@ -1786,11 +1862,12 @@
     "prompt": "What is Bottlerocket?",
     "answer": "An AWS-sponsored minimal Linux-based operating system designed for hosting containers.",
     "explanation": "Its reduced package surface and transactional update model target secure container hosts.",
+    "example": "An ECS node runs Bottlerocket with a minimal software footprint focused on hosting containers.",
     "examCue": "Bottlerocket is an OS, not a performance bottleneck.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-091",
@@ -1809,11 +1886,12 @@
     "prompt": "What does AWS ParallelCluster automate?",
     "answer": "Creation and management of HPC clusters on AWS from configuration and command-line workflows.",
     "explanation": "It provisions components such as head and compute nodes and integrates with HPC schedulers.",
+    "example": "A researcher describes an HPC cluster in configuration, and ParallelCluster creates its scheduler, instances, and networking.",
     "examCue": "Automated HPC cluster management.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-092",
@@ -1832,11 +1910,12 @@
     "prompt": "Tightly coupled HPC nodes need very low inter-instance latency. Which combination should be evaluated?",
     "answer": "A cluster placement group with Elastic Fabric Adapter on supported EC2 instances.",
     "explanation": "Cluster placement provides close placement in one AZ; EFA supports high-performance inter-instance communication.",
+    "example": "Simulation nodes use a cluster placement group and EFA to exchange data with very low latency.",
     "examCue": "Tightly coupled HPC points to cluster placement plus EFA.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-093",
@@ -1853,13 +1932,14 @@
     ],
     "type": "scenario",
     "prompt": "Which service provides a high-performance parallel file system commonly used by HPC workloads?",
-    "answer": "Amazon FSx for Lustre.",
+    "answer": "Amazon FSx for Lustre. It provides a high-performance parallel file system for data-intensive and HPC workloads.",
     "explanation": "FSx for Lustre is optimized for fast parallel access to large datasets.",
+    "example": "Compute nodes read and write a shared high-throughput dataset through an FSx for Lustre file system.",
     "examCue": "Parallel HPC file system = FSx for Lustre.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-094",
@@ -1877,11 +1957,12 @@
     "prompt": "What does AWS Ground Station provide?",
     "answer": "Managed satellite ground-station capabilities integrated with AWS services.",
     "explanation": "It lets customers schedule satellite contacts and move received data into AWS for processing and storage.",
+    "example": "A satellite operator schedules an antenna contact and sends the received data directly into AWS services.",
     "examCue": "Satellite communications as a service.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-095",
@@ -1898,11 +1979,12 @@
     "prompt": "Distinguish high availability from fault tolerance without using fixed percentages.",
     "answer": "High availability minimizes downtime through redundancy and recovery; fault tolerance aims to continue operating despite component failure.",
     "explanation": "Neither term guarantees one universal SLA or literal 100% availability.",
+    "example": "A highly available service recovers quickly after a node fails; a fault-tolerant design continues serving without interruption.",
     "examCue": "Fast recovery vs. continued operation through failure.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-096",
@@ -1919,11 +2001,12 @@
     "prompt": "Distinguish RTO from RPO.",
     "answer": "RTO is maximum acceptable time to restore service; RPO is maximum acceptable data loss measured in time.",
     "explanation": "RTO looks forward from disruption to recovery; RPO looks backward to the last recoverable point.",
+    "example": "An RPO of 15 minutes permits 15 minutes of lost changes, while an RTO of one hour permits one hour to restore service.",
     "examCue": "Downtime vs. data loss.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-097",
@@ -1938,13 +2021,14 @@
     "services": [],
     "type": "scenario",
     "prompt": "Which studied DR strategy generally has the lowest ongoing cost but the longest recovery time?",
-    "answer": "Backup and restore.",
+    "answer": "Backup and restore. Resources are recreated from backups after the incident, keeping ongoing cost low but recovery slower.",
     "explanation": "Infrastructure and data are restored after the event, trading low standby cost for higher RTO and often higher RPO.",
+    "example": "After a disaster, the team restores database backups and redeploys servers, accepting slower recovery for very low standby cost.",
     "examCue": "Cheapest and slowest = backup and restore.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-098",
@@ -1961,11 +2045,12 @@
     "prompt": "What remains ready in a pilot-light disaster recovery strategy?",
     "answer": "The critical core of the workload, including replicated data, while additional application infrastructure is started or deployed during recovery.",
     "explanation": "Pilot light costs less than maintaining a fully functional scaled-down environment.",
+    "example": "The recovery Region keeps replicated data and essential core services ready, then launches the remaining application during failover.",
     "examCue": "Core ready; full application capacity is not.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-099",
@@ -1982,11 +2067,12 @@
     "prompt": "What distinguishes warm standby from pilot light?",
     "answer": "Warm standby keeps a scaled-down but functional copy of the workload running in the recovery location.",
     "explanation": "It costs more during normal operation but normally recovers faster.",
+    "example": "Pilot light keeps only the critical core ready; warm standby keeps a scaled-down but complete application already running.",
     "examCue": "Functional at reduced capacity.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-100",
@@ -2001,13 +2087,14 @@
     "services": [],
     "type": "scenario",
     "prompt": "A company requires faster recovery than pilot light and accepts the cost of a small functional environment running continuously. Which strategy fits?",
-    "answer": "Warm standby.",
+    "answer": "Warm standby. A smaller but fully working copy runs continuously and scales up during recovery.",
     "explanation": "The recovery environment already serves as a functional scaled-down copy and can scale after failover.",
+    "example": "A small working environment serves minimal capacity in the recovery Region and scales up when the primary Region fails.",
     "examCue": "Scaled-down and always running = warm standby.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-101",
@@ -2024,11 +2111,12 @@
     "prompt": "Does multi-site active/active automatically guarantee RPO 0?",
     "answer": "No. It can reduce recovery time to near zero, but RPO depends on the data architecture and replication behavior.",
     "explanation": "Data corruption may still require backups, and active traffic in multiple Regions does not prove synchronous writes.",
+    "example": "Two Regions may already serve traffic, yet asynchronous database replication can still leave the recovery copy several seconds behind.",
     "examCue": "Active/active describes traffic, not automatic zero data loss.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-102",
@@ -2045,11 +2133,12 @@
     "prompt": "How do synchronous and asynchronous replication affect RPO?",
     "answer": "Synchronous replication can target RPO 0 but adds latency and constraints; asynchronous replication can leave a replication lag.",
     "explanation": "The replication method affects data-loss exposure independently of how quickly compute recovers.",
+    "example": "A synchronous write waits for both copies and can target zero data loss; an asynchronous replica may remain several seconds behind.",
     "examCue": "Replication lag affects RPO.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-103",
@@ -2067,11 +2156,12 @@
     "prompt": "What does AWS CloudFormation do?",
     "answer": "It provisions and manages AWS resources from declarative JSON or YAML templates.",
     "explanation": "Deployed resources are managed in stacks as logical units.",
+    "example": "The same reviewed YAML template creates an identical test environment and production environment.",
     "examCue": "AWS-native templates and stacks = CloudFormation.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-104",
@@ -2090,11 +2180,12 @@
     "prompt": "What is a CloudFormation stack?",
     "answer": "A collection of AWS resources managed as a single unit from a template.",
     "explanation": "Creating, updating, and deleting the stack manages the related resources and their dependencies.",
+    "example": "One stack manages a VPC, load balancer, and servers together, while a retained database can survive stack deletion.",
     "examCue": "Template instance managed as one unit.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-105",
@@ -2113,11 +2204,12 @@
     "prompt": "Does deleting a CloudFormation stack always delete every resource it ever managed?",
     "answer": "No. Deletion policies, retained resources, dependencies, or deletion failures can leave resources behind.",
     "explanation": "CloudFormation deletes managed resources by default, but lifecycle controls and failures are important exceptions.",
+    "example": "One stack manages a VPC, load balancer, and servers together, while a retained database can survive stack deletion.",
     "examCue": "Default delete has exceptions.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-106",
@@ -2137,11 +2229,12 @@
     "prompt": "What happens when `cdk synth` runs?",
     "answer": "AWS CDK synthesizes the application’s constructs into a CloudFormation template.",
     "explanation": "CloudFormation remains the deployment engine for the synthesized infrastructure definition.",
+    "example": "A TypeScript CDK definition of a bucket becomes a declarative CloudFormation template when cdk synth runs.",
     "examCue": "CDK code → CloudFormation template.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-107",
@@ -2161,11 +2254,12 @@
     "prompt": "Distinguish an AWS SDK from AWS CDK.",
     "answer": "An SDK invokes AWS APIs from application or automation code; CDK defines infrastructure and synthesizes CloudFormation templates.",
     "explanation": "Use an SDK for runtime service operations and CDK for infrastructure definitions.",
+    "example": "Application code uses an SDK to upload an object; infrastructure code uses CDK to define the bucket and synthesize CloudFormation.",
     "examCue": "Operate services vs. define infrastructure.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-108",
@@ -2181,11 +2275,12 @@
     "prompt": "What is an Amazon Resource Name (ARN) used for?",
     "answer": "To identify an AWS resource in APIs, policies, and service integrations using a service-specific format.",
     "explanation": "ARN segments and resource portions vary, and global-resource ARNs can omit the Region segment.",
+    "example": "An IAM policy uses a bucket ARN to grant access to exactly that resource.",
     "examCue": "Resource reference in IAM often means ARN.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-109",
@@ -2204,11 +2299,12 @@
     "prompt": "What does AWS Signature Version 4 provide for API requests?",
     "answer": "It authenticates the credentialed caller and protects request integrity by signing request data.",
     "explanation": "SDKs and the CLI normally create the signature automatically from credentials.",
+    "example": "The AWS CLI hashes and signs a request so AWS can verify both the caller and the request contents.",
     "examCue": "Signed request = identity plus integrity.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-110",
@@ -2225,11 +2321,12 @@
     "prompt": "What is the difference between a Regional service endpoint and a global endpoint?",
     "answer": "A Regional endpoint targets service API behavior in a named Region; a global endpoint has no Region in the hostname and serves global or centralized behavior.",
     "explanation": "Endpoint scope and resource scope are related but not always identical, so avoid assuming every URL follows one rule.",
+    "example": "An EC2 API call targets a named Region such as us-west-2, while a centralized global service may expose an endpoint without a Region in its hostname.",
     "examCue": "Region in endpoint name is a strong clue, not a universal architecture law.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-111",
@@ -2249,11 +2346,12 @@
     "prompt": "Why is calling AWS CDK purely “imperative IaC” incomplete?",
     "answer": "CDK code can use imperative language features, but it synthesizes a declarative CloudFormation template that CloudFormation deploys.",
     "explanation": "The source language and the deployment model are different layers.",
+    "example": "CDK code can use loops and functions, but the result deployed by CloudFormation is still a declarative template.",
     "examCue": "Programming-language input, declarative template output.",
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-112",
@@ -2273,6 +2371,7 @@
     "prompt": "A company needs to decouple order processing and independently notify several subscribers. Which TWO services meet these separate needs?",
     "answer": "Use Amazon SQS for the work queue and Amazon SNS for fan-out notifications.",
     "explanation": "SQS buffers work for consumers; SNS publishes to multiple subscriptions.",
+    "example": "SQS buffers each order for one worker, while SNS independently publishes an order event to several interested subscribers.",
     "examCue": "Choose one queue and one pub/sub topic.",
     "options": [
       {
@@ -2303,7 +2402,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-1-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-113",
@@ -2322,6 +2421,7 @@
     "prompt": "Which TWO actions are recommended for the AWS account root user?",
     "answer": "Enable MFA and use root only for tasks that require it.",
     "explanation": "The root user is unrestricted and should not be used for routine work or programmatic access keys.",
+    "example": "An administrator uses a normal role every day and opens the root account only for a task that specifically requires root.",
     "examCue": "Protect root and minimize its use.",
     "options": [
       {
@@ -2352,7 +2452,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-114",
@@ -2368,8 +2468,9 @@
     ],
     "type": "single-choice",
     "prompt": "A security team must explicitly deny one malicious IP range for every resource in a subnet. Which control should it configure?",
-    "answer": "A network ACL.",
+    "answer": "A network ACL. It can apply an explicit deny rule to traffic crossing the subnet boundary.",
     "explanation": "NACLs operate at subnet boundaries and support explicit deny rules; security groups are allow-only.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Explicit subnet deny = NACL.",
     "options": [
       {
@@ -2395,7 +2496,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-115",
@@ -2414,6 +2515,7 @@
     "prompt": "Which statement about VPC network scope is correct?",
     "answer": "A VPC spans Availability Zones in one Region, while each subnet belongs to one AZ.",
     "explanation": "A VPC is Regional and subnets are AZ-scoped.",
+    "example": "A company creates one public and one private subnet in each of two Availability Zones for resilience.",
     "examCue": "VPC = Region; subnet = AZ.",
     "options": [
       {
@@ -2439,7 +2541,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-116",
@@ -2458,6 +2560,7 @@
     "prompt": "Which statement correctly describes a general-purpose S3 bucket?",
     "answer": "Its data is stored in a selected Region, while its bucket name is globally unique.",
     "explanation": "Global naming and the global console view do not make the bucket’s data automatically global.",
+    "example": "The globally unique bucket name company-receipts can still store its objects only in the selected eu-west-1 Region.",
     "examCue": "Global name, Regional data.",
     "options": [
       {
@@ -2483,7 +2586,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-3-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-117",
@@ -2500,8 +2603,9 @@
     ],
     "type": "single-choice",
     "prompt": "Private EC2 instances need same-Region S3 access without a NAT gateway or additional endpoint charge. Which option is best?",
-    "answer": "An S3 gateway VPC endpoint.",
+    "answer": "An S3 gateway VPC endpoint. It provides private S3 access through route-table entries without an hourly endpoint charge.",
     "explanation": "Gateway endpoints route S3 traffic through selected route tables with no additional endpoint charge.",
+    "example": "Private instances reach S3 through a route-table entry without using a NAT gateway.",
     "examCue": "S3 + route table + no endpoint charge.",
     "options": [
       {
@@ -2527,7 +2631,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-118",
@@ -2547,6 +2651,7 @@
     "prompt": "A gaming application needs static anycast IP addresses and accelerated UDP traffic without content caching. Which service fits?",
     "answer": "AWS Global Accelerator.",
     "explanation": "Global Accelerator improves network paths for supported TCP/UDP traffic and does not act as a CDN cache.",
+    "example": "A global multiplayer game uses Global Accelerator’s static anycast IPs to improve UDP paths without caching packets.",
     "examCue": "Static anycast plus UDP = Global Accelerator.",
     "options": [
       {
@@ -2572,7 +2677,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-119",
@@ -2591,6 +2696,7 @@
     "prompt": "Hundreds of Linux EC2 instances need concurrent access to the same shared directory hierarchy. Which storage service fits?",
     "answer": "Amazon EFS.",
     "explanation": "EFS provides shared NFS file storage that multiple compute instances can mount.",
+    "example": "Hundreds of Linux EC2 instances mount the same EFS directory over NFS.",
     "examCue": "Shared Linux files = EFS.",
     "options": [
       {
@@ -2616,7 +2722,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-120",
@@ -2634,6 +2740,7 @@
     "prompt": "A company runs an application on Amazon EC2. Which TWO tasks are customer responsibilities?",
     "answer": "Patching the guest operating system and configuring security groups.",
     "explanation": "AWS manages the facilities, physical hardware, and virtualization layer.",
+    "example": "AWS maintains the physical EC2 host, while the customer patches the guest OS and decides which security-group traffic to allow.",
     "examCue": "Guest workload and its firewall configuration remain with the customer.",
     "options": [
       {
@@ -2664,7 +2771,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-121",
@@ -2681,8 +2788,9 @@
     ],
     "type": "single-choice",
     "prompt": "A rendering workload can checkpoint progress and tolerate interruption. Which EC2 purchase option can provide the largest discount with no long-term commitment?",
-    "answer": "EC2 Spot Instances.",
+    "answer": "EC2 Spot Instances. They use discounted spare capacity but must tolerate possible interruption.",
     "explanation": "Spot uses spare capacity at discounted prices and is appropriate for interrupt-tolerant work.",
+    "example": "A rendering job saves checkpoints so it can resume elsewhere if AWS interrupts its discounted Spot instance.",
     "examCue": "Interruptible and flexible = Spot.",
     "options": [
       {
@@ -2708,7 +2816,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-122",
@@ -2725,8 +2833,9 @@
     ],
     "type": "single-choice",
     "prompt": "A finance team wants an email when forecast monthly cost exceeds a threshold. Which service should it use?",
-    "answer": "AWS Budgets.",
+    "answer": "AWS Budgets. It compares cost or usage with thresholds and can notify you or run separately configured actions.",
     "explanation": "Budgets evaluates actual or forecast cost/usage against configured thresholds.",
+    "example": "Finance explores last month’s spend in Cost Explorer and creates a Budget alert for next month’s forecast.",
     "examCue": "Threshold alert = Budgets.",
     "options": [
       {
@@ -2752,7 +2861,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-2-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-123",
@@ -2773,6 +2882,7 @@
     "prompt": "Which statement about AWS Fargate is correct?",
     "answer": "It provides serverless compute capacity for supported ECS and EKS workloads.",
     "explanation": "ECS and EKS orchestrate containers; Fargate supplies managed compute capacity.",
+    "example": "A team uses EKS for Kubernetes and Fargate so it does not have to provision the worker servers.",
     "examCue": "Fargate is compute, not a third orchestrator.",
     "options": [
       {
@@ -2798,7 +2908,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-7-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-124",
@@ -2815,6 +2925,7 @@
     "prompt": "A business can tolerate losing at most 15 minutes of transactions after a disaster. Which objective is being specified?",
     "answer": "Recovery Point Objective (RPO).",
     "explanation": "RPO expresses acceptable data loss measured in time before the disruption.",
+    "example": "An RPO of 15 minutes permits up to 15 minutes of lost changes, while an RTO of one hour permits one hour to restore service.",
     "examCue": "Data-loss window = RPO.",
     "options": [
       {
@@ -2840,7 +2951,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-125",
@@ -2855,8 +2966,9 @@
     "services": [],
     "type": "single-choice",
     "prompt": "A recovery Region runs a small but fully functional copy of the workload and scales up after failover. Which strategy is this?",
-    "answer": "Warm standby.",
+    "answer": "Warm standby. A smaller but fully working copy runs continuously and scales up during recovery.",
     "explanation": "Warm standby keeps reduced-capacity functionality running continuously.",
+    "example": "A small working copy serves minimal capacity in the recovery Region and scales up when the primary Region fails.",
     "examCue": "Scaled-down but functional = warm standby.",
     "options": [
       {
@@ -2882,7 +2994,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-126",
@@ -2899,6 +3011,7 @@
     "prompt": "Which statement about multi-site active/active is most accurate?",
     "answer": "It can reduce RTO to near zero, but RPO still depends on the data architecture and replication behavior.",
     "explanation": "Serving traffic from several Regions does not automatically guarantee synchronous writes or zero data loss.",
+    "example": "Active/active Regions can make application failover almost immediate, but asynchronous database writes may still create a nonzero RPO.",
     "examCue": "Traffic topology does not prove RPO 0.",
     "options": [
       {
@@ -2924,7 +3037,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-5-reviewed.md",
     "difficulty": 4,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-127",
@@ -2942,8 +3055,9 @@
     ],
     "type": "single-choice",
     "prompt": "What is the direct output of `cdk synth`?",
-    "answer": "A CloudFormation template.",
+    "answer": "A CloudFormation template. CDK converts the constructs into this declarative description for deployment.",
     "explanation": "CDK constructs written in supported programming languages synthesize into the declarative template deployed by CloudFormation.",
+    "example": "Running cdk synth on a TypeScript stack outputs the CloudFormation template that describes its resources.",
     "examCue": "CDK synth → CloudFormation.",
     "options": [
       {
@@ -2969,7 +3083,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-128",
@@ -2988,6 +3102,7 @@
     "prompt": "An application runs on EC2 and needs access to S3. What is the preferred credential approach?",
     "answer": "Attach an IAM role to the EC2 instance and use temporary credentials.",
     "explanation": "Roles avoid embedding long-lived access keys in application files.",
+    "example": "An EC2 application assumes a role and receives temporary credentials instead of storing a secret key in a file.",
     "examCue": "AWS workload = role, not hard-coded key.",
     "options": [
       {
@@ -3013,7 +3128,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-6-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-08-28-129",
@@ -3032,8 +3147,9 @@
     ],
     "type": "single-choice",
     "prompt": "A factory must run AWS-managed infrastructure inside its own facility for local processing. Which service is designed for this?",
-    "answer": "AWS Outposts.",
+    "answer": "AWS Outposts. It brings AWS-managed infrastructure and selected services into the customer’s own facility.",
     "explanation": "Outposts extends AWS infrastructure and selected services to customer premises.",
+    "example": "A factory processes data on AWS-managed Outposts racks installed inside its own facility.",
     "examCue": "Customer premises = Outposts.",
     "options": [
       {
@@ -3059,7 +3175,7 @@
     "sourceRef": "knowledge/daily/2026-08-28-chat-4-reviewed.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-001",
@@ -3078,11 +3194,12 @@
     "prompt": "What is the primary purpose of Amazon RDS?",
     "answer": "To run managed relational databases using supported database engines.",
     "explanation": "AWS manages much of the database infrastructure and routine operations while the customer manages data, access, schema, and workload choices.",
+    "example": "A company runs PostgreSQL on RDS so AWS handles backups and database infrastructure while the team manages its schema and data.",
     "examCue": "Managed relational database engines point to RDS.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-002",
@@ -3101,11 +3218,12 @@
     "prompt": "Name four database engines supported by Amazon RDS.",
     "answer": "Any four of PostgreSQL, MySQL, MariaDB, Oracle Database, Microsoft SQL Server, and IBM Db2.",
     "explanation": "RDS is a managed service layer for familiar relational engines.",
+    "example": "A company runs PostgreSQL on RDS so AWS handles backups and database infrastructure while the team manages its schema and data.",
     "examCue": "Existing relational engine is an RDS cue.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-003",
@@ -3124,11 +3242,12 @@
     "prompt": "A company wants to move an existing Microsoft SQL Server application to a managed AWS database with minimal application change. Which service should it evaluate first?",
     "answer": "Amazon RDS for SQL Server.",
     "explanation": "RDS supports familiar commercial and open-source engines, making it suitable for many lift-and-shift relational migrations.",
+    "example": "A legacy application keeps Microsoft SQL Server while moving to RDS so AWS manages backups and database infrastructure.",
     "examCue": "Existing named relational engine points to RDS.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-004",
@@ -3147,11 +3266,12 @@
     "prompt": "What is Amazon Aurora?",
     "answer": "An AWS-built relational database engine compatible with MySQL and PostgreSQL.",
     "explanation": "Aurora is cloud-native rather than a hosted copy of the MySQL or PostgreSQL engine.",
+    "example": "A new payment application uses Aurora PostgreSQL for relational SQL with storage designed to remain available across multiple AZs.",
     "examCue": "AWS-built + MySQL/PostgreSQL compatibility = Aurora.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-005",
@@ -3171,11 +3291,12 @@
     "prompt": "How does Aurora differ from the other engines available through Amazon RDS?",
     "answer": "Aurora is an AWS-built cloud-native engine; the other RDS choices are existing third-party or open-source engines.",
     "explanation": "Both are managed relational options, but their engine origins and architectures differ.",
+    "example": "Choose Aurora for an AWS-built MySQL-compatible design; choose RDS for SQL Server when the application must keep the Microsoft engine.",
     "examCue": "Do not describe Aurora as merely hosted MySQL.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-006",
@@ -3194,11 +3315,12 @@
     "prompt": "Across how many Availability Zones does Aurora store copies of data in a typical Aurora cluster?",
     "answer": "Three Availability Zones.",
     "explanation": "Aurora’s distributed storage maintains copies across three AZs for durability and availability.",
+    "example": "A new payment application uses Aurora PostgreSQL for relational SQL with storage designed to remain available across multiple AZs.",
     "examCue": "Three AZs is the architecture cue; avoid confusing copies with read replicas.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-007",
@@ -3215,13 +3337,14 @@
     ],
     "type": "scenario",
     "prompt": "A new relational workload needs MySQL compatibility and an AWS-built, highly available cloud-native engine. Which service fits?",
-    "answer": "Amazon Aurora MySQL-Compatible Edition.",
+    "answer": "Amazon Aurora MySQL-Compatible Edition. It combines MySQL compatibility with AWS-designed distributed storage.",
     "explanation": "Aurora combines familiar MySQL or PostgreSQL compatibility with an AWS-designed distributed architecture.",
+    "example": "A new application keeps the MySQL protocol but uses Aurora MySQL-Compatible Edition for an AWS-built relational design.",
     "examCue": "Compatibility plus AWS-built points to Aurora.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-008",
@@ -3239,8 +3362,9 @@
     ],
     "type": "single-choice",
     "prompt": "Which option best supports a lift-and-shift application that must retain its Oracle Database engine?",
-    "answer": "Amazon RDS for Oracle.",
+    "answer": "Amazon RDS for Oracle. It preserves the Oracle engine while AWS manages much of the database infrastructure.",
     "explanation": "Aurora supports MySQL and PostgreSQL compatibility, not the Oracle engine.",
+    "example": "An application that depends on Oracle-specific features moves to RDS for Oracle instead of changing database engines.",
     "examCue": "A named existing engine narrows the managed database choice.",
     "options": [
       {
@@ -3266,7 +3390,7 @@
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-009",
@@ -3285,11 +3409,12 @@
     "prompt": "What workload is Amazon Redshift designed for?",
     "answer": "Data warehousing and large-scale analytical SQL workloads.",
     "explanation": "Redshift supports OLAP and business-intelligence analysis over large datasets.",
+    "example": "A retailer loads years of sales data into Redshift so analysts can run large business-intelligence reports.",
     "examCue": "Data warehouse, OLAP, and BI point to Redshift.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-010",
@@ -3306,13 +3431,14 @@
     ],
     "type": "scenario",
     "prompt": "Executives need complex SQL reports across terabytes or petabytes of historical sales data. Which service is the best fit?",
-    "answer": "Amazon Redshift.",
+    "answer": "Amazon Redshift. It is designed for analytical SQL and data-warehouse reporting over large datasets.",
     "explanation": "This is an analytical data-warehouse workload rather than an operational transaction database workload.",
+    "example": "A retailer loads years of sales data into Redshift so analysts can run large business-intelligence reports.",
     "examCue": "Massive analytical SQL points to Redshift.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-011",
@@ -3332,11 +3458,12 @@
     "prompt": "What is the exam-level distinction between Amazon RDS and Amazon Redshift?",
     "answer": "RDS serves relational operational workloads; Redshift is a data warehouse for analytics.",
     "explanation": "The distinction is primarily OLTP-style application work versus OLAP-style analysis.",
+    "example": "An application records individual orders in RDS, then analysts summarize years of order history in a Redshift warehouse.",
     "examCue": "Transactions = RDS; warehouse analytics = Redshift.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-012",
@@ -3355,11 +3482,12 @@
     "prompt": "What does Amazon ElastiCache provide?",
     "answer": "A managed in-memory cache using Valkey, Memcached, or Redis OSS.",
     "explanation": "Keeping frequently accessed data in memory can lower latency and reduce load on backing databases.",
+    "example": "A catalog page reads popular product details from memory instead of querying the database on every visit.",
     "examCue": "In-memory cache points to ElastiCache.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-013",
@@ -3376,13 +3504,14 @@
     ],
     "type": "scenario",
     "prompt": "A web application repeatedly reads the same product catalog rows and is overloading its database. What should be added?",
-    "answer": "An Amazon ElastiCache caching layer.",
+    "answer": "Amazon ElastiCache. It keeps frequently requested results in memory so the application makes fewer database reads.",
     "explanation": "Frequently accessed results can be served from memory instead of repeatedly querying the database.",
+    "example": "A catalog page reads popular product details from memory instead of querying the database on every visit.",
     "examCue": "Reduce repeated reads and latency with a cache.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-014",
@@ -3401,6 +3530,7 @@
     "prompt": "Which THREE engines are current Amazon ElastiCache choices?",
     "answer": "Valkey, Memcached, and Redis OSS.",
     "explanation": "The service is not limited to only the two engines historically emphasized in older learning material.",
+    "example": "An application can choose Valkey or Redis OSS for feature-rich caching, or Memcached for a simpler distributed cache.",
     "examCue": "Know the current engine set.",
     "options": [
       {
@@ -3432,7 +3562,7 @@
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-015",
@@ -3451,11 +3581,12 @@
     "prompt": "What data model is Amazon Neptune designed for?",
     "answer": "Graph data made of highly connected entities and relationships.",
     "explanation": "Graph databases make relationship traversal a first-class workload.",
+    "example": "A fraud analyst follows links among accounts, devices, addresses, and transactions to discover a fraud ring.",
     "examCue": "Graph and connected relationships point to Neptune.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-016",
@@ -3472,13 +3603,14 @@
     ],
     "type": "scenario",
     "prompt": "A fraud team needs to traverse relationships among accounts, devices, addresses, and transactions. Which database fits?",
-    "answer": "Amazon Neptune.",
+    "answer": "Amazon Neptune. Its graph model is designed to traverse relationships among highly connected entities.",
     "explanation": "The core requirement is exploring a highly connected graph of entities.",
+    "example": "A fraud analyst follows links among accounts, devices, addresses, and transactions to discover a fraud ring.",
     "examCue": "Fraud rings and relationship paths point to Neptune.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-017",
@@ -3497,11 +3629,12 @@
     "prompt": "What kind of data is Amazon Timestream for LiveAnalytics designed to store?",
     "answer": "Time-series data: values associated with timestamps and analyzed over time.",
     "explanation": "Operational metrics, application telemetry, and IoT measurements are common examples.",
+    "example": "Millions of sensors store timestamped temperature readings for analysis over time.",
     "examCue": "Timestamped measurements point to Timestream.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-018",
@@ -3518,13 +3651,14 @@
     ],
     "type": "scenario",
     "prompt": "Millions of sensors send temperature readings every minute for time-based analysis. Which database is the best fit?",
-    "answer": "Amazon Timestream for LiveAnalytics.",
+    "answer": "Amazon Timestream for LiveAnalytics. It stores and analyzes measurements organized by time.",
     "explanation": "The workload is a high-volume sequence of measurements indexed by time.",
+    "example": "Millions of sensors store timestamped temperature readings for analysis over time.",
     "examCue": "IoT metrics changing over time point to Timestream.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-019",
@@ -3542,8 +3676,9 @@
     ],
     "type": "single-choice",
     "prompt": "Which service is the most direct fit for ingesting and querying timestamped IoT telemetry?",
-    "answer": "Amazon Timestream for LiveAnalytics.",
+    "answer": "Amazon Timestream for LiveAnalytics. It stores and analyzes measurements organized by time.",
     "explanation": "Redshift can analyze large datasets, but Timestream is purpose-built for time-series measurements.",
+    "example": "Millions of devices write timestamped readings to Timestream so operators can query how measurements changed over time.",
     "examCue": "Choose the purpose-built time-series service.",
     "options": [
       {
@@ -3569,7 +3704,7 @@
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-020",
@@ -3588,11 +3723,12 @@
     "prompt": "What is the primary purpose of AWS Database Migration Service (AWS DMS)?",
     "answer": "To migrate or replicate databases to AWS with minimal downtime.",
     "explanation": "DMS supports both homogeneous and heterogeneous database moves.",
+    "example": "A company copies its on-premises database to AWS while ongoing changes continue to replicate until cutover.",
     "examCue": "Database migration with minimal downtime points to DMS.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-021",
@@ -3609,13 +3745,14 @@
     ],
     "type": "scenario",
     "prompt": "A company must keep its source database available while continuously replicating changes during migration to AWS. Which service fits?",
-    "answer": "AWS Database Migration Service (AWS DMS).",
+    "answer": "AWS Database Migration Service (AWS DMS). It copies and can continuously replicate database data to reduce migration downtime.",
     "explanation": "DMS can perform an initial load and ongoing change replication to reduce migration downtime.",
+    "example": "A company copies its on-premises database to AWS while ongoing changes continue to replicate until cutover.",
     "examCue": "Ongoing replication during migration points to DMS.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-022",
@@ -3634,11 +3771,12 @@
     "prompt": "Why might a heterogeneous DMS migration need schema conversion?",
     "answer": "Different database engines can use different schema objects, data types, and SQL features.",
     "explanation": "DMS moves data, but engine differences may require a separate schema-conversion step.",
+    "example": "An Oracle-to-PostgreSQL migration converts incompatible table definitions and stored code before DMS moves the data.",
     "examCue": "Different source and target engines can require conversion.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-023",
@@ -3657,11 +3795,12 @@
     "prompt": "Can one Amazon VPC span Regions or Availability Zones?",
     "answer": "It can span Availability Zones within one Region, but it cannot span Regions.",
     "explanation": "Subnets provide AZ-level partitions inside the Regional VPC.",
+    "example": "A VPC in us-east-1 can contain subnets in us-east-1a and us-east-1b, but it cannot extend into us-west-2.",
     "examCue": "VPC = Regional; subnet = one AZ.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-024",
@@ -3680,11 +3819,12 @@
     "prompt": "Can a subnet span multiple Availability Zones?",
     "answer": "No. A subnet belongs to exactly one Availability Zone.",
     "explanation": "An AZ may contain multiple subnets, but a subnet cannot cross AZ boundaries.",
+    "example": "A company creates one public and one private subnet in each of two Availability Zones for resilience.",
     "examCue": "Subnet scope is one AZ.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-025",
@@ -3703,11 +3843,12 @@
     "prompt": "What routing property distinguishes a public subnet from a private subnet?",
     "answer": "A public subnet has a route to an internet gateway; a private subnet has no direct route to an internet gateway.",
     "explanation": "Public addressing and security rules are additional requirements for an instance to communicate directly with the internet.",
+    "example": "A web subnet has a default route to an internet gateway; a database subnet has no direct internet-gateway route.",
     "examCue": "The subnet label comes from its route table.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-026",
@@ -3727,11 +3868,12 @@
     "prompt": "An EC2 instance is in a subnet with a route to an internet gateway but has only a private IPv4 address. Is it directly reachable from the internet over IPv4?",
     "answer": "No. It also needs a public IPv4 address or Elastic IP and traffic must be allowed by security controls.",
     "explanation": "A public-subnet route alone does not give the instance a public address or open firewall rules.",
+    "example": "A public web server needs a public IP, a route to the internet gateway, and security rules allowing HTTPS.",
     "examCue": "Routing, addressing, and filtering must all align.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-027",
@@ -3750,11 +3892,12 @@
     "prompt": "What does an internet gateway do?",
     "answer": "It enables communication between a VPC and the internet when routing, addressing, and security rules permit it.",
     "explanation": "An internet gateway is a managed, redundant, highly available VPC component.",
+    "example": "A public web server needs a public IP, a route to the internet gateway, and security rules allowing HTTPS.",
     "examCue": "Direct internet route target = internet gateway.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-028",
@@ -3771,13 +3914,14 @@
     ],
     "type": "scenario",
     "prompt": "Private-subnet EC2 instances need outbound IPv4 access for operating-system updates without accepting internet-initiated connections. What should be used?",
-    "answer": "A NAT gateway, with the private subnet routed to it.",
+    "answer": "A NAT gateway, with the private subnet routed to it. This gives private instances outbound IPv4 access without accepting new inbound internet sessions.",
     "explanation": "The NAT gateway initiates outbound translation and permits return traffic, but not unsolicited inbound sessions.",
+    "example": "Private application servers download operating-system updates through a NAT gateway but cannot receive unsolicited internet connections.",
     "examCue": "Private outbound IPv4 points to NAT gateway.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-029",
@@ -3796,11 +3940,12 @@
     "prompt": "What is the core difference between an internet gateway and a NAT gateway?",
     "answer": "An internet gateway supports direct internet connectivity for publicly addressed resources; a NAT gateway gives private resources outbound connectivity through address translation.",
     "explanation": "They serve different routing and addressing patterns and are not interchangeable.",
+    "example": "A publicly addressed web server connects directly through an internet gateway; a private server downloads updates through a NAT gateway.",
     "examCue": "Public direct access vs. private outbound access.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-030",
@@ -3819,11 +3964,12 @@
     "prompt": "What information does a VPC route-table rule contain?",
     "answer": "A destination and a target.",
     "explanation": "The most specific matching destination determines where traffic is sent.",
+    "example": "The rule 0.0.0.0/0 → internet gateway pairs the destination range with the component that receives matching traffic.",
     "examCue": "Route tables answer “where does this destination go?”",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-031",
@@ -3842,11 +3988,12 @@
     "prompt": "Do VPC route tables assign IP addresses or act as firewalls?",
     "answer": "No. They select network paths; address configuration and traffic filtering are separate functions.",
     "explanation": "DHCP-related settings help configure hosts, while security groups and NACLs filter traffic.",
+    "example": "A route table sends traffic toward an internet gateway; a security group separately decides whether HTTPS is allowed.",
     "examCue": "Path selection is not permission evaluation.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-032",
@@ -3865,11 +4012,12 @@
     "prompt": "What is the purpose of the local route in a VPC route table?",
     "answer": "It enables communication among resources within the VPC CIDR blocks.",
     "explanation": "Every VPC route table contains local routing for intra-VPC communication.",
+    "example": "Traffic for 10.0.2.15 follows the 10.0.0.0/16 local route instead of the less-specific 0.0.0.0/0 route.",
     "examCue": "Local route = traffic inside the VPC.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-033",
@@ -3886,13 +4034,14 @@
     ],
     "type": "scenario",
     "prompt": "A route table has 10.0.0.0/16 → local and 0.0.0.0/0 → internet gateway. Where does traffic for 10.0.2.15 go?",
-    "answer": "Through the local route.",
+    "answer": "Through the local route. The VPC’s /16 route is more specific than the /0 internet route.",
     "explanation": "Route selection uses the most specific matching destination; /16 is more specific than /0.",
+    "example": "Traffic for 10.0.2.15 chooses the 10.0.0.0/16 local route because /16 is more specific than the /0 internet route.",
     "examCue": "Longest-prefix match wins.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-034",
@@ -3911,11 +4060,12 @@
     "prompt": "What role do DHCP options play in a VPC?",
     "answer": "They provide network configuration such as DNS-related settings to instances.",
     "explanation": "DHCP configuration is separate from the subnet route table, which selects traffic paths.",
+    "example": "A VPC DHCP options set supplies DNS settings to a newly launched EC2 instance.",
     "examCue": "Host configuration and routing are different jobs.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-035",
@@ -3934,11 +4084,12 @@
     "prompt": "At what level does a security group apply, and is it stateful?",
     "answer": "It applies to supported resource network interfaces and is stateful.",
     "explanation": "Allowed flow responses are automatically permitted, and security groups contain allow rules rather than deny rules.",
+    "example": "A web server security group permits inbound HTTPS, and the response traffic is allowed automatically.",
     "examCue": "Resource/ENI level + stateful = security group.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-036",
@@ -3957,11 +4108,12 @@
     "prompt": "At what level does a network ACL apply, and is it stateful?",
     "answer": "It applies at the subnet boundary and is stateless.",
     "explanation": "Inbound and outbound rules are evaluated separately, and NACLs support both allow and deny rules.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Subnet level + stateless = NACL.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-037",
@@ -3979,11 +4131,12 @@
     "prompt": "Contrast security groups with network ACLs.",
     "answer": "Security groups are stateful allow-only controls on resource ENIs; NACLs are stateless allow/deny controls at subnet boundaries.",
     "explanation": "They can be used together for layered protection.",
+    "example": "A security group allows HTTPS to one server and automatically permits replies; a subnet NACL separately allows or denies both traffic directions.",
     "examCue": "SG = resource/stateful; NACL = subnet/stateless.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-038",
@@ -4002,11 +4155,12 @@
     "prompt": "A security group allows an inbound HTTPS request. Does the response require a separate outbound rule for that flow?",
     "answer": "No. Return traffic is automatically allowed because the security group is stateful.",
     "explanation": "State tracking recognizes response traffic for an allowed connection.",
+    "example": "A web server security group permits inbound HTTPS, and the response traffic is allowed automatically.",
     "examCue": "Stateful means return traffic is remembered.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-039",
@@ -4025,11 +4179,12 @@
     "prompt": "A NACL allows an inbound request. What must be considered for the response?",
     "answer": "An applicable outbound rule must also allow the response traffic.",
     "explanation": "NACLs are stateless and evaluate each direction independently.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Stateless means configure both directions.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-040",
@@ -4048,11 +4203,12 @@
     "prompt": "Can one security group be associated with resources in different subnets of the same VPC?",
     "answer": "Yes. A security group is associated with resource network interfaces, not owned by one subnet.",
     "explanation": "The same group can protect supported resources across multiple subnets in its VPC.",
+    "example": "The same WebServers security group can protect EC2 instances in two different subnets of the same VPC.",
     "examCue": "Security groups are not subnet-level controls.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-041",
@@ -4069,8 +4225,9 @@
     ],
     "type": "single-choice",
     "prompt": "Which VPC control can explicitly deny a malicious source CIDR at a subnet boundary?",
-    "answer": "A network ACL.",
+    "answer": "A network ACL. It can apply an explicit deny rule to traffic crossing the subnet boundary.",
     "explanation": "Security groups do not contain deny rules; NACLs can allow or deny and apply to the subnet boundary.",
+    "example": "A subnet NACL denies a known malicious CIDR and separately permits the required inbound and outbound traffic.",
     "examCue": "Explicit subnet deny points to NACL.",
     "options": [
       {
@@ -4096,7 +4253,7 @@
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-042",
@@ -4115,11 +4272,12 @@
     "prompt": "What problem does a VPC endpoint solve?",
     "answer": "It lets resources privately access supported services without requiring public internet connectivity.",
     "explanation": "The client does not need an internet gateway, NAT device, VPN, or public IP for that service path.",
+    "example": "A private EC2 instance reaches a supported AWS service through a VPC endpoint without a public IP, NAT gateway, or internet gateway.",
     "examCue": "Private access to a supported service points to a VPC endpoint.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-043",
@@ -4138,11 +4296,12 @@
     "prompt": "How is an interface VPC endpoint implemented?",
     "answer": "With endpoint network interfaces that have private IP addresses in selected subnets, powered by AWS PrivateLink.",
     "explanation": "Security groups can control access to the endpoint interfaces, and endpoint charges normally apply.",
+    "example": "A private application reaches Secrets Manager through private endpoint IP addresses protected by a security group.",
     "examCue": "ENI + private IP + PrivateLink = interface endpoint.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-044",
@@ -4162,11 +4321,12 @@
     "prompt": "Which services support gateway VPC endpoints?",
     "answer": "Amazon S3 and Amazon DynamoDB.",
     "explanation": "Gateway endpoints add routes to selected route tables and do not use AWS PrivateLink.",
+    "example": "A VPC can add route-table-based gateway endpoints for S3 and DynamoDB; other services generally use interface endpoints.",
     "examCue": "Gateway endpoint = S3 or DynamoDB.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-045",
@@ -4187,11 +4347,12 @@
     "prompt": "How do interface and gateway VPC endpoints differ?",
     "answer": "Interface endpoints use PrivateLink ENIs with private IPs; gateway endpoints add route-table entries and support S3 and DynamoDB.",
     "explanation": "The endpoint types differ in implementation, supported services, security integration, and pricing.",
+    "example": "Private S3 traffic can use a gateway endpoint route, while private Secrets Manager traffic can use an interface endpoint ENI.",
     "examCue": "ENI vs. route-table target.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-046",
@@ -4209,13 +4370,14 @@
     ],
     "type": "scenario",
     "prompt": "Private EC2 instances need same-Region S3 access without NAT and without an endpoint-hour charge. Which endpoint is the usual choice?",
-    "answer": "An S3 gateway VPC endpoint.",
+    "answer": "An S3 gateway VPC endpoint. It provides private S3 access through route-table entries without an hourly endpoint charge.",
     "explanation": "Gateway endpoints add S3 routes and have no additional endpoint charge.",
+    "example": "Private instances reach S3 through a route-table entry without using a NAT gateway.",
     "examCue": "S3 + route table + no endpoint-hour charge = gateway endpoint.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-047",
@@ -4232,13 +4394,14 @@
     ],
     "type": "scenario",
     "prompt": "A private subnet must access a supported AWS service through private IP addresses and control access with a security group. Which endpoint type fits?",
-    "answer": "An interface VPC endpoint.",
+    "answer": "An interface VPC endpoint. It creates private-IP network interfaces that can be protected with security groups.",
     "explanation": "Interface endpoints create ENIs in selected subnets and can have security groups.",
+    "example": "A private application reaches Secrets Manager through an interface endpoint’s private IPs and restricts access with its security group.",
     "examCue": "Private IP and security group point to interface endpoint.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-048",
@@ -4258,6 +4421,7 @@
     "prompt": "Which statement is correct?",
     "answer": "A DynamoDB gateway endpoint uses route-table entries and does not use AWS PrivateLink.",
     "explanation": "Interface endpoints use PrivateLink; S3 and DynamoDB gateway endpoints use a different route-table implementation.",
+    "example": "A DynamoDB gateway endpoint adds service routes to selected route tables instead of creating PrivateLink network interfaces.",
     "examCue": "Do not claim every endpoint uses PrivateLink.",
     "options": [
       {
@@ -4283,7 +4447,7 @@
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-049",
@@ -4302,11 +4466,12 @@
     "prompt": "Which EC2 category balances compute, memory, and networking for diverse workloads?",
     "answer": "General purpose instances, with families such as T and M.",
     "explanation": "Use workload characteristics rather than treating family letters as official acronym expansions.",
+    "example": "A general-purpose M family instance fits a web application that needs a balanced mix of CPU, memory, and networking.",
     "examCue": "Balanced resources point to general purpose.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-050",
@@ -4325,11 +4490,12 @@
     "prompt": "A batch-processing workload is CPU intensive. Which EC2 category should be evaluated?",
     "answer": "Compute optimized instances, such as C families.",
     "explanation": "These instances provide a higher ratio of compute resources for CPU-bound work.",
+    "example": "A CPU-heavy media-encoding job uses a C family instance.",
     "examCue": "CPU intensive points to compute optimized.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-051",
@@ -4348,11 +4514,12 @@
     "prompt": "An in-memory database needs very large RAM capacity. Which EC2 category fits?",
     "answer": "Memory optimized instances, such as R or X families.",
     "explanation": "The workload is constrained primarily by memory rather than CPU or local disk.",
+    "example": "A large in-memory database uses an R family instance because RAM is the main constraint.",
     "examCue": "Large in-memory dataset points to memory optimized.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-052",
@@ -4371,11 +4538,12 @@
     "prompt": "A machine-learning training workload needs GPUs. Which EC2 category fits?",
     "answer": "Accelerated computing instances, such as P or G families.",
     "explanation": "Hardware accelerators handle specialized operations more efficiently than general-purpose CPUs.",
+    "example": "A machine-learning training job uses GPU-backed P family instances to accelerate matrix calculations.",
     "examCue": "GPU or accelerator points to accelerated computing.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-053",
@@ -4394,11 +4562,12 @@
     "prompt": "A workload needs very high local NVMe IOPS. Which EC2 category should be evaluated?",
     "answer": "Storage optimized instances, such as I families.",
     "explanation": "These instances are designed for workloads whose performance depends on local storage throughput or IOPS.",
+    "example": "A high-IOPS local database evaluates an I family instance with NVMe instance storage.",
     "examCue": "High local IOPS points to storage optimized.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 1,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-054",
@@ -4417,11 +4586,12 @@
     "prompt": "Contrast Shared tenancy, Dedicated Instances, and Dedicated Hosts.",
     "answer": "Shared is multi-account hardware by default; Dedicated Instances use single-account hardware without host control; Dedicated Hosts give one customer an entire physical server with host visibility and placement control.",
     "explanation": "Tenancy describes how physical infrastructure is allocated.",
+    "example": "A normal server uses shared tenancy, a compliance workload may use Dedicated Instances, and a socket-bound license uses a Dedicated Host.",
     "examCue": "Increasing host control: Shared → Dedicated Instance → Dedicated Host.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-055",
@@ -4438,13 +4608,14 @@
     ],
     "type": "scenario",
     "prompt": "A license is bound to physical sockets and cores and requires host-level auditing. Which EC2 tenancy option is the best fit?",
-    "answer": "A Dedicated Host.",
+    "answer": "A Dedicated Host. It exposes the physical host, sockets, and cores needed for server-bound licensing.",
     "explanation": "Dedicated Hosts expose host identity, sockets, and cores and support targeted placement for server-bound licensing scenarios.",
+    "example": "A database license tied to physical sockets runs on a Dedicated Host so the company can audit cores and host placement.",
     "examCue": "Physical host visibility or strict BYOL points to Dedicated Host.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 2,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-01-056",
@@ -4464,11 +4635,12 @@
     "prompt": "How does EC2 tenancy differ from EC2 purchasing models?",
     "answer": "Tenancy describes physical hardware sharing or dedication; purchasing models describe price, interruption, or commitment.",
     "explanation": "Dedicated Host and Dedicated Instance answer an isolation question, while On-Demand, Spot, Reserved Instances, and Savings Plans answer cost-model questions.",
+    "example": "A server can use dedicated tenancy for isolation while also using an On-Demand or commitment-based purchase option for cost.",
     "examCue": "Do not confuse hardware allocation with pricing commitment.",
     "sourceRef": "knowledge/daily/2026-09-01-databases-vpc-ec2.md",
     "difficulty": 3,
     "status": "approved",
-    "version": 1
+    "version": 2
   },
   {
     "id": "clf-c02-2026-09-15-001",
