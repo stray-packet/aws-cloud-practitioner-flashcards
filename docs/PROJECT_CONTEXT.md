@@ -8,10 +8,12 @@ AWS Study is a public, English-language flashcard PWA for AWS certifications. Th
 2. Save the Markdown output to `knowledge/inbox/YYYY-MM-DD-gemini.md`.
 3. Produce a reviewed daily note in `knowledge/daily/`.
 4. Record adjacent but unstudied topics in `knowledge/gaps/`.
-5. Generate cards in `flashcards/drafts/`; only user-approved cards move to `flashcards/approved/`.
+5. Generate cards in `flashcards/drafts/`; only user-approved cards move to `flashcards/approved/`. Explicit delegated approval permits reviewed material to be written directly to approved.
 6. Run `npm run content:build` and `npm run export:anki`.
 
 Approved cards carry both `studyDate` and `sourceChat`. Reports that happen on the same date remain distinct chats. Daily Review enforces the configured new-card allowance across the whole local calendar day; Custom Study supports 10/20/50/all matching cards filtered by chat, exam domain, and topic, with scheduled or randomized ordering.
+
+Card answers should be concise and understandable without sacrificing accuracy. Use `explanation` for the why and optional `example` for a concrete situation; the UI and Anki export render both.
 
 Potential gaps never count as studied and never enter the review queue without approval.
 

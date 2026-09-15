@@ -1,0 +1,404 @@
+[
+  {
+    "id": "clf-c02-2026-09-15-050",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics"
+    ],
+    "services": [
+      "Amazon Athena",
+      "AWS Glue"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon Athena and AWS Glue differ?",
+    "answer": "Athena queries data with SQL; Glue discovers, catalogs, and transforms data.",
+    "explanation": "Athena is the query engine. Glue prepares metadata and data pipelines that Athena and other analytics services can use.",
+    "example": "Glue catalogs S3 files, then Athena queries the cataloged table.",
+    "examCue": "Query = Athena; catalog/ETL = Glue.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-051",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Metadata"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What does an AWS Glue crawler do?",
+    "answer": "It scans data sources, infers their structure, and creates or updates metadata in the Glue Data Catalog.",
+    "explanation": "The crawler does not primarily analyze business results; it makes datasets discoverable as tables and schemas.",
+    "example": "A crawler recognizes Parquet columns in S3 and adds a table to the catalog.",
+    "examCue": "Automatic schema discovery = crawler.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-052",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "ETL"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What does ETL mean?",
+    "answer": "Extract data from sources, transform it into a useful form, and load it into a destination.",
+    "explanation": "ETL is a data-processing pattern, not a specific AWS product.",
+    "example": "Read sales files, clean currency fields, and write analytics-ready Parquet data.",
+    "examCue": "Extract, Transform, Load.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-053",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "ETL"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What is a worker in an AWS Glue ETL job?",
+    "answer": "Compute capacity that executes the data-processing job.",
+    "explanation": "Workers provide CPU and memory for the job; they are not human operators.",
+    "example": "A larger transformation may need more or larger workers.",
+    "examCue": "Worker = ETL compute.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-054",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "comparison",
+    "prompt": "What is the difference between RPO and RTO?",
+    "answer": "RPO is how much data loss is acceptable, measured in time; RTO is how long service restoration may take.",
+    "explanation": "RPO looks backward to the latest usable data. RTO looks forward to returning the service to operation.",
+    "example": "An RPO of 15 minutes allows 15 minutes of lost updates; an RTO of one hour allows an hour to recover.",
+    "examCue": "Data loss = RPO; downtime = RTO.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-055",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "comparison",
+    "prompt": "Order the four common AWS disaster-recovery strategies from lowest cost/slowest recovery to highest cost/fastest recovery.",
+    "answer": "Backup and restore, pilot light, warm standby, multi-site active/active.",
+    "explanation": "Keeping more of the recovery environment continuously running generally shortens recovery but increases cost.",
+    "example": "A pilot light keeps only critical cores alive; warm standby keeps a scaled-down full environment.",
+    "examCue": "More always-on resources usually mean faster recovery.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-056",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "scenario",
+    "prompt": "A company accepts hours of downtime and wants the cheapest disaster-recovery strategy. Which approach fits?",
+    "answer": "Backup and restore.",
+    "explanation": "Resources can be rebuilt from backups after a disaster, minimizing steady-state cost but increasing recovery time.",
+    "example": "Restore a database snapshot and redeploy infrastructure after an outage.",
+    "examCue": "Lowest cost and longest RTO = backup and restore.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-057",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "APIs",
+      "Security"
+    ],
+    "services": [
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "Why are AWS API requests signed?",
+    "answer": "So AWS can authenticate the caller and verify the request has not been altered.",
+    "explanation": "The signature is evaluated together with IAM authorization.",
+    "example": "The AWS CLI signs a request using configured credentials before calling an API endpoint.",
+    "examCue": "Signed request = authenticated API call.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-058",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "AWS fundamentals"
+    ],
+    "services": [],
+    "type": "recall",
+    "prompt": "What is an Amazon Resource Name (ARN)?",
+    "answer": "A standardized identifier that uniquely names an AWS resource.",
+    "explanation": "Policies and APIs use ARNs to refer precisely to resources.",
+    "example": "An IAM policy can name one specific S3 bucket ARN.",
+    "examCue": "Unique AWS resource identifier = ARN.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-059",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Private connectivity"
+    ],
+    "services": [
+      "AWS PrivateLink",
+      "Amazon VPC"
+    ],
+    "type": "comparison",
+    "prompt": "How do gateway and interface VPC endpoints differ?",
+    "answer": "Gateway endpoints use route-table entries and support S3 and DynamoDB; interface endpoints use PrivateLink and private-IP network interfaces for many services.",
+    "explanation": "Both provide private service access, but their implementation and supported services differ.",
+    "example": "A private subnet reaches S3 through a gateway endpoint and Secrets Manager through an interface endpoint.",
+    "examCue": "S3/DynamoDB route = gateway; private ENI = interface.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-060",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Messaging"
+    ],
+    "services": [
+      "Amazon SQS",
+      "Amazon SNS"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon SQS and Amazon SNS differ?",
+    "answer": "SQS stores messages in a queue for consumers to pull; SNS pushes each publication to subscribed endpoints.",
+    "explanation": "SQS decouples work and lets consumers process at their pace. SNS is useful for fan-out.",
+    "example": "An order enters an SQS worker queue; one alarm is sent by SNS to email, Lambda, and SQS.",
+    "examCue": "Queue = SQS; fan-out = SNS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-061",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Streaming"
+    ],
+    "services": [
+      "Amazon Kinesis",
+      "Amazon SQS"
+    ],
+    "type": "comparison",
+    "prompt": "How does Amazon Kinesis differ from Amazon SQS?",
+    "answer": "Kinesis is a real-time data stream that can retain ordered records for multiple readers; SQS is a work queue where messages are processed and removed.",
+    "explanation": "Choose based on stream analytics versus decoupled task processing.",
+    "example": "Clickstream analytics uses Kinesis; image-resize jobs use SQS.",
+    "examCue": "Stream = Kinesis; task queue = SQS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-062",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Messaging"
+    ],
+    "services": [
+      "Amazon MQ",
+      "Amazon SQS"
+    ],
+    "type": "comparison",
+    "prompt": "When is Amazon MQ a better fit than Amazon SQS?",
+    "answer": "When migrating an existing application that depends on standard ActiveMQ or RabbitMQ broker protocols and behavior.",
+    "explanation": "SQS is AWS-native and simpler; Amazon MQ reduces rewriting for broker-compatible applications.",
+    "example": "A legacy JMS application moves to managed ActiveMQ on Amazon MQ.",
+    "examCue": "Broker compatibility = Amazon MQ.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-063",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Streaming"
+    ],
+    "services": [
+      "Amazon MSK",
+      "Amazon Kinesis"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon MSK and Amazon Kinesis Data Streams differ?",
+    "answer": "MSK provides managed Apache Kafka compatibility; Kinesis is an AWS-native streaming service.",
+    "explanation": "Existing Kafka clients and tooling point to MSK; a new AWS-native stream may favor Kinesis.",
+    "example": "A company keeps Kafka APIs with MSK instead of rewriting producers.",
+    "examCue": "Kafka = MSK; AWS-native stream = Kinesis.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-064",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "APIs"
+    ],
+    "services": [
+      "AWS AppSync",
+      "Amazon API Gateway"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS AppSync and Amazon API Gateway differ?",
+    "answer": "AppSync provides managed GraphQL APIs and real-time data features; API Gateway publishes and manages REST, HTTP, and WebSocket APIs.",
+    "explanation": "The API style in the question is usually the strongest clue.",
+    "example": "A GraphQL mobile backend uses AppSync; a REST Lambda API uses API Gateway.",
+    "examCue": "GraphQL = AppSync; REST/HTTP/WebSocket = API Gateway.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-065",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases"
+    ],
+    "services": [
+      "Amazon RDS",
+      "Amazon DynamoDB",
+      "Amazon Redshift"
+    ],
+    "type": "comparison",
+    "prompt": "When should a workload use RDS, DynamoDB, or Redshift?",
+    "answer": "RDS for relational transactions, DynamoDB for serverless key-value/document access at scale, and Redshift for analytical warehousing.",
+    "explanation": "These services optimize different data models and access patterns.",
+    "example": "Orders with SQL relationships use RDS; sessions use DynamoDB; company-wide BI uses Redshift.",
+    "examCue": "Transactions, key-value, analytics.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-066",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Edge infrastructure"
+    ],
+    "services": [
+      "AWS Local Zones",
+      "AWS Wavelength"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Local Zones and AWS Wavelength Zones differ?",
+    "answer": "Local Zones place AWS infrastructure near a metro area; Wavelength Zones place AWS services inside telecom networks for low-latency 5G applications.",
+    "explanation": "Both extend AWS closer to users, but Wavelength is specifically tied to carrier networks.",
+    "example": "Interactive media in a city may use a Local Zone; a 5G connected-vehicle app may use Wavelength.",
+    "examCue": "Metro proximity = Local Zone; carrier 5G = Wavelength.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  }
+]

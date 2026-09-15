@@ -9,7 +9,8 @@ const rows = ['#separator:Tab', '#html:true', '#columns:ID\tFront\tBack\tExplana
 for (const card of cards) {
   const chatTag = card.sourceChat.replaceAll(' ', '_').replaceAll('·', '-')
   const tags = [card.certification, card.domain, `day::${card.studyDate}`, `chat::${chatTag}`, `type::${card.type}`, ...card.topics.map((topic) => `topic::${topic.replaceAll(' ', '_')}`)].join(' ')
-  rows.push([card.id, card.prompt, card.answer, card.explanation, tags].map(escapeField).join('\t'))
+  const explanation = card.example ? `${card.explanation}<br><strong>Example:</strong> ${card.example}` : card.explanation
+  rows.push([card.id, card.prompt, card.answer, explanation, tags].map(escapeField).join('\t'))
 }
 
 const output = path.join(root, 'exports', 'anki', 'aws-cloud-practitioner.tsv')

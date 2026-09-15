@@ -78,6 +78,7 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
           <div className="answer-block">
             <p className="answer-title">{card.answer}</p>
             <p>{card.explanation}</p>
+            {card.example && <div className="example-block"><strong>Example:</strong> {card.example}</div>}
             {card.examCue && <div className="exam-cue"><strong>Exam cue:</strong> {card.examCue}</div>}
             <div className="source-ref">Source: {card.sourceRef}</div>
           </div>

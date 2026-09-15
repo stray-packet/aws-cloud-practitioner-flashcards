@@ -30,6 +30,7 @@ export const flashcardSchema = z.object({
   prompt: z.string().min(8),
   answer: z.string().min(1),
   explanation: z.string().min(8),
+  example: z.string().min(8).optional(),
   examCue: z.string().optional(),
   options: z.array(optionSchema).min(2).optional(),
   correctOptions: z.array(z.string().min(1)).optional(),

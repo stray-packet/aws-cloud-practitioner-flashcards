@@ -1,0 +1,436 @@
+[
+  {
+    "id": "clf-c02-2026-09-15-067",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS Trusted Advisor do?",
+    "answer": "It inspects an AWS environment and recommends improvements based on AWS best practices.",
+    "explanation": "Its recommendations cover cost, performance, security, fault tolerance, service limits, and operational excellence.",
+    "example": "It may identify idle resources or an exposed security setting.",
+    "examCue": "Account-level best-practice recommendations = Trusted Advisor.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-068",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor"
+    ],
+    "type": "recall",
+    "prompt": "What six categories does Trusted Advisor currently use?",
+    "answer": "Cost Optimization, Performance, Security, Fault Tolerance, Service Limits, and Operational Excellence.",
+    "explanation": "Older material sometimes lists five categories and omits Operational Excellence.",
+    "example": "A service-quota warning belongs to Service Limits.",
+    "examCue": "Trusted Advisor has six current categories.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-069",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Architecture",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor",
+      "AWS Well-Architected Tool"
+    ],
+    "type": "comparison",
+    "prompt": "How do Trusted Advisor and the Well-Architected Tool differ?",
+    "answer": "Trusted Advisor automatically checks account resources; the Well-Architected Tool guides a structured review of a workload.",
+    "explanation": "One surfaces operational recommendations from observed resources; the other records architecture-review answers and improvement items.",
+    "example": "Trusted Advisor flags idle compute; a Well-Architected review questions the workload recovery design.",
+    "examCue": "Account checks versus workload review.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-070",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Observability",
+      "Optimization"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS Trusted Advisor"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudWatch and Trusted Advisor differ?",
+    "answer": "CloudWatch monitors live operational data and raises alarms; Trusted Advisor periodically recommends best-practice improvements.",
+    "explanation": "CloudWatch answers what is happening now. Trusted Advisor identifies optimization opportunities.",
+    "example": "CloudWatch alarms on high CPU; Trusted Advisor suggests changing an underused resource.",
+    "examCue": "Monitoring = CloudWatch; advice = Trusted Advisor.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-071",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Observability",
+      "Audit"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Config"
+    ],
+    "type": "comparison",
+    "prompt": "What questions do CloudWatch, CloudTrail, and AWS Config answer?",
+    "answer": "CloudWatch: how is it behaving? CloudTrail: who called the API? Config: what was configured and was it compliant?",
+    "explanation": "The three services complement each other during operations and investigation.",
+    "example": "An outage alarm appears in CloudWatch, the change actor in CloudTrail, and configuration history in Config.",
+    "examCue": "Behavior, actor, configuration.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-072",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Health"
+    ],
+    "services": [
+      "AWS Health"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between general AWS service health and account-specific AWS Health information?",
+    "answer": "General service health reports broad AWS service events; account-specific health shows events that may affect your resources or account.",
+    "explanation": "Personalized health information helps prioritize events relevant to the customer.",
+    "example": "A regional service disruption is public; scheduled maintenance on your EC2 instance is account-specific.",
+    "examCue": "Public AWS event versus your affected resources.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-073",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support plans"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "Which AWS Support plan is included for every customer?",
+    "answer": "Basic Support.",
+    "explanation": "Premium plans add technical support and broader features; names and details can change, so use the current AWS plan page for exact entitlements.",
+    "example": "A new AWS account has Basic Support without buying an upgrade.",
+    "examCue": "Basic is included.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-074",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support plans"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "What premium AWS Support plans are currently presented by AWS?",
+    "answer": "Business Support+, Enterprise Support, and Unified Operations.",
+    "explanation": "Older Developer, Business, and Enterprise On-Ramp material is in transition and should not be treated as the lasting current lineup.",
+    "example": "A company compares Business Support+ with Enterprise Support for production needs.",
+    "examCue": "Use current plan names, not an old cheat sheet.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-075",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Trusted Advisor"
+    ],
+    "services": [
+      "AWS Trusted Advisor",
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "Is the old rule “Basic gets seven Trusted Advisor checks and Business gets all checks” reliable today?",
+    "answer": "No. Trusted Advisor access and features have changed and depend on the current support plan and recommendation type.",
+    "explanation": "Learn Trusted Advisor purpose and categories; verify current entitlements instead of memorizing the old shortcut.",
+    "example": "A current plan page, not a legacy course slide, decides feature access.",
+    "examCue": "Avoid the obsolete seven-check rule.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-076",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security",
+      "Abuse"
+    ],
+    "services": [
+      "AWS Trust & Safety"
+    ],
+    "type": "scenario",
+    "prompt": "An AWS resource appears to be sending spam or hosting abusive content. Where should it be reported?",
+    "answer": "AWS Trust & Safety through the AWS abuse-reporting process.",
+    "explanation": "AWS investigates reported abuse of AWS resources while customers remain responsible for their content and account security.",
+    "example": "A recipient reports phishing messages originating from an AWS-hosted resource.",
+    "examCue": "AWS abuse report = Trust & Safety.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-077",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "SLA"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "What is the usual remedy when an AWS service fails to meet an eligible SLA?",
+    "answer": "Service credits, after the customer satisfies the SLA conditions and claim process.",
+    "explanation": "An SLA does not normally promise an automatic cash refund or compensation for all business losses.",
+    "example": "An approved claim applies a credit to future eligible service charges.",
+    "examCue": "SLA remedy usually means service credit.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-078",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Pricing Calculator",
+      "AWS Cost Explorer",
+      "AWS Budgets"
+    ],
+    "type": "comparison",
+    "prompt": "When should you use Pricing Calculator, Cost Explorer, or AWS Budgets?",
+    "answer": "Use Pricing Calculator before deployment to estimate; Cost Explorer to analyze actual and forecasted spend; Budgets to alert or act on thresholds.",
+    "explanation": "They cover planning, analysis, and control.",
+    "example": "Estimate a new architecture, inspect last month, then alert at $500.",
+    "examCue": "Estimate, analyze, alert.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-079",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Budgets"
+    ],
+    "type": "scenario",
+    "prompt": "A team wants an email before monthly AWS spend exceeds a chosen amount. Which service should it configure?",
+    "answer": "AWS Budgets.",
+    "explanation": "Budgets compares actual or forecasted cost and usage with thresholds and can notify or trigger configured actions.",
+    "example": "Send an alert when forecasted monthly cost reaches 80% of $1,000.",
+    "examCue": "Threshold alert = Budgets.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-080",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Pricing Calculator"
+    ],
+    "type": "scenario",
+    "prompt": "An architect wants to estimate the monthly cost of a design that has not been deployed. Which tool fits?",
+    "answer": "AWS Pricing Calculator.",
+    "explanation": "It models services and expected usage before resources exist.",
+    "example": "Compare estimated costs for two EC2 and storage designs.",
+    "examCue": "Pre-deployment estimate = Pricing Calculator.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-081",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Cost Explorer"
+    ],
+    "type": "scenario",
+    "prompt": "Finance wants to find which service caused last month’s cost increase. Which tool fits?",
+    "answer": "AWS Cost Explorer.",
+    "explanation": "Cost Explorer analyzes historical usage and cost and can group or filter the data.",
+    "example": "Group last month’s spend by service and linked account.",
+    "examCue": "Historical cost analysis = Cost Explorer.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-082",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS DMS",
+      "DMS Schema Conversion"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS DMS and DMS Schema Conversion work together in a heterogeneous database migration?",
+    "answer": "DMS moves or replicates the data; DMS Schema Conversion assesses and converts database schema and code for the target engine.",
+    "explanation": "Changing database engines often requires both data movement and schema conversion.",
+    "example": "Move Oracle data to PostgreSQL while converting incompatible schema objects.",
+    "examCue": "Data movement plus schema conversion.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-083",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS DMS"
+    ],
+    "type": "recall",
+    "prompt": "What is the current preferred AWS service for heterogeneous database schema conversion?",
+    "answer": "DMS Schema Conversion.",
+    "explanation": "AWS Schema Conversion Tool is now the legacy path; new study material should prefer the DMS capability.",
+    "example": "Assess an Oracle-to-Aurora PostgreSQL schema inside AWS DMS.",
+    "examCue": "Prefer DMS Schema Conversion over legacy SCT.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-084",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "AWS resources"
+    ],
+    "services": [
+      "AWS Architecture Center",
+      "AWS Marketplace"
+    ],
+    "type": "comparison",
+    "prompt": "How do the AWS Architecture Center and AWS Marketplace differ?",
+    "answer": "Architecture Center teaches designs and best practices; Marketplace lets customers obtain third-party software, data, and services.",
+    "explanation": "Architecture Center is guidance, while Marketplace is a procurement and deployment catalog.",
+    "example": "Read a serverless pattern in Architecture Center; subscribe to a security product in Marketplace.",
+    "examCue": "Guidance versus catalog.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  }
+]

@@ -41,7 +41,7 @@ export function ExamView({ cards, onAttempt, onExit }: ExamViewProps) {
             return <button className={`exam-option ${isSelected ? 'selected' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`} type="button" key={option.id} onClick={() => toggle(option.id)}><span>{option.id.toUpperCase()}</span><p>{option.text}</p>{isCorrect && <Check size={18} />}{isWrong && <X size={18} />}</button>
           })}
         </div>
-        {submitted && <div className={`exam-feedback ${correct ? 'correct' : 'wrong'}`}><strong>{correct ? 'Correct' : 'Not quite'}</strong><p>{card.explanation}</p>{card.examCue && <p><strong>Exam cue:</strong> {card.examCue}</p>}</div>}
+        {submitted && <div className={`exam-feedback ${correct ? 'correct' : 'wrong'}`}><strong>{correct ? 'Correct' : 'Not quite'}</strong><p>{card.explanation}</p>{card.example && <p><strong>Example:</strong> {card.example}</p>}{card.examCue && <p><strong>Exam cue:</strong> {card.examCue}</p>}</div>}
         <div className="exam-actions">{submitted ? <button className="primary-button" type="button" onClick={next}>Next Question</button> : <button className="primary-button" type="button" disabled={!selected.length} onClick={submit}>Check Answer</button>}</div>
       </section>
     </div>

@@ -27,7 +27,7 @@ export function Overview({ cards, store, onNavigate, onStartStudy }: OverviewPro
   const [size, setSize] = useState<SessionSize>('all')
   const options = useMemo<StudySessionOptions>(() => ({ mode: 'custom', sourceChat, domain, topic, order, size }), [domain, order, size, sourceChat, topic])
   const scopedCards = useMemo(() => filterStudyCards(cards, options), [cards, options])
-  const sourceChats = useMemo(() => [...new Set(cards.map((card) => card.sourceChat))].sort(), [cards])
+  const sourceChats = useMemo(() => [...new Set(cards.map((card) => card.sourceChat))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })), [cards])
   const topics = useMemo(() => [...new Set(cards.filter((card) =>
     (sourceChat === 'all' || card.sourceChat === sourceChat)
     && (domain === 'all' || card.domain === domain),

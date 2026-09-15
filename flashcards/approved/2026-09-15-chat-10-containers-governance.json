@@ -1,0 +1,388 @@
+[
+  {
+    "id": "clf-c02-2026-09-15-017",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers"
+    ],
+    "services": [],
+    "type": "recall",
+    "prompt": "What does a container package?",
+    "answer": "An application together with the libraries and dependencies it needs to run consistently.",
+    "explanation": "Containers make the application portable across environments that support the container runtime.",
+    "example": "The same image can run on a laptop and later as an ECS task.",
+    "examCue": "Application plus dependencies = container.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-018",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Kubernetes"
+    ],
+    "services": [
+      "Amazon EKS"
+    ],
+    "type": "recall",
+    "prompt": "What is a Kubernetes Pod?",
+    "answer": "The smallest deployable Kubernetes unit, containing one or more closely related containers.",
+    "explanation": "Containers in a Pod share networking and can share storage; the exam does not require Dockerfile syntax.",
+    "example": "A web container and a tightly coupled logging sidecar can share one Pod.",
+    "examCue": "Pod is a Kubernetes deployment unit, not a registry.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-019",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Orchestration"
+    ],
+    "services": [
+      "Amazon ECS",
+      "Amazon EKS"
+    ],
+    "type": "comparison",
+    "prompt": "When should you choose Amazon ECS instead of Amazon EKS?",
+    "answer": "Choose ECS for AWS-native container orchestration; choose EKS when the workload or team specifically needs Kubernetes compatibility.",
+    "explanation": "ECS and EKS both schedule containers, but EKS exposes the Kubernetes ecosystem and APIs.",
+    "example": "A team already using Kubernetes manifests may prefer EKS; an AWS-only team may prefer ECS simplicity.",
+    "examCue": "Kubernetes requirement = EKS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-020",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Serverless"
+    ],
+    "services": [
+      "AWS Fargate"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS Fargate remove from container operations?",
+    "answer": "The need to provision and manage the underlying servers.",
+    "explanation": "Fargate provides serverless compute capacity for ECS or EKS; you still define and operate the containers.",
+    "example": "An ECS task runs without the team creating an EC2 cluster.",
+    "examCue": "Serverless container compute = Fargate.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-021",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Registry"
+    ],
+    "services": [
+      "Amazon ECR"
+    ],
+    "type": "recall",
+    "prompt": "What is stored in Amazon ECR?",
+    "answer": "Container images.",
+    "explanation": "ECR is a managed image registry. ECS or EKS can pull images from it to run containers.",
+    "example": "A CI pipeline pushes version 2.1 of an application image to ECR.",
+    "examCue": "Registry = ECR; orchestration = ECS/EKS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-022",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Elastic Beanstalk",
+      "Amazon Lightsail"
+    ],
+    "type": "comparison",
+    "prompt": "How do Elastic Beanstalk and Lightsail differ?",
+    "answer": "Elastic Beanstalk manages application deployment on configurable AWS resources; Lightsail provides simplified, predictable bundles for small workloads.",
+    "explanation": "Beanstalk offers more access to underlying AWS services, while Lightsail reduces choices and setup.",
+    "example": "A small brochure site may use Lightsail; a web app needing autoscaling policies may use Beanstalk.",
+    "examCue": "Simple bundle = Lightsail; managed app platform = Beanstalk.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-023",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Amplify",
+      "AWS Elastic Beanstalk"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Amplify and Elastic Beanstalk differ?",
+    "answer": "Amplify focuses on web/mobile frontend development and hosting; Beanstalk deploys general web applications on managed AWS infrastructure.",
+    "explanation": "The service choice follows the developer experience and application type.",
+    "example": "A React frontend with managed hosting fits Amplify; a Java web service may fit Beanstalk.",
+    "examCue": "Frontend/mobile = Amplify.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-024",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Observability",
+      "Tracing"
+    ],
+    "services": [
+      "AWS X-Ray"
+    ],
+    "type": "scenario",
+    "prompt": "A distributed application is slow, and the team needs to see which service call causes the delay. Which service helps?",
+    "answer": "AWS X-Ray.",
+    "explanation": "X-Ray traces a request as it moves through application components and shows latency and errors.",
+    "example": "A checkout request spends two seconds in one downstream API.",
+    "examCue": "Distributed request tracing = X-Ray.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-025",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "IAM"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS IAM"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between an IAM user and an AWS member account?",
+    "answer": "An IAM user is an identity inside one AWS account; a member account is an independent AWS account governed through Organizations.",
+    "explanation": "Member accounts have separate resources and security boundaries. IAM users share their account context.",
+    "example": "Creating an IAM user named dev does not create a development AWS account.",
+    "examCue": "Identity is not an account.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-026",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "OUs"
+    ],
+    "services": [
+      "AWS Organizations"
+    ],
+    "type": "recall",
+    "prompt": "What is an organizational unit in AWS Organizations?",
+    "answer": "A logical group of AWS accounts used to organize and apply governance.",
+    "explanation": "OUs can be nested and can receive policies such as SCPs.",
+    "example": "Production accounts can be grouped under a Production OU.",
+    "examCue": "OU groups accounts, not individual resources.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-027",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "Best practices"
+    ],
+    "services": [
+      "AWS Organizations"
+    ],
+    "type": "scenario",
+    "prompt": "Where should ordinary production workloads run in an AWS Organization?",
+    "answer": "In member accounts, not the management account.",
+    "explanation": "Keeping the management account focused on billing and organization administration reduces risk and follows AWS best practice.",
+    "example": "The ecommerce application runs in a Production member account.",
+    "examCue": "Protect the management account from workloads.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-028",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Multi-account"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS Control Tower"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Organizations and AWS Control Tower differ?",
+    "answer": "Organizations provides the multi-account hierarchy and policies; Control Tower builds an opinionated governed landing zone on top of it.",
+    "explanation": "Control Tower combines Organizations with account provisioning, controls, and centralized governance.",
+    "example": "Use Organizations for the account structure; add Control Tower for standardized account setup and ongoing governance.",
+    "examCue": "Control Tower orchestrates a governed environment.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-029",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Control Tower"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "recall",
+    "prompt": "What is a landing zone in AWS Control Tower?",
+    "answer": "A ready-to-use, governed multi-account environment.",
+    "explanation": "It establishes foundational accounts, organizational structure, logging, and controls.",
+    "example": "A company starts with separate audit, log archive, and workload accounts.",
+    "examCue": "Landing zone = governed multi-account foundation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-030",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Control Tower"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "recall",
+    "prompt": "What does Account Factory do in AWS Control Tower?",
+    "answer": "It provisions standardized AWS accounts using approved configurations.",
+    "explanation": "This makes new accounts repeatable instead of manually rebuilding governance each time.",
+    "example": "A team requests a sandbox account with the company network baseline.",
+    "examCue": "Repeatable account creation = Account Factory.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-031",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Controls"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "comparison",
+    "prompt": "What are preventive, detective, and proactive Control Tower controls?",
+    "answer": "Preventive controls block disallowed actions; detective controls report noncompliance; proactive controls check resources before deployment.",
+    "explanation": "AWS now uses the term controls; guardrail is an older synonym.",
+    "example": "Denying public S3 settings is preventive; flagging drift is detective; rejecting a bad template before creation is proactive.",
+    "examCue": "Block, detect, or pre-check.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-032",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Observability",
+      "Audit"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Config"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudWatch, CloudTrail, and AWS Config differ?",
+    "answer": "CloudWatch monitors behavior, CloudTrail records API activity, and Config tracks resource configuration and compliance.",
+    "explanation": "They answer how it runs, who changed it, and what configuration exists over time.",
+    "example": "An alarm fires in CloudWatch; CloudTrail names the caller; Config shows the security group before and after.",
+    "examCue": "Behavior, activity, configuration.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  }
+]

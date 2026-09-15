@@ -1,0 +1,388 @@
+[
+  {
+    "id": "clf-c02-2026-09-15-001",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "How do a Regional Reserved Instance and a Zonal Reserved Instance differ?",
+    "answer": "A Regional RI provides a billing discount across a Region but no capacity reservation. A Zonal RI applies in one Availability Zone and reserves matching capacity there.",
+    "explanation": "Separate the discount from the promise of capacity: only the Zonal RI includes both.",
+    "example": "A company expecting steady use anywhere in us-east-1 may choose Regional; one that must launch in us-east-1a may choose Zonal.",
+    "examCue": "Regional = flexible discount; Zonal = discount plus AZ capacity.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-002",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "recall",
+    "prompt": "Does buying a Regional Reserved Instance create or reserve an EC2 instance?",
+    "answer": "No. It is a billing benefit that AWS automatically applies to matching running usage.",
+    "explanation": "The instance still runs as normal EC2 capacity; the RI changes how eligible usage is billed.",
+    "example": "Buying ten Regional RIs does not launch ten servers.",
+    "examCue": "RI means discount commitment, not a server object.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-003",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Capacity"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A workload must be able to launch in one specific Availability Zone during a capacity shortage. Which option directly reserves that capacity?",
+    "answer": "A Zonal Reserved Instance or an On-Demand Capacity Reservation.",
+    "explanation": "Both reserve matching EC2 capacity in a particular Availability Zone; a Regional RI does not.",
+    "example": "A disaster-recovery server must be guaranteed space in us-west-2b.",
+    "examCue": "Look for specific AZ plus guaranteed capacity.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-004",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Capacity Reservations"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "recall",
+    "prompt": "What happens financially when an On-Demand Capacity Reservation is unused?",
+    "answer": "You still pay for the reserved capacity.",
+    "explanation": "AWS sets that capacity aside for you, so an unused reservation is billed much like an unused running instance.",
+    "example": "Reserving capacity for five instances and running only three leaves two billed but unused slots.",
+    "examCue": "Capacity held for you is billable.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-005",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "When is a Standard RI generally preferable to a Convertible RI?",
+    "answer": "Choose Standard when the workload is predictable and the priority is a larger discount; choose Convertible when future instance needs may change.",
+    "explanation": "Convertible RIs allow exchanges for different eligible configurations, trading some discount for flexibility.",
+    "example": "A stable production server favors Standard; a growing workload that may change families may favor Convertible.",
+    "examCue": "Standard = discount; Convertible = exchange flexibility.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-006",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Spot Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A batch-rendering job can stop and restart without harming the business. Which EC2 purchase option is usually most economical?",
+    "answer": "Spot Instances.",
+    "explanation": "Spot uses spare EC2 capacity at a steep discount, but AWS can interrupt it. The application must tolerate interruptions.",
+    "example": "A renderer checkpoints each frame and resumes on another instance.",
+    "examCue": "Fault-tolerant and flexible workload = Spot.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-007",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Savings Plans"
+    ],
+    "services": [
+      "AWS Savings Plans",
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "What is the key difference between Savings Plans and Reserved Instances at exam level?",
+    "answer": "Savings Plans commit to an hourly amount of eligible usage; RIs provide a discount for matching instance attributes and may be Regional or Zonal.",
+    "explanation": "Both reduce cost for predictable use, but they define the commitment differently.",
+    "example": "A Compute Savings Plan can follow eligible compute changes more flexibly than a Standard EC2 RI.",
+    "examCue": "Spend commitment points to Savings Plans.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-008",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Pricing",
+      "Savings Plans"
+    ],
+    "services": [
+      "AWS Savings Plans"
+    ],
+    "type": "recall",
+    "prompt": "What four Savings Plans types does AWS currently document?",
+    "answer": "Compute, EC2 Instance, SageMaker AI, and Database Savings Plans.",
+    "explanation": "Older study material may list fewer types. The durable idea is that each plan discounts a defined family of eligible usage.",
+    "example": "A Database Savings Plan can apply to eligible database usage rather than EC2 compute.",
+    "examCue": "Do not rely on the older three-type list.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-009",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 tenancy",
+      "Licensing"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A company must track physical sockets and cores for server-bound software licenses. Which EC2 tenancy option fits?",
+    "answer": "A Dedicated Host.",
+    "explanation": "A Dedicated Host gives visibility and control over a physical server. Dedicated Instances isolate hardware but abstract the host details.",
+    "example": "A license is valid only for a named physical socket count.",
+    "examCue": "BYOL plus sockets or cores = Dedicated Host.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-010",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 tenancy"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "How do Dedicated Instances differ from Dedicated Hosts?",
+    "answer": "Both isolate hardware to one customer, but Dedicated Hosts expose and control the physical host; Dedicated Instances do not.",
+    "explanation": "Dedicated Instances can move between AWS-controlled hosts, while a Dedicated Host is an allocated physical server.",
+    "example": "General compliance isolation may use Dedicated Instances; strict host-bound licensing uses a Dedicated Host.",
+    "examCue": "Host visibility is the deciding clue.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-011",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "IAM",
+      "Policies"
+    ],
+    "services": [
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "What does an IAM policy Condition do?",
+    "answer": "It narrows when a policy statement applies.",
+    "explanation": "Conditions can require context such as MFA, a source IP, a resource tag, or a time range.",
+    "example": "Allow an action only when the request comes through MFA.",
+    "examCue": "Condition = when or under what context.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-012",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "SCPs"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "Do service control policies grant permissions to users or roles?",
+    "answer": "No. SCPs set the maximum permissions available in member accounts; an IAM policy must still grant the action.",
+    "explanation": "An action must be allowed by the organization boundary and by the relevant identity or resource policy.",
+    "example": "An SCP allows S3, but a role with no S3 permission still cannot read a bucket.",
+    "examCue": "SCP is a ceiling, not a grant.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-013",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security monitoring"
+    ],
+    "services": [
+      "AWS CloudTrail",
+      "Amazon GuardDuty",
+      "Amazon Detective"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudTrail, GuardDuty, and Detective work together?",
+    "answer": "CloudTrail records activity, GuardDuty detects suspicious behavior, and Detective helps investigate relationships and timelines.",
+    "explanation": "They answer different questions: what happened, is it suspicious, and how is it connected?",
+    "example": "GuardDuty raises a credential-abuse finding; Detective helps trace the related resources and events.",
+    "examCue": "Record → detect → investigate.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-014",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security",
+      "Edge protection"
+    ],
+    "services": [
+      "AWS WAF",
+      "AWS Shield"
+    ],
+    "type": "comparison",
+    "prompt": "What threats do AWS WAF and AWS Shield primarily address?",
+    "answer": "WAF filters malicious web requests; Shield protects against distributed denial-of-service attacks.",
+    "explanation": "WAF uses web-layer rules such as IP, path, or SQL-injection patterns. Shield focuses on DDoS resilience.",
+    "example": "Block a bad HTTP request with WAF; absorb a traffic flood with Shield.",
+    "examCue": "Web request rules = WAF; DDoS = Shield.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-015",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Encryption"
+    ],
+    "services": [
+      "AWS KMS"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS KMS?",
+    "answer": "To create and control encryption keys used to protect data.",
+    "explanation": "KMS integrates with many AWS services and records key usage through CloudTrail.",
+    "example": "An S3 bucket can use a KMS key for server-side encryption.",
+    "examCue": "Managed encryption keys = KMS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-016",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Identity",
+      "Multi-account"
+    ],
+    "services": [
+      "AWS IAM Identity Center"
+    ],
+    "type": "scenario",
+    "prompt": "Employees need one workforce sign-in for several AWS accounts. Which service should be evaluated?",
+    "answer": "AWS IAM Identity Center.",
+    "explanation": "It centrally assigns workforce access to AWS accounts and supported applications.",
+    "example": "A developer signs in once and selects the development or production account.",
+    "examCue": "Multi-account workforce access = IAM Identity Center.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  }
+]

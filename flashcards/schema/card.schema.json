@@ -16,6 +16,7 @@
     "prompt": { "type": "string", "minLength": 8 },
     "answer": { "type": "string", "minLength": 1 },
     "explanation": { "type": "string", "minLength": 8 },
+    "example": { "type": "string", "minLength": 8 },
     "examCue": { "type": "string" },
     "options": { "type": "array", "items": { "type": "object", "required": ["id", "text"], "properties": { "id": { "type": "string" }, "text": { "type": "string" } } } },
     "correctOptions": { "type": "array", "items": { "type": "string" } },

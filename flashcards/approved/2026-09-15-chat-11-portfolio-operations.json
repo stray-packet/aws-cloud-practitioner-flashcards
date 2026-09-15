@@ -1,0 +1,411 @@
+[
+  {
+    "id": "clf-c02-2026-09-15-033",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Tagging"
+    ],
+    "services": [
+      "AWS Resource Groups"
+    ],
+    "type": "recall",
+    "prompt": "What are AWS resource tags?",
+    "answer": "Key-value labels attached to resources for organization, cost allocation, automation, and access control.",
+    "explanation": "Tags are flexible metadata, not relational rows with joins and constraints.",
+    "example": "Tag an EC2 instance Environment=Production and CostCenter=42.",
+    "examCue": "Metadata label = tag.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-034",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Tagging",
+      "Resource organization"
+    ],
+    "services": [
+      "AWS Resource Groups"
+    ],
+    "type": "recall",
+    "prompt": "What is the purpose of AWS Resource Groups?",
+    "answer": "To create a logical view of related resources selected by tags or queries.",
+    "explanation": "A group helps operate resources together even when they are different service types.",
+    "example": "Show all resources tagged Application=Payments in one group.",
+    "examCue": "Group resources using metadata.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-035",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Cloud adoption",
+      "Architecture"
+    ],
+    "services": [
+      "AWS CAF",
+      "AWS Well-Architected Framework"
+    ],
+    "type": "comparison",
+    "prompt": "How do the AWS CAF and Well-Architected Framework differ?",
+    "answer": "CAF guides organization-wide cloud transformation; Well-Architected evaluates how a workload is designed and operated.",
+    "explanation": "CAF is about adoption across people, governance, business, platform, security, and operations. Well-Architected uses six workload pillars.",
+    "example": "Executives plan a migration program with CAF; architects review a payment workload with Well-Architected.",
+    "examCue": "Transformation = CAF; workload quality = Well-Architected.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-036",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Identity",
+      "Tagging"
+    ],
+    "services": [
+      "Amazon EC2",
+      "AWS IAM"
+    ],
+    "type": "comparison",
+    "prompt": "How do EC2 key pairs, IAM access keys, and resource tags differ?",
+    "answer": "EC2 key pairs authenticate operating-system login, IAM access keys sign AWS API requests, and tags label resources.",
+    "explanation": "They solve three unrelated problems: machine login, programmatic AWS identity, and organization.",
+    "example": "SSH uses a private key; a CLI uses an access key; Cost Explorer can group by tag.",
+    "examCue": "Login, API credential, label.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-037",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Business applications"
+    ],
+    "services": [
+      "Amazon Connect"
+    ],
+    "type": "scenario",
+    "prompt": "A company needs a cloud contact center for customer calls and chat. Which service fits?",
+    "answer": "Amazon Connect.",
+    "explanation": "Connect provides contact-center capabilities such as routing, queues, and agent experiences.",
+    "example": "Customers call a support number and are routed to available agents.",
+    "examCue": "Contact center = Amazon Connect.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-038",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "End-user computing"
+    ],
+    "services": [
+      "Amazon WorkSpaces"
+    ],
+    "type": "scenario",
+    "prompt": "Employees need centrally managed virtual Windows desktops. Which service fits?",
+    "answer": "Amazon WorkSpaces.",
+    "explanation": "WorkSpaces delivers managed virtual desktops without the company operating a traditional VDI platform.",
+    "example": "A contractor opens a secure corporate desktop from a personal laptop.",
+    "examCue": "Virtual desktop = WorkSpaces.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-039",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Messaging",
+      "Email"
+    ],
+    "services": [
+      "Amazon SES"
+    ],
+    "type": "scenario",
+    "prompt": "An application must send high-volume transactional email such as receipts. Which service fits?",
+    "answer": "Amazon Simple Email Service (SES).",
+    "explanation": "SES is designed for scalable application email sending and receiving.",
+    "example": "An online store emails an order confirmation after checkout.",
+    "examCue": "Application email = SES.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-040",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Business intelligence"
+    ],
+    "services": [
+      "Amazon QuickSight"
+    ],
+    "type": "scenario",
+    "prompt": "Business users need interactive dashboards over company data. Which AWS service fits?",
+    "answer": "Amazon QuickSight.",
+    "explanation": "QuickSight is AWS managed business-intelligence and visualization service.",
+    "example": "A finance dashboard displays monthly revenue by region.",
+    "examCue": "BI dashboards = QuickSight.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-041",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Infrastructure as code"
+    ],
+    "services": [
+      "AWS CloudFormation",
+      "AWS CDK"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudFormation and AWS CDK relate?",
+    "answer": "CloudFormation deploys declarative infrastructure templates; CDK lets you define infrastructure in code and synthesizes a CloudFormation template.",
+    "explanation": "CDK changes how the template is authored, while CloudFormation remains the deployment engine.",
+    "example": "A TypeScript CDK stack becomes a CloudFormation template before deployment.",
+    "examCue": "CDK produces CloudFormation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-042",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Elastic Beanstalk",
+      "AWS App Runner"
+    ],
+    "type": "comparison",
+    "prompt": "How do Elastic Beanstalk and App Runner differ?",
+    "answer": "Beanstalk offers managed deployment with more access to underlying AWS resources; App Runner provides a simpler path from source or container image to a managed web service.",
+    "explanation": "Both reduce operational work, but App Runner hides more infrastructure choices.",
+    "example": "A containerized HTTP API with minimal operations fits App Runner.",
+    "examCue": "Source/image straight to web service = App Runner.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-043",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "AWS resources"
+    ],
+    "services": [
+      "AWS Marketplace",
+      "AWS Architecture Center"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between AWS Marketplace and AWS Architecture Center?",
+    "answer": "Marketplace offers third-party software and services to acquire and deploy; Architecture Center provides patterns, reference architectures, and guidance.",
+    "explanation": "One is a catalog of offerings; the other is a learning and design resource.",
+    "example": "Buy a firewall appliance in Marketplace; study a three-tier reference architecture in Architecture Center.",
+    "examCue": "Purchase/deploy versus learn/design.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-044",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Governance",
+      "Licensing"
+    ],
+    "services": [
+      "AWS License Manager"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS License Manager help control?",
+    "answer": "Software license usage across AWS and on-premises environments.",
+    "explanation": "It can track license rules such as cores, sockets, or instances to reduce compliance risk.",
+    "example": "Prevent launching more licensed database servers than the contract permits.",
+    "examCue": "Software license governance = License Manager.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-045",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics"
+    ],
+    "services": [
+      "Amazon Athena",
+      "Amazon S3"
+    ],
+    "type": "scenario",
+    "prompt": "An analyst wants to run SQL directly over CSV and Parquet files in Amazon S3 without managing servers. Which service fits?",
+    "answer": "Amazon Athena.",
+    "explanation": "Athena is a serverless interactive query service for data in S3.",
+    "example": "Run a SQL query over one year of access logs stored in S3.",
+    "examCue": "SQL on S3 = Athena.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-046",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases"
+    ],
+    "services": [
+      "Amazon DynamoDB",
+      "Amazon DocumentDB",
+      "Amazon Keyspaces",
+      "Amazon Redshift"
+    ],
+    "type": "comparison",
+    "prompt": "When would you choose DynamoDB, DocumentDB, Keyspaces, or Redshift?",
+    "answer": "DynamoDB for serverless key-value/document access, DocumentDB for MongoDB-compatible documents, Keyspaces for Cassandra-compatible workloads, and Redshift for analytical warehousing.",
+    "explanation": "The exam usually provides a data model or compatibility clue.",
+    "example": "A Cassandra migration points to Keyspaces; a BI warehouse points to Redshift.",
+    "examCue": "Match the data model and workload.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-047",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Data lakes"
+    ],
+    "services": [
+      "AWS Glue",
+      "AWS Lake Formation"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Glue and Lake Formation differ?",
+    "answer": "Glue discovers, catalogs, and transforms data; Lake Formation helps build and centrally govern a data lake.",
+    "explanation": "They often work together: Glue supplies metadata and ETL, while Lake Formation manages data-lake permissions and governance.",
+    "example": "A crawler catalogs S3 data, then Lake Formation controls which analysts can access it.",
+    "examCue": "ETL/catalog = Glue; data-lake governance = Lake Formation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-048",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Streaming"
+    ],
+    "services": [
+      "Amazon MSK"
+    ],
+    "type": "recall",
+    "prompt": "What does Amazon MSK manage?",
+    "answer": "Apache Kafka clusters.",
+    "explanation": "MSK is for applications that need the Kafka ecosystem without operating the brokers themselves.",
+    "example": "An existing Kafka event platform moves to managed brokers on AWS.",
+    "examCue": "Managed Kafka = MSK.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-049",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Data",
+      "Marketplace"
+    ],
+    "services": [
+      "AWS Data Exchange"
+    ],
+    "type": "recall",
+    "prompt": "What is AWS Data Exchange used for?",
+    "answer": "Finding, subscribing to, and using third-party data products.",
+    "explanation": "Providers publish datasets and subscribers access them under defined terms.",
+    "example": "A risk team subscribes to a commercial weather dataset.",
+    "examCue": "Third-party datasets = Data Exchange.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  }
+]

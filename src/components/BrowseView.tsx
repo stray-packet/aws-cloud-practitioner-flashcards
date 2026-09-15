@@ -8,7 +8,7 @@ export function BrowseView({ cards }: { cards: Flashcard[] }) {
   const [sourceChat, setSourceChat] = useState('All chats')
   const [selected, setSelected] = useState(cards[0]?.id)
   const domains = ['All domains', ...new Set(cards.map((card) => card.domain))]
-  const sourceChats = ['All chats', ...[...new Set(cards.map((card) => card.sourceChat))].sort()]
+  const sourceChats = ['All chats', ...[...new Set(cards.map((card) => card.sourceChat))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))]
   const filtered = useMemo(() => cards.filter((card) => {
     const haystack = `${card.prompt} ${card.answer} ${card.topics.join(' ')} ${card.services.join(' ')} ${card.sourceChat}`.toLowerCase()
     return (domain === 'All domains' || card.domain === domain) && (sourceChat === 'All chats' || card.sourceChat === sourceChat) && haystack.includes(query.toLowerCase())
@@ -23,7 +23,7 @@ export function BrowseView({ cards }: { cards: Flashcard[] }) {
         <div className="card-list">{filtered.map((card) => <button className={card.id === current?.id ? 'active' : ''} type="button" key={card.id} onClick={() => setSelected(card.id)}><span>{card.prompt}</span><small>{card.domain} · {card.studyDate}</small></button>)}</div>
       </aside>
       <section className="browser-detail">
-        {current ? <><div className="detail-meta"><span>{current.id}</span><span>{current.type}</span></div><div className="field-group"><label>Front</label><p>{current.prompt}</p></div><div className="field-group"><label>Back</label><p className="detail-answer">{current.answer}</p><p>{current.explanation}</p></div><div className="tag-list">{[current.certification, current.domain, ...current.topics, ...current.services].map((tag) => <span key={tag}>{tag}</span>)}</div><div className="detail-source">{current.sourceRef}</div></> : <p>No cards match these filters.</p>}
+        {current ? <><div className="detail-meta"><span>{current.id}</span><span>{current.type}</span></div><div className="field-group"><label>Front</label><p>{current.prompt}</p></div><div className="field-group"><label>Back</label><p className="detail-answer">{current.answer}</p><p>{current.explanation}</p>{current.example && <p><strong>Example:</strong> {current.example}</p>}</div><div className="tag-list">{[current.certification, current.domain, ...current.topics, ...current.services].map((tag) => <span key={tag}>{tag}</span>)}</div><div className="detail-source">{current.sourceRef}</div></> : <p>No cards match these filters.</p>}
       </section>
     </div>
   )

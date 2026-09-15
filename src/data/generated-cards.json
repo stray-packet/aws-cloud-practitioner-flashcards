@@ -4469,5 +4469,2022 @@
     "difficulty": 3,
     "status": "approved",
     "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-001",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "How do a Regional Reserved Instance and a Zonal Reserved Instance differ?",
+    "answer": "A Regional RI provides a billing discount across a Region but no capacity reservation. A Zonal RI applies in one Availability Zone and reserves matching capacity there.",
+    "explanation": "Separate the discount from the promise of capacity: only the Zonal RI includes both.",
+    "example": "A company expecting steady use anywhere in us-east-1 may choose Regional; one that must launch in us-east-1a may choose Zonal.",
+    "examCue": "Regional = flexible discount; Zonal = discount plus AZ capacity.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-002",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "recall",
+    "prompt": "Does buying a Regional Reserved Instance create or reserve an EC2 instance?",
+    "answer": "No. It is a billing benefit that AWS automatically applies to matching running usage.",
+    "explanation": "The instance still runs as normal EC2 capacity; the RI changes how eligible usage is billed.",
+    "example": "Buying ten Regional RIs does not launch ten servers.",
+    "examCue": "RI means discount commitment, not a server object.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-003",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Capacity"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A workload must be able to launch in one specific Availability Zone during a capacity shortage. Which option directly reserves that capacity?",
+    "answer": "A Zonal Reserved Instance or an On-Demand Capacity Reservation.",
+    "explanation": "Both reserve matching EC2 capacity in a particular Availability Zone; a Regional RI does not.",
+    "example": "A disaster-recovery server must be guaranteed space in us-west-2b.",
+    "examCue": "Look for specific AZ plus guaranteed capacity.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-004",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Capacity Reservations"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "recall",
+    "prompt": "What happens financially when an On-Demand Capacity Reservation is unused?",
+    "answer": "You still pay for the reserved capacity.",
+    "explanation": "AWS sets that capacity aside for you, so an unused reservation is billed much like an unused running instance.",
+    "example": "Reserving capacity for five instances and running only three leaves two billed but unused slots.",
+    "examCue": "Capacity held for you is billable.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-005",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Reserved Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "When is a Standard RI generally preferable to a Convertible RI?",
+    "answer": "Choose Standard when the workload is predictable and the priority is a larger discount; choose Convertible when future instance needs may change.",
+    "explanation": "Convertible RIs allow exchanges for different eligible configurations, trading some discount for flexibility.",
+    "example": "A stable production server favors Standard; a growing workload that may change families may favor Convertible.",
+    "examCue": "Standard = discount; Convertible = exchange flexibility.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-006",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Spot Instances"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A batch-rendering job can stop and restart without harming the business. Which EC2 purchase option is usually most economical?",
+    "answer": "Spot Instances.",
+    "explanation": "Spot uses spare EC2 capacity at a steep discount, but AWS can interrupt it. The application must tolerate interruptions.",
+    "example": "A renderer checkpoints each frame and resumes on another instance.",
+    "examCue": "Fault-tolerant and flexible workload = Spot.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-007",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 pricing",
+      "Savings Plans"
+    ],
+    "services": [
+      "AWS Savings Plans",
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "What is the key difference between Savings Plans and Reserved Instances at exam level?",
+    "answer": "Savings Plans commit to an hourly amount of eligible usage; RIs provide a discount for matching instance attributes and may be Regional or Zonal.",
+    "explanation": "Both reduce cost for predictable use, but they define the commitment differently.",
+    "example": "A Compute Savings Plan can follow eligible compute changes more flexibly than a Standard EC2 RI.",
+    "examCue": "Spend commitment points to Savings Plans.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-008",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Pricing",
+      "Savings Plans"
+    ],
+    "services": [
+      "AWS Savings Plans"
+    ],
+    "type": "recall",
+    "prompt": "What four Savings Plans types does AWS currently document?",
+    "answer": "Compute, EC2 Instance, SageMaker AI, and Database Savings Plans.",
+    "explanation": "Older study material may list fewer types. The durable idea is that each plan discounts a defined family of eligible usage.",
+    "example": "A Database Savings Plan can apply to eligible database usage rather than EC2 compute.",
+    "examCue": "Do not rely on the older three-type list.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-009",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 tenancy",
+      "Licensing"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "scenario",
+    "prompt": "A company must track physical sockets and cores for server-bound software licenses. Which EC2 tenancy option fits?",
+    "answer": "A Dedicated Host.",
+    "explanation": "A Dedicated Host gives visibility and control over a physical server. Dedicated Instances isolate hardware but abstract the host details.",
+    "example": "A license is valid only for a named physical socket count.",
+    "examCue": "BYOL plus sockets or cores = Dedicated Host.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-010",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "EC2 tenancy"
+    ],
+    "services": [
+      "Amazon EC2"
+    ],
+    "type": "comparison",
+    "prompt": "How do Dedicated Instances differ from Dedicated Hosts?",
+    "answer": "Both isolate hardware to one customer, but Dedicated Hosts expose and control the physical host; Dedicated Instances do not.",
+    "explanation": "Dedicated Instances can move between AWS-controlled hosts, while a Dedicated Host is an allocated physical server.",
+    "example": "General compliance isolation may use Dedicated Instances; strict host-bound licensing uses a Dedicated Host.",
+    "examCue": "Host visibility is the deciding clue.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-011",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "IAM",
+      "Policies"
+    ],
+    "services": [
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "What does an IAM policy Condition do?",
+    "answer": "It narrows when a policy statement applies.",
+    "explanation": "Conditions can require context such as MFA, a source IP, a resource tag, or a time range.",
+    "example": "Allow an action only when the request comes through MFA.",
+    "examCue": "Condition = when or under what context.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-012",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "SCPs"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "Do service control policies grant permissions to users or roles?",
+    "answer": "No. SCPs set the maximum permissions available in member accounts; an IAM policy must still grant the action.",
+    "explanation": "An action must be allowed by the organization boundary and by the relevant identity or resource policy.",
+    "example": "An SCP allows S3, but a role with no S3 permission still cannot read a bucket.",
+    "examCue": "SCP is a ceiling, not a grant.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-013",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security monitoring"
+    ],
+    "services": [
+      "AWS CloudTrail",
+      "Amazon GuardDuty",
+      "Amazon Detective"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudTrail, GuardDuty, and Detective work together?",
+    "answer": "CloudTrail records activity, GuardDuty detects suspicious behavior, and Detective helps investigate relationships and timelines.",
+    "explanation": "They answer different questions: what happened, is it suspicious, and how is it connected?",
+    "example": "GuardDuty raises a credential-abuse finding; Detective helps trace the related resources and events.",
+    "examCue": "Record → detect → investigate.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-014",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security",
+      "Edge protection"
+    ],
+    "services": [
+      "AWS WAF",
+      "AWS Shield"
+    ],
+    "type": "comparison",
+    "prompt": "What threats do AWS WAF and AWS Shield primarily address?",
+    "answer": "WAF filters malicious web requests; Shield protects against distributed denial-of-service attacks.",
+    "explanation": "WAF uses web-layer rules such as IP, path, or SQL-injection patterns. Shield focuses on DDoS resilience.",
+    "example": "Block a bad HTTP request with WAF; absorb a traffic flood with Shield.",
+    "examCue": "Web request rules = WAF; DDoS = Shield.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-015",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Encryption"
+    ],
+    "services": [
+      "AWS KMS"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS KMS?",
+    "answer": "To create and control encryption keys used to protect data.",
+    "explanation": "KMS integrates with many AWS services and records key usage through CloudTrail.",
+    "example": "An S3 bucket can use a KMS key for server-side encryption.",
+    "examCue": "Managed encryption keys = KMS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-016",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 9 — EC2 Pricing & Security",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Identity",
+      "Multi-account"
+    ],
+    "services": [
+      "AWS IAM Identity Center"
+    ],
+    "type": "scenario",
+    "prompt": "Employees need one workforce sign-in for several AWS accounts. Which service should be evaluated?",
+    "answer": "AWS IAM Identity Center.",
+    "explanation": "It centrally assigns workforce access to AWS accounts and supported applications.",
+    "example": "A developer signs in once and selects the development or production account.",
+    "examCue": "Multi-account workforce access = IAM Identity Center.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-9-ec2-pricing-security-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-017",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers"
+    ],
+    "services": [],
+    "type": "recall",
+    "prompt": "What does a container package?",
+    "answer": "An application together with the libraries and dependencies it needs to run consistently.",
+    "explanation": "Containers make the application portable across environments that support the container runtime.",
+    "example": "The same image can run on a laptop and later as an ECS task.",
+    "examCue": "Application plus dependencies = container.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-018",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Kubernetes"
+    ],
+    "services": [
+      "Amazon EKS"
+    ],
+    "type": "recall",
+    "prompt": "What is a Kubernetes Pod?",
+    "answer": "The smallest deployable Kubernetes unit, containing one or more closely related containers.",
+    "explanation": "Containers in a Pod share networking and can share storage; the exam does not require Dockerfile syntax.",
+    "example": "A web container and a tightly coupled logging sidecar can share one Pod.",
+    "examCue": "Pod is a Kubernetes deployment unit, not a registry.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-019",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Orchestration"
+    ],
+    "services": [
+      "Amazon ECS",
+      "Amazon EKS"
+    ],
+    "type": "comparison",
+    "prompt": "When should you choose Amazon ECS instead of Amazon EKS?",
+    "answer": "Choose ECS for AWS-native container orchestration; choose EKS when the workload or team specifically needs Kubernetes compatibility.",
+    "explanation": "ECS and EKS both schedule containers, but EKS exposes the Kubernetes ecosystem and APIs.",
+    "example": "A team already using Kubernetes manifests may prefer EKS; an AWS-only team may prefer ECS simplicity.",
+    "examCue": "Kubernetes requirement = EKS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-020",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Serverless"
+    ],
+    "services": [
+      "AWS Fargate"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS Fargate remove from container operations?",
+    "answer": "The need to provision and manage the underlying servers.",
+    "explanation": "Fargate provides serverless compute capacity for ECS or EKS; you still define and operate the containers.",
+    "example": "An ECS task runs without the team creating an EC2 cluster.",
+    "examCue": "Serverless container compute = Fargate.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-021",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Containers",
+      "Registry"
+    ],
+    "services": [
+      "Amazon ECR"
+    ],
+    "type": "recall",
+    "prompt": "What is stored in Amazon ECR?",
+    "answer": "Container images.",
+    "explanation": "ECR is a managed image registry. ECS or EKS can pull images from it to run containers.",
+    "example": "A CI pipeline pushes version 2.1 of an application image to ECR.",
+    "examCue": "Registry = ECR; orchestration = ECS/EKS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-022",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Elastic Beanstalk",
+      "Amazon Lightsail"
+    ],
+    "type": "comparison",
+    "prompt": "How do Elastic Beanstalk and Lightsail differ?",
+    "answer": "Elastic Beanstalk manages application deployment on configurable AWS resources; Lightsail provides simplified, predictable bundles for small workloads.",
+    "explanation": "Beanstalk offers more access to underlying AWS services, while Lightsail reduces choices and setup.",
+    "example": "A small brochure site may use Lightsail; a web app needing autoscaling policies may use Beanstalk.",
+    "examCue": "Simple bundle = Lightsail; managed app platform = Beanstalk.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-023",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Amplify",
+      "AWS Elastic Beanstalk"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Amplify and Elastic Beanstalk differ?",
+    "answer": "Amplify focuses on web/mobile frontend development and hosting; Beanstalk deploys general web applications on managed AWS infrastructure.",
+    "explanation": "The service choice follows the developer experience and application type.",
+    "example": "A React frontend with managed hosting fits Amplify; a Java web service may fit Beanstalk.",
+    "examCue": "Frontend/mobile = Amplify.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-024",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Observability",
+      "Tracing"
+    ],
+    "services": [
+      "AWS X-Ray"
+    ],
+    "type": "scenario",
+    "prompt": "A distributed application is slow, and the team needs to see which service call causes the delay. Which service helps?",
+    "answer": "AWS X-Ray.",
+    "explanation": "X-Ray traces a request as it moves through application components and shows latency and errors.",
+    "example": "A checkout request spends two seconds in one downstream API.",
+    "examCue": "Distributed request tracing = X-Ray.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-025",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "IAM"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS IAM"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between an IAM user and an AWS member account?",
+    "answer": "An IAM user is an identity inside one AWS account; a member account is an independent AWS account governed through Organizations.",
+    "explanation": "Member accounts have separate resources and security boundaries. IAM users share their account context.",
+    "example": "Creating an IAM user named dev does not create a development AWS account.",
+    "examCue": "Identity is not an account.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-026",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "OUs"
+    ],
+    "services": [
+      "AWS Organizations"
+    ],
+    "type": "recall",
+    "prompt": "What is an organizational unit in AWS Organizations?",
+    "answer": "A logical group of AWS accounts used to organize and apply governance.",
+    "explanation": "OUs can be nested and can receive policies such as SCPs.",
+    "example": "Production accounts can be grouped under a Production OU.",
+    "examCue": "OU groups accounts, not individual resources.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-027",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Organizations",
+      "Best practices"
+    ],
+    "services": [
+      "AWS Organizations"
+    ],
+    "type": "scenario",
+    "prompt": "Where should ordinary production workloads run in an AWS Organization?",
+    "answer": "In member accounts, not the management account.",
+    "explanation": "Keeping the management account focused on billing and organization administration reduces risk and follows AWS best practice.",
+    "example": "The ecommerce application runs in a Production member account.",
+    "examCue": "Protect the management account from workloads.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-028",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Multi-account"
+    ],
+    "services": [
+      "AWS Organizations",
+      "AWS Control Tower"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Organizations and AWS Control Tower differ?",
+    "answer": "Organizations provides the multi-account hierarchy and policies; Control Tower builds an opinionated governed landing zone on top of it.",
+    "explanation": "Control Tower combines Organizations with account provisioning, controls, and centralized governance.",
+    "example": "Use Organizations for the account structure; add Control Tower for standardized account setup and ongoing governance.",
+    "examCue": "Control Tower orchestrates a governed environment.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-029",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Control Tower"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "recall",
+    "prompt": "What is a landing zone in AWS Control Tower?",
+    "answer": "A ready-to-use, governed multi-account environment.",
+    "explanation": "It establishes foundational accounts, organizational structure, logging, and controls.",
+    "example": "A company starts with separate audit, log archive, and workload accounts.",
+    "examCue": "Landing zone = governed multi-account foundation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-030",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Control Tower"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "recall",
+    "prompt": "What does Account Factory do in AWS Control Tower?",
+    "answer": "It provisions standardized AWS accounts using approved configurations.",
+    "explanation": "This makes new accounts repeatable instead of manually rebuilding governance each time.",
+    "example": "A team requests a sandbox account with the company network baseline.",
+    "examCue": "Repeatable account creation = Account Factory.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-031",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Governance",
+      "Controls"
+    ],
+    "services": [
+      "AWS Control Tower"
+    ],
+    "type": "comparison",
+    "prompt": "What are preventive, detective, and proactive Control Tower controls?",
+    "answer": "Preventive controls block disallowed actions; detective controls report noncompliance; proactive controls check resources before deployment.",
+    "explanation": "AWS now uses the term controls; guardrail is an older synonym.",
+    "example": "Denying public S3 settings is preventive; flagging drift is detective; rejecting a bad template before creation is proactive.",
+    "examCue": "Block, detect, or pre-check.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-032",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 10 — Containers & Multi-Account Governance",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Observability",
+      "Audit"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Config"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudWatch, CloudTrail, and AWS Config differ?",
+    "answer": "CloudWatch monitors behavior, CloudTrail records API activity, and Config tracks resource configuration and compliance.",
+    "explanation": "They answer how it runs, who changed it, and what configuration exists over time.",
+    "example": "An alarm fires in CloudWatch; CloudTrail names the caller; Config shows the security group before and after.",
+    "examCue": "Behavior, activity, configuration.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-10-containers-governance-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-033",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Tagging"
+    ],
+    "services": [
+      "AWS Resource Groups"
+    ],
+    "type": "recall",
+    "prompt": "What are AWS resource tags?",
+    "answer": "Key-value labels attached to resources for organization, cost allocation, automation, and access control.",
+    "explanation": "Tags are flexible metadata, not relational rows with joins and constraints.",
+    "example": "Tag an EC2 instance Environment=Production and CostCenter=42.",
+    "examCue": "Metadata label = tag.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-034",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Tagging",
+      "Resource organization"
+    ],
+    "services": [
+      "AWS Resource Groups"
+    ],
+    "type": "recall",
+    "prompt": "What is the purpose of AWS Resource Groups?",
+    "answer": "To create a logical view of related resources selected by tags or queries.",
+    "explanation": "A group helps operate resources together even when they are different service types.",
+    "example": "Show all resources tagged Application=Payments in one group.",
+    "examCue": "Group resources using metadata.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-035",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Cloud adoption",
+      "Architecture"
+    ],
+    "services": [
+      "AWS CAF",
+      "AWS Well-Architected Framework"
+    ],
+    "type": "comparison",
+    "prompt": "How do the AWS CAF and Well-Architected Framework differ?",
+    "answer": "CAF guides organization-wide cloud transformation; Well-Architected evaluates how a workload is designed and operated.",
+    "explanation": "CAF is about adoption across people, governance, business, platform, security, and operations. Well-Architected uses six workload pillars.",
+    "example": "Executives plan a migration program with CAF; architects review a payment workload with Well-Architected.",
+    "examCue": "Transformation = CAF; workload quality = Well-Architected.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-036",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Identity",
+      "Tagging"
+    ],
+    "services": [
+      "Amazon EC2",
+      "AWS IAM"
+    ],
+    "type": "comparison",
+    "prompt": "How do EC2 key pairs, IAM access keys, and resource tags differ?",
+    "answer": "EC2 key pairs authenticate operating-system login, IAM access keys sign AWS API requests, and tags label resources.",
+    "explanation": "They solve three unrelated problems: machine login, programmatic AWS identity, and organization.",
+    "example": "SSH uses a private key; a CLI uses an access key; Cost Explorer can group by tag.",
+    "examCue": "Login, API credential, label.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-037",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Business applications"
+    ],
+    "services": [
+      "Amazon Connect"
+    ],
+    "type": "scenario",
+    "prompt": "A company needs a cloud contact center for customer calls and chat. Which service fits?",
+    "answer": "Amazon Connect.",
+    "explanation": "Connect provides contact-center capabilities such as routing, queues, and agent experiences.",
+    "example": "Customers call a support number and are routed to available agents.",
+    "examCue": "Contact center = Amazon Connect.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-038",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "End-user computing"
+    ],
+    "services": [
+      "Amazon WorkSpaces"
+    ],
+    "type": "scenario",
+    "prompt": "Employees need centrally managed virtual Windows desktops. Which service fits?",
+    "answer": "Amazon WorkSpaces.",
+    "explanation": "WorkSpaces delivers managed virtual desktops without the company operating a traditional VDI platform.",
+    "example": "A contractor opens a secure corporate desktop from a personal laptop.",
+    "examCue": "Virtual desktop = WorkSpaces.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-039",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Messaging",
+      "Email"
+    ],
+    "services": [
+      "Amazon SES"
+    ],
+    "type": "scenario",
+    "prompt": "An application must send high-volume transactional email such as receipts. Which service fits?",
+    "answer": "Amazon Simple Email Service (SES).",
+    "explanation": "SES is designed for scalable application email sending and receiving.",
+    "example": "An online store emails an order confirmation after checkout.",
+    "examCue": "Application email = SES.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-040",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Business intelligence"
+    ],
+    "services": [
+      "Amazon QuickSight"
+    ],
+    "type": "scenario",
+    "prompt": "Business users need interactive dashboards over company data. Which AWS service fits?",
+    "answer": "Amazon QuickSight.",
+    "explanation": "QuickSight is AWS managed business-intelligence and visualization service.",
+    "example": "A finance dashboard displays monthly revenue by region.",
+    "examCue": "BI dashboards = QuickSight.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-041",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Infrastructure as code"
+    ],
+    "services": [
+      "AWS CloudFormation",
+      "AWS CDK"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudFormation and AWS CDK relate?",
+    "answer": "CloudFormation deploys declarative infrastructure templates; CDK lets you define infrastructure in code and synthesizes a CloudFormation template.",
+    "explanation": "CDK changes how the template is authored, while CloudFormation remains the deployment engine.",
+    "example": "A TypeScript CDK stack becomes a CloudFormation template before deployment.",
+    "examCue": "CDK produces CloudFormation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-042",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application deployment"
+    ],
+    "services": [
+      "AWS Elastic Beanstalk",
+      "AWS App Runner"
+    ],
+    "type": "comparison",
+    "prompt": "How do Elastic Beanstalk and App Runner differ?",
+    "answer": "Beanstalk offers managed deployment with more access to underlying AWS resources; App Runner provides a simpler path from source or container image to a managed web service.",
+    "explanation": "Both reduce operational work, but App Runner hides more infrastructure choices.",
+    "example": "A containerized HTTP API with minimal operations fits App Runner.",
+    "examCue": "Source/image straight to web service = App Runner.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-043",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "AWS resources"
+    ],
+    "services": [
+      "AWS Marketplace",
+      "AWS Architecture Center"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between AWS Marketplace and AWS Architecture Center?",
+    "answer": "Marketplace offers third-party software and services to acquire and deploy; Architecture Center provides patterns, reference architectures, and guidance.",
+    "explanation": "One is a catalog of offerings; the other is a learning and design resource.",
+    "example": "Buy a firewall appliance in Marketplace; study a three-tier reference architecture in Architecture Center.",
+    "examCue": "Purchase/deploy versus learn/design.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-044",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Governance",
+      "Licensing"
+    ],
+    "services": [
+      "AWS License Manager"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS License Manager help control?",
+    "answer": "Software license usage across AWS and on-premises environments.",
+    "explanation": "It can track license rules such as cores, sockets, or instances to reduce compliance risk.",
+    "example": "Prevent launching more licensed database servers than the contract permits.",
+    "examCue": "Software license governance = License Manager.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-045",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics"
+    ],
+    "services": [
+      "Amazon Athena",
+      "Amazon S3"
+    ],
+    "type": "scenario",
+    "prompt": "An analyst wants to run SQL directly over CSV and Parquet files in Amazon S3 without managing servers. Which service fits?",
+    "answer": "Amazon Athena.",
+    "explanation": "Athena is a serverless interactive query service for data in S3.",
+    "example": "Run a SQL query over one year of access logs stored in S3.",
+    "examCue": "SQL on S3 = Athena.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-046",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases"
+    ],
+    "services": [
+      "Amazon DynamoDB",
+      "Amazon DocumentDB",
+      "Amazon Keyspaces",
+      "Amazon Redshift"
+    ],
+    "type": "comparison",
+    "prompt": "When would you choose DynamoDB, DocumentDB, Keyspaces, or Redshift?",
+    "answer": "DynamoDB for serverless key-value/document access, DocumentDB for MongoDB-compatible documents, Keyspaces for Cassandra-compatible workloads, and Redshift for analytical warehousing.",
+    "explanation": "The exam usually provides a data model or compatibility clue.",
+    "example": "A Cassandra migration points to Keyspaces; a BI warehouse points to Redshift.",
+    "examCue": "Match the data model and workload.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-047",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Data lakes"
+    ],
+    "services": [
+      "AWS Glue",
+      "AWS Lake Formation"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Glue and Lake Formation differ?",
+    "answer": "Glue discovers, catalogs, and transforms data; Lake Formation helps build and centrally govern a data lake.",
+    "explanation": "They often work together: Glue supplies metadata and ETL, while Lake Formation manages data-lake permissions and governance.",
+    "example": "A crawler catalogs S3 data, then Lake Formation controls which analysts can access it.",
+    "examCue": "ETL/catalog = Glue; data-lake governance = Lake Formation.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-048",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Streaming"
+    ],
+    "services": [
+      "Amazon MSK"
+    ],
+    "type": "recall",
+    "prompt": "What does Amazon MSK manage?",
+    "answer": "Apache Kafka clusters.",
+    "explanation": "MSK is for applications that need the Kafka ecosystem without operating the brokers themselves.",
+    "example": "An existing Kafka event platform moves to managed brokers on AWS.",
+    "examCue": "Managed Kafka = MSK.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-049",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 11 — AWS Portfolio & Operations",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Data",
+      "Marketplace"
+    ],
+    "services": [
+      "AWS Data Exchange"
+    ],
+    "type": "recall",
+    "prompt": "What is AWS Data Exchange used for?",
+    "answer": "Finding, subscribing to, and using third-party data products.",
+    "explanation": "Providers publish datasets and subscribers access them under defined terms.",
+    "example": "A risk team subscribes to a commercial weather dataset.",
+    "examCue": "Third-party datasets = Data Exchange.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-11-portfolio-operations-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-050",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics"
+    ],
+    "services": [
+      "Amazon Athena",
+      "AWS Glue"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon Athena and AWS Glue differ?",
+    "answer": "Athena queries data with SQL; Glue discovers, catalogs, and transforms data.",
+    "explanation": "Athena is the query engine. Glue prepares metadata and data pipelines that Athena and other analytics services can use.",
+    "example": "Glue catalogs S3 files, then Athena queries the cataloged table.",
+    "examCue": "Query = Athena; catalog/ETL = Glue.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-051",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "Metadata"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What does an AWS Glue crawler do?",
+    "answer": "It scans data sources, infers their structure, and creates or updates metadata in the Glue Data Catalog.",
+    "explanation": "The crawler does not primarily analyze business results; it makes datasets discoverable as tables and schemas.",
+    "example": "A crawler recognizes Parquet columns in S3 and adds a table to the catalog.",
+    "examCue": "Automatic schema discovery = crawler.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-052",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "ETL"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What does ETL mean?",
+    "answer": "Extract data from sources, transform it into a useful form, and load it into a destination.",
+    "explanation": "ETL is a data-processing pattern, not a specific AWS product.",
+    "example": "Read sales files, clean currency fields, and write analytics-ready Parquet data.",
+    "examCue": "Extract, Transform, Load.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-053",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Analytics",
+      "ETL"
+    ],
+    "services": [
+      "AWS Glue"
+    ],
+    "type": "recall",
+    "prompt": "What is a worker in an AWS Glue ETL job?",
+    "answer": "Compute capacity that executes the data-processing job.",
+    "explanation": "Workers provide CPU and memory for the job; they are not human operators.",
+    "example": "A larger transformation may need more or larger workers.",
+    "examCue": "Worker = ETL compute.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-054",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "comparison",
+    "prompt": "What is the difference between RPO and RTO?",
+    "answer": "RPO is how much data loss is acceptable, measured in time; RTO is how long service restoration may take.",
+    "explanation": "RPO looks backward to the latest usable data. RTO looks forward to returning the service to operation.",
+    "example": "An RPO of 15 minutes allows 15 minutes of lost updates; an RTO of one hour allows an hour to recover.",
+    "examCue": "Data loss = RPO; downtime = RTO.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-055",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "comparison",
+    "prompt": "Order the four common AWS disaster-recovery strategies from lowest cost/slowest recovery to highest cost/fastest recovery.",
+    "answer": "Backup and restore, pilot light, warm standby, multi-site active/active.",
+    "explanation": "Keeping more of the recovery environment continuously running generally shortens recovery but increases cost.",
+    "example": "A pilot light keeps only critical cores alive; warm standby keeps a scaled-down full environment.",
+    "examCue": "More always-on resources usually mean faster recovery.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-056",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Disaster recovery"
+    ],
+    "services": [],
+    "type": "scenario",
+    "prompt": "A company accepts hours of downtime and wants the cheapest disaster-recovery strategy. Which approach fits?",
+    "answer": "Backup and restore.",
+    "explanation": "Resources can be rebuilt from backups after a disaster, minimizing steady-state cost but increasing recovery time.",
+    "example": "Restore a database snapshot and redeploy infrastructure after an outage.",
+    "examCue": "Lowest cost and longest RTO = backup and restore.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-057",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "APIs",
+      "Security"
+    ],
+    "services": [
+      "AWS IAM"
+    ],
+    "type": "recall",
+    "prompt": "Why are AWS API requests signed?",
+    "answer": "So AWS can authenticate the caller and verify the request has not been altered.",
+    "explanation": "The signature is evaluated together with IAM authorization.",
+    "example": "The AWS CLI signs a request using configured credentials before calling an API endpoint.",
+    "examCue": "Signed request = authenticated API call.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-058",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "AWS fundamentals"
+    ],
+    "services": [],
+    "type": "recall",
+    "prompt": "What is an Amazon Resource Name (ARN)?",
+    "answer": "A standardized identifier that uniquely names an AWS resource.",
+    "explanation": "Policies and APIs use ARNs to refer precisely to resources.",
+    "example": "An IAM policy can name one specific S3 bucket ARN.",
+    "examCue": "Unique AWS resource identifier = ARN.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-059",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Networking",
+      "Private connectivity"
+    ],
+    "services": [
+      "AWS PrivateLink",
+      "Amazon VPC"
+    ],
+    "type": "comparison",
+    "prompt": "How do gateway and interface VPC endpoints differ?",
+    "answer": "Gateway endpoints use route-table entries and support S3 and DynamoDB; interface endpoints use PrivateLink and private-IP network interfaces for many services.",
+    "explanation": "Both provide private service access, but their implementation and supported services differ.",
+    "example": "A private subnet reaches S3 through a gateway endpoint and Secrets Manager through an interface endpoint.",
+    "examCue": "S3/DynamoDB route = gateway; private ENI = interface.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-060",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Messaging"
+    ],
+    "services": [
+      "Amazon SQS",
+      "Amazon SNS"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon SQS and Amazon SNS differ?",
+    "answer": "SQS stores messages in a queue for consumers to pull; SNS pushes each publication to subscribed endpoints.",
+    "explanation": "SQS decouples work and lets consumers process at their pace. SNS is useful for fan-out.",
+    "example": "An order enters an SQS worker queue; one alarm is sent by SNS to email, Lambda, and SQS.",
+    "examCue": "Queue = SQS; fan-out = SNS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-061",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Streaming"
+    ],
+    "services": [
+      "Amazon Kinesis",
+      "Amazon SQS"
+    ],
+    "type": "comparison",
+    "prompt": "How does Amazon Kinesis differ from Amazon SQS?",
+    "answer": "Kinesis is a real-time data stream that can retain ordered records for multiple readers; SQS is a work queue where messages are processed and removed.",
+    "explanation": "Choose based on stream analytics versus decoupled task processing.",
+    "example": "Clickstream analytics uses Kinesis; image-resize jobs use SQS.",
+    "examCue": "Stream = Kinesis; task queue = SQS.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-062",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Messaging"
+    ],
+    "services": [
+      "Amazon MQ",
+      "Amazon SQS"
+    ],
+    "type": "comparison",
+    "prompt": "When is Amazon MQ a better fit than Amazon SQS?",
+    "answer": "When migrating an existing application that depends on standard ActiveMQ or RabbitMQ broker protocols and behavior.",
+    "explanation": "SQS is AWS-native and simpler; Amazon MQ reduces rewriting for broker-compatible applications.",
+    "example": "A legacy JMS application moves to managed ActiveMQ on Amazon MQ.",
+    "examCue": "Broker compatibility = Amazon MQ.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-063",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Application integration",
+      "Streaming"
+    ],
+    "services": [
+      "Amazon MSK",
+      "Amazon Kinesis"
+    ],
+    "type": "comparison",
+    "prompt": "How do Amazon MSK and Amazon Kinesis Data Streams differ?",
+    "answer": "MSK provides managed Apache Kafka compatibility; Kinesis is an AWS-native streaming service.",
+    "explanation": "Existing Kafka clients and tooling point to MSK; a new AWS-native stream may favor Kinesis.",
+    "example": "A company keeps Kafka APIs with MSK instead of rewriting producers.",
+    "examCue": "Kafka = MSK; AWS-native stream = Kinesis.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-064",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "APIs"
+    ],
+    "services": [
+      "AWS AppSync",
+      "Amazon API Gateway"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS AppSync and Amazon API Gateway differ?",
+    "answer": "AppSync provides managed GraphQL APIs and real-time data features; API Gateway publishes and manages REST, HTTP, and WebSocket APIs.",
+    "explanation": "The API style in the question is usually the strongest clue.",
+    "example": "A GraphQL mobile backend uses AppSync; a REST Lambda API uses API Gateway.",
+    "examCue": "GraphQL = AppSync; REST/HTTP/WebSocket = API Gateway.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-065",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Databases"
+    ],
+    "services": [
+      "Amazon RDS",
+      "Amazon DynamoDB",
+      "Amazon Redshift"
+    ],
+    "type": "comparison",
+    "prompt": "When should a workload use RDS, DynamoDB, or Redshift?",
+    "answer": "RDS for relational transactions, DynamoDB for serverless key-value/document access at scale, and Redshift for analytical warehousing.",
+    "explanation": "These services optimize different data models and access patterns.",
+    "example": "Orders with SQL relationships use RDS; sessions use DynamoDB; company-wide BI uses Redshift.",
+    "examCue": "Transactions, key-value, analytics.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-066",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 12 — Analytics & Application Integration",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Edge infrastructure"
+    ],
+    "services": [
+      "AWS Local Zones",
+      "AWS Wavelength"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS Local Zones and AWS Wavelength Zones differ?",
+    "answer": "Local Zones place AWS infrastructure near a metro area; Wavelength Zones place AWS services inside telecom networks for low-latency 5G applications.",
+    "explanation": "Both extend AWS closer to users, but Wavelength is specifically tied to carrier networks.",
+    "example": "Interactive media in a city may use a Local Zone; a 5G connected-vehicle app may use Wavelength.",
+    "examCue": "Metro proximity = Local Zone; carrier 5G = Wavelength.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-12-analytics-integration-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-067",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor"
+    ],
+    "type": "recall",
+    "prompt": "What does AWS Trusted Advisor do?",
+    "answer": "It inspects an AWS environment and recommends improvements based on AWS best practices.",
+    "explanation": "Its recommendations cover cost, performance, security, fault tolerance, service limits, and operational excellence.",
+    "example": "It may identify idle resources or an exposed security setting.",
+    "examCue": "Account-level best-practice recommendations = Trusted Advisor.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-068",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor"
+    ],
+    "type": "recall",
+    "prompt": "What six categories does Trusted Advisor currently use?",
+    "answer": "Cost Optimization, Performance, Security, Fault Tolerance, Service Limits, and Operational Excellence.",
+    "explanation": "Older material sometimes lists five categories and omits Operational Excellence.",
+    "example": "A service-quota warning belongs to Service Limits.",
+    "examCue": "Trusted Advisor has six current categories.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-069",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Architecture",
+      "Optimization"
+    ],
+    "services": [
+      "AWS Trusted Advisor",
+      "AWS Well-Architected Tool"
+    ],
+    "type": "comparison",
+    "prompt": "How do Trusted Advisor and the Well-Architected Tool differ?",
+    "answer": "Trusted Advisor automatically checks account resources; the Well-Architected Tool guides a structured review of a workload.",
+    "explanation": "One surfaces operational recommendations from observed resources; the other records architecture-review answers and improvement items.",
+    "example": "Trusted Advisor flags idle compute; a Well-Architected review questions the workload recovery design.",
+    "examCue": "Account checks versus workload review.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-070",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Observability",
+      "Optimization"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS Trusted Advisor"
+    ],
+    "type": "comparison",
+    "prompt": "How do CloudWatch and Trusted Advisor differ?",
+    "answer": "CloudWatch monitors live operational data and raises alarms; Trusted Advisor periodically recommends best-practice improvements.",
+    "explanation": "CloudWatch answers what is happening now. Trusted Advisor identifies optimization opportunities.",
+    "example": "CloudWatch alarms on high CPU; Trusted Advisor suggests changing an underused resource.",
+    "examCue": "Monitoring = CloudWatch; advice = Trusted Advisor.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-071",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Observability",
+      "Audit"
+    ],
+    "services": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS Config"
+    ],
+    "type": "comparison",
+    "prompt": "What questions do CloudWatch, CloudTrail, and AWS Config answer?",
+    "answer": "CloudWatch: how is it behaving? CloudTrail: who called the API? Config: what was configured and was it compliant?",
+    "explanation": "The three services complement each other during operations and investigation.",
+    "example": "An outage alarm appears in CloudWatch, the change actor in CloudTrail, and configuration history in Config.",
+    "examCue": "Behavior, actor, configuration.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-072",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Health"
+    ],
+    "services": [
+      "AWS Health"
+    ],
+    "type": "comparison",
+    "prompt": "What is the difference between general AWS service health and account-specific AWS Health information?",
+    "answer": "General service health reports broad AWS service events; account-specific health shows events that may affect your resources or account.",
+    "explanation": "Personalized health information helps prioritize events relevant to the customer.",
+    "example": "A regional service disruption is public; scheduled maintenance on your EC2 instance is account-specific.",
+    "examCue": "Public AWS event versus your affected resources.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-073",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support plans"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "Which AWS Support plan is included for every customer?",
+    "answer": "Basic Support.",
+    "explanation": "Premium plans add technical support and broader features; names and details can change, so use the current AWS plan page for exact entitlements.",
+    "example": "A new AWS account has Basic Support without buying an upgrade.",
+    "examCue": "Basic is included.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-074",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support plans"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "What premium AWS Support plans are currently presented by AWS?",
+    "answer": "Business Support+, Enterprise Support, and Unified Operations.",
+    "explanation": "Older Developer, Business, and Enterprise On-Ramp material is in transition and should not be treated as the lasting current lineup.",
+    "example": "A company compares Business Support+ with Enterprise Support for production needs.",
+    "examCue": "Use current plan names, not an old cheat sheet.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-075",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "Trusted Advisor"
+    ],
+    "services": [
+      "AWS Trusted Advisor",
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "Is the old rule “Basic gets seven Trusted Advisor checks and Business gets all checks” reliable today?",
+    "answer": "No. Trusted Advisor access and features have changed and depend on the current support plan and recommendation type.",
+    "explanation": "Learn Trusted Advisor purpose and categories; verify current entitlements instead of memorizing the old shortcut.",
+    "example": "A current plan page, not a legacy course slide, decides feature access.",
+    "examCue": "Avoid the obsolete seven-check rule.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 3,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-076",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Security",
+      "Abuse"
+    ],
+    "services": [
+      "AWS Trust & Safety"
+    ],
+    "type": "scenario",
+    "prompt": "An AWS resource appears to be sending spam or hosting abusive content. Where should it be reported?",
+    "answer": "AWS Trust & Safety through the AWS abuse-reporting process.",
+    "explanation": "AWS investigates reported abuse of AWS resources while customers remain responsible for their content and account security.",
+    "example": "A recipient reports phishing messages originating from an AWS-hosted resource.",
+    "examCue": "AWS abuse report = Trust & Safety.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-077",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Support",
+      "SLA"
+    ],
+    "services": [
+      "AWS Support"
+    ],
+    "type": "recall",
+    "prompt": "What is the usual remedy when an AWS service fails to meet an eligible SLA?",
+    "answer": "Service credits, after the customer satisfies the SLA conditions and claim process.",
+    "explanation": "An SLA does not normally promise an automatic cash refund or compensation for all business losses.",
+    "example": "An approved claim applies a credit to future eligible service charges.",
+    "examCue": "SLA remedy usually means service credit.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-078",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Pricing Calculator",
+      "AWS Cost Explorer",
+      "AWS Budgets"
+    ],
+    "type": "comparison",
+    "prompt": "When should you use Pricing Calculator, Cost Explorer, or AWS Budgets?",
+    "answer": "Use Pricing Calculator before deployment to estimate; Cost Explorer to analyze actual and forecasted spend; Budgets to alert or act on thresholds.",
+    "explanation": "They cover planning, analysis, and control.",
+    "example": "Estimate a new architecture, inspect last month, then alert at $500.",
+    "examCue": "Estimate, analyze, alert.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-079",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Budgets"
+    ],
+    "type": "scenario",
+    "prompt": "A team wants an email before monthly AWS spend exceeds a chosen amount. Which service should it configure?",
+    "answer": "AWS Budgets.",
+    "explanation": "Budgets compares actual or forecasted cost and usage with thresholds and can notify or trigger configured actions.",
+    "example": "Send an alert when forecasted monthly cost reaches 80% of $1,000.",
+    "examCue": "Threshold alert = Budgets.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-080",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Pricing Calculator"
+    ],
+    "type": "scenario",
+    "prompt": "An architect wants to estimate the monthly cost of a design that has not been deployed. Which tool fits?",
+    "answer": "AWS Pricing Calculator.",
+    "explanation": "It models services and expected usage before resources exist.",
+    "example": "Compare estimated costs for two EC2 and storage designs.",
+    "examCue": "Pre-deployment estimate = Pricing Calculator.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-081",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Cost management"
+    ],
+    "services": [
+      "AWS Cost Explorer"
+    ],
+    "type": "scenario",
+    "prompt": "Finance wants to find which service caused last month’s cost increase. Which tool fits?",
+    "answer": "AWS Cost Explorer.",
+    "explanation": "Cost Explorer analyzes historical usage and cost and can group or filter the data.",
+    "example": "Group last month’s spend by service and linked account.",
+    "examCue": "Historical cost analysis = Cost Explorer.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-082",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS DMS",
+      "DMS Schema Conversion"
+    ],
+    "type": "comparison",
+    "prompt": "How do AWS DMS and DMS Schema Conversion work together in a heterogeneous database migration?",
+    "answer": "DMS moves or replicates the data; DMS Schema Conversion assesses and converts database schema and code for the target engine.",
+    "explanation": "Changing database engines often requires both data movement and schema conversion.",
+    "example": "Move Oracle data to PostgreSQL while converting incompatible schema objects.",
+    "examCue": "Data movement plus schema conversion.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-083",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Migration",
+      "Databases"
+    ],
+    "services": [
+      "AWS DMS"
+    ],
+    "type": "recall",
+    "prompt": "What is the current preferred AWS service for heterogeneous database schema conversion?",
+    "answer": "DMS Schema Conversion.",
+    "explanation": "AWS Schema Conversion Tool is now the legacy path; new study material should prefer the DMS capability.",
+    "example": "Assess an Oracle-to-Aurora PostgreSQL schema inside AWS DMS.",
+    "examCue": "Prefer DMS Schema Conversion over legacy SCT.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-15-084",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-15",
+    "sourceChat": "2026-09-15 · Chat 13 — Support, Monitoring & Cost",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "AWS resources"
+    ],
+    "services": [
+      "AWS Architecture Center",
+      "AWS Marketplace"
+    ],
+    "type": "comparison",
+    "prompt": "How do the AWS Architecture Center and AWS Marketplace differ?",
+    "answer": "Architecture Center teaches designs and best practices; Marketplace lets customers obtain third-party software, data, and services.",
+    "explanation": "Architecture Center is guidance, while Marketplace is a procurement and deployment catalog.",
+    "example": "Read a serverless pattern in Architecture Center; subscribe to a security product in Marketplace.",
+    "examCue": "Guidance versus catalog.",
+    "sourceRef": "knowledge/daily/2026-09-15-chat-13-support-monitoring-cost-reviewed.md",
+    "difficulty": 1,
+    "status": "approved",
+    "version": 1
   }
 ]

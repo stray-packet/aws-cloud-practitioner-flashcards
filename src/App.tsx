@@ -8,9 +8,10 @@ import { Overview } from './components/Overview'
 import { ReviewView } from './components/ReviewView'
 import { SettingsView } from './components/SettingsView'
 import { StatsView } from './components/StatsView'
-import { reviewCard, type RatingName } from './lib/scheduler'
+import type { RatingName } from './lib/scheduler'
+import { applyReviewToStore } from './lib/reviewStore'
 import { defaultStudySession, type StudySessionOptions } from './lib/studySession'
-import { exportProgress, loadStore, parseProgressJson, saveStore, type ReviewEvent, type StudySettings, type StudyStore } from './lib/storage'
+import { exportProgress, loadStore, parseProgressJson, saveStore, type StudySettings, type StudyStore } from './lib/storage'
 import { flashcardListSchema, type Flashcard } from './types/card'
 import './App.css'
 
@@ -65,10 +66,9 @@ function App() {
   const rateCard = useCallback((card: Flashcard, rating: RatingName, mode: StudySessionOptions['mode']) => {
     const reviewedAt = new Date()
     setStore((current) => {
-      const result = reviewCard(current.cards[card.id], rating, current.settings.retention, reviewedAt)
-      const event: ReviewEvent = { id: crypto.randomUUID(), cardId: card.id, rating, reviewedAt: reviewedAt.toISOString(), mode: mode === 'daily' ? 'daily-review' : 'custom-study' }
-      if (user) void import('./lib/firebase').then(({ saveCloudReview }) => saveCloudReview(user, card.id, result.card, event)).catch(() => setNotice('Review saved locally; cloud sync will retry later.'))
-      return { ...current, cards: { ...current.cards, [card.id]: result.card }, reviewLogs: [...current.reviewLogs, event] }
+      const update = applyReviewToStore(current, card.id, rating, mode, reviewedAt)
+      if (user) void import('./lib/firebase').then(({ saveCloudReview }) => saveCloudReview(user, card.id, update.card, update.event)).catch(() => setNotice('Review saved locally; cloud sync will retry later.'))
+      return update.store
     })
   }, [user])
 
