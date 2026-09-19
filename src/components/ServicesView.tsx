@@ -55,6 +55,7 @@ export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange
   const [clock, setClock] = useState(() => Date.now())
   const groups = useMemo(() => [...new Set(services.flatMap((service) => service.groups))].sort(), [])
   const flaggedServiceIds = useMemo(() => new Set(store.flaggedServiceIds), [store.flaggedServiceIds])
+  const flaggedServices = useMemo(() => services.filter((service) => flaggedServiceIds.has(service.id)), [flaggedServiceIds])
   const filtered = useMemo(() => services.filter((service) =>
     (scope === 'all' || service.scope === 'official')
     && (group === 'all' || service.groups.includes(group))
@@ -67,8 +68,8 @@ export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange
   const storedCard = service ? store.cards[storageId] : undefined
   const intervals = useMemo(() => service ? getIntervals(storedCard, store.settings.retention) : null, [service, store.settings.retention, storedCard])
 
-  const start = () => {
-    const next = shuffle(filtered).map((item) => ({ item }))
+  const beginReview = (items: ServiceStudyCard[]) => {
+    const next = shuffle(items).map((item) => ({ item }))
     setQueue(next)
     setUniqueCount(next.length)
     setReviewedCount(0)
@@ -76,6 +77,15 @@ export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange
     setShowHint(false)
     setActive(true)
     onReviewActiveChange(true)
+  }
+
+  const start = () => beginReview(filtered)
+
+  const startFlagged = () => {
+    setScope('all')
+    setGroup('all')
+    setStudySet('flagged')
+    beginReview(flaggedServices)
   }
 
   const leaveReview = () => {
@@ -159,14 +169,14 @@ export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange
   if (active && service) {
     return (
       <div className="service-review-layout">
-        <div className="service-review-meta"><button className="text-button" type="button" onClick={leaveReview}><ArrowLeft size={15} /> Categories</button><span>{studySet === 'flagged' ? 'Flagged services' : group === 'all' ? 'All service categories' : group} · randomized</span><div className="service-review-actions"><button className={`service-flag-toggle ${flaggedServiceIds.has(service.id) ? 'flagged' : ''}`} type="button" aria-pressed={flaggedServiceIds.has(service.id)} title={flaggedServiceIds.has(service.id) ? 'Remove service flag' : 'Flag service for focused review'} onClick={() => onToggleFlag(service.id)}><Flag size={15} fill={flaggedServiceIds.has(service.id) ? 'currentColor' : 'none'} /> {flaggedServiceIds.has(service.id) ? 'Flagged' : 'Flag'}</button><div className="queue-counts"><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div></div>
+        <div className="service-review-meta"><button className="text-button" type="button" onClick={leaveReview}><ArrowLeft size={15} /> Categories</button><span>{studySet === 'flagged' ? 'Flagged services' : group === 'all' ? 'All service categories' : group} · randomized</span><div className="service-review-actions"><div className="queue-counts"><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div></div>
         <section className="service-review-card" aria-live="polite">
           <div className="card-label"><span>{service.officialCategory}</span><span className="card-schedule-state">{entry.repetition ? 'Learning step' : service.scope === 'official' ? 'Official CLF-C02 scope' : 'Course supplementary'}</span></div>
           <div className="service-front">
             <img src={`${import.meta.env.BASE_URL}aws-icons/${service.icon}`} alt={`${service.name} official AWS architecture icon`} />
             <p className="eyebrow">Recognize the service</p>
             <h1>{service.name}</h1>
-            <button className="service-hint-button" type="button" aria-expanded={showHint} onClick={() => setShowHint((current) => !current)}><Info size={16} /> {showHint ? 'Hide hint' : 'Show hint'}</button>
+            <div className="service-card-actions"><button className="service-hint-button" type="button" aria-expanded={showHint} onClick={() => setShowHint((current) => !current)}><Info size={16} /> {showHint ? 'Hide hint' : 'Show hint'}</button><button className={`service-flag-toggle ${flaggedServiceIds.has(service.id) ? 'flagged' : ''}`} type="button" aria-pressed={flaggedServiceIds.has(service.id)} title={flaggedServiceIds.has(service.id) ? 'Remove service flag' : 'Flag service for focused review'} onClick={() => onToggleFlag(service.id)}><Flag size={15} fill={flaggedServiceIds.has(service.id) ? 'currentColor' : 'none'} /> {flaggedServiceIds.has(service.id) ? 'Flagged' : 'Flag'}</button></div>
             {showHint && <p className="service-hint">{service.hint}</p>}
           </div>
           {revealed && <div className="service-answer"><strong>What it does</strong><p>{service.purpose}</p><div className="service-example"><strong>Example:</strong> {service.example}</div><div className="exam-cue"><strong>Exam language:</strong> {service.examCue}</div></div>}
@@ -188,6 +198,10 @@ export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange
         <button className="primary-button" type="button" onClick={start} disabled={!filtered.length}><Shuffle size={16} /> Start random review · {filtered.length}</button>
       </section>
       {studySet === 'flagged' && !filtered.length && <p className="service-empty-state">No flagged services match these filters yet. Flag a service during a review, then return here to study it as often as you need.</p>}
+      <section className="flagged-services-panel" aria-label="Flagged services">
+        <div className="section-heading"><div><h2>Flagged services</h2><small>Services you want to revisit more often.</small></div>{flaggedServices.length > 0 && <button className="primary-button" type="button" onClick={startFlagged}><Shuffle size={14} /> Study all flagged · {flaggedServices.length}</button>}</div>
+        {flaggedServices.length === 0 ? <p className="flagged-services-empty">No services are flagged yet. During a service flashcard, use Flag beside Show hint to add one here.</p> : <div className="flagged-services-list">{flaggedServices.map((item) => <div className="flagged-service-row" key={item.id}><img src={`${import.meta.env.BASE_URL}aws-icons/${item.icon}`} alt="" /><span><strong>{item.name}</strong><small>{item.officialCategory}</small></span><button className="service-flag-toggle flagged" type="button" onClick={() => onToggleFlag(item.id)}><Flag size={15} fill="currentColor" /> Remove</button></div>)}</div>}
+      </section>
       <section className="service-category-list" aria-label="Service categories">
         <div className="section-heading"><h2>Categories</h2><span>Services can appear in more than one category</span></div>
         {groups.map((item) => {
