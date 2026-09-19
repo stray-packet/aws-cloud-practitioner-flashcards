@@ -10,6 +10,8 @@ describe('visual AWS service catalog', () => {
       expect(service.purpose).toBeTruthy()
       expect(service.hint).toBeTruthy()
       expect(service.examCue).toBeTruthy()
+      expect(service.example).toBeTruthy()
+      expect(service.example).not.toMatch(/^A question asks for /i)
       expect(service.groups.length).toBeGreaterThan(0)
       expect(service.icon).toMatch(/^Arch[_-].+_64\.svg$/)
     }

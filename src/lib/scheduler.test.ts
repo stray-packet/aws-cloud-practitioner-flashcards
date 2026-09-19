@@ -15,4 +15,13 @@ describe('FSRS scheduler wrapper', () => {
     expect(new Date(result.card.due).getTime()).toBeGreaterThan(now.getTime())
     expect(isDue(result.card, now)).toBe(false)
   })
+
+  it('gives a new Good card a short learning step and Easy a later review', () => {
+    const now = new Date('2026-08-28T12:00:00.000Z')
+    const goodDelay = new Date(reviewCard(undefined, 'good', 0.9, now).card.due).getTime() - now.getTime()
+    const easyDelay = new Date(reviewCard(undefined, 'easy', 0.9, now).card.due).getTime() - now.getTime()
+    expect(goodDelay).toBeGreaterThan(0)
+    expect(goodDelay).toBeLessThanOrEqual(30 * 60 * 1000)
+    expect(easyDelay).toBeGreaterThan(30 * 60 * 1000)
+  })
 })

@@ -16,7 +16,14 @@ export function prioritizeReviewQueue<T>(entries: ReviewQueueEntry<T>[], now = D
 }
 
 export function shouldRepeatInSession(rating: RatingName, dueAt: number, reviewedAt: number) {
-  if (rating !== 'again' && rating !== 'hard') return false
+  if (rating === 'easy') return false
   const delay = dueAt - reviewedAt
   return delay > 0 && delay <= 30 * 60 * 1000
+}
+
+export function formatLearningWait(milliseconds: number) {
+  const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000))
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = String(totalSeconds % 60).padStart(2, '0')
+  return `${minutes}:${seconds}`
 }

@@ -2236,7 +2236,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon EMR?",
     "answer": "Amazon EMR le ayuda a ejecutar marcos de big data administrados, como Apache Spark y Hadoop.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione clústeres administrados de Spark o Hadoop. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere a clústeres administrados de Spark o Hadoop; Amazon EMR es el servicio a evaluar.",
+    "example": "Una app de delivery ejecuta Spark en EMR para analizar un año de pedidos y descubrir las horas con mayor demanda.",
     "examCue": "Busque: clústeres administrados de Spark o Hadoop."
   },
   {
@@ -2244,7 +2244,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon OpenSearch Service?",
     "answer": "Amazon OpenSearch Service le ayuda a buscar, analizar y visualizar grandes volúmenes de registros o documentos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione búsqueda administrada y análisis de registros. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita búsqueda administrada y análisis de registros; Amazon OpenSearch Service es el servicio a evaluar.",
+    "example": "Una tienda online permite buscar entre millones de productos y deja que operaciones investigue logs de la aplicación en OpenSearch.",
     "examCue": "Busque: búsqueda administrada y análisis de registros."
   },
   {
@@ -2252,7 +2252,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon EventBridge?",
     "answer": "Amazon EventBridge le ayuda a enrutar eventos entre aplicaciones y servicios de AWS mediante reglas.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el bus de eventos y el enrutamiento basado en eventos. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere al bus de eventos y al enrutamiento basado en eventos; Amazon EventBridge es el servicio a evaluar.",
+    "example": "Cuando un pedido estilo Rappi queda “listo”, EventBridge envía el evento a los servicios que asignan al repartidor y notifican al cliente.",
     "examCue": "Busque: bus de eventos y enrutamiento basado en eventos."
   },
   {
@@ -2260,7 +2260,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Step Functions?",
     "answer": "AWS Step Functions le ayuda a coordinar los pasos de la aplicación distribuida con flujos de trabajo visuales.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione máquinas de estado, reintentos y orquestación de flujo de trabajo. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita máquinas de estado, reintentos y orquestación del flujo de trabajo; AWS Step Functions es el servicio a evaluar.",
+    "example": "Un flujo de alta de clientes verifica el documento, crea la cuenta y reintenta automáticamente el envío del correo de bienvenida si falla.",
     "examCue": "Busque: máquinas de estado, reintentos y orquestación de flujo de trabajo."
   },
   {
@@ -2268,7 +2268,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Cost and Usage Reports?",
     "answer": "AWS Cost and Usage Reports le ayuda a ofrecer los datos de uso y costos de AWS más detallados para su análisis.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione archivos de informes de facturación granulares. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita archivos de informes de facturación granulares; AWS Cost and Usage Reports es el servicio a evaluar.",
+    "example": "Finanzas carga archivos detallados de facturación de AWS en Athena para calcular el costo exacto de cada equipo de producto.",
     "examCue": "Busque: archivos de informes de facturación granulares."
   },
   {
@@ -2276,7 +2276,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS CLI?",
     "answer": "AWS CLI le ayuda a administrar los servicios de AWS desde una interfaz de línea de comandos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione acceso mediante script o terminal a las API de AWS. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita acceso mediante script o terminal a las API de AWS; AWS CLI es el servicio a evaluar.",
+    "example": "Un ingeniero ejecuta un script desde la terminal para detener por la noche todas las instancias EC2 de desarrollo.",
     "examCue": "Busque: acceso mediante script o terminal a las API de AWS."
   },
   {
@@ -2284,7 +2284,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS CodeBuild?",
     "answer": "AWS CodeBuild le ayuda a compilar código fuente, ejecutar pruebas y producir artefactos de compilación.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la etapa de compilación totalmente administrada. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere a la etapa de construcción totalmente administrada; AWS CodeBuild es el servicio a evaluar.",
+    "example": "Después de un git push, CodeBuild compila la aplicación, ejecuta las pruebas y produce un paquete listo para desplegar.",
     "examCue": "Busque: etapa de construcción totalmente administrada."
   },
   {
@@ -2292,7 +2292,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS CodePipeline?",
     "answer": "AWS CodePipeline le ayuda a automatizar las etapas de lanzamiento de software desde el origen hasta la implementación.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la orquestación de canalización de entrega continua. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta es sobre la orquestación del proceso de entrega continua; AWS CodePipeline es el servicio a evaluar.",
+    "example": "Un cambio de código pasa automáticamente del repositorio a pruebas y luego espera aprobación antes de desplegarse en producción.",
     "examCue": "Busque: orquestación de canalización de entrega continua."
   },
   {
@@ -2300,7 +2300,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon AppStream 2.0?",
     "answer": "Amazon AppStream 2.0 le ayuda a transmitir aplicaciones de escritorio de forma segura a un navegador web.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione transmitir una aplicación sin entregar un escritorio completo. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita transmitir una aplicación sin entregar un escritorio completo; Amazon AppStream 2.0 es el servicio a evaluar.",
+    "example": "Un estudio de arquitectura transmite una aplicación de diseño de Windows a contratistas sin instalarla en sus laptops.",
     "examCue": "Busque: transmitir una aplicación sin entregar un escritorio completo."
   },
   {
@@ -2308,7 +2308,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon WorkSpaces Secure Browser?",
     "answer": "Amazon WorkSpaces Secure Browser le ayuda a proporcionar acceso de navegador administrado y aislado a sitios internos y aplicaciones SaaS.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un navegador seguro en lugar de un escritorio virtual completo. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita un navegador seguro en lugar de un escritorio virtual completo; Amazon WorkSpaces Secure Browser es el servicio a evaluar.",
+    "example": "Agentes temporales de un call center abren el CRM interno en un navegador controlado sin recibir un escritorio virtual completo.",
     "examCue": "Busque: navegador seguro en lugar de un escritorio virtual completo."
   },
   {
@@ -2316,7 +2316,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS IoT Core?",
     "answer": "AWS IoT Core lo ayuda a conectarse e intercambiar mensajes con grandes flotas de dispositivos IoT.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conectividad de dispositivos administrados y la mensajería MQTT. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pregunta sobre la conectividad de dispositivos administrados y la mensajería MQTT; AWS IoT Core es el servicio a evaluar.",
+    "example": "Miles de motos de reparto publican su GPS y temperatura mediante MQTT hacia AWS IoT Core.",
     "examCue": "Busque: conectividad de dispositivo administrada y mensajería MQTT."
   },
   {
@@ -2324,7 +2324,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Comprehend?",
     "answer": "Amazon Comprehend le ayuda a extraer sentimientos, entidades y significado del texto mediante PNL administrado.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione información en lenguaje natural a partir de texto. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita conocimientos en lenguaje natural a partir del texto; Amazon Comprehend es el servicio a evaluar.",
+    "example": "Soporte analiza mensajes de clientes para detectar sentimiento y agrupar los motivos de reclamo más comunes.",
     "examCue": "Busque: información en lenguaje natural a partir del texto."
   },
   {
@@ -2332,7 +2332,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Lex?",
     "answer": "Amazon Lex le ayuda a crear chatbots conversacionales y de voz.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione interfaces de conversación mediante voz y texto. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita interfaces de conversación que utilicen voz y texto; Amazon Lex es el servicio a evaluar.",
+    "example": "El chatbot de una aerolínea entiende “cambia mi vuelo de mañana” y solicita el número de reserva.",
     "examCue": "Busque: interfaces de conversación que utilicen voz y texto."
   },
   {
@@ -2340,7 +2340,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Polly?",
     "answer": "Amazon Polly le ayuda a convertir texto en voz realista.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione texto a voz. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita texto a voz; Amazon Polly es el servicio a evaluar.",
+    "example": "Una app de noticias convierte cada artículo escrito en audio natural para quienes escuchan durante el viaje.",
     "examCue": "Busque: texto a voz."
   },
   {
@@ -2348,7 +2348,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Rekognition?",
     "answer": "Amazon Rekognition le ayuda a analizar imágenes y vídeos en busca de objetos, caras, texto y contenido no seguro.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione visión por computadora para imágenes y videos. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita visión por computadora para imágenes y videos; Amazon Rekognition es el servicio a evaluar.",
+    "example": "Una plataforma de fotos detecta objetos en las imágenes subidas para que los usuarios busquen “playa” o “perro”.",
     "examCue": "Busque: visión por computadora para imágenes y videos."
   },
   {
@@ -2356,7 +2356,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon SageMaker AI?",
     "answer": "Amazon SageMaker AI le ayuda a crear, entrenar e implementar modelos de aprendizaje automático.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione una plataforma de aprendizaje automático personalizada de extremo a extremo. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta es sobre una plataforma de aprendizaje automático personalizada de un extremo a otro; Amazon SageMaker AI es el servicio a evaluar.",
+    "example": "Un banco entrena y despliega un modelo propio que evalúa transacciones de tarjeta para detectar posible fraude.",
     "examCue": "Busque: plataforma de aprendizaje automático personalizada de un extremo a otro."
   },
   {
@@ -2364,7 +2364,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Textract?",
     "answer": "Amazon Textract le ayuda a extraer texto impreso, escritura a mano, tablas y formularios de documentos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la extracción inteligente de documentos. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta es sobre la extracción inteligente de documentos; Amazon Textract es el servicio a evaluar.",
+    "example": "Una aseguradora extrae nombres, totales y filas de tablas de formularios escaneados sin digitarlos manualmente.",
     "examCue": "Busque: extracción inteligente de documentos."
   },
   {
@@ -2372,7 +2372,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Transcribe?",
     "answer": "Amazon Transcribe le ayuda a convertir audio de voz en texto.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conversión de voz a texto. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita conversión de voz a texto; Amazon Transcribe es el servicio a evaluar.",
+    "example": "Un call center convierte llamadas grabadas en texto consultable para revisiones de calidad.",
     "examCue": "Busque: voz a texto."
   },
   {
@@ -2380,7 +2380,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Translate?",
     "answer": "Amazon Translate le ayuda a traducir texto entre idiomas humanos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la traducción de idiomas administrada. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere a la traducción de idiomas gestionados; Amazon Translate es el servicio a evaluar.",
+    "example": "Una app de delivery traduce menús de restaurantes para que los turistas los lean en su idioma preferido.",
     "examCue": "Busque: traducción de idiomas gestionada."
   },
   {
@@ -2388,7 +2388,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Auto Scaling?",
     "answer": "AWS Auto Scaling le ayuda a escalar varios recursos de AWS para satisfacer la demanda.",
     "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione ajuste automático de capacidad y elasticidad. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta es sobre el ajuste automático de la capacidad y la elasticidad; AWS Auto Scaling es el servicio a evaluar.",
+    "example": "Un e-commerce agrega capacidad EC2 durante una venta relámpago y la reduce cuando el tráfico vuelve a la normalidad.",
     "examCue": "Busque: ajuste automático de capacidad y elasticidad."
   },
   {
@@ -2396,7 +2396,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Health Dashboard?",
     "answer": "AWS Health Dashboard le ayuda a mostrar eventos de AWS y problemas específicos de la cuenta que pueden afectar los recursos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione eventos de salud de recursos personalizados. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita eventos de salud de recursos personalizados; AWS Health Dashboard es el servicio a evaluar.",
+    "example": "Operaciones ve que un mantenimiento programado de AWS afectará una de sus propias instancias EC2.",
     "examCue": "Busque: eventos de salud de recursos personalizados."
   },
   {
@@ -2404,7 +2404,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Service Catalog?",
     "answer": "AWS Service Catalog lo ayuda a publicar productos en la nube aprobados para que los usuarios los lancen de manera consistente.",
     "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione catálogo regido de productos preaprobados. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita catálogo regulado de productos preaprobados; AWS Service Catalog es el servicio a evaluar.",
+    "example": "TI publica una plantilla aprobada de aplicación de tres capas que desarrollo puede lanzar sin diseñarla desde cero.",
     "examCue": "Busque: catálogo regido de productos preaprobados."
   },
   {
@@ -2412,7 +2412,7 @@
     "prompt": "¿Cuál es el propósito principal de Service Quotas?",
     "answer": "Service Quotas lo ayuda a ver los límites del servicio y solicitar aumentos desde un solo lugar.",
     "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione cuotas y solicitudes de aumento de límites. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita cuotas y solicitudes de aumento de límites; Service Quotas es el servicio a evaluar.",
+    "example": "Antes de una campaña, un equipo revisa la cuota de concurrencia de Lambda y solicita un aumento desde un solo lugar.",
     "examCue": "Busque: cuotas y solicitudes de aumento de límites."
   },
   {
@@ -2420,7 +2420,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Systems Manager?",
     "answer": "AWS Systems Manager le ayuda a operar y automatizar flotas de recursos híbridos y de AWS de forma centralizada.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione parches, comandos remotos, inventario y almacén de parámetros. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita parches, comandos remotos, inventario y almacén de parámetros; AWS Systems Manager es el servicio a evaluar.",
+    "example": "Operaciones parchea cientos de instancias EC2 y ejecuta un diagnóstico sin abrir acceso SSH.",
     "examCue": "Busque: parches, comandos remotos, inventario y almacén de parámetros."
   },
   {
@@ -2428,7 +2428,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Application Discovery Service?",
     "answer": "AWS Application Discovery Service lo ayuda a recopilar datos de dependencia y uso del servidor local para la planificación de la migración.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione descubrir cargas de trabajo existentes antes de la migración. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita descubrir las cargas de trabajo existentes antes de la migración; AWS Application Discovery Service es el servicio a evaluar.",
+    "example": "Antes de migrar, una empresa inventaría sus servidores locales y descubre qué aplicaciones se comunican entre sí.",
     "examCue": "Busque: descubra cargas de trabajo existentes antes de la migración."
   },
   {
@@ -2436,7 +2436,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Application Migration Service?",
     "answer": "AWS Application Migration Service lo ayuda a levantar y trasladar servidores físicos, virtuales o en la nube a AWS.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el realojamiento de servidores con replicación a nivel de bloque. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita volver a alojar servidores con replicación a nivel de bloque; AWS Application Migration Service es el servicio a evaluar.",
+    "example": "Una empresa replica continuamente un servidor VMware y lanza su reemplazo en AWS durante el fin de semana de migración.",
     "examCue": "Busque: volver a alojar servidores con replicación a nivel de bloque."
   },
   {
@@ -2444,7 +2444,7 @@
     "prompt": "¿Cuál es el propósito principal de Migration Evaluator?",
     "answer": "Migration Evaluator le ayuda a crear un caso de negocio basado en datos y una proyección de costos para la migración.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la evaluación de la migración y el caso comercial del TCO. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pide una evaluación de la migración y un caso de negocio del TCO; Migration Evaluator es el servicio a evaluar.",
+    "example": "Un CIO compara los costos actuales del data center con la proyección en AWS antes de aprobar el caso de negocio de migración.",
     "examCue": "Busque: evaluación de la migración y caso de negocio del TCO."
   },
   {
@@ -2452,7 +2452,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Migration Hub?",
     "answer": "AWS Migration Hub le ayuda a realizar un seguimiento de las migraciones de aplicaciones entre AWS y las herramientas de los socios en un solo lugar.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el panel central de progreso de la migración. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita el panel central de progreso de la migración; AWS Migration Hub es el servicio a evaluar.",
+    "example": "Un responsable del programa sigue desde un panel central el estado de migración de 200 servidores.",
     "examCue": "Busque: panel central de progreso de la migración."
   },
   {
@@ -2460,7 +2460,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS SCT?",
     "answer": "AWS SCT le ayuda a evaluar y convertir esquemas de bases de datos para un motor de destino diferente.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conversión de esquemas de bases de datos heterogéneas. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita la conversión de esquemas de bases de datos heterogéneas; AWS SCT es el servicio a evaluar.",
+    "example": "Un equipo convierte un esquema de Oracle en objetos compatibles con PostgreSQL antes de mover los datos.",
     "examCue": "Busque: conversión de esquema de base de datos heterogénea."
   },
   {
@@ -2468,7 +2468,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Route 53?",
     "answer": "Amazon Route 53 le ayuda a proporcionar DNS administrado, registro de dominio, políticas de enrutamiento y controles de estado.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione DNS y enrutamiento del tráfico de nombres de dominio. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere al enrutamiento del tráfico de nombres de dominio y DNS; Amazon Route 53 es el servicio a evaluar.",
+    "example": "Route 53 dirige api.example.com a un endpoint saludable y conmuta al respaldo cuando la región principal no está disponible.",
     "examCue": "Busque: DNS y enrutamiento del tráfico de nombres de dominio."
   },
   {
@@ -2476,7 +2476,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Transit Gateway?",
     "answer": "AWS Transit Gateway le ayuda a conectar muchas VPC y redes locales a través de un concentrador central.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el tránsito de red radial. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta se refiere al tránsito de la red radial; AWS Transit Gateway es el servicio a evaluar.",
+    "example": "Una empresa conecta 50 VPC y su red de oficina mediante un hub central en vez de construir una malla de conexiones.",
     "examCue": "Busque: tránsito de red radial."
   },
   {
@@ -2484,7 +2484,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS VPN?",
     "answer": "AWS VPN le ayuda a proporcionar conectividad de red cifrada a través de Internet.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un término general para las opciones de VPN administradas por AWS. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita un término general para las opciones de VPN administradas por AWS; AWS VPN es el servicio a evaluar.",
+    "example": "Una empresa usa Site-to-Site VPN para su sucursal y Client VPN para empleados que trabajan desde casa.",
     "examCue": "Busque: término general para las opciones de VPN administradas por AWS."
   },
   {
@@ -2492,7 +2492,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Site-to-Site VPN?",
     "answer": "AWS Site-to-Site VPN le ayuda a conectar una red local a una VPC a través de túneles IPsec cifrados.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un túnel cifrado de red a red. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita un túnel cifrado de red a red; AWS Site-to-Site VPN es el servicio a evaluar.",
+    "example": "Una oficina conecta su red local con una VPC mediante túneles IPsec cifrados sobre internet.",
     "examCue": "Busque: túnel cifrado de red a red."
   },
   {
@@ -2500,7 +2500,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Client VPN?",
     "answer": "AWS Client VPN le ayuda a conectar usuarios remotos individuales de forma segura a AWS o a redes locales.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione VPN administrada para usuarios remotos. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta es sobre VPN administrada para usuarios remotos; AWS Client VPN es el servicio a evaluar.",
+    "example": "Un ingeniero remoto conecta de forma segura su laptop con recursos privados de desarrollo dentro de una VPC.",
     "examCue": "Busque: VPN administrada para usuarios remotos."
   },
   {
@@ -2508,7 +2508,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Certificate Manager?",
     "answer": "AWS Certificate Manager lo ayuda a aprovisionar y administrar certificados TLS para servicios integrados de AWS.",
     "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione certificados públicos y privados administrados. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita certificados públicos y privados administrados; AWS Certificate Manager es el servicio a evaluar.",
+    "example": "Una tienda online usa un certificado de ACM en su load balancer para que los clientes se conecten mediante HTTPS.",
     "examCue": "Busque: certificados públicos y privados gestionados."
   },
   {
@@ -2516,7 +2516,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon Cognito?",
     "answer": "Amazon Cognito le ayuda a agregar el registro de clientes, el inicio de sesión y el control de acceso a las aplicaciones.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la identidad y la federación del usuario de la aplicación. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita la identidad y la federación del usuario de la aplicación; Amazon Cognito es el servicio a evaluar.",
+    "example": "Un marketplace móvil permite registrarse con correo o una identidad social y acceder únicamente a los pedidos propios.",
     "examCue": "Busque: identidad y federación del usuario de la aplicación."
   },
   {
@@ -2524,7 +2524,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Directory Service?",
     "answer": "AWS Directory Service le ayuda a ejecutar o conectar directorios compatibles con Microsoft Active Directory en AWS.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el directorio administrado y la integración de Active Directory. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pregunta sobre el directorio administrado y la integración de Active Directory; AWS Directory Service es el servicio a evaluar.",
+    "example": "Los empleados usan sus credenciales existentes de Active Directory para iniciar sesión en Amazon WorkSpaces.",
     "examCue": "Busque: directorio administrado e integración de Active Directory."
   },
   {
@@ -2532,7 +2532,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS RAM?",
     "answer": "AWS RAM le ayuda a compartir recursos de AWS compatibles entre cuentas o dentro de una organización.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el intercambio de recursos entre cuentas sin duplicación. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pide compartir recursos entre cuentas sin duplicación; AWS RAM es el servicio a evaluar.",
+    "example": "Una cuenta de redes comparte un Transit Gateway con varias cuentas de aplicaciones en vez de duplicarlo.",
     "examCue": "Busque: intercambio de recursos entre cuentas sin duplicación."
   },
   {
@@ -2540,7 +2540,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Secrets Manager?",
     "answer": "AWS Secrets Manager le ayuda a almacenar, recuperar y rotar secretos de aplicaciones.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione contraseñas de bases de datos, claves API y rotación automática. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita contraseñas de bases de datos, claves API y rotación automática; AWS Secrets Manager es el servicio a evaluar.",
+    "example": "Una aplicación obtiene su contraseña de RDS desde Secrets Manager, que además la rota automáticamente.",
     "examCue": "Busque: contraseñas de bases de datos, claves API y rotación automática."
   },
   {
@@ -2548,7 +2548,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Backup?",
     "answer": "AWS Backup lo ayuda a definir y monitorear de manera centralizada las políticas de respaldo en todos los servicios admitidos.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione copias de seguridad centralizadas basadas en políticas. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pide copias de seguridad centralizadas basadas en políticas; AWS Backup es el servicio a evaluar.",
+    "example": "Una empresa aplica una sola política que respalda cada noche sus volúmenes EBS y bases de datos RDS.",
     "examCue": "Busque: copias de seguridad centralizadas basadas en políticas."
   },
   {
@@ -2556,7 +2556,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Elastic Disaster Recovery?",
     "answer": "AWS Elastic Disaster Recovery le ayuda a replicar servidores y recuperarlos rápidamente en AWS después de una interrupción.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la replicación de recuperación ante desastres a nivel de bloque. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita la replicación de recuperación ante desastres a nivel de bloque; AWS Elastic Disaster Recovery es el servicio a evaluar.",
+    "example": "Un servidor ERP se replica continuamente hacia AWS y se inicia allí rápidamente cuando falla el data center principal.",
     "examCue": "Busque: replicación de recuperación ante desastres a nivel de bloque."
   },
   {
@@ -2564,7 +2564,7 @@
     "prompt": "¿Cuál es el propósito principal de Amazon S3 Glacier?",
     "answer": "Amazon S3 Glacier le ayuda a archivar datos a los que rara vez se accede en clases de almacenamiento de archivo S3 de bajo costo.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el archivo a largo plazo con compensaciones de recuperación. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta pide un archivo a largo plazo con compensaciones de recuperación; Amazon S3 Glacier es el servicio a evaluar.",
+    "example": "Una empresa archiva registros tributarios durante siete años a bajo costo y acepta esperar más cuando necesita recuperarlos.",
     "examCue": "Busque: archivo a largo plazo con compensaciones de recuperación."
   },
   {
@@ -2572,7 +2572,7 @@
     "prompt": "¿Cuál es el propósito principal de AWS Storage Gateway?",
     "answer": "AWS Storage Gateway le ayuda a conectar entornos locales al almacenamiento de AWS a través de puertas de enlace híbridas de archivos, volúmenes o cintas.",
     "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el puente de almacenamiento híbrido y la caché local. No se requieren detalles de implementación profundos.",
-    "example": "Una pregunta solicita un puente de almacenamiento híbrido y caché local; AWS Storage Gateway es el servicio a evaluar.",
+    "example": "Un hospital mantiene una caché local rápida para archivos frecuentes mientras los archivos antiguos se almacenan en Amazon S3.",
     "examCue": "Busque: puente de almacenamiento híbrido y caché local."
   }
 ]

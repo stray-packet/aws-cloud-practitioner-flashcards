@@ -69,7 +69,9 @@
 }
 
 * { box-sizing: border-box; }
-html, body, #root { min-width: 320px; min-height: 100%; margin: 0; }
-body { min-height: 100vh; background: var(--bg); color: var(--text); }
+html { min-width: 320px; min-height: 100%; margin: 0; overscroll-behavior-y: none; scrollbar-gutter: stable; }
+body, #root { min-width: 320px; min-height: 100%; margin: 0; }
+body { min-height: 100vh; min-height: 100dvh; overscroll-behavior-y: none; background: var(--bg); color: var(--text); }
+#root { min-height: 100vh; min-height: 100dvh; }
 button { font: inherit; }
 button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }

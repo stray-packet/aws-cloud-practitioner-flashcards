@@ -10,6 +10,7 @@
     "purpose": "Amazon Athena helps you run serverless SQL queries directly over data in Amazon S3.",
     "hint": "Think: SQL over S3 without managing servers.",
     "examCue": "SQL over S3 without managing servers",
+    "example": "Run a SQL query over one year of access logs stored in S3.",
     "icon": "Arch_Amazon-Athena_64.svg"
   },
   {
@@ -23,6 +24,7 @@
     "purpose": "Amazon EMR helps you run managed big-data frameworks such as Apache Spark and Hadoop.",
     "hint": "Think: managed Spark or Hadoop clusters.",
     "examCue": "managed Spark or Hadoop clusters",
+    "example": "A delivery app runs Spark on EMR to analyze a year of orders and find the hours with the highest demand.",
     "icon": "Arch_Amazon-EMR_64.svg"
   },
   {
@@ -36,6 +38,7 @@
     "purpose": "AWS Glue helps you discover, catalog, prepare, and transform data for analytics.",
     "hint": "Think: serverless ETL and the Glue Data Catalog.",
     "examCue": "serverless ETL and the Glue Data Catalog",
+    "example": "A crawler catalogs S3 data, then Lake Formation controls which analysts can access it.",
     "icon": "Arch_AWS-Glue_64.svg"
   },
   {
@@ -50,6 +53,7 @@
     "purpose": "Amazon Kinesis helps you collect and process real-time streaming data.",
     "hint": "Think: real-time streams such as clicks, logs, or telemetry.",
     "examCue": "real-time streams such as clicks, logs, or telemetry",
+    "example": "Clickstream analytics uses Kinesis; image-resize jobs use SQS.",
     "icon": "Arch_Amazon-Kinesis_64.svg"
   },
   {
@@ -64,6 +68,7 @@
     "purpose": "Amazon OpenSearch Service helps you search, analyze, and visualize large volumes of logs or documents.",
     "hint": "Think: managed search and log analytics.",
     "examCue": "managed search and log analytics",
+    "example": "An online store lets customers search millions of products and lets operators investigate application logs in OpenSearch.",
     "icon": "Arch_Amazon-OpenSearch-Service_64.svg"
   },
   {
@@ -78,6 +83,7 @@
     "purpose": "Amazon QuickSight helps you build managed business-intelligence dashboards and visualizations.",
     "hint": "Think: BI dashboards for business users.",
     "examCue": "BI dashboards for business users",
+    "example": "A finance dashboard displays monthly revenue by region.",
     "icon": "Arch_Amazon-Quick_64.svg"
   },
   {
@@ -92,6 +98,7 @@
     "purpose": "Amazon Redshift helps you analyze large datasets in a cloud data warehouse.",
     "hint": "Think: petabyte-scale OLAP and BI reporting.",
     "examCue": "petabyte-scale OLAP and BI reporting",
+    "example": "A retailer loads years of sales data into Redshift so analysts can run large business-intelligence reports.",
     "icon": "Arch_Amazon-Redshift_64.svg"
   },
   {
@@ -105,6 +112,7 @@
     "purpose": "Amazon EventBridge helps you route events between applications and AWS services using rules.",
     "hint": "Think: event bus and event-driven routing.",
     "examCue": "event bus and event-driven routing",
+    "example": "When a Rappi-style order is marked “ready,” EventBridge routes the event to the courier-assignment and notification services.",
     "icon": "Arch_Amazon-EventBridge_64.svg"
   },
   {
@@ -118,6 +126,7 @@
     "purpose": "Amazon SNS helps you push one message to many subscribed endpoints.",
     "hint": "Think: publish/subscribe fan-out and notifications.",
     "examCue": "publish/subscribe fan-out and notifications",
+    "example": "An order is placed in SQS for one worker to process, while an SNS topic sends the order notification to email, Lambda, and another queue.",
     "icon": "Arch_Amazon-Simple-Notification-Service_64.svg"
   },
   {
@@ -131,6 +140,7 @@
     "purpose": "Amazon SQS helps you buffer messages in a durable queue so producers and consumers are decoupled.",
     "hint": "Think: pull-based queue for independent workers.",
     "examCue": "pull-based queue for independent workers",
+    "example": "An order is placed in SQS for one worker to process, while an SNS topic sends the order notification to email, Lambda, and another queue.",
     "icon": "Arch_Amazon-Simple-Queue-Service_64.svg"
   },
   {
@@ -145,6 +155,7 @@
     "purpose": "AWS Step Functions helps you coordinate distributed application steps with visual workflows.",
     "hint": "Think: state machines, retries, and workflow orchestration.",
     "examCue": "state machines, retries, and workflow orchestration",
+    "example": "A customer-onboarding workflow verifies an ID, creates the account, and retries a failed welcome-email step automatically.",
     "icon": "Arch_AWS-Step-Functions_64.svg"
   },
   {
@@ -158,6 +169,7 @@
     "purpose": "Amazon Connect helps you provide a managed cloud contact center for voice and chat.",
     "hint": "Think: customer contact center and agent routing.",
     "examCue": "customer contact center and agent routing",
+    "example": "Customers call a support number and are routed to available agents.",
     "icon": "Arch_Amazon-Connect_64.svg"
   },
   {
@@ -172,6 +184,7 @@
     "purpose": "Amazon SES helps you send and receive scalable application email.",
     "hint": "Think: transactional or bulk application email.",
     "examCue": "transactional or bulk application email",
+    "example": "An online store emails an order confirmation after checkout.",
     "icon": "Arch_Amazon-Simple-Email-Service_64.svg"
   },
   {
@@ -185,6 +198,7 @@
     "purpose": "AWS Budgets helps you track cost or usage against thresholds and send alerts or actions.",
     "hint": "Think: budget threshold and forecast alerts.",
     "examCue": "budget threshold and forecast alerts",
+    "example": "Crossing an $500 Budget threshold sends an alert, but the running EC2 instances continue unless a separate budget action is configured.",
     "icon": "Arch_AWS-Budgets_64.svg"
   },
   {
@@ -199,6 +213,7 @@
     "purpose": "AWS Cost and Usage Reports helps you deliver the most detailed AWS cost and usage data for analysis.",
     "hint": "Think: granular billing report files.",
     "examCue": "granular billing report files",
+    "example": "A finance team loads detailed AWS billing files into Athena to calculate the exact cost of each product team.",
     "icon": "Arch_AWS-Cost-and-Usage-Report_64.svg"
   },
   {
@@ -213,6 +228,7 @@
     "purpose": "AWS Cost Explorer helps you analyze historical cost and usage and create forecasts.",
     "hint": "Think: visual cost analysis after resources run.",
     "examCue": "visual cost analysis after resources run",
+    "example": "Use Cost Explorer to discover last month’s increase, then create an AWS Budget to alert when next month’s forecast reaches $500.",
     "icon": "Arch_AWS-Cost-Explorer_64.svg"
   },
   {
@@ -226,6 +242,7 @@
     "purpose": "AWS Marketplace helps you find, buy, and deploy third-party software, data, and services.",
     "hint": "Think: AWS catalog for third-party solutions.",
     "examCue": "AWS catalog for third-party solutions",
+    "example": "Buy a firewall appliance in Marketplace; study a three-tier reference architecture in Architecture Center.",
     "icon": "Arch_AWS-Marketplace_Light_64.svg"
   },
   {
@@ -239,6 +256,7 @@
     "purpose": "AWS Batch helps you schedule and run batch jobs on automatically provisioned compute.",
     "hint": "Think: queued batch workloads without managing a custom scheduler.",
     "examCue": "queued batch workloads without managing a custom scheduler",
+    "example": "A nightly scientific workload submits thousands of jobs, and AWS Batch schedules them onto suitable compute capacity.",
     "icon": "Arch_AWS-Batch_64.svg"
   },
   {
@@ -252,6 +270,7 @@
     "purpose": "Amazon EC2 helps you run resizable virtual machines with operating-system control.",
     "hint": "Think: virtual servers and instance families.",
     "examCue": "virtual servers and instance families",
+    "example": "A team launches a Linux EC2 instance, selects its CPU and memory size, and installs its own web application.",
     "icon": "Arch_Amazon-EC2_64.svg"
   },
   {
@@ -266,6 +285,7 @@
     "purpose": "AWS Elastic Beanstalk helps you deploy web applications while AWS manages the supporting environment.",
     "hint": "Think: managed application platform with access to underlying resources.",
     "examCue": "managed application platform with access to underlying resources",
+    "example": "Developers upload a web application, and Beanstalk creates and monitors the EC2, scaling, and load-balancing environment.",
     "icon": "Arch_AWS-Elastic-Beanstalk_64.svg"
   },
   {
@@ -279,6 +299,7 @@
     "purpose": "Amazon Lightsail helps you launch simplified virtual servers and common small-workload bundles.",
     "hint": "Think: simple predictable bundle for a small site or app.",
     "examCue": "simple predictable bundle for a small site or app",
+    "example": "A small company launches a basic website using a bundle that includes a virtual server, storage, and transfer allowance.",
     "icon": "Arch_Amazon-Lightsail_64.svg"
   },
   {
@@ -293,6 +314,7 @@
     "purpose": "AWS Outposts helps you run AWS infrastructure and services in an on-premises location.",
     "hint": "Think: AWS hardware and experience on premises.",
     "examCue": "AWS hardware and experience on premises",
+    "example": "A factory processes data locally on AWS-managed racks installed in its own building because it needs very low on-premises latency.",
     "icon": "Arch_AWS-Outposts-family_64.svg"
   },
   {
@@ -307,6 +329,7 @@
     "purpose": "Amazon ECR helps you store and manage container images in a private registry.",
     "hint": "Think: container image registry.",
     "examCue": "container image registry",
+    "example": "A CI pipeline pushes version 2.0 of an image to ECR, and an ECS service later pulls that image for deployment.",
     "icon": "Arch_Amazon-Elastic-Container-Registry_64.svg"
   },
   {
@@ -321,6 +344,7 @@
     "purpose": "Amazon ECS helps you orchestrate containers with an AWS-native control plane.",
     "hint": "Think: AWS-native container orchestration.",
     "examCue": "AWS-native container orchestration",
+    "example": "A group of EC2 capacity forms a cluster, but ECS or Kubernetes decides where the containers should run.",
     "icon": "Arch_Amazon-Elastic-Container-Service_64.svg"
   },
   {
@@ -335,6 +359,7 @@
     "purpose": "Amazon EKS helps you run managed Kubernetes clusters on AWS.",
     "hint": "Think: Kubernetes compatibility and APIs.",
     "examCue": "Kubernetes compatibility and APIs",
+    "example": "A group of EC2 capacity forms a cluster, but ECS or Kubernetes decides where the containers should run.",
     "icon": "Arch_Amazon-Elastic-Kubernetes-Service_64.svg"
   },
   {
@@ -348,6 +373,7 @@
     "purpose": "AWS Support helps you provide account, billing, and technical support according to the selected plan.",
     "hint": "Think: support plans and access to AWS experts.",
     "examCue": "support plans and access to AWS experts",
+    "example": "A new AWS account has Basic Support without buying an upgrade.",
     "icon": "Arch_AWS-Support_64.svg"
   },
   {
@@ -361,6 +387,7 @@
     "purpose": "Amazon Aurora helps you run an AWS-built relational database compatible with MySQL or PostgreSQL.",
     "hint": "Think: cloud-native relational performance and high availability.",
     "examCue": "cloud-native relational performance and high availability",
+    "example": "A new payment application uses Aurora PostgreSQL for relational SQL with storage designed to remain available across multiple AZs.",
     "icon": "Arch_Amazon-Aurora_64.svg"
   },
   {
@@ -374,6 +401,7 @@
     "purpose": "Amazon DocumentDB helps you run a managed document database compatible with MongoDB workloads.",
     "hint": "Think: JSON-like document database and MongoDB compatibility.",
     "examCue": "JSON-like document database and MongoDB compatibility",
+    "example": "A Cassandra migration points to Keyspaces; a BI warehouse points to Redshift.",
     "icon": "Arch_Amazon-DocumentDB_64.svg"
   },
   {
@@ -388,6 +416,7 @@
     "purpose": "Amazon DynamoDB helps you store key-value and document data in a serverless NoSQL database.",
     "hint": "Think: single-digit-millisecond NoSQL at scale.",
     "examCue": "single-digit-millisecond NoSQL at scale",
+    "example": "A route table can send private S3 or DynamoDB traffic through a free gateway endpoint instead of a NAT gateway.",
     "icon": "Arch_Amazon-DynamoDB_64.svg"
   },
   {
@@ -401,6 +430,7 @@
     "purpose": "Amazon ElastiCache helps you cache frequently accessed data in memory with Valkey, Memcached, or Redis OSS engines.",
     "hint": "Think: in-memory cache that reduces latency.",
     "examCue": "in-memory cache that reduces latency",
+    "example": "A catalog page reads popular product details from memory instead of querying the database on every visit.",
     "icon": "Arch_Amazon-ElastiCache_64.svg"
   },
   {
@@ -414,6 +444,7 @@
     "purpose": "Amazon Neptune helps you store and query highly connected graph data.",
     "hint": "Think: relationships, fraud rings, or recommendation graphs.",
     "examCue": "relationships, fraud rings, or recommendation graphs",
+    "example": "A fraud analyst follows links among accounts, devices, addresses, and transactions to discover a fraud ring.",
     "icon": "Arch_Amazon-Neptune_64.svg"
   },
   {
@@ -427,6 +458,7 @@
     "purpose": "Amazon RDS helps you operate managed relational database engines with routine administration handled by AWS.",
     "hint": "Think: managed SQL engines such as MySQL, PostgreSQL, Oracle, and SQL Server.",
     "examCue": "managed SQL engines such as MySQL, PostgreSQL, Oracle, and SQL Server",
+    "example": "A company runs PostgreSQL on RDS so AWS handles backups and database infrastructure while the team manages its schema and data.",
     "icon": "Arch_Amazon-RDS_64.svg"
   },
   {
@@ -440,6 +472,7 @@
     "purpose": "AWS CLI helps you manage AWS services from a command-line interface.",
     "hint": "Think: scripted or terminal access to AWS APIs.",
     "examCue": "scripted or terminal access to AWS APIs",
+    "example": "An engineer runs one terminal script to stop every development EC2 instance at night.",
     "icon": "Arch_AWS-Command-Line-Interface_64.svg"
   },
   {
@@ -453,6 +486,7 @@
     "purpose": "AWS CodeBuild helps you compile source code, run tests, and produce build artifacts.",
     "hint": "Think: fully managed build stage.",
     "examCue": "fully managed build stage",
+    "example": "After a Git push, CodeBuild compiles the application, runs its tests, and produces a deployable package.",
     "icon": "Arch_AWS-CodeBuild_64.svg"
   },
   {
@@ -467,6 +501,7 @@
     "purpose": "AWS CodePipeline helps you automate software release stages from source through deployment.",
     "hint": "Think: continuous delivery pipeline orchestration.",
     "examCue": "continuous delivery pipeline orchestration",
+    "example": "A code change moves automatically from source to testing and then waits for approval before production deployment.",
     "icon": "Arch_AWS-CodePipeline_64.svg"
   },
   {
@@ -480,6 +515,7 @@
     "purpose": "AWS X-Ray helps you trace requests across distributed application components.",
     "hint": "Think: find latency and errors in a request path.",
     "examCue": "find latency and errors in a request path",
+    "example": "A checkout request spends two seconds in one downstream API.",
     "icon": "Arch_AWS-X-Ray_64.svg"
   },
   {
@@ -493,6 +529,7 @@
     "purpose": "Amazon AppStream 2.0 helps you stream desktop applications securely to a web browser.",
     "hint": "Think: stream an application without delivering a full desktop.",
     "examCue": "stream an application without delivering a full desktop",
+    "example": "An architecture firm streams a Windows design application to contractors without installing it on their laptops.",
     "icon": "Arch-Category_End-User-Computing_64.svg"
   },
   {
@@ -506,6 +543,7 @@
     "purpose": "Amazon WorkSpaces helps you deliver managed persistent virtual desktops.",
     "hint": "Think: desktop-as-a-service for employees.",
     "examCue": "desktop-as-a-service for employees",
+    "example": "A contractor opens a secure corporate desktop from a personal laptop.",
     "icon": "Arch_Amazon-WorkSpaces_64.svg"
   },
   {
@@ -520,6 +558,7 @@
     "purpose": "Amazon WorkSpaces Secure Browser helps you provide isolated, managed browser access to internal sites and SaaS apps.",
     "hint": "Think: secure browser rather than a full virtual desktop.",
     "examCue": "secure browser rather than a full virtual desktop",
+    "example": "Temporary call-center agents open an internal CRM in a controlled browser without receiving a full virtual desktop.",
     "icon": "Arch_Amazon-WorkSpaces_64.svg"
   },
   {
@@ -534,6 +573,7 @@
     "purpose": "AWS Amplify helps you build, deploy, and host web and mobile frontends with managed integrations.",
     "hint": "Think: frontend and mobile developer platform.",
     "examCue": "frontend and mobile developer platform",
+    "example": "A React frontend with managed hosting fits Amplify; a Java web service may fit Beanstalk.",
     "icon": "Arch_AWS-Amplify_64.svg"
   },
   {
@@ -548,6 +588,7 @@
     "purpose": "AWS IoT Core helps you connect and exchange messages with large fleets of IoT devices.",
     "hint": "Think: managed device connectivity and MQTT messaging.",
     "examCue": "managed device connectivity and MQTT messaging",
+    "example": "Thousands of delivery motorcycles publish GPS and temperature readings through MQTT to AWS IoT Core.",
     "icon": "Arch_AWS-IoT-Core_64.svg"
   },
   {
@@ -562,6 +603,7 @@
     "purpose": "Amazon Comprehend helps you extract sentiment, entities, and meaning from text using managed NLP.",
     "hint": "Think: natural-language insights from text.",
     "examCue": "natural-language insights from text",
+    "example": "A support team analyzes customer messages to detect sentiment and group the most common complaint topics.",
     "icon": "Arch_Amazon-Comprehend_64.svg"
   },
   {
@@ -576,6 +618,7 @@
     "purpose": "Amazon Lex helps you build conversational chatbots and voice bots.",
     "hint": "Think: conversation interfaces using voice and text.",
     "examCue": "conversation interfaces using voice and text",
+    "example": "An airline chatbot understands “change my flight tomorrow” and asks for the booking number.",
     "icon": "Arch_Amazon-Lex_64.svg"
   },
   {
@@ -590,6 +633,7 @@
     "purpose": "Amazon Polly helps you turn text into lifelike speech.",
     "hint": "Think: text-to-speech.",
     "examCue": "text-to-speech",
+    "example": "A news app turns each written article into natural-sounding audio for people listening on the commute.",
     "icon": "Arch_Amazon-Polly_64.svg"
   },
   {
@@ -604,6 +648,7 @@
     "purpose": "Amazon Q helps you provide generative-AI assistance for work and software development.",
     "hint": "Think: AWS generative AI assistant.",
     "examCue": "AWS generative AI assistant",
+    "example": "An employee asks Amazon Q Business how to request vacation and receives an answer grounded in the company handbook.",
     "icon": "Arch_Amazon-Q_64.svg"
   },
   {
@@ -617,6 +662,7 @@
     "purpose": "Amazon Rekognition helps you analyze images and video for objects, faces, text, and unsafe content.",
     "hint": "Think: computer vision for images and video.",
     "examCue": "computer vision for images and video",
+    "example": "A photo platform automatically detects objects in uploaded images so users can search for “beach” or “dog.”",
     "icon": "Arch_Amazon-Rekognition_64.svg"
   },
   {
@@ -631,6 +677,7 @@
     "purpose": "Amazon SageMaker AI helps you build, train, and deploy machine-learning models.",
     "hint": "Think: end-to-end custom ML platform.",
     "examCue": "end-to-end custom ML platform",
+    "example": "A bank trains and deploys a custom model that scores card transactions for possible fraud.",
     "icon": "Arch_Amazon-SageMaker-AI_64.svg"
   },
   {
@@ -645,6 +692,7 @@
     "purpose": "Amazon Textract helps you extract printed text, handwriting, tables, and forms from documents.",
     "hint": "Think: intelligent document extraction.",
     "examCue": "intelligent document extraction",
+    "example": "An insurer extracts names, totals, and table rows from scanned claim forms instead of typing them manually.",
     "icon": "Arch_Amazon-Textract_64.svg"
   },
   {
@@ -659,6 +707,7 @@
     "purpose": "Amazon Transcribe helps you convert speech audio into text.",
     "hint": "Think: speech-to-text.",
     "examCue": "speech-to-text",
+    "example": "A call center converts recorded customer calls into searchable text for quality reviews.",
     "icon": "Arch_Amazon-Transcribe_64.svg"
   },
   {
@@ -673,6 +722,7 @@
     "purpose": "Amazon Translate helps you translate text between human languages.",
     "hint": "Think: managed language translation.",
     "examCue": "managed language translation",
+    "example": "A food-delivery app translates restaurant menus so tourists can read them in their preferred language.",
     "icon": "Arch_Amazon-Translate_64.svg"
   },
   {
@@ -687,6 +737,7 @@
     "purpose": "AWS Auto Scaling helps you scale multiple AWS resources to match demand.",
     "hint": "Think: automatic capacity adjustment and elasticity.",
     "examCue": "automatic capacity adjustment and elasticity",
+    "example": "An e-commerce site adds EC2 capacity during a flash sale and removes it after traffic returns to normal.",
     "icon": "Arch_AWS-Auto-Scaling_64.svg"
   },
   {
@@ -701,6 +752,7 @@
     "purpose": "AWS CloudFormation helps you provision AWS resources repeatedly from declarative templates.",
     "hint": "Think: infrastructure as code using stacks.",
     "examCue": "infrastructure as code using stacks",
+    "example": "The same reviewed YAML template creates an identical test environment and production environment.",
     "icon": "Arch_AWS-CloudFormation_64.svg"
   },
   {
@@ -716,6 +768,7 @@
     "purpose": "AWS CloudTrail helps you record AWS account activity and API events for auditing.",
     "hint": "Think: who called which AWS API and when.",
     "examCue": "who called which AWS API and when",
+    "example": "An alarm fires in CloudWatch; CloudTrail names the caller; Config shows the security group before and after.",
     "icon": "Arch_AWS-CloudTrail_64.svg"
   },
   {
@@ -730,6 +783,7 @@
     "purpose": "Amazon CloudWatch helps you collect metrics, logs, and alarms for operational monitoring.",
     "hint": "Think: resource behavior, dashboards, logs, and alarms.",
     "examCue": "resource behavior, dashboards, logs, and alarms",
+    "example": "A CloudWatch alarm sends a notification when an application’s error metric exceeds its threshold.",
     "icon": "Arch_Amazon-CloudWatch_64.svg"
   },
   {
@@ -744,6 +798,7 @@
     "purpose": "AWS Compute Optimizer helps you recommend better-sized compute resources from utilization data.",
     "hint": "Think: rightsizing recommendations.",
     "examCue": "rightsizing recommendations",
+    "example": "Compute Optimizer notices a lightly used EC2 instance and recommends a smaller type; the owner decides whether to change it.",
     "icon": "Arch_AWS-Compute-Optimizer_64.svg"
   },
   {
@@ -758,6 +813,7 @@
     "purpose": "AWS Config helps you record resource configurations and evaluate them against rules.",
     "hint": "Think: configuration history, drift, and compliance.",
     "examCue": "configuration history, drift, and compliance",
+    "example": "Config shows that a security group became noncompliant after someone opened port 22 to the whole internet.",
     "icon": "Arch_AWS-Config_64.svg"
   },
   {
@@ -772,6 +828,7 @@
     "purpose": "AWS Control Tower helps you set up and govern a standardized multi-account landing zone.",
     "hint": "Think: opinionated multi-account governance and controls.",
     "examCue": "opinionated multi-account governance and controls",
+    "example": "Use Organizations for the account structure; add Control Tower for standardized account setup and ongoing governance.",
     "icon": "Arch_AWS-Control-Tower_64.svg"
   },
   {
@@ -786,6 +843,7 @@
     "purpose": "AWS Health Dashboard helps you show AWS events and account-specific issues that can affect resources.",
     "hint": "Think: personalized resource health events.",
     "examCue": "personalized resource health events",
+    "example": "An operations team sees that scheduled AWS maintenance will affect one of its own EC2 instances.",
     "icon": "Arch_AWS-Health-Dashboard_64.svg"
   },
   {
@@ -800,6 +858,7 @@
     "purpose": "AWS License Manager helps you track and control software licenses across AWS and on premises.",
     "hint": "Think: BYOL license rules and usage tracking.",
     "examCue": "BYOL license rules and usage tracking",
+    "example": "Prevent launching more licensed database servers than the contract permits.",
     "icon": "Arch_AWS-License-Manager_64.svg"
   },
   {
@@ -813,6 +872,7 @@
     "purpose": "AWS Management Console helps you manage AWS through a web-based graphical interface.",
     "hint": "Think: browser-based access to AWS services.",
     "examCue": "browser-based access to AWS services",
+    "example": "An administrator opens a browser, signs in, and creates an S3 bucket through the graphical interface.",
     "icon": "Arch_AWS-Management-Console_64.svg"
   },
   {
@@ -828,6 +888,7 @@
     "purpose": "AWS Organizations helps you centrally organize accounts, apply policy boundaries, and consolidate billing.",
     "hint": "Think: OUs, SCPs, and consolidated billing.",
     "examCue": "OUs, SCPs, and consolidated billing",
+    "example": "An SCP blocks member accounts from disabling CloudTrail, but an IAM role still needs its own permission to use CloudTrail.",
     "icon": "Arch_AWS-Organizations_64.svg"
   },
   {
@@ -841,6 +902,7 @@
     "purpose": "AWS Service Catalog helps you publish approved cloud products for users to launch consistently.",
     "hint": "Think: governed catalog of preapproved products.",
     "examCue": "governed catalog of preapproved products",
+    "example": "IT publishes an approved three-tier application template that development teams can launch without designing it from scratch.",
     "icon": "Arch_AWS-Service-Catalog_64.svg"
   },
   {
@@ -854,6 +916,7 @@
     "purpose": "Service Quotas helps you view service limits and request increases from one place.",
     "hint": "Think: quotas and limit-increase requests.",
     "examCue": "quotas and limit-increase requests",
+    "example": "Before a campaign, a team checks its Lambda concurrency quota and requests an increase from one place.",
     "icon": "Arch-Category_Management-Tools_64.svg"
   },
   {
@@ -868,6 +931,7 @@
     "purpose": "AWS Systems Manager helps you operate and automate fleets of AWS and hybrid resources centrally.",
     "hint": "Think: patching, remote commands, inventory, and Parameter Store.",
     "examCue": "patching, remote commands, inventory, and Parameter Store",
+    "example": "Operations patches hundreds of EC2 instances and runs a diagnostic command without opening SSH access.",
     "icon": "Arch_AWS-Systems-Manager_64.svg"
   },
   {
@@ -883,6 +947,7 @@
     "purpose": "AWS Trusted Advisor helps you inspect an AWS environment and recommend best-practice improvements.",
     "hint": "Think: account-level recommendations across cost, security, performance, and resilience.",
     "examCue": "account-level recommendations across cost, security, performance, and resilience",
+    "example": "It may identify idle resources or an exposed security setting.",
     "icon": "Arch_AWS-Trusted-Advisor_64.svg"
   },
   {
@@ -896,6 +961,7 @@
     "purpose": "AWS Well-Architected Tool helps you document structured workload reviews against Well-Architected pillars.",
     "hint": "Think: workload review questions and improvement plan.",
     "examCue": "workload review questions and improvement plan",
+    "example": "Trusted Advisor flags idle compute; a Well-Architected review questions the workload recovery design.",
     "icon": "Arch_AWS-Well-Architected-Tool_64.svg"
   },
   {
@@ -909,6 +975,7 @@
     "purpose": "AWS Application Discovery Service helps you collect on-premises server usage and dependency data for migration planning.",
     "hint": "Think: discover existing workloads before migration.",
     "examCue": "discover existing workloads before migration",
+    "example": "Before migrating, a company inventories its on-premises servers and discovers which applications communicate with each other.",
     "icon": "Arch_AWS-Application-Discovery-Service_64.svg"
   },
   {
@@ -923,6 +990,7 @@
     "purpose": "AWS Application Migration Service helps you lift and shift physical, virtual, or cloud servers into AWS.",
     "hint": "Think: rehost servers with block-level replication.",
     "examCue": "rehost servers with block-level replication",
+    "example": "A company continuously replicates a VMware server and launches its AWS replacement during the migration weekend.",
     "icon": "Arch_AWS-Application-Migration-Service_64.svg"
   },
   {
@@ -937,6 +1005,7 @@
     "purpose": "AWS DMS helps you move or continuously replicate database data with minimal downtime.",
     "hint": "Think: database migration and ongoing replication.",
     "examCue": "database migration and ongoing replication",
+    "example": "Move Oracle data to PostgreSQL while converting incompatible schema objects.",
     "icon": "Arch_AWS-Database-Migration-Service_64.svg"
   },
   {
@@ -951,6 +1020,7 @@
     "purpose": "Migration Evaluator helps you build a data-driven business case and cost projection for migration.",
     "hint": "Think: migration assessment and TCO business case.",
     "examCue": "migration assessment and TCO business case",
+    "example": "A CIO compares current data-center costs with a projected AWS bill before approving the migration business case.",
     "icon": "Arch_AWS-Migration-Evaluator_64.svg"
   },
   {
@@ -965,6 +1035,7 @@
     "purpose": "AWS Migration Hub helps you track application migrations across AWS and partner tools in one place.",
     "hint": "Think: central migration progress dashboard.",
     "examCue": "central migration progress dashboard",
+    "example": "A program manager follows the migration status of 200 servers from one central dashboard.",
     "icon": "Arch_AWS-Migration-Hub_64.svg"
   },
   {
@@ -979,6 +1050,7 @@
     "purpose": "AWS SCT helps you assess and convert database schemas for a different target engine.",
     "hint": "Think: heterogeneous database schema conversion.",
     "examCue": "heterogeneous database schema conversion",
+    "example": "A team converts an Oracle database schema into PostgreSQL-compatible objects before moving the data.",
     "icon": "Arch_AWS-Database-Migration-Service_64.svg"
   },
   {
@@ -993,6 +1065,7 @@
     "purpose": "Amazon API Gateway helps you create, publish, protect, and monitor REST, HTTP, and WebSocket APIs.",
     "hint": "Think: managed API front door.",
     "examCue": "managed API front door",
+    "example": "A GraphQL mobile backend uses AppSync; a REST Lambda API uses API Gateway.",
     "icon": "Arch_Amazon-API-Gateway_64.svg"
   },
   {
@@ -1007,6 +1080,7 @@
     "purpose": "Amazon CloudFront helps you cache and deliver content globally through edge locations.",
     "hint": "Think: content delivery network and edge caching.",
     "examCue": "content delivery network and edge caching",
+    "example": "A website caches images at edge locations so distant visitors do not fetch every image from the origin Region.",
     "icon": "Arch_Amazon-CloudFront_64.svg"
   },
   {
@@ -1021,6 +1095,7 @@
     "purpose": "AWS Direct Connect helps you provide a dedicated private network connection from a location to AWS.",
     "hint": "Think: consistent private dedicated connectivity.",
     "examCue": "consistent private dedicated connectivity",
+    "example": "A data center uses a dedicated link to AWS for more consistent hybrid network performance than an internet-based connection.",
     "icon": "Arch_AWS-Direct-Connect_64.svg"
   },
   {
@@ -1034,6 +1109,7 @@
     "purpose": "AWS Global Accelerator helps you send TCP or UDP traffic through the AWS global network using static anycast IPs.",
     "hint": "Think: global network acceleration without caching.",
     "examCue": "global network acceleration without caching",
+    "example": "A global game uses two fixed anycast IP addresses to route UDP players onto the AWS network without caching content.",
     "icon": "Arch_AWS-Global-Accelerator_64.svg"
   },
   {
@@ -1048,6 +1124,7 @@
     "purpose": "AWS PrivateLink helps you access supported services privately through VPC interface endpoints.",
     "hint": "Think: private service connectivity without public internet.",
     "examCue": "private service connectivity without public internet",
+    "example": "A private application reaches Secrets Manager through private endpoint IP addresses protected by a security group.",
     "icon": "Arch_AWS-PrivateLink_64.svg"
   },
   {
@@ -1061,6 +1138,7 @@
     "purpose": "Amazon Route 53 helps you provide managed DNS, domain registration, routing policies, and health checks.",
     "hint": "Think: DNS and domain-name traffic routing.",
     "examCue": "DNS and domain-name traffic routing",
+    "example": "Route 53 sends api.example.com to a healthy endpoint and fails over when the primary Region is unavailable.",
     "icon": "Arch_Amazon-Route-53_64.svg"
   },
   {
@@ -1075,6 +1153,7 @@
     "purpose": "AWS Transit Gateway helps you connect many VPCs and on-premises networks through a central hub.",
     "hint": "Think: hub-and-spoke network transit.",
     "examCue": "hub-and-spoke network transit",
+    "example": "A company connects 50 VPCs and its office network through one central routing hub instead of building a mesh.",
     "icon": "Arch_AWS-Transit-Gateway_64.svg"
   },
   {
@@ -1089,6 +1168,7 @@
     "purpose": "Amazon VPC helps you create an isolated virtual network for AWS resources.",
     "hint": "Think: subnets, route tables, gateways, and network controls.",
     "examCue": "subnets, route tables, gateways, and network controls",
+    "example": "A VPC in eu-west-1 can contain subnets in several AZs there, but it cannot extend into eu-central-1.",
     "icon": "Arch_Amazon-Virtual-Private-Cloud_64.svg"
   },
   {
@@ -1103,6 +1183,7 @@
     "purpose": "AWS VPN helps you provide encrypted network connectivity over the internet.",
     "hint": "Think: umbrella term for AWS managed VPN options.",
     "examCue": "umbrella term for AWS managed VPN options",
+    "example": "A company uses Site-to-Site VPN for its branch office and Client VPN for employees working from home.",
     "icon": "Arch_AWS-Site-to-Site-VPN_64.svg"
   },
   {
@@ -1117,6 +1198,7 @@
     "purpose": "AWS Site-to-Site VPN helps you connect an on-premises network to a VPC through encrypted IPsec tunnels.",
     "hint": "Think: network-to-network encrypted tunnel.",
     "examCue": "network-to-network encrypted tunnel",
+    "example": "A retail office connects its local network to a VPC through encrypted IPsec tunnels over the internet.",
     "icon": "Arch_AWS-Site-to-Site-VPN_64.svg"
   },
   {
@@ -1131,6 +1213,7 @@
     "purpose": "AWS Client VPN helps you connect individual remote users securely to AWS or on-premises networks.",
     "hint": "Think: managed remote-user VPN.",
     "examCue": "managed remote-user VPN",
+    "example": "A remote engineer securely connects a laptop to private development resources in a VPC.",
     "icon": "Arch_AWS-Client-VPN_64.svg"
   },
   {
@@ -1145,6 +1228,7 @@
     "purpose": "Elastic Load Balancing helps you distribute incoming traffic across healthy targets.",
     "hint": "Think: ALB for HTTP routing, NLB for high-performance L4, GWLB for appliances.",
     "examCue": "ALB for HTTP routing, NLB for high-performance L4, GWLB for appliances",
+    "example": "Traffic is spread across EC2 instances in multiple Availability Zones.",
     "icon": "Arch_Elastic-Load-Balancing_64.svg"
   },
   {
@@ -1159,6 +1243,7 @@
     "purpose": "AWS Artifact helps you download AWS compliance reports and manage selected agreements.",
     "hint": "Think: AWS audit reports and compliance documents.",
     "examCue": "AWS audit reports and compliance documents",
+    "example": "Download an AWS SOC report from Artifact, detect a public bucket with Config, and assemble assessment evidence with Audit Manager.",
     "icon": "Arch_AWS-Artifact_64.svg"
   },
   {
@@ -1173,6 +1258,7 @@
     "purpose": "AWS Certificate Manager helps you provision and manage TLS certificates for integrated AWS services.",
     "hint": "Think: managed public and private certificates.",
     "examCue": "managed public and private certificates",
+    "example": "An online store uses an ACM certificate on its load balancer so customers connect through HTTPS.",
     "icon": "Arch_AWS-Certificate-Manager_64.svg"
   },
   {
@@ -1187,6 +1273,7 @@
     "purpose": "AWS CloudHSM helps you operate dedicated single-tenant hardware security modules with customer-controlled keys.",
     "hint": "Think: dedicated HSM and strict key control.",
     "examCue": "dedicated HSM and strict key control",
+    "example": "A bank with a mandate for dedicated HSM appliances may use CloudHSM; an S3 encryption key normally fits KMS.",
     "icon": "Arch_AWS-CloudHSM_64.svg"
   },
   {
@@ -1201,6 +1288,7 @@
     "purpose": "Amazon Cognito helps you add customer sign-up, sign-in, and access control to applications.",
     "hint": "Think: application user identity and federation.",
     "examCue": "application user identity and federation",
+    "example": "A mobile marketplace lets customers sign up with email or a social identity and then access their own orders.",
     "icon": "Arch_Amazon-Cognito_64.svg"
   },
   {
@@ -1215,6 +1303,7 @@
     "purpose": "Amazon Detective helps you investigate security findings by connecting activity and resource relationships.",
     "hint": "Think: security investigation after a finding.",
     "examCue": "security investigation after a finding",
+    "example": "GuardDuty raises a credential-abuse finding; Detective helps trace the related resources and events.",
     "icon": "Arch_Amazon-Detective_64.svg"
   },
   {
@@ -1229,6 +1318,7 @@
     "purpose": "AWS Directory Service helps you run or connect Microsoft Active Directory-compatible directories on AWS.",
     "hint": "Think: managed directory and Active Directory integration.",
     "examCue": "managed directory and Active Directory integration",
+    "example": "Employees use their existing Active Directory credentials to sign in to Amazon WorkSpaces.",
     "icon": "Arch_AWS-Directory-Service_64.svg"
   },
   {
@@ -1243,6 +1333,7 @@
     "purpose": "AWS Firewall Manager helps you centrally apply firewall and protection policies across accounts and resources.",
     "hint": "Think: organization-wide WAF, Shield, and firewall policies.",
     "examCue": "organization-wide WAF, Shield, and firewall policies",
+    "example": "A central team pushes one baseline web ACL policy to applications owned by twenty accounts.",
     "icon": "Arch_AWS-Firewall-Manager_64.svg"
   },
   {
@@ -1257,6 +1348,7 @@
     "purpose": "Amazon GuardDuty helps you detect threats by analyzing AWS logs, events, and runtime signals.",
     "hint": "Think: managed threat detection and suspicious behavior.",
     "examCue": "managed threat detection and suspicious behavior",
+    "example": "GuardDuty raises a credential-abuse finding; Detective helps trace the related resources and events.",
     "icon": "Arch_Amazon-GuardDuty_64.svg"
   },
   {
@@ -1272,6 +1364,7 @@
     "purpose": "AWS IAM helps you control authentication and authorization for AWS identities and resources.",
     "hint": "Think: users, groups, roles, and policies with least privilege.",
     "examCue": "users, groups, roles, and policies with least privilege",
+    "example": "An administrator uses a normal role every day and opens the root account only for a task that specifically requires root.",
     "icon": "Arch_AWS-Identity-and-Access-Management_64.svg"
   },
   {
@@ -1286,6 +1379,7 @@
     "purpose": "AWS IAM Identity Center helps you centrally assign workforce access to multiple AWS accounts and applications.",
     "hint": "Think: single sign-on for workforce users.",
     "examCue": "single sign-on for workforce users",
+    "example": "A developer signs in once and selects the development or production account.",
     "icon": "Arch_AWS-IAM-Identity-Center_64.svg"
   },
   {
@@ -1300,6 +1394,7 @@
     "purpose": "Amazon Inspector helps you continuously scan EC2, ECR images, and Lambda functions for vulnerabilities.",
     "hint": "Think: software vulnerabilities and unintended network exposure.",
     "examCue": "software vulnerabilities and unintended network exposure",
+    "example": "The security team filters all high-severity findings across several AWS accounts.",
     "icon": "Arch_Amazon-Inspector_64.svg"
   },
   {
@@ -1314,6 +1409,7 @@
     "purpose": "AWS KMS helps you create and control encryption keys through a highly available managed service.",
     "hint": "Think: integrated managed encryption keys.",
     "examCue": "integrated managed encryption keys",
+    "example": "An S3 bucket can use a KMS key for server-side encryption.",
     "icon": "Arch_AWS-Key-Management-Service_64.svg"
   },
   {
@@ -1328,6 +1424,7 @@
     "purpose": "Amazon Macie helps you discover and protect sensitive data stored in Amazon S3.",
     "hint": "Think: machine-learning discovery of PII in S3.",
     "examCue": "machine-learning discovery of PII in S3",
+    "example": "The security team filters all high-severity findings across several AWS accounts.",
     "icon": "Arch_Amazon-Macie_64.svg"
   },
   {
@@ -1342,6 +1439,7 @@
     "purpose": "AWS RAM helps you share supported AWS resources across accounts or within an organization.",
     "hint": "Think: cross-account resource sharing without duplication.",
     "examCue": "cross-account resource sharing without duplication",
+    "example": "A networking account shares one Transit Gateway with several application accounts instead of duplicating it.",
     "icon": "Arch_AWS-Resource-Access-Manager_64.svg"
   },
   {
@@ -1356,6 +1454,7 @@
     "purpose": "AWS Secrets Manager helps you store, retrieve, and rotate application secrets.",
     "hint": "Think: database passwords, API keys, and automatic rotation.",
     "examCue": "database passwords, API keys, and automatic rotation",
+    "example": "An application retrieves its RDS password from Secrets Manager, which rotates the password automatically.",
     "icon": "Arch_AWS-Secrets-Manager_64.svg"
   },
   {
@@ -1370,6 +1469,7 @@
     "purpose": "AWS Security Hub helps you aggregate and prioritize security findings and posture checks.",
     "hint": "Think: central security findings and standards dashboard.",
     "examCue": "central security findings and standards dashboard",
+    "example": "A CISO reviews GuardDuty, Inspector, and Macie findings from one dashboard.",
     "icon": "Arch_AWS-Security-Hub_64.svg"
   },
   {
@@ -1384,6 +1484,7 @@
     "purpose": "AWS Shield helps you protect applications against distributed denial-of-service attacks.",
     "hint": "Think: DDoS protection.",
     "examCue": "DDoS protection",
+    "example": "Block a bad HTTP request with WAF; absorb a traffic flood with Shield.",
     "icon": "Arch_AWS-Shield_64.svg"
   },
   {
@@ -1398,6 +1499,7 @@
     "purpose": "AWS WAF helps you filter malicious HTTP and HTTPS requests using web ACL rules.",
     "hint": "Think: web request filtering such as IP, path, or SQL injection.",
     "examCue": "web request filtering such as IP, path, or SQL injection",
+    "example": "Block a bad HTTP request with WAF; absorb a traffic flood with Shield.",
     "icon": "Arch_AWS-WAF_64.svg"
   },
   {
@@ -1412,6 +1514,7 @@
     "purpose": "AWS Fargate helps you run ECS tasks or EKS pods without managing servers.",
     "hint": "Think: serverless compute for containers.",
     "examCue": "serverless compute for containers",
+    "example": "Use ECS for AWS-native orchestration, EKS for Kubernetes compatibility, and Fargate with either when you do not want to manage worker servers.",
     "icon": "Arch_AWS-Fargate_64.svg"
   },
   {
@@ -1426,6 +1529,7 @@
     "purpose": "AWS Lambda helps you run event-driven code without provisioning servers.",
     "hint": "Think: short-lived functions triggered by events.",
     "examCue": "short-lived functions triggered by events",
+    "example": "AWS patches Lambda infrastructure, while the customer fixes a vulnerable library bundled with the function.",
     "icon": "Arch_AWS-Lambda_64.svg"
   },
   {
@@ -1440,6 +1544,7 @@
     "purpose": "AWS Backup helps you centrally define and monitor backup policies across supported services.",
     "hint": "Think: centralized policy-based backups.",
     "examCue": "centralized policy-based backups",
+    "example": "A company applies one policy that backs up its EBS volumes and RDS databases every night.",
     "icon": "Arch_AWS-Backup_64.svg"
   },
   {
@@ -1454,6 +1559,7 @@
     "purpose": "Amazon EBS helps you provide persistent block volumes for EC2 instances.",
     "hint": "Think: block storage in one Availability Zone.",
     "examCue": "block storage in one Availability Zone",
+    "example": "A database server attaches an EBS volume as a block device in the same Availability Zone.",
     "icon": "Arch_Amazon-Elastic-Block-Store_64.svg"
   },
   {
@@ -1468,6 +1574,7 @@
     "purpose": "Amazon EFS helps you provide elastic shared file storage for Linux workloads.",
     "hint": "Think: regional NFS file system shared by many instances.",
     "examCue": "regional NFS file system shared by many instances",
+    "example": "Hundreds of Linux EC2 instances mount the same EFS directory over NFS.",
     "icon": "Arch_Amazon-EFS_64.svg"
   },
   {
@@ -1482,6 +1589,7 @@
     "purpose": "AWS Elastic Disaster Recovery helps you replicate servers and recover them quickly in AWS after disruption.",
     "hint": "Think: block-level disaster-recovery replication.",
     "examCue": "block-level disaster-recovery replication",
+    "example": "An ERP server is continuously replicated to AWS and launched there quickly after the primary data center fails.",
     "icon": "Arch_AWS-Elastic-Disaster-Recovery_64.svg"
   },
   {
@@ -1495,6 +1603,7 @@
     "purpose": "Amazon FSx helps you provide managed file systems optimized for Windows, Lustre, NetApp ONTAP, or OpenZFS needs.",
     "hint": "Think: managed specialized file systems.",
     "examCue": "managed specialized file systems",
+    "example": "A Windows team moves a shared SMB drive to Amazon FSx for Windows File Server without changing user workflows.",
     "icon": "Arch_Amazon-FSx_64.svg"
   },
   {
@@ -1509,6 +1618,7 @@
     "purpose": "Amazon S3 helps you store durable objects in buckets at virtually unlimited scale.",
     "hint": "Think: object storage, storage classes, and lifecycle policies.",
     "examCue": "object storage, storage classes, and lifecycle policies",
+    "example": "The name company-receipts must be globally unique, but its objects can still reside only in the selected eu-west-1 Region.",
     "icon": "Arch_Amazon-Simple-Storage-Service_64.svg"
   },
   {
@@ -1523,6 +1633,7 @@
     "purpose": "Amazon S3 Glacier helps you archive rarely accessed data in low-cost S3 archival storage classes.",
     "hint": "Think: long-term archive with retrieval tradeoffs.",
     "examCue": "long-term archive with retrieval tradeoffs",
+    "example": "A company archives tax records for seven years at low cost and accepts waiting longer when retrieval is needed.",
     "icon": "Arch_Amazon-Simple-Storage-Service-Glacier_64.svg"
   },
   {
@@ -1537,6 +1648,7 @@
     "purpose": "AWS Storage Gateway helps you connect on-premises environments to AWS storage through hybrid file, volume, or tape gateways.",
     "hint": "Think: hybrid storage bridge and local cache.",
     "examCue": "hybrid storage bridge and local cache",
+    "example": "A hospital keeps a fast local cache for frequently used files while older files are stored in Amazon S3.",
     "icon": "Arch_AWS-Storage-Gateway_64.svg"
   },
   {
@@ -1551,6 +1663,7 @@
     "purpose": "AWS Audit Manager helps you automate evidence collection for customer compliance assessments.",
     "hint": "Think: audit evidence and assessment reports.",
     "examCue": "audit evidence and assessment reports",
+    "example": "A compliance team collects configuration evidence for a PCI DSS assessment.",
     "icon": "Arch_AWS-Audit-Manager_64.svg"
   },
   {
@@ -1565,6 +1678,7 @@
     "purpose": "AWS AppConfig helps you deploy application configuration and feature flags safely at runtime.",
     "hint": "Think: feature flags without redeploying code.",
     "examCue": "feature flags without redeploying code",
+    "example": "Config flags a public S3 bucket; AppConfig turns on a checkout feature without redeploying code.",
     "icon": "Arch_AWS-AppConfig_64.svg"
   },
   {
@@ -1579,6 +1693,7 @@
     "purpose": "Amazon Pinpoint helps you build segmented customer-engagement campaigns.",
     "hint": "Think: marketing journeys and audience segments.",
     "examCue": "marketing journeys and audience segments",
+    "example": "A billing alarm uses SNS, a receipt uses SES, a campaign uses Pinpoint, and an employee inbox uses WorkMail.",
     "icon": "Arch_Amazon-Pinpoint_64.svg"
   },
   {
@@ -1592,6 +1707,7 @@
     "purpose": "Amazon WorkMail helps you provide managed business email and calendars.",
     "hint": "Think: employee mailbox and calendar service.",
     "examCue": "employee mailbox and calendar service",
+    "example": "A billing alarm uses SNS, a receipt uses SES, a campaign uses Pinpoint, and an employee inbox uses WorkMail.",
     "icon": "Arch_Amazon-WorkMail_64.svg"
   },
   {
@@ -1605,6 +1721,7 @@
     "purpose": "AWS Elemental MediaConvert helps you transcode file-based video into delivery formats.",
     "hint": "Think: file-based video conversion and packaging.",
     "examCue": "file-based video conversion and packaging",
+    "example": "Convert an uploaded movie to streaming formats with MediaConvert; carry a live sports feed with MediaConnect.",
     "icon": "Arch_AWS-Elemental-MediaConvert_64.svg"
   },
   {
@@ -1619,6 +1736,7 @@
     "purpose": "AWS Elemental MediaConnect helps you transport high-quality live video streams.",
     "hint": "Think: reliable live video contribution transport.",
     "examCue": "reliable live video contribution transport",
+    "example": "Convert an uploaded movie to streaming formats with MediaConvert; carry a live sports feed with MediaConnect.",
     "icon": "Arch_AWS-Elemental-MediaConnect_64.svg"
   },
   {
@@ -1632,6 +1750,7 @@
     "purpose": "Amazon Elastic Transcoder helps you transcode media files using a legacy AWS service.",
     "hint": "Think: legacy file transcoding; prefer MediaConvert for new work.",
     "examCue": "legacy file transcoding; prefer MediaConvert for new work",
+    "example": "A legacy pipeline may remain on Elastic Transcoder while a new workflow uses MediaConvert.",
     "icon": "Arch-Category_Media-Services_64.svg"
   },
   {
@@ -1646,6 +1765,7 @@
     "purpose": "Amazon Timestream helps you store and analyze time-series data such as IoT metrics.",
     "hint": "Think: time-stamped measurements.",
     "examCue": "time-stamped measurements",
+    "example": "Millions of sensors store timestamped temperature readings for analysis over time.",
     "icon": "Arch_Amazon-Timestream_64.svg"
   },
   {
@@ -1659,6 +1779,7 @@
     "purpose": "Amazon QLDB helps you store an immutable and cryptographically verifiable transaction journal.",
     "hint": "Think: ledger history.",
     "examCue": "ledger history",
+    "example": "A vehicle registry keeps a verifiable history of every ownership change without overwriting past entries.",
     "icon": "Arch-Category_Databases_64.svg"
   },
   {
@@ -1673,6 +1794,7 @@
     "purpose": "AWS Wavelength helps you place AWS compute and storage within telecom networks for low-latency 5G applications.",
     "hint": "Think: carrier-network edge computing.",
     "examCue": "carrier-network edge computing",
+    "example": "A metro rendering workload may use a Local Zone, while a 5G vehicle application may use a Wavelength Zone inside a carrier network.",
     "icon": "Arch_AWS-Wavelength_64.svg"
   },
   {
@@ -1687,6 +1809,7 @@
     "purpose": "AWS Network Firewall helps you inspect and filter VPC network traffic with a managed stateful firewall.",
     "hint": "Think: managed VPC network firewall.",
     "examCue": "managed VPC network firewall",
+    "example": "A company inspects traffic entering and leaving its VPCs with centrally managed stateful firewall rules.",
     "icon": "Arch_AWS-Network-Firewall_64.svg"
   }
 ]

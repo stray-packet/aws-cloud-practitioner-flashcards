@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, Info, Shuffle } from 'lucide-react'
 import serviceCatalogJson from '../data/service-catalog.json'
 import { getIntervals, reviewCard, type RatingName } from '../lib/scheduler'
-import { prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
+import { formatLearningWait, prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
 import type { StudyStore } from '../lib/storage'
 
 interface ServiceStudyCard {
@@ -14,6 +14,7 @@ interface ServiceStudyCard {
   purpose: string
   hint: string
   examCue: string
+  example: string
   icon: string
 }
 
@@ -48,13 +49,15 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
   const [showHint, setShowHint] = useState(false)
   const [reviewedCount, setReviewedCount] = useState(0)
   const [uniqueCount, setUniqueCount] = useState(0)
+  const [clock, setClock] = useState(() => Date.now())
   const groups = useMemo(() => [...new Set(services.flatMap((service) => service.groups))].sort(), [])
   const filtered = useMemo(() => services.filter((service) =>
     (scope === 'all' || service.scope === 'official')
     && (group === 'all' || service.groups.includes(group)),
   ), [group, scope])
   const entry = queue[0]
-  const service = entry?.item
+  const waitingUntil = entry?.repetition && entry.availableAt && entry.availableAt > clock ? entry.availableAt : undefined
+  const service = waitingUntil ? undefined : entry?.item
   const storageId = service ? `service:${service.id}` : ''
   const storedCard = service ? store.cards[storageId] : undefined
   const intervals = useMemo(() => service ? getIntervals(storedCard, store.settings.retention) : null, [service, store.settings.retention, storedCard])
@@ -83,9 +86,20 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
       return prioritizeReviewQueue(remaining, reviewedAt.getTime())
     })
     setReviewedCount((count) => count + 1)
+    setClock(reviewedAt.getTime())
     setRevealed(false)
     setShowHint(false)
   }, [onRate, service, storageId, store.settings.retention, storedCard])
+
+  useEffect(() => {
+    if (!waitingUntil) return
+    const timeout = window.setTimeout(() => {
+      const current = Date.now()
+      setClock(current)
+      setQueue((pending) => prioritizeReviewQueue(pending, current))
+    }, Math.min(1000, Math.max(0, waitingUntil - Date.now())))
+    return () => window.clearTimeout(timeout)
+  }, [waitingUntil])
 
   useEffect(() => {
     if (!active || !service) return
@@ -108,6 +122,17 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [active, rate, revealed, service])
+
+  if (active && waitingUntil) {
+    return (
+      <div className="finished-state waiting-state">
+        <p className="section-kicker">Learning step scheduled</p>
+        <h1>Next service in {formatLearningWait(waitingUntil - clock)}</h1>
+        <p>The displayed interval is being respected. The service will appear automatically when it is due.</p>
+        <button className="secondary-button" type="button" onClick={() => setActive(false)}>Return to service categories</button>
+      </div>
+    )
+  }
 
   if (active && !service) {
     return (
@@ -133,7 +158,7 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
             <button className="service-hint-button" type="button" aria-expanded={showHint} onClick={() => setShowHint((current) => !current)}><Info size={16} /> {showHint ? 'Hide hint' : 'Show hint'}</button>
             {showHint && <p className="service-hint">{service.hint}</p>}
           </div>
-          {revealed && <div className="service-answer"><strong>What it does</strong><p>{service.purpose}</p><div className="exam-cue"><strong>Exam language:</strong> {service.examCue}</div></div>}
+          {revealed && <div className="service-answer"><strong>What it does</strong><p>{service.purpose}</p><div className="service-example"><strong>Example:</strong> {service.example}</div><div className="exam-cue"><strong>Exam language:</strong> {service.examCue}</div></div>}
         </section>
         <footer className="service-review-footer">
           {!revealed ? <button className="show-answer" type="button" onClick={() => setRevealed(true)}>Show service meaning</button> : <div className="rating-buttons">{ratings.map((item) => <button className={`rating-button ${item.name}`} type="button" key={item.name} onClick={() => rate(item.name)}><span className="next-interval">{intervals?.[item.name]}</span><span>{item.label}</span><kbd>{item.key}</kbd></button>)}</div>}

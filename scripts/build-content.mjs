@@ -18,6 +18,8 @@ for (const file of files) {
 
 const duplicateIds = cards.filter((card, index) => cards.findIndex((candidate) => candidate.id === card.id) !== index)
 if (duplicateIds.length) throw new Error(`Duplicate card ids: ${duplicateIds.map((card) => card.id).join(', ')}`)
+const placeholderExamples = cards.filter((card) => /^A question asks for /i.test(card.example))
+if (placeholderExamples.length) throw new Error(`Replace placeholder examples with real scenarios: ${placeholderExamples.map((card) => card.id).join(', ')}`)
 
 cards.sort((a, b) => a.id.localeCompare(b.id))
 await fs.writeFile(outputFile, `${JSON.stringify(cards, null, 2)}\n`, 'utf8')

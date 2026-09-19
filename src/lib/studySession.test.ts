@@ -16,6 +16,7 @@ const makeCard = (id: string, sourceChat: string, domain: Flashcard['domain']): 
   prompt: `Question number ${id}`,
   answer: 'Answer',
   explanation: 'Test explanation.',
+  example: 'A concrete test example.',
   sourceRef: 'test',
   difficulty: 1,
   status: 'approved',

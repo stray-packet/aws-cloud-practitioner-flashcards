@@ -86,7 +86,7 @@ export function Overview({ cards, store, onNavigate, onStartStudy }: OverviewPro
           <label><span>Session size</span><select aria-label="Session size" value={size} onChange={(event) => setSize(event.target.value === 'all' ? 'all' : Number(event.target.value) as SessionSize)}><option value="all">All matching</option><option value="10">10 cards</option><option value="20">20 cards</option><option value="50">50 cards</option></select></label>
           <button className="primary-button custom-study-button" type="button" onClick={() => onStartStudy(options)} disabled={!sessionCount}>{order === 'random' && <Shuffle size={15} aria-hidden="true" />}{size === 'all' ? `Study all ${sessionCount}` : `Start ${sessionCount}-card session`}</button>
         </div>
-        <p className="scheduler-note"><strong>How sessions work:</strong> randomized order is the default. A limited session starts with the selected number of unique cards; short Again/Hard learning steps are inserted back into the same session as soon as their displayed interval is due. “All matching” includes every filtered card, even if it is not due.</p>
+        <p className="scheduler-note"><strong>How sessions work:</strong> randomized order is the default. A limited session starts with the selected number of unique cards; short Again, Hard, and Good learning steps are inserted back into the same session as soon as their displayed interval is due. Easy leaves the current session. “All matching” includes every filtered card, even if it is not due.</p>
       </section>
 
       <section className="coverage-section">

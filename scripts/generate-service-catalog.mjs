@@ -1,7 +1,17 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { serviceExamples } from './service-examples.mjs'
 
 const root = process.cwd()
+const approvedDir = path.join(root, 'flashcards', 'approved')
+const approvedFiles = (await fs.readdir(approvedDir)).filter((file) => file.endsWith('.json')).sort()
+const approvedCards = (await Promise.all(approvedFiles.map(async (file) => JSON.parse(await fs.readFile(path.join(approvedDir, file), 'utf8'))))).flat()
+
+const existingExampleFor = (serviceName) => approvedCards.find((card) =>
+  card.services?.includes(serviceName)
+  && card.example?.trim()
+  && !/^A question asks for /i.test(card.example),
+)?.example
 
 // name, official category, study groups (pipe-separated), plain-language purpose,
 // exam-recognition cue, official AWS Architecture Icon filename
@@ -153,6 +163,8 @@ const supplementary = [
 
 const toEntry = (raw, scope) => {
   const [name, officialCategory, groups, purpose, examCue, icon] = raw
+  const example = serviceExamples[name]?.en ?? existingExampleFor(name)
+  if (!example) throw new Error(`Missing memorable example for ${name}`)
   return {
     id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     name,
@@ -162,6 +174,7 @@ const toEntry = (raw, scope) => {
     purpose: `${name} helps you ${purpose}.`,
     hint: `Think: ${examCue}.`,
     examCue,
+    example,
     icon,
   }
 }

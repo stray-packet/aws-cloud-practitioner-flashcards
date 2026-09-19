@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { flashcardSchema } from './card-schema.mjs'
+import { serviceExamples } from './service-examples.mjs'
 
 const root = process.cwd()
 const chatSource = 'knowledge/daily/2026-09-18-chat-14-security-messaging-elb-reviewed.md'
@@ -65,6 +66,8 @@ const catalogByName = new Map(catalog.map((service) => [service.name, service]))
 const extraCards = extraServiceNames.map((name, index) => {
   const service = catalogByName.get(name)
   if (!service) throw new Error(`Missing service catalog entry for ${name}`)
+  const example = serviceExamples[name]?.en
+  if (!example) throw new Error(`Missing memorable example for ${name}`)
   const domain = service.officialCategory === 'Security, Identity, and Compliance'
     ? 'Security and Compliance'
     : ['Cloud Financial Management', 'Customer Enablement'].includes(service.officialCategory)
@@ -79,7 +82,7 @@ const extraCards = extraServiceNames.map((name, index) => {
     prompt: `What is the primary purpose of ${service.name}?`,
     answer: service.purpose,
     explanation: `For CLF-C02, recognize this service when the requirement mentions ${service.examCue}. Deep implementation details are not required.`,
-    example: `A question asks for ${service.examCue}; ${service.name} is the service to evaluate.`,
+    example,
     examCue: `Look for: ${service.examCue}.`,
     sourceRef: gapSource, difficulty: 2, status: 'approved', version: 1,
   })

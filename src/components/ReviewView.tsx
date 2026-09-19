@@ -5,7 +5,7 @@ import type { StudyStore } from '../lib/storage'
 import { getIntervals, isDue, reviewCard, type RatingName } from '../lib/scheduler'
 import { buildStudyQueue, filterStudyCards, type StudySessionOptions } from '../lib/studySession'
 import { loadSpanishTranslations, simpleQuestionHelp, type StudyLanguage } from '../lib/cardLanguage'
-import { prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
+import { formatLearningWait, prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
 import type { CardTranslation } from '../types/translation'
 
 const ratings: Array<{ key: string; name: RatingName }> = [
@@ -27,12 +27,14 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
   const [queue, setQueue] = useState<Array<ReviewQueueEntry<Flashcard>>>(() => buildStudyQueue(cards, store, options).map((item) => ({ item })))
   const [reviewedCount, setReviewedCount] = useState(0)
   const [uniqueCount] = useState(() => queue.length)
+  const [clock, setClock] = useState(() => Date.now())
   const [revealed, setRevealed] = useState(false)
   const [language, setLanguage] = useState<StudyLanguage>('en')
   const [spanishTranslations, setSpanishTranslations] = useState<Map<string, CardTranslation>>()
   const [showSimpleHelp, setShowSimpleHelp] = useState(false)
   const entry = queue[0]
-  const card = entry?.item
+  const waitingUntil = entry?.repetition && entry.availableAt && entry.availableAt > clock ? entry.availableAt : undefined
+  const card = waitingUntil ? undefined : entry?.item
   const storedCard = card ? store.cards[card.id] : undefined
   const intervals = useMemo(() => card ? getIntervals(storedCard, store.settings.retention) : null, [card, storedCard, store.settings.retention])
   const matchingCount = filterStudyCards(cards, options).length
@@ -57,9 +59,20 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
       return prioritizeReviewQueue(remaining, reviewedAt.getTime())
     })
     setReviewedCount((current) => current + 1)
+    setClock(reviewedAt.getTime())
     setRevealed(false)
     setShowSimpleHelp(false)
   }, [card, onRate, store.settings.retention, storedCard])
+
+  useEffect(() => {
+    if (!waitingUntil) return
+    const timeout = window.setTimeout(() => {
+      const current = Date.now()
+      setClock(current)
+      setQueue((pending) => prioritizeReviewQueue(pending, current))
+    }, Math.min(1000, Math.max(0, waitingUntil - Date.now())))
+    return () => window.clearTimeout(timeout)
+  }, [waitingUntil])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -77,6 +90,17 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [card, rate, revealed])
 
+  if (waitingUntil) {
+    return (
+      <div className="finished-state waiting-state">
+        <p className="section-kicker">{spanish ? 'Paso de aprendizaje programado' : 'Learning step scheduled'}</p>
+        <h1>{spanish ? 'Siguiente tarjeta en' : 'Next card in'} {formatLearningWait(waitingUntil - clock)}</h1>
+        <p>{spanish ? 'Se está respetando el intervalo. La tarjeta aparecerá automáticamente cuando corresponda.' : 'The interval is being respected. This card will appear automatically when it is due.'}</p>
+        <button className="secondary-button" type="button" onClick={onFinished}>{spanish ? 'Volver a los mazos' : 'Return to Decks'}</button>
+      </div>
+    )
+  }
+
   if (!card) {
     return (
       <div className="finished-state">
@@ -85,7 +109,7 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
         <p>{spanish ? `Completaste ${reviewedCount} repasos sobre ${uniqueCount} ${uniqueCount === 1 ? 'tarjeta única' : 'tarjetas únicas'}.` : `You completed ${reviewedCount} reviews across ${uniqueCount} unique ${uniqueCount === 1 ? 'card' : 'cards'}.`}</p>
         {options.mode === 'custom' && matchingCount > uniqueCount && <p className="finished-detail">{spanish ? `${matchingCount - uniqueCount} tarjetas coincidentes quedaron fuera de este lote. Puedes iniciar otra sesión cuando quieras.` : `${matchingCount - uniqueCount} matching cards were outside this batch. Start another session whenever you are ready.`}</p>}
         {options.mode === 'custom' && matchingCount === uniqueCount && <p className="finished-detail">{spanish ? 'Llegaste a todas las tarjetas que coinciden con estos filtros.' : 'You reached every card matching these filters.'}</p>}
-        {options.mode === 'daily' && <p className="finished-detail">{spanish ? 'El límite de tarjetas nuevas se comparte durante todo el día. Las tarjetas marcadas Otra vez o Difícil volverán cuando llegue su intervalo.' : 'The new-card allowance is shared across the whole day. Cards rated Again or Hard can return when their displayed interval becomes due.'}</p>}
+        {options.mode === 'daily' && <p className="finished-detail">{spanish ? 'El límite de tarjetas nuevas se comparte durante todo el día. Los pasos cortos de Otra vez, Difícil o Bien vuelven cuando llega su intervalo; Fácil sale de esta sesión.' : 'The new-card allowance is shared across the whole day. Short Again, Hard, or Good steps return when their interval is due; Easy leaves this session.'}</p>}
         <button className="primary-button" type="button" onClick={onFinished}>{spanish ? 'Volver a los mazos' : 'Return to Decks'}</button>
       </div>
     )

@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { serviceExamples } from './service-examples.mjs'
 
 const root = process.cwd()
 const approvedDir = path.join(root, 'flashcards', 'approved')
@@ -37,7 +38,18 @@ const translationOverrides = new Map([
   ['clf-c02-2026-08-28-027', { answer: 'No. También necesita una dirección IP pública adecuada y reglas de seguridad que permitan el tráfico.' }],
   ['clf-c02-2026-08-28-078', { answer: 'No. Son un descuento de facturación aplicado al uso On-Demand que coincida; algunas RI zonales también reservan capacidad.' }],
   ['clf-c02-2026-09-15-011', { answer: 'Restringe las circunstancias en las que se aplica una declaración de política.' }],
+  ['clf-c02-2026-09-18-006', { examCue: 'Artifact = documentos de AWS; Config = historial de recursos; Audit Manager = evidencia para evaluaciones.' }],
+  ['clf-c02-2026-09-18-007', { examCue: 'Informes y acuerdos de cumplimiento de AWS = Artifact.' }],
+  ['clf-c02-2026-09-18-009', { example: 'AWS Config marca un bucket público de S3; AppConfig activa una función de pago sin volver a implementar el código.', examCue: 'Cumplimiento de recursos = Config; indicador de función en tiempo de ejecución = AppConfig.' }],
+  ['clf-c02-2026-09-18-023', { examCue: 'HTTP = ALB; TCP/UDP = NLB; dispositivos virtuales = GWLB; legado = CLB.' }],
 ])
+
+for (const card of cards) {
+  if (card.collection !== 'extra' || card.services?.length !== 1) continue
+  const example = serviceExamples[card.services[0]]?.es
+  if (!example) continue
+  translationOverrides.set(card.id, { ...translationOverrides.get(card.id), example })
+}
 
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
