@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, Info, Shuffle } from 'lucide-react'
+import { ArrowLeft, Flag, Info, Shuffle } from 'lucide-react'
 import serviceCatalogJson from '../data/service-catalog.json'
 import { getIntervals, reviewCard, type RatingName } from '../lib/scheduler'
 import { formatLearningWait, prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
@@ -38,11 +38,14 @@ const shuffle = <T,>(items: T[]) => {
 interface ServicesViewProps {
   store: StudyStore
   onRate: (cardId: string, rating: RatingName, reviewedAt: Date) => void
+  onToggleFlag: (serviceId: string) => void
+  onReviewActiveChange: (active: boolean) => void
 }
 
-export function ServicesView({ store, onRate }: ServicesViewProps) {
+export function ServicesView({ store, onRate, onToggleFlag, onReviewActiveChange }: ServicesViewProps) {
   const [scope, setScope] = useState<'official' | 'all'>('official')
   const [group, setGroup] = useState('all')
+  const [studySet, setStudySet] = useState<'all' | 'flagged'>('all')
   const [queue, setQueue] = useState<Array<ReviewQueueEntry<ServiceStudyCard>>>([])
   const [active, setActive] = useState(false)
   const [revealed, setRevealed] = useState(false)
@@ -51,10 +54,12 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
   const [uniqueCount, setUniqueCount] = useState(0)
   const [clock, setClock] = useState(() => Date.now())
   const groups = useMemo(() => [...new Set(services.flatMap((service) => service.groups))].sort(), [])
+  const flaggedServiceIds = useMemo(() => new Set(store.flaggedServiceIds), [store.flaggedServiceIds])
   const filtered = useMemo(() => services.filter((service) =>
     (scope === 'all' || service.scope === 'official')
-    && (group === 'all' || service.groups.includes(group)),
-  ), [group, scope])
+    && (group === 'all' || service.groups.includes(group))
+    && (studySet === 'all' || flaggedServiceIds.has(service.id)),
+  ), [flaggedServiceIds, group, scope, studySet])
   const entry = queue[0]
   const waitingUntil = entry?.repetition && entry.availableAt && entry.availableAt > clock ? entry.availableAt : undefined
   const service = waitingUntil ? undefined : entry?.item
@@ -70,6 +75,12 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
     setRevealed(false)
     setShowHint(false)
     setActive(true)
+    onReviewActiveChange(true)
+  }
+
+  const leaveReview = () => {
+    setActive(false)
+    onReviewActiveChange(false)
   }
 
   const rate = useCallback((rating: RatingName) => {
@@ -129,7 +140,7 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
         <p className="section-kicker">Learning step scheduled</p>
         <h1>Next service in {formatLearningWait(waitingUntil - clock)}</h1>
         <p>The displayed interval is being respected. The service will appear automatically when it is due.</p>
-        <button className="secondary-button" type="button" onClick={() => setActive(false)}>Return to service categories</button>
+        <button className="secondary-button" type="button" onClick={leaveReview}>Return to service categories</button>
       </div>
     )
   }
@@ -140,7 +151,7 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
         <div className="finished-mark">✓</div>
         <h1>Service review complete</h1>
         <p>You completed {reviewedCount} reviews across {uniqueCount} unique services.</p>
-        <button className="primary-button" type="button" onClick={() => setActive(false)}>Return to service categories</button>
+        <button className="primary-button" type="button" onClick={leaveReview}>Return to service categories</button>
       </div>
     )
   }
@@ -148,7 +159,7 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
   if (active && service) {
     return (
       <div className="service-review-layout">
-        <div className="service-review-meta"><button className="text-button" type="button" onClick={() => setActive(false)}><ArrowLeft size={15} /> Categories</button><span>{group === 'all' ? 'All service categories' : group} · randomized</span><div className="queue-counts"><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div>
+        <div className="service-review-meta"><button className="text-button" type="button" onClick={leaveReview}><ArrowLeft size={15} /> Categories</button><span>{studySet === 'flagged' ? 'Flagged services' : group === 'all' ? 'All service categories' : group} · randomized</span><div className="service-review-actions"><button className={`service-flag-toggle ${flaggedServiceIds.has(service.id) ? 'flagged' : ''}`} type="button" aria-pressed={flaggedServiceIds.has(service.id)} title={flaggedServiceIds.has(service.id) ? 'Remove service flag' : 'Flag service for focused review'} onClick={() => onToggleFlag(service.id)}><Flag size={15} fill={flaggedServiceIds.has(service.id) ? 'currentColor' : 'none'} /> {flaggedServiceIds.has(service.id) ? 'Flagged' : 'Flag'}</button><div className="queue-counts"><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div></div>
         <section className="service-review-card" aria-live="polite">
           <div className="card-label"><span>{service.officialCategory}</span><span className="card-schedule-state">{entry.repetition ? 'Learning step' : service.scope === 'official' ? 'Official CLF-C02 scope' : 'Course supplementary'}</span></div>
           <div className="service-front">
@@ -173,12 +184,14 @@ export function ServicesView({ store, onRate }: ServicesViewProps) {
       <section className="service-study-controls">
         <label><span>Coverage</span><select value={scope} onChange={(event) => setScope(event.target.value as 'official' | 'all')}><option value="official">Official CLF-C02 scope</option><option value="all">Official + course supplementary</option></select></label>
         <label><span>Study category</span><select value={group} onChange={(event) => setGroup(event.target.value)}><option value="all">All categories</option>{groups.map((item) => <option key={item}>{item}</option>)}</select></label>
+        <label><span>Study set</span><select value={studySet} onChange={(event) => setStudySet(event.target.value as 'all' | 'flagged')}><option value="all">All matching services</option><option value="flagged">Flagged services · {store.flaggedServiceIds.length}</option></select></label>
         <button className="primary-button" type="button" onClick={start} disabled={!filtered.length}><Shuffle size={16} /> Start random review · {filtered.length}</button>
       </section>
+      {studySet === 'flagged' && !filtered.length && <p className="service-empty-state">No flagged services match these filters yet. Flag a service during a review, then return here to study it as often as you need.</p>}
       <section className="service-category-list" aria-label="Service categories">
         <div className="section-heading"><h2>Categories</h2><span>Services can appear in more than one category</span></div>
         {groups.map((item) => {
-          const count = services.filter((service) => (scope === 'all' || service.scope === 'official') && service.groups.includes(item)).length
+          const count = services.filter((service) => (scope === 'all' || service.scope === 'official') && service.groups.includes(item) && (studySet === 'all' || flaggedServiceIds.has(service.id))).length
           return <button type="button" key={item} onClick={() => setGroup(item)}><span><strong>{item}</strong><small>{count} services</small></span><span>Study category</span></button>
         })}
       </section>

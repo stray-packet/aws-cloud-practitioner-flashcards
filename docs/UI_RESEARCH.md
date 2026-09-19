@@ -16,7 +16,7 @@
 - Review is utilitarian: neutral surfaces, compact navigation, strong text hierarchy, and limited semantic color.
 - Visual service recognition keeps the official icon and service name on the question side; the hint is optional, and the concise purpose plus exam cue appear only after reveal.
 - Randomized order is the default for custom, chat, topic, and service sessions to reduce position-based memorization.
-- The application header, mobile navigation, and active review controls remain fixed while long answers scroll beneath them.
+- During an active flashcard session, navigation is hidden so only the fixed active review controls remain while long answers scroll beneath them.
 
 ## Hybrid desktop/mobile adaptation
 

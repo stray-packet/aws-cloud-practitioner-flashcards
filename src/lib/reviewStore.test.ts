@@ -7,6 +7,7 @@ const emptyStore: StudyStore = {
   cards: {},
   reviewLogs: [],
   examAttempts: [],
+  flaggedServiceIds: [],
   settings: { retention: 0.9, newCardsPerDay: 10, theme: 'system' },
 }
 

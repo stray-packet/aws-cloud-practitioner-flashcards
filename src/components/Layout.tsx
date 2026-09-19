@@ -23,6 +23,7 @@ const mobileItems = [
 
 interface LayoutProps {
   view: ViewName
+  serviceReviewActive: boolean
   user: User | null
   firebaseConfigured: boolean
   theme: ThemePreference
@@ -31,8 +32,8 @@ interface LayoutProps {
   onToggleTheme: () => void
 }
 
-export function Layout({ view, user, firebaseConfigured, theme, children, onNavigate, onToggleTheme }: LayoutProps) {
-  const focusMode = view === 'study' || view === 'exam'
+export function Layout({ view, serviceReviewActive, user, firebaseConfigured, theme, children, onNavigate, onToggleTheme }: LayoutProps) {
+  const focusMode = view === 'study' || view === 'exam' || serviceReviewActive
   const systemDark = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
   const dark = theme === 'dark' || (theme === 'system' && systemDark)
   return (

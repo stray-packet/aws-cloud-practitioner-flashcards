@@ -1,4 +1,7 @@
 .app-shell { min-height: 100vh; min-height: 100dvh; padding-top: 48px; }
+.app-shell.focus-mode { padding-top: 0; }
+.app-shell.focus-mode .topbar { display: none; }
+.app-shell.focus-mode .main-area { min-height: 100vh; min-height: 100dvh; }
 .topbar { position: fixed; inset: 0 0 auto; z-index: 30; height: 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 18px; background: var(--surface); border-bottom: 1px solid var(--border); }
 .brand, .nav-item, .sync-status, .theme-toggle, .utility-button, .text-button { border: 0; background: transparent; color: var(--text); cursor: pointer; }
 .brand { display: inline-flex; align-items: center; gap: 9px; justify-self: start; font-weight: 600; padding: 5px; }
@@ -66,6 +69,7 @@ h2 { font-size: 17px; font-weight: 600; margin: 0; }
 .coverage-row strong { text-align: right; font-size: 13px; }
 
 .review-layout { min-height: calc(100vh - 48px); min-height: calc(100dvh - 48px); display: grid; grid-template-rows: auto 1fr; padding: 10px 24px 110px; }
+.focus-mode .review-layout, .focus-mode .service-review-layout { min-height: 100vh; min-height: 100dvh; }
 .review-meta { width: min(880px, 100%); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; min-height: 32px; color: var(--muted); font-size: 13px; }
 .review-meta-actions { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
 .language-toggle { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; padding: 3px 7px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--surface); color: var(--muted); cursor: pointer; font-size: 11px; }
@@ -161,7 +165,7 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
 
 .services-page { max-width: 980px; }
 .services-page .page-header p:last-child { max-width: 680px; margin: 6px 0 0; color: var(--muted); line-height: 1.5; }
-.service-study-controls { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 12px; padding: 16px; border: 1px solid var(--border); background: var(--surface); }
+.service-study-controls { display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: end; gap: 12px; padding: 16px; border: 1px solid var(--border); background: var(--surface); }
 .service-study-controls label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
 .service-study-controls .primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; white-space: nowrap; }
 .service-category-list { margin-top: 30px; border: 1px solid var(--border); background: var(--surface); }
@@ -171,10 +175,14 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
 .service-category-list button > span:first-child { display: grid; gap: 3px; }
 .service-category-list button small, .service-category-list button > span:last-child { color: var(--muted); font-size: 12px; }
 .service-source-note { margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.service-empty-state { margin: 0; padding: 12px 16px; border: 1px solid var(--border); border-top: 0; background: var(--surface-muted); color: var(--muted); font-size: 13px; line-height: 1.5; }
 .service-review-layout { min-height: calc(100vh - 48px); min-height: calc(100dvh - 48px); display: grid; grid-template-rows: auto 1fr; padding: 10px 24px 104px; }
 .service-review-meta { width: min(760px, 100%); min-height: 34px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; color: var(--muted); font-size: 12px; }
 .service-review-meta .text-button { justify-self: start; display: inline-flex; align-items: center; gap: 5px; color: var(--accent); }
-.service-review-meta .queue-counts { justify-self: end; }
+.service-review-actions { justify-self: end; display: flex; align-items: center; gap: 9px; }
+.service-flag-toggle { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 4px 7px; border: 1px solid var(--border-strong); border-radius: 4px; background: var(--surface); color: var(--muted); cursor: pointer; font-size: 12px; }
+.service-flag-toggle:hover { color: var(--text); background: var(--surface-muted); }
+.service-flag-toggle.flagged { border-color: #b47b30; color: #9b681f; background: color-mix(in srgb, #b47b30 10%, var(--surface)); }
 .service-review-card { width: min(760px, 100%); min-height: 470px; margin: 10px auto 18px; align-self: center; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); }
 .service-front { flex: 1; display: grid; justify-items: center; align-content: center; padding: 42px 24px; text-align: center; }
 .service-front img { width: 96px; height: 96px; object-fit: contain; margin-bottom: 24px; }
@@ -268,6 +276,8 @@ select, .number-input { min-height: 34px; padding: 5px 8px; border: 1px solid va
   .service-review-layout { min-height: calc(100vh - 46px); min-height: calc(100dvh - 46px); padding: 8px 10px calc(150px + env(safe-area-inset-bottom)); }
   .service-review-meta { grid-template-columns: auto 1fr auto; gap: 8px; }
   .service-review-meta > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
+  .service-review-actions { gap: 5px; }
+  .service-flag-toggle { padding: 4px 5px; }
   .service-review-card { min-height: 0; margin-bottom: 10px; }
   .service-front { padding: 34px 18px; }
   .service-front img { width: 82px; height: 82px; }

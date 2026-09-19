@@ -33,6 +33,7 @@ const store: StudyStore = {
   cards: {},
   reviewLogs: [],
   examAttempts: [],
+  flaggedServiceIds: [],
   settings: { retention: 0.9, newCardsPerDay: 20, theme: 'system' },
 }
 

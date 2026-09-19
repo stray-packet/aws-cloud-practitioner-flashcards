@@ -24,7 +24,7 @@ Potential gaps never count as studied and never enter the review queue without a
 - Daily Review uses FSRS and self-ratings. Exam Practice records separate correctness metrics and does not change FSRS state.
 - A repeated Daily Review card must be due according to FSRS; Custom Study may intentionally include future-scheduled cards and labels them as scheduled practice.
 - Again, Hard, and Good learning steps due within 30 minutes are kept in the active session. A due repetition jumps ahead of untouched cards; a future repetition waits while untouched cards remain. If only future learning steps remain, show an exact countdown instead of displaying a card early. Easy always leaves the active session.
-- The AWS services view is a visual-recognition deck with locally stored official icons, multiple cross-cutting categories, and an explicit official/supplementary scope filter.
+- The AWS services view is a visual-recognition deck with locally stored official icons, multiple cross-cutting categories, an explicit official/supplementary scope filter, and persistent local service flags for focused review.
 - Local mode autosaves in browser storage and supports portable JSON export and import.
 - The public repository contains only curated study material, never raw personal chats or secrets.
 - Firebase is optional at runtime. Without its environment variables the app must remain fully usable in local mode.

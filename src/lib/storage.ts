@@ -26,6 +26,7 @@ export interface StudyStore {
   cards: Record<string, StoredFsrsCard>
   reviewLogs: ReviewEvent[]
   examAttempts: ExamAttempt[]
+  flaggedServiceIds: string[]
   settings: StudySettings
 }
 
@@ -41,6 +42,7 @@ export function loadStore(): StudyStore {
       cards: parsed.cards ?? {},
       reviewLogs: parsed.reviewLogs ?? [],
       examAttempts: parsed.examAttempts ?? [],
+      flaggedServiceIds: normalizeFlaggedServiceIds(parsed.flaggedServiceIds),
       settings: { ...defaultSettings, ...parsed.settings },
     }
   } catch {
@@ -76,10 +78,16 @@ export function parseProgressJson(text: string): StudyStore {
     cards: parsed.cards,
     reviewLogs: parsed.reviewLogs,
     examAttempts: parsed.examAttempts,
+    flaggedServiceIds: normalizeFlaggedServiceIds(parsed.flaggedServiceIds),
     settings: { ...defaultSettings, ...parsed.settings },
   }
 }
 
+function normalizeFlaggedServiceIds(value: unknown): string[] {
+  if (!Array.isArray(value)) return []
+  return [...new Set(value.filter((item): item is string => typeof item === 'string' && item.length > 0))]
+}
+
 function emptyStore(): StudyStore {
-  return { cards: {}, reviewLogs: [], examAttempts: [], settings: { ...defaultSettings } }
+  return { cards: {}, reviewLogs: [], examAttempts: [], flaggedServiceIds: [], settings: { ...defaultSettings } }
 }
