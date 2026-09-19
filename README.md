@@ -2,7 +2,9 @@
 
 An Anki-inspired progressive web app for studying AWS certifications with versioned knowledge, reviewed flashcards, FSRS scheduling, exam practice, optional Firebase sync, and Anki export. Every approved card combines a concise answer, a plain-language explanation, and a separate practical example.
 
-Daily Review enforces one new-card allowance across the entire local calendar day. Custom Study can be scoped by individual Gemini chat, CLF-C02 exam domain, or topic; sessions can contain 10, 20, 50, or every matching card in scheduled or randomized order. During review, `EN / ES` switches the complete card between English and Spanish, and selecting the information icon explains what the question is asking without revealing its answer. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review.
+Daily Review enforces one new-card allowance across the entire local calendar day. Custom Study can be scoped by collection, individual Gemini chat, CLF-C02 exam domain, or topic; sessions can contain 10, 20, 50, or every matching card. Random order is the default, while scheduled order remains available. During review, `EN / ES` switches the complete card between English and Spanish, and selecting the information icon explains what the question is asking without revealing its answer. After revealing an answer, the four Anki-style ratings preview their next FSRS interval before saving the review. Short Again and Hard steps return inside the current session when they become due.
+
+The **AWS services** section is a separate visual-recognition deck aligned to the current CLF-C02 service list. It groups services into cross-cutting study categories, displays official AWS Architecture Icons, and pairs a beginner-friendly hint with concise exam language. Course services outside the current primary exam scope remain available as clearly labeled supplementary material.
 
 ## Local development
 
@@ -21,6 +23,7 @@ The app works without Firebase and saves progress in the browser. Copy `.env.exa
 ```bash
 npm run content:validate
 npm run content:translate:es
+npm run content:services
 npm run export:anki
 npm test
 npm run build
@@ -38,7 +41,7 @@ The generated Anki import is `exports/anki/aws-cloud-practitioner.tsv`. Import i
 4. Keep unstudied suggestions in `knowledge/gaps/`.
 5. Review generated cards in `flashcards/drafts/` before moving approved cards into `flashcards/approved/`. A source may go directly to approved only when the user explicitly delegates content approval after official-documentation review.
 
-Each approved card includes a stable `sourceChat` label. This keeps cards traceable to a particular chat even when multiple chats share the same study date. The current 13 reports are exposed as 13 distinct chats, including five independent chats from 2026-09-15.
+Each approved card includes a stable `sourceChat` label. This keeps cards traceable to a particular chat even when multiple chats share the same study date. The current 14 reports are exposed as 14 distinct chats, including five independent chats from 2026-09-15. Cards created from the official coverage audit use the separate **Extra official coverage** collection instead of pretending that they were studied in a Gemini chat.
 
 See `docs/PROJECT_CONTEXT.md` for the full content contract and `docs/UI_RESEARCH.md` for the visual guardrails.
 

@@ -14,6 +14,8 @@
 - Each rating displays its next interval before selection.
 - Editing and secondary actions remain visually subordinate to the recall task.
 - Review is utilitarian: neutral surfaces, compact navigation, strong text hierarchy, and limited semantic color.
+- Visual service recognition keeps the official icon and service name on the question side; the hint is optional, and the concise purpose plus exam cue appear only after reveal.
+- Randomized order is the default for custom, chat, topic, and service sessions to reduce position-based memorization.
 
 ## Hybrid desktop/mobile adaptation
 

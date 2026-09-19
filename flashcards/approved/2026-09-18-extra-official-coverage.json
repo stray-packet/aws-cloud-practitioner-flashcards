@@ -1,0 +1,1153 @@
+[
+  {
+    "id": "clf-c02-2026-09-18-101",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Analytics",
+      "Analytics & Data"
+    ],
+    "services": [
+      "Amazon EMR"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon EMR?",
+    "answer": "Amazon EMR helps you run managed big-data frameworks such as Apache Spark and Hadoop.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed Spark or Hadoop clusters. Deep implementation details are not required.",
+    "example": "A question asks for managed Spark or Hadoop clusters; Amazon EMR is the service to evaluate.",
+    "examCue": "Look for: managed Spark or Hadoop clusters.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-102",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Analytics",
+      "Analytics & Data",
+      "Observability & Developer Tools"
+    ],
+    "services": [
+      "Amazon OpenSearch Service"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon OpenSearch Service?",
+    "answer": "Amazon OpenSearch Service helps you search, analyze, and visualize large volumes of logs or documents.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed search and log analytics. Deep implementation details are not required.",
+    "example": "A question asks for managed search and log analytics; Amazon OpenSearch Service is the service to evaluate.",
+    "examCue": "Look for: managed search and log analytics.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-103",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Application Integration",
+      "Messaging & Workflows"
+    ],
+    "services": [
+      "Amazon EventBridge"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon EventBridge?",
+    "answer": "Amazon EventBridge helps you route events between applications and AWS services using rules.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions event bus and event-driven routing. Deep implementation details are not required.",
+    "example": "A question asks for event bus and event-driven routing; Amazon EventBridge is the service to evaluate.",
+    "examCue": "Look for: event bus and event-driven routing.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-104",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Application Integration",
+      "Messaging & Workflows",
+      "Compute & Serverless"
+    ],
+    "services": [
+      "AWS Step Functions"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Step Functions?",
+    "answer": "AWS Step Functions helps you coordinate distributed application steps with visual workflows.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions state machines, retries, and workflow orchestration. Deep implementation details are not required.",
+    "example": "A question asks for state machines, retries, and workflow orchestration; AWS Step Functions is the service to evaluate.",
+    "examCue": "Look for: state machines, retries, and workflow orchestration.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-105",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Billing, Pricing, and Support",
+    "topics": [
+      "Extra official coverage",
+      "Cloud Financial Management",
+      "Cost, Marketplace & Support",
+      "Analytics & Data"
+    ],
+    "services": [
+      "AWS Cost and Usage Reports"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Cost and Usage Reports?",
+    "answer": "AWS Cost and Usage Reports helps you deliver the most detailed AWS cost and usage data for analysis.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions granular billing report files. Deep implementation details are not required.",
+    "example": "A question asks for granular billing report files; AWS Cost and Usage Reports is the service to evaluate.",
+    "examCue": "Look for: granular billing report files.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-106",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Developer Tools",
+      "Observability & Developer Tools"
+    ],
+    "services": [
+      "AWS CLI"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS CLI?",
+    "answer": "AWS CLI helps you manage AWS services from a command-line interface.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions scripted or terminal access to AWS APIs. Deep implementation details are not required.",
+    "example": "A question asks for scripted or terminal access to AWS APIs; AWS CLI is the service to evaluate.",
+    "examCue": "Look for: scripted or terminal access to AWS APIs.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-107",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Developer Tools",
+      "Observability & Developer Tools"
+    ],
+    "services": [
+      "AWS CodeBuild"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS CodeBuild?",
+    "answer": "AWS CodeBuild helps you compile source code, run tests, and produce build artifacts.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions fully managed build stage. Deep implementation details are not required.",
+    "example": "A question asks for fully managed build stage; AWS CodeBuild is the service to evaluate.",
+    "examCue": "Look for: fully managed build stage.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-108",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Developer Tools",
+      "Observability & Developer Tools",
+      "Messaging & Workflows"
+    ],
+    "services": [
+      "AWS CodePipeline"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS CodePipeline?",
+    "answer": "AWS CodePipeline helps you automate software release stages from source through deployment.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions continuous delivery pipeline orchestration. Deep implementation details are not required.",
+    "example": "A question asks for continuous delivery pipeline orchestration; AWS CodePipeline is the service to evaluate.",
+    "examCue": "Look for: continuous delivery pipeline orchestration.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-109",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "End User Computing",
+      "Business & End-user Apps"
+    ],
+    "services": [
+      "Amazon AppStream 2.0"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon AppStream 2.0?",
+    "answer": "Amazon AppStream 2.0 helps you stream desktop applications securely to a web browser.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions stream an application without delivering a full desktop. Deep implementation details are not required.",
+    "example": "A question asks for stream an application without delivering a full desktop; Amazon AppStream 2.0 is the service to evaluate.",
+    "examCue": "Look for: stream an application without delivering a full desktop.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-110",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "End User Computing",
+      "Business & End-user Apps",
+      "Security & Threat Protection"
+    ],
+    "services": [
+      "Amazon WorkSpaces Secure Browser"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon WorkSpaces Secure Browser?",
+    "answer": "Amazon WorkSpaces Secure Browser helps you provide isolated, managed browser access to internal sites and SaaS apps.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions secure browser rather than a full virtual desktop. Deep implementation details are not required.",
+    "example": "A question asks for secure browser rather than a full virtual desktop; Amazon WorkSpaces Secure Browser is the service to evaluate.",
+    "examCue": "Look for: secure browser rather than a full virtual desktop.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-111",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Internet of Things (IoT)",
+      "Frontend & IoT",
+      "Messaging & Workflows"
+    ],
+    "services": [
+      "AWS IoT Core"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS IoT Core?",
+    "answer": "AWS IoT Core helps you connect and exchange messages with large fleets of IoT devices.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed device connectivity and MQTT messaging. Deep implementation details are not required.",
+    "example": "A question asks for managed device connectivity and MQTT messaging; AWS IoT Core is the service to evaluate.",
+    "examCue": "Look for: managed device connectivity and MQTT messaging.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-112",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "services": [
+      "Amazon Comprehend"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Comprehend?",
+    "answer": "Amazon Comprehend helps you extract sentiment, entities, and meaning from text using managed NLP.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions natural-language insights from text. Deep implementation details are not required.",
+    "example": "A question asks for natural-language insights from text; Amazon Comprehend is the service to evaluate.",
+    "examCue": "Look for: natural-language insights from text.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-113",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "services": [
+      "Amazon Lex"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Lex?",
+    "answer": "Amazon Lex helps you build conversational chatbots and voice bots.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions conversation interfaces using voice and text. Deep implementation details are not required.",
+    "example": "A question asks for conversation interfaces using voice and text; Amazon Lex is the service to evaluate.",
+    "examCue": "Look for: conversation interfaces using voice and text.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-114",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "services": [
+      "Amazon Polly"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Polly?",
+    "answer": "Amazon Polly helps you turn text into lifelike speech.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions text-to-speech. Deep implementation details are not required.",
+    "example": "A question asks for text-to-speech; Amazon Polly is the service to evaluate.",
+    "examCue": "Look for: text-to-speech.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-115",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML"
+    ],
+    "services": [
+      "Amazon Rekognition"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Rekognition?",
+    "answer": "Amazon Rekognition helps you analyze images and video for objects, faces, text, and unsafe content.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions computer vision for images and video. Deep implementation details are not required.",
+    "example": "A question asks for computer vision for images and video; Amazon Rekognition is the service to evaluate.",
+    "examCue": "Look for: computer vision for images and video.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-116",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "services": [
+      "Amazon SageMaker AI"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon SageMaker AI?",
+    "answer": "Amazon SageMaker AI helps you build, train, and deploy machine-learning models.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions end-to-end custom ML platform. Deep implementation details are not required.",
+    "example": "A question asks for end-to-end custom ML platform; Amazon SageMaker AI is the service to evaluate.",
+    "examCue": "Look for: end-to-end custom ML platform.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-117",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "services": [
+      "Amazon Textract"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Textract?",
+    "answer": "Amazon Textract helps you extract printed text, handwriting, tables, and forms from documents.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions intelligent document extraction. Deep implementation details are not required.",
+    "example": "A question asks for intelligent document extraction; Amazon Textract is the service to evaluate.",
+    "examCue": "Look for: intelligent document extraction.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-118",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "services": [
+      "Amazon Transcribe"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Transcribe?",
+    "answer": "Amazon Transcribe helps you convert speech audio into text.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions speech-to-text. Deep implementation details are not required.",
+    "example": "A question asks for speech-to-text; Amazon Transcribe is the service to evaluate.",
+    "examCue": "Look for: speech-to-text.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-119",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Machine Learning",
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "services": [
+      "Amazon Translate"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Translate?",
+    "answer": "Amazon Translate helps you translate text between human languages.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed language translation. Deep implementation details are not required.",
+    "example": "A question asks for managed language translation; Amazon Translate is the service to evaluate.",
+    "examCue": "Look for: managed language translation.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-120",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Management and Governance",
+      "Governance & Operations",
+      "Compute & Serverless"
+    ],
+    "services": [
+      "AWS Auto Scaling"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Auto Scaling?",
+    "answer": "AWS Auto Scaling helps you scale multiple AWS resources to match demand.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions automatic capacity adjustment and elasticity. Deep implementation details are not required.",
+    "example": "A question asks for automatic capacity adjustment and elasticity; AWS Auto Scaling is the service to evaluate.",
+    "examCue": "Look for: automatic capacity adjustment and elasticity.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-121",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Management and Governance",
+      "Governance & Operations",
+      "Cost, Marketplace & Support"
+    ],
+    "services": [
+      "AWS Health Dashboard"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Health Dashboard?",
+    "answer": "AWS Health Dashboard helps you show AWS events and account-specific issues that can affect resources.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions personalized resource health events. Deep implementation details are not required.",
+    "example": "A question asks for personalized resource health events; AWS Health Dashboard is the service to evaluate.",
+    "examCue": "Look for: personalized resource health events.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-122",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Management and Governance",
+      "Governance & Operations"
+    ],
+    "services": [
+      "AWS Service Catalog"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Service Catalog?",
+    "answer": "AWS Service Catalog helps you publish approved cloud products for users to launch consistently.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions governed catalog of preapproved products. Deep implementation details are not required.",
+    "example": "A question asks for governed catalog of preapproved products; AWS Service Catalog is the service to evaluate.",
+    "examCue": "Look for: governed catalog of preapproved products.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-123",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Management and Governance",
+      "Governance & Operations"
+    ],
+    "services": [
+      "Service Quotas"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Service Quotas?",
+    "answer": "Service Quotas helps you view service limits and request increases from one place.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions quotas and limit-increase requests. Deep implementation details are not required.",
+    "example": "A question asks for quotas and limit-increase requests; Service Quotas is the service to evaluate.",
+    "examCue": "Look for: quotas and limit-increase requests.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-124",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Management and Governance",
+      "Governance & Operations",
+      "Security & Threat Protection"
+    ],
+    "services": [
+      "AWS Systems Manager"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Systems Manager?",
+    "answer": "AWS Systems Manager helps you operate and automate fleets of AWS and hybrid resources centrally.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions patching, remote commands, inventory, and Parameter Store. Deep implementation details are not required.",
+    "example": "A question asks for patching, remote commands, inventory, and Parameter Store; AWS Systems Manager is the service to evaluate.",
+    "examCue": "Look for: patching, remote commands, inventory, and Parameter Store.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-125",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Migration and Transfer",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Application Discovery Service"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Application Discovery Service?",
+    "answer": "AWS Application Discovery Service helps you collect on-premises server usage and dependency data for migration planning.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions discover existing workloads before migration. Deep implementation details are not required.",
+    "example": "A question asks for discover existing workloads before migration; AWS Application Discovery Service is the service to evaluate.",
+    "examCue": "Look for: discover existing workloads before migration.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-126",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Migration and Transfer",
+      "Migration & Hybrid",
+      "Compute & Serverless"
+    ],
+    "services": [
+      "AWS Application Migration Service"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Application Migration Service?",
+    "answer": "AWS Application Migration Service helps you lift and shift physical, virtual, or cloud servers into AWS.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions rehost servers with block-level replication. Deep implementation details are not required.",
+    "example": "A question asks for rehost servers with block-level replication; AWS Application Migration Service is the service to evaluate.",
+    "examCue": "Look for: rehost servers with block-level replication.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-127",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Migration and Transfer",
+      "Migration & Hybrid",
+      "Cost, Marketplace & Support"
+    ],
+    "services": [
+      "Migration Evaluator"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Migration Evaluator?",
+    "answer": "Migration Evaluator helps you build a data-driven business case and cost projection for migration.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions migration assessment and TCO business case. Deep implementation details are not required.",
+    "example": "A question asks for migration assessment and TCO business case; Migration Evaluator is the service to evaluate.",
+    "examCue": "Look for: migration assessment and TCO business case.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-128",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Migration and Transfer",
+      "Migration & Hybrid",
+      "Governance & Operations"
+    ],
+    "services": [
+      "AWS Migration Hub"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Migration Hub?",
+    "answer": "AWS Migration Hub helps you track application migrations across AWS and partner tools in one place.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions central migration progress dashboard. Deep implementation details are not required.",
+    "example": "A question asks for central migration progress dashboard; AWS Migration Hub is the service to evaluate.",
+    "examCue": "Look for: central migration progress dashboard.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-129",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Migration and Transfer",
+      "Migration & Hybrid",
+      "Databases & Caching"
+    ],
+    "services": [
+      "AWS SCT"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS SCT?",
+    "answer": "AWS SCT helps you assess and convert database schemas for a different target engine.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions heterogeneous database schema conversion. Deep implementation details are not required.",
+    "example": "A question asks for heterogeneous database schema conversion; AWS SCT is the service to evaluate.",
+    "examCue": "Look for: heterogeneous database schema conversion.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-130",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Networking and Content Delivery",
+      "Networking & Delivery"
+    ],
+    "services": [
+      "Amazon Route 53"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Route 53?",
+    "answer": "Amazon Route 53 helps you provide managed DNS, domain registration, routing policies, and health checks.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions DNS and domain-name traffic routing. Deep implementation details are not required.",
+    "example": "A question asks for DNS and domain-name traffic routing; Amazon Route 53 is the service to evaluate.",
+    "examCue": "Look for: DNS and domain-name traffic routing.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-131",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Networking and Content Delivery",
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Transit Gateway"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Transit Gateway?",
+    "answer": "AWS Transit Gateway helps you connect many VPCs and on-premises networks through a central hub.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions hub-and-spoke network transit. Deep implementation details are not required.",
+    "example": "A question asks for hub-and-spoke network transit; AWS Transit Gateway is the service to evaluate.",
+    "examCue": "Look for: hub-and-spoke network transit.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-132",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Networking and Content Delivery",
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS VPN"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS VPN?",
+    "answer": "AWS VPN helps you provide encrypted network connectivity over the internet.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions umbrella term for AWS managed VPN options. Deep implementation details are not required.",
+    "example": "A question asks for umbrella term for AWS managed VPN options; AWS VPN is the service to evaluate.",
+    "examCue": "Look for: umbrella term for AWS managed VPN options.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-133",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Networking and Content Delivery",
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Site-to-Site VPN"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Site-to-Site VPN?",
+    "answer": "AWS Site-to-Site VPN helps you connect an on-premises network to a VPC through encrypted IPsec tunnels.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions network-to-network encrypted tunnel. Deep implementation details are not required.",
+    "example": "A question asks for network-to-network encrypted tunnel; AWS Site-to-Site VPN is the service to evaluate.",
+    "examCue": "Look for: network-to-network encrypted tunnel.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-134",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Networking and Content Delivery",
+      "Networking & Delivery",
+      "Identity & Access"
+    ],
+    "services": [
+      "AWS Client VPN"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Client VPN?",
+    "answer": "AWS Client VPN helps you connect individual remote users securely to AWS or on-premises networks.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed remote-user VPN. Deep implementation details are not required.",
+    "example": "A question asks for managed remote-user VPN; AWS Client VPN is the service to evaluate.",
+    "examCue": "Look for: managed remote-user VPN.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-135",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Extra official coverage",
+      "Security, Identity, and Compliance",
+      "Security & Threat Protection",
+      "Identity & Access"
+    ],
+    "services": [
+      "AWS Certificate Manager"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Certificate Manager?",
+    "answer": "AWS Certificate Manager helps you provision and manage TLS certificates for integrated AWS services.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed public and private certificates. Deep implementation details are not required.",
+    "example": "A question asks for managed public and private certificates; AWS Certificate Manager is the service to evaluate.",
+    "examCue": "Look for: managed public and private certificates.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-136",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Extra official coverage",
+      "Security, Identity, and Compliance",
+      "Identity & Access",
+      "Frontend & IoT"
+    ],
+    "services": [
+      "Amazon Cognito"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon Cognito?",
+    "answer": "Amazon Cognito helps you add customer sign-up, sign-in, and access control to applications.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions application user identity and federation. Deep implementation details are not required.",
+    "example": "A question asks for application user identity and federation; Amazon Cognito is the service to evaluate.",
+    "examCue": "Look for: application user identity and federation.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-137",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Extra official coverage",
+      "Security, Identity, and Compliance",
+      "Identity & Access",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Directory Service"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Directory Service?",
+    "answer": "AWS Directory Service helps you run or connect Microsoft Active Directory-compatible directories on AWS.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions managed directory and Active Directory integration. Deep implementation details are not required.",
+    "example": "A question asks for managed directory and Active Directory integration; AWS Directory Service is the service to evaluate.",
+    "examCue": "Look for: managed directory and Active Directory integration.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-138",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Extra official coverage",
+      "Security, Identity, and Compliance",
+      "Identity & Access",
+      "Governance & Operations"
+    ],
+    "services": [
+      "AWS RAM"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS RAM?",
+    "answer": "AWS RAM helps you share supported AWS resources across accounts or within an organization.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions cross-account resource sharing without duplication. Deep implementation details are not required.",
+    "example": "A question asks for cross-account resource sharing without duplication; AWS RAM is the service to evaluate.",
+    "examCue": "Look for: cross-account resource sharing without duplication.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-139",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Security and Compliance",
+    "topics": [
+      "Extra official coverage",
+      "Security, Identity, and Compliance",
+      "Identity & Access",
+      "Security & Threat Protection"
+    ],
+    "services": [
+      "AWS Secrets Manager"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Secrets Manager?",
+    "answer": "AWS Secrets Manager helps you store, retrieve, and rotate application secrets.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions database passwords, API keys, and automatic rotation. Deep implementation details are not required.",
+    "example": "A question asks for database passwords, API keys, and automatic rotation; AWS Secrets Manager is the service to evaluate.",
+    "examCue": "Look for: database passwords, API keys, and automatic rotation.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-140",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Storage",
+      "Storage, Backup & DR",
+      "Governance & Operations"
+    ],
+    "services": [
+      "AWS Backup"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Backup?",
+    "answer": "AWS Backup helps you centrally define and monitor backup policies across supported services.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions centralized policy-based backups. Deep implementation details are not required.",
+    "example": "A question asks for centralized policy-based backups; AWS Backup is the service to evaluate.",
+    "examCue": "Look for: centralized policy-based backups.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-141",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Storage",
+      "Storage, Backup & DR",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Elastic Disaster Recovery"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Elastic Disaster Recovery?",
+    "answer": "AWS Elastic Disaster Recovery helps you replicate servers and recover them quickly in AWS after disruption.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions block-level disaster-recovery replication. Deep implementation details are not required.",
+    "example": "A question asks for block-level disaster-recovery replication; AWS Elastic Disaster Recovery is the service to evaluate.",
+    "examCue": "Look for: block-level disaster-recovery replication.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-142",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Storage",
+      "Storage, Backup & DR",
+      "Cost, Marketplace & Support"
+    ],
+    "services": [
+      "Amazon S3 Glacier"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of Amazon S3 Glacier?",
+    "answer": "Amazon S3 Glacier helps you archive rarely accessed data in low-cost S3 archival storage classes.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions long-term archive with retrieval tradeoffs. Deep implementation details are not required.",
+    "example": "A question asks for long-term archive with retrieval tradeoffs; Amazon S3 Glacier is the service to evaluate.",
+    "examCue": "Look for: long-term archive with retrieval tradeoffs.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  },
+  {
+    "id": "clf-c02-2026-09-18-143",
+    "certification": "CLF-C02",
+    "studyDate": "2026-09-18",
+    "sourceChat": "Extra · Official CLF-C02 coverage audit",
+    "collection": "extra",
+    "domain": "Cloud Technology and Services",
+    "topics": [
+      "Extra official coverage",
+      "Storage",
+      "Storage, Backup & DR",
+      "Migration & Hybrid"
+    ],
+    "services": [
+      "AWS Storage Gateway"
+    ],
+    "type": "recall",
+    "prompt": "What is the primary purpose of AWS Storage Gateway?",
+    "answer": "AWS Storage Gateway helps you connect on-premises environments to AWS storage through hybrid file, volume, or tape gateways.",
+    "explanation": "For CLF-C02, recognize this service when the requirement mentions hybrid storage bridge and local cache. Deep implementation details are not required.",
+    "example": "A question asks for hybrid storage bridge and local cache; AWS Storage Gateway is the service to evaluate.",
+    "examCue": "Look for: hybrid storage bridge and local cache.",
+    "sourceRef": "knowledge/gaps/2026-09-18-coverage-audit.md",
+    "difficulty": 2,
+    "status": "approved",
+    "version": 1
+  }
+]

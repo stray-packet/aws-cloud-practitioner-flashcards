@@ -21,17 +21,19 @@ interface OverviewProps {
 
 export function Overview({ cards, store, onNavigate, onStartStudy }: OverviewProps) {
   const [sourceChat, setSourceChat] = useState('all')
+  const [collection, setCollection] = useState<'all' | 'studied' | 'extra'>('all')
   const [domain, setDomain] = useState<'all' | CardDomain>('all')
   const [topic, setTopic] = useState('all')
-  const [order, setOrder] = useState<StudyOrder>('scheduled')
+  const [order, setOrder] = useState<StudyOrder>('random')
   const [size, setSize] = useState<SessionSize>('all')
-  const options = useMemo<StudySessionOptions>(() => ({ mode: 'custom', sourceChat, domain, topic, order, size }), [domain, order, size, sourceChat, topic])
+  const options = useMemo<StudySessionOptions>(() => ({ mode: 'custom', collection, sourceChat, domain, topic, order, size }), [collection, domain, order, size, sourceChat, topic])
   const scopedCards = useMemo(() => filterStudyCards(cards, options), [cards, options])
-  const sourceChats = useMemo(() => [...new Set(cards.map((card) => card.sourceChat))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })), [cards])
+  const sourceChats = useMemo(() => [...new Set(cards.filter((card) => collection === 'all' || card.collection === collection).map((card) => card.sourceChat))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true })), [cards, collection])
   const topics = useMemo(() => [...new Set(cards.filter((card) =>
-    (sourceChat === 'all' || card.sourceChat === sourceChat)
+    (collection === 'all' || card.collection === collection)
+    && (sourceChat === 'all' || card.sourceChat === sourceChat)
     && (domain === 'all' || card.domain === domain),
-  ).flatMap((card) => card.topics))].sort(), [cards, domain, sourceChat])
+  ).flatMap((card) => card.topics))].sort(), [cards, collection, domain, sourceChat])
   const todayLabel = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(new Date())
   const newCount = cards.filter((card) => !store.cards[card.id]).length
   const daily = getDailyStudySummary(cards, store)
@@ -72,18 +74,19 @@ export function Overview({ cards, store, onNavigate, onStartStudy }: OverviewPro
 
       <section className="custom-study-section" aria-labelledby="custom-study-title">
         <div className="section-heading">
-          <div><h2 id="custom-study-title">Custom study</h2><p>Study beyond the daily limit by chat, domain, or topic.</p></div>
+          <div><h2 id="custom-study-title">Custom study</h2><p>Study beyond the daily limit by chat, topic, domain, or the official-coverage Extra collection.</p></div>
           <span>{scopedCards.length} matching {scopedCards.length === 1 ? 'card' : 'cards'}</span>
         </div>
         <div className="study-options">
+          <label><span>Collection</span><select aria-label="Card collection" value={collection} onChange={(event) => { setCollection(event.target.value as 'all' | 'studied' | 'extra'); setSourceChat('all'); setTopic('all') }}><option value="all">All flashcards</option><option value="studied">Studied chats</option><option value="extra">Extra · official coverage</option></select></label>
           <label><span>Source chat</span><select aria-label="Source chat" value={sourceChat} onChange={(event) => { setSourceChat(event.target.value); setTopic('all') }}><option value="all">All chats</option>{sourceChats.map((chat) => <option value={chat} key={chat}>{chat}</option>)}</select></label>
           <label><span>Exam domain</span><select aria-label="Exam domain" value={domain} onChange={(event) => { setDomain(event.target.value as 'all' | CardDomain); setTopic('all') }}><option value="all">All exam domains</option>{domains.map((item) => <option value={item.name} key={item.name}>{item.name}</option>)}</select></label>
           <label><span>Topic</span><select aria-label="Card topic" value={topic} onChange={(event) => setTopic(event.target.value)}><option value="all">All topics</option>{topics.map((item) => <option value={item} key={item}>{item}</option>)}</select></label>
-          <label><span>Order</span><select aria-label="Card order" value={order} onChange={(event) => setOrder(event.target.value as StudyOrder)}><option value="scheduled">Scheduled: reviews first</option><option value="random">Randomized</option></select></label>
+          <label><span>Order</span><select aria-label="Card order" value={order} onChange={(event) => setOrder(event.target.value as StudyOrder)}><option value="random">Randomized (recommended)</option><option value="scheduled">Scheduled: reviews first</option></select></label>
           <label><span>Session size</span><select aria-label="Session size" value={size} onChange={(event) => setSize(event.target.value === 'all' ? 'all' : Number(event.target.value) as SessionSize)}><option value="all">All matching</option><option value="10">10 cards</option><option value="20">20 cards</option><option value="50">50 cards</option></select></label>
           <button className="primary-button custom-study-button" type="button" onClick={() => onStartStudy(options)} disabled={!sessionCount}>{order === 'random' && <Shuffle size={15} aria-hidden="true" />}{size === 'all' ? `Study all ${sessionCount}` : `Start ${sessionCount}-card session`}</button>
         </div>
-        <p className="scheduler-note"><strong>How sessions work:</strong> a limited session stops after the selected number, then you can start the next batch. “All matching” includes every filtered card, even if it is not due. Your ratings update FSRS, so Again/Hard cards can reappear when their displayed interval becomes due.</p>
+        <p className="scheduler-note"><strong>How sessions work:</strong> randomized order is the default. A limited session starts with the selected number of unique cards; short Again/Hard learning steps are inserted back into the same session as soon as their displayed interval is due. “All matching” includes every filtered card, even if it is not due.</p>
       </section>
 
       <section className="coverage-section">

@@ -8,6 +8,7 @@ const makeCard = (id: string, sourceChat: string, domain: Flashcard['domain']): 
   certification: 'CLF-C02',
   studyDate: '2026-09-01',
   sourceChat,
+  collection: 'studied',
   domain,
   topics: ['Test'],
   services: [],
@@ -36,12 +37,12 @@ const store: StudyStore = {
 
 describe('study session selection', () => {
   it('filters by chat and exam domain', () => {
-    const options: StudySessionOptions = { mode: 'custom', sourceChat: 'Chat A', domain: 'Cloud Concepts', topic: 'Test', order: 'scheduled', size: 'all' }
+    const options: StudySessionOptions = { mode: 'custom', collection: 'all', sourceChat: 'Chat A', domain: 'Cloud Concepts', topic: 'Test', order: 'scheduled', size: 'all' }
     expect(filterStudyCards(cards, options).map((card) => card.id)).toEqual(['clf-c02-2026-09-01-001'])
   })
 
   it('randomizes the eligible queue with an injectable random source', () => {
-    const options: StudySessionOptions = { mode: 'custom', sourceChat: 'all', domain: 'all', topic: 'all', order: 'random', size: 'all' }
+    const options: StudySessionOptions = { mode: 'custom', collection: 'all', sourceChat: 'all', domain: 'all', topic: 'all', order: 'random', size: 'all' }
     const queue = buildStudyQueue(cards, store, options, new Date('2026-09-01T12:00:00Z'), () => 0)
     expect(queue.map((card) => card.id)).toEqual([
       'clf-c02-2026-09-01-002',
@@ -57,7 +58,16 @@ describe('study session selection', () => {
   })
 
   it('can include every matching card in a custom session', () => {
-    const options: StudySessionOptions = { mode: 'custom', sourceChat: 'all', domain: 'all', topic: 'all', order: 'scheduled', size: 'all' }
+    const options: StudySessionOptions = { mode: 'custom', collection: 'all', sourceChat: 'all', domain: 'all', topic: 'all', order: 'scheduled', size: 'all' }
     expect(buildStudyQueue(cards, store, options)).toHaveLength(3)
+  })
+
+  it('keeps studied and extra collections independently filterable', () => {
+    const extraCard = { ...makeCard('4', 'Official coverage audit', 'Cloud Technology and Services'), collection: 'extra' as const }
+    const allCards = [...cards, extraCard]
+    const studied: StudySessionOptions = { mode: 'custom', collection: 'studied', sourceChat: 'all', domain: 'all', topic: 'all', order: 'random', size: 'all' }
+    const extra: StudySessionOptions = { ...studied, collection: 'extra' }
+    expect(filterStudyCards(allCards, studied)).toHaveLength(3)
+    expect(filterStudyCards(allCards, extra)).toEqual([extraCard])
   })
 })

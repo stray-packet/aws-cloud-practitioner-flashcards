@@ -8,6 +8,7 @@ export type SessionSize = 10 | 20 | 50 | 'all'
 
 export interface StudySessionOptions {
   mode: StudyMode
+  collection: 'all' | 'studied' | 'extra'
   sourceChat: 'all' | string
   domain: 'all' | CardDomain
   topic: 'all' | string
@@ -17,6 +18,7 @@ export interface StudySessionOptions {
 
 export const defaultStudySession: StudySessionOptions = {
   mode: 'daily',
+  collection: 'all',
   sourceChat: 'all',
   domain: 'all',
   topic: 'all',
@@ -26,7 +28,8 @@ export const defaultStudySession: StudySessionOptions = {
 
 export function filterStudyCards(cards: Flashcard[], options: StudySessionOptions) {
   return cards.filter((card) =>
-    (options.sourceChat === 'all' || card.sourceChat === options.sourceChat)
+    (options.collection === 'all' || card.collection === options.collection)
+    && (options.sourceChat === 'all' || card.sourceChat === options.sourceChat)
     && (options.domain === 'all' || card.domain === options.domain)
     && (options.topic === 'all' || card.topics.includes(options.topic)),
   )

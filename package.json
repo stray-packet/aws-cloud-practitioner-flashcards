@@ -8,6 +8,8 @@
     "content:build": "node scripts/build-content.mjs",
     "content:validate": "node scripts/validate-content.mjs",
     "content:translate:es": "node scripts/generate-spanish-translations.mjs",
+    "content:services": "node scripts/generate-service-catalog.mjs",
+    "content:2026-09-18": "node scripts/generate-2026-09-18-cards.mjs",
     "export:anki": "node scripts/export-anki.mjs",
     "build": "npm run content:build && tsc -b && vite build",
     "lint": "oxlint",

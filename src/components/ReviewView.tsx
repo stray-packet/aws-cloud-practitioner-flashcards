@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Info, MoreHorizontal, Pencil, RotateCcw } from 'lucide-react'
 import type { Flashcard } from '../types/card'
 import type { StudyStore } from '../lib/storage'
-import { getIntervals, isDue, type RatingName } from '../lib/scheduler'
+import { getIntervals, isDue, reviewCard, type RatingName } from '../lib/scheduler'
 import { buildStudyQueue, filterStudyCards, type StudySessionOptions } from '../lib/studySession'
 import { loadSpanishTranslations, simpleQuestionHelp, type StudyLanguage } from '../lib/cardLanguage'
+import { prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
 import type { CardTranslation } from '../types/translation'
 
 const ratings: Array<{ key: string; name: RatingName }> = [
@@ -18,18 +19,20 @@ interface ReviewViewProps {
   cards: Flashcard[]
   store: StudyStore
   options: StudySessionOptions
-  onRate: (card: Flashcard, rating: RatingName) => void
+  onRate: (card: Flashcard, rating: RatingName, reviewedAt: Date) => void
   onFinished: () => void
 }
 
 export function ReviewView({ cards, store, options, onRate, onFinished }: ReviewViewProps) {
-  const [queue] = useState(() => buildStudyQueue(cards, store, options))
-  const [index, setIndex] = useState(0)
+  const [queue, setQueue] = useState<Array<ReviewQueueEntry<Flashcard>>>(() => buildStudyQueue(cards, store, options).map((item) => ({ item })))
+  const [reviewedCount, setReviewedCount] = useState(0)
+  const [uniqueCount] = useState(() => queue.length)
   const [revealed, setRevealed] = useState(false)
   const [language, setLanguage] = useState<StudyLanguage>('en')
   const [spanishTranslations, setSpanishTranslations] = useState<Map<string, CardTranslation>>()
   const [showSimpleHelp, setShowSimpleHelp] = useState(false)
-  const card = queue[index]
+  const entry = queue[0]
+  const card = entry?.item
   const storedCard = card ? store.cards[card.id] : undefined
   const intervals = useMemo(() => card ? getIntervals(storedCard, store.settings.retention) : null, [card, storedCard, store.settings.retention])
   const matchingCount = filterStudyCards(cards, options).length
@@ -40,6 +43,24 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
     ? { again: 'Otra vez', hard: 'Difícil', good: 'Bien', easy: 'Fácil' }
     : { again: 'Again', hard: 'Hard', good: 'Good', easy: 'Easy' }
 
+  const rate = useCallback((rating: RatingName) => {
+    if (!card) return
+    const reviewedAt = new Date()
+    const result = reviewCard(storedCard, rating, store.settings.retention, reviewedAt)
+    const dueAt = new Date(result.card.due).getTime()
+    onRate(card, rating, reviewedAt)
+    setQueue((current) => {
+      const remaining = current.slice(1)
+      if (shouldRepeatInSession(rating, dueAt, reviewedAt.getTime())) {
+        remaining.push({ item: card, repetition: true, availableAt: dueAt })
+      }
+      return prioritizeReviewQueue(remaining, reviewedAt.getTime())
+    })
+    setReviewedCount((current) => current + 1)
+    setRevealed(false)
+    setShowSimpleHelp(false)
+  }, [card, onRate, store.settings.retention, storedCard])
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!card) return
@@ -49,35 +70,25 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
       }
       if (revealed && ['1', '2', '3', '4'].includes(event.key)) {
         const rating = ratings[Number(event.key) - 1].name
-        onRate(card, rating)
-        setRevealed(false)
-        setShowSimpleHelp(false)
-        setIndex((current) => current + 1)
+        rate(rating)
       }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [card, onRate, revealed])
+  }, [card, rate, revealed])
 
   if (!card) {
     return (
       <div className="finished-state">
         <div className="finished-mark">✓</div>
         <h1>{spanish ? 'Sesión completada' : 'Session complete'}</h1>
-        <p>{spanish ? `Repasaste ${queue.length} ${queue.length === 1 ? 'tarjeta' : 'tarjetas'}.` : `You reviewed ${queue.length} ${queue.length === 1 ? 'card' : 'cards'}.`}</p>
-        {options.mode === 'custom' && matchingCount > queue.length && <p className="finished-detail">{spanish ? `${matchingCount - queue.length} tarjetas coincidentes quedaron fuera de este lote. Puedes iniciar otra sesión cuando quieras.` : `${matchingCount - queue.length} matching cards were outside this batch. Start another session whenever you are ready.`}</p>}
-        {options.mode === 'custom' && matchingCount === queue.length && <p className="finished-detail">{spanish ? 'Llegaste a todas las tarjetas que coinciden con estos filtros.' : 'You reached every card matching these filters.'}</p>}
+        <p>{spanish ? `Completaste ${reviewedCount} repasos sobre ${uniqueCount} ${uniqueCount === 1 ? 'tarjeta única' : 'tarjetas únicas'}.` : `You completed ${reviewedCount} reviews across ${uniqueCount} unique ${uniqueCount === 1 ? 'card' : 'cards'}.`}</p>
+        {options.mode === 'custom' && matchingCount > uniqueCount && <p className="finished-detail">{spanish ? `${matchingCount - uniqueCount} tarjetas coincidentes quedaron fuera de este lote. Puedes iniciar otra sesión cuando quieras.` : `${matchingCount - uniqueCount} matching cards were outside this batch. Start another session whenever you are ready.`}</p>}
+        {options.mode === 'custom' && matchingCount === uniqueCount && <p className="finished-detail">{spanish ? 'Llegaste a todas las tarjetas que coinciden con estos filtros.' : 'You reached every card matching these filters.'}</p>}
         {options.mode === 'daily' && <p className="finished-detail">{spanish ? 'El límite de tarjetas nuevas se comparte durante todo el día. Las tarjetas marcadas Otra vez o Difícil volverán cuando llegue su intervalo.' : 'The new-card allowance is shared across the whole day. Cards rated Again or Hard can return when their displayed interval becomes due.'}</p>}
         <button className="primary-button" type="button" onClick={onFinished}>{spanish ? 'Volver a los mazos' : 'Return to Decks'}</button>
       </div>
     )
-  }
-
-  const rate = (rating: RatingName) => {
-    onRate(card, rating)
-    setRevealed(false)
-    setShowSimpleHelp(false)
-    setIndex((current) => current + 1)
   }
 
   const toggleLanguage = () => {
@@ -95,10 +106,10 @@ export function ReviewView({ cards, store, options, onRate, onFinished }: Review
     <div className="review-layout">
       <div className="review-meta">
         <span>{options.mode === 'daily' ? (spanish ? 'Repaso diario' : 'Daily Review') : (spanish ? 'Estudio personalizado' : 'Custom Study')} · {options.sourceChat === 'all' ? (spanish ? 'Todos los chats' : 'All chats') : options.sourceChat} · {options.domain === 'all' ? (spanish ? 'Todos los dominios' : 'All domains') : options.domain}{options.topic === 'all' ? '' : ` · ${options.topic}`}{options.order === 'random' ? ` · ${spanish ? 'Aleatorio' : 'Randomized'}` : ''}</span>
-        <div className="review-meta-actions"><button className="language-toggle" type="button" aria-label={spanish ? 'Cambiar las flashcards a inglés' : 'Cambiar las flashcards a español'} aria-pressed={spanish} onClick={toggleLanguage}><span className={!spanish ? 'active' : ''}>EN</span><span aria-hidden="true">/</span><span className={spanish ? 'active' : ''}>ES</span></button><div className="queue-counts" aria-label={spanish ? 'Tarjetas restantes' : 'Cards remaining'}><span className="new-count">{queue.length - index}</span><span className="review-count">{index}</span></div></div>
+        <div className="review-meta-actions"><button className="language-toggle" type="button" aria-label={spanish ? 'Cambiar las flashcards a inglés' : 'Cambiar las flashcards a español'} aria-pressed={spanish} onClick={toggleLanguage}><span className={!spanish ? 'active' : ''}>EN</span><span aria-hidden="true">/</span><span className={spanish ? 'active' : ''}>ES</span></button><div className="queue-counts" aria-label={spanish ? 'Tarjetas restantes' : 'Cards remaining'}><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div>
       </div>
       <section className="review-card" aria-live="polite">
-        <div className="card-label"><span>{card.domain} · {card.topics[0]}</span><span className="card-schedule-state">{!store.cards[card.id] ? (spanish ? 'Nueva' : 'New') : isDue(store.cards[card.id]) ? (spanish ? 'Repaso pendiente' : 'Due review') : (spanish ? 'Práctica programada' : 'Scheduled practice')}</span></div>
+        <div className="card-label"><span>{card.domain} · {card.topics[0]}</span><span className="card-schedule-state">{entry.repetition ? (spanish ? 'Paso de aprendizaje' : 'Learning step') : !store.cards[card.id] ? (spanish ? 'Nueva' : 'New') : isDue(store.cards[card.id]) ? (spanish ? 'Repaso pendiente' : 'Due review') : (spanish ? 'Práctica programada' : 'Scheduled practice')}</span></div>
         <div className="question-block"><p className="eyebrow">{spanish ? ({ recall: 'recordar', scenario: 'situación', comparison: 'comparación', cloze: 'completar', 'single-choice': 'una respuesta', 'multiple-response': 'varias respuestas' } as const)[card.type] : card.type.replace('-', ' ')}</p><button className="question-help-trigger" type="button" aria-expanded={showSimpleHelp} aria-label={`${content?.prompt} ${spanish ? 'Pulsa para explicarla de forma sencilla.' : 'Select to explain it simply.'}`} title={spanish ? 'Explícamelo fácil' : 'Explain simply'} onClick={() => setShowSimpleHelp((current) => !current)}><span>{content?.prompt}</span><Info size={18} aria-hidden="true" /></button>{showSimpleHelp && <div className="simple-help" role="note"><strong>{spanish ? 'En modo fácil' : 'In simple terms'}</strong><p>{simpleQuestionHelp(card.type, language)}</p></div>}</div>
         {revealed && (
           <div className="answer-block">

@@ -1,0 +1,163 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { ArrowLeft, Info, Shuffle } from 'lucide-react'
+import serviceCatalogJson from '../data/service-catalog.json'
+import { getIntervals, reviewCard, type RatingName } from '../lib/scheduler'
+import { prioritizeReviewQueue, shouldRepeatInSession, type ReviewQueueEntry } from '../lib/reviewQueue'
+import type { StudyStore } from '../lib/storage'
+
+interface ServiceStudyCard {
+  id: string
+  name: string
+  officialCategory: string
+  groups: string[]
+  scope: 'official' | 'supplementary'
+  purpose: string
+  hint: string
+  examCue: string
+  icon: string
+}
+
+const services = serviceCatalogJson as ServiceStudyCard[]
+const ratings: Array<{ key: string; name: RatingName; label: string }> = [
+  { key: '1', name: 'again', label: 'Again' },
+  { key: '2', name: 'hard', label: 'Hard' },
+  { key: '3', name: 'good', label: 'Good' },
+  { key: '4', name: 'easy', label: 'Easy' },
+]
+
+const shuffle = <T,>(items: T[]) => {
+  const output = [...items]
+  for (let index = output.length - 1; index > 0; index -= 1) {
+    const swap = Math.floor(Math.random() * (index + 1))
+    ;[output[index], output[swap]] = [output[swap], output[index]]
+  }
+  return output
+}
+
+interface ServicesViewProps {
+  store: StudyStore
+  onRate: (cardId: string, rating: RatingName, reviewedAt: Date) => void
+}
+
+export function ServicesView({ store, onRate }: ServicesViewProps) {
+  const [scope, setScope] = useState<'official' | 'all'>('official')
+  const [group, setGroup] = useState('all')
+  const [queue, setQueue] = useState<Array<ReviewQueueEntry<ServiceStudyCard>>>([])
+  const [active, setActive] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+  const [showHint, setShowHint] = useState(false)
+  const [reviewedCount, setReviewedCount] = useState(0)
+  const [uniqueCount, setUniqueCount] = useState(0)
+  const groups = useMemo(() => [...new Set(services.flatMap((service) => service.groups))].sort(), [])
+  const filtered = useMemo(() => services.filter((service) =>
+    (scope === 'all' || service.scope === 'official')
+    && (group === 'all' || service.groups.includes(group)),
+  ), [group, scope])
+  const entry = queue[0]
+  const service = entry?.item
+  const storageId = service ? `service:${service.id}` : ''
+  const storedCard = service ? store.cards[storageId] : undefined
+  const intervals = useMemo(() => service ? getIntervals(storedCard, store.settings.retention) : null, [service, store.settings.retention, storedCard])
+
+  const start = () => {
+    const next = shuffle(filtered).map((item) => ({ item }))
+    setQueue(next)
+    setUniqueCount(next.length)
+    setReviewedCount(0)
+    setRevealed(false)
+    setShowHint(false)
+    setActive(true)
+  }
+
+  const rate = useCallback((rating: RatingName) => {
+    if (!service) return
+    const reviewedAt = new Date()
+    const result = reviewCard(storedCard, rating, store.settings.retention, reviewedAt)
+    const dueAt = new Date(result.card.due).getTime()
+    onRate(storageId, rating, reviewedAt)
+    setQueue((current) => {
+      const remaining = current.slice(1)
+      if (shouldRepeatInSession(rating, dueAt, reviewedAt.getTime())) {
+        remaining.push({ item: service, repetition: true, availableAt: dueAt })
+      }
+      return prioritizeReviewQueue(remaining, reviewedAt.getTime())
+    })
+    setReviewedCount((count) => count + 1)
+    setRevealed(false)
+    setShowHint(false)
+  }, [onRate, service, storageId, store.settings.retention, storedCard])
+
+  useEffect(() => {
+    if (!active || !service) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null
+      if (target?.isContentEditable || target?.closest('input, select, textarea, button')) return
+      if (!revealed && (event.key === ' ' || event.key === 'Enter')) {
+        event.preventDefault()
+        setRevealed(true)
+        return
+      }
+      if (revealed) {
+        const selected = ratings.find((item) => item.key === event.key)
+        if (selected) {
+          event.preventDefault()
+          rate(selected.name)
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [active, rate, revealed, service])
+
+  if (active && !service) {
+    return (
+      <div className="finished-state">
+        <div className="finished-mark">✓</div>
+        <h1>Service review complete</h1>
+        <p>You completed {reviewedCount} reviews across {uniqueCount} unique services.</p>
+        <button className="primary-button" type="button" onClick={() => setActive(false)}>Return to service categories</button>
+      </div>
+    )
+  }
+
+  if (active && service) {
+    return (
+      <div className="service-review-layout">
+        <div className="service-review-meta"><button className="text-button" type="button" onClick={() => setActive(false)}><ArrowLeft size={15} /> Categories</button><span>{group === 'all' ? 'All service categories' : group} · randomized</span><div className="queue-counts"><span className="new-count">{queue.length}</span><span className="review-count">{reviewedCount}</span></div></div>
+        <section className="service-review-card" aria-live="polite">
+          <div className="card-label"><span>{service.officialCategory}</span><span className="card-schedule-state">{entry.repetition ? 'Learning step' : service.scope === 'official' ? 'Official CLF-C02 scope' : 'Course supplementary'}</span></div>
+          <div className="service-front">
+            <img src={`${import.meta.env.BASE_URL}aws-icons/${service.icon}`} alt={`${service.name} official AWS architecture icon`} />
+            <p className="eyebrow">Recognize the service</p>
+            <h1>{service.name}</h1>
+            <button className="service-hint-button" type="button" aria-expanded={showHint} onClick={() => setShowHint((current) => !current)}><Info size={16} /> {showHint ? 'Hide hint' : 'Show hint'}</button>
+            {showHint && <p className="service-hint">{service.hint}</p>}
+          </div>
+          {revealed && <div className="service-answer"><strong>What it does</strong><p>{service.purpose}</p><div className="exam-cue"><strong>Exam language:</strong> {service.examCue}</div></div>}
+        </section>
+        <footer className="service-review-footer">
+          {!revealed ? <button className="show-answer" type="button" onClick={() => setRevealed(true)}>Show service meaning</button> : <div className="rating-buttons">{ratings.map((item) => <button className={`rating-button ${item.name}`} type="button" key={item.name} onClick={() => rate(item.name)}><span className="next-interval">{intervals?.[item.name]}</span><span>{item.label}</span><kbd>{item.key}</kbd></button>)}</div>}
+        </footer>
+      </div>
+    )
+  }
+
+  return (
+    <div className="content-page services-page">
+      <header className="page-header compact"><div><p className="section-kicker">Visual recognition deck</p><h1>AWS services</h1><p>Official AWS icons, concise meanings, and the words most likely to identify each service on CLF-C02.</p></div></header>
+      <section className="service-study-controls">
+        <label><span>Coverage</span><select value={scope} onChange={(event) => setScope(event.target.value as 'official' | 'all')}><option value="official">Official CLF-C02 scope</option><option value="all">Official + course supplementary</option></select></label>
+        <label><span>Study category</span><select value={group} onChange={(event) => setGroup(event.target.value)}><option value="all">All categories</option>{groups.map((item) => <option key={item}>{item}</option>)}</select></label>
+        <button className="primary-button" type="button" onClick={start} disabled={!filtered.length}><Shuffle size={16} /> Start random review · {filtered.length}</button>
+      </section>
+      <section className="service-category-list" aria-label="Service categories">
+        <div className="section-heading"><h2>Categories</h2><span>Services can appear in more than one category</span></div>
+        {groups.map((item) => {
+          const count = services.filter((service) => (scope === 'all' || service.scope === 'official') && service.groups.includes(item)).length
+          return <button type="button" key={item} onClick={() => setGroup(item)}><span><strong>{item}</strong><small>{count} services</small></span><span>Study category</span></button>
+        })}
+      </section>
+      <p className="service-source-note">Catalog aligned to the current AWS CLF-C02 in-scope service list. Supplementary entries preserve course topics that AWS currently lists outside the primary exam scope.</p>
+    </div>
+  )
+}

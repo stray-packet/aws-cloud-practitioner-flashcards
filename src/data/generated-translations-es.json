@@ -227,7 +227,7 @@
     "id": "clf-c02-2026-08-28-042",
     "prompt": "¿Las políticas de control de servicios otorgan permisos?",
     "answer": "No. Los SCP establecen los permisos máximos disponibles para los principales en las cuentas de los miembros.",
-    "explanation": "Las políticas de IAM o de recursos aún deben otorgar acceso, y una restricción explícita de un SCP aplicable limita el resultado.",
+    "explanation": "Las políticas de recursos o de IAM aún deben otorgar acceso, y una restricción explícita de un SCP aplicable limita el resultado.",
     "example": "Un SCP impide que las cuentas de los miembros deshabiliten CloudTrail, pero un IAM role aún necesita su propio permiso para usar CloudTrail.",
     "examCue": "SCP = barandilla, no concesión."
   },
@@ -322,7 +322,7 @@
   {
     "id": "clf-c02-2026-08-28-054",
     "prompt": "Las instancias EC2 en una subred privada necesitan acceso ordinario de la misma región a S3 sin una NAT gateway y sin un cargo por hora de endpoint. ¿Qué se debe utilizar?",
-    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin cargo por endpoint por hora.",
     "explanation": "Un endpoint de puerta de enlace enruta el tráfico S3 a través de tablas de rutas seleccionadas sin cargo adicional por endpoint.",
     "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
     "examCue": "Acceso privado a S3 y sin punto de carga del endpoint al endpoint de la puerta de enlace."
@@ -362,7 +362,7 @@
   {
     "id": "clf-c02-2026-08-28-059",
     "prompt": "¿Cuándo se debe seleccionar CloudFront en lugar de Global Accelerator?",
-    "answer": "Elija CloudFront cuando el contenido HTTP/HTTPS deba almacenarse en caché; elija Global Accelerator para aceleración de red y puntos de entrada estáticos de difusión directa sin almacenamiento en caché.",
+    "answer": "Elija CloudFront cuando el contenido HTTP/HTTPS deba almacenarse en caché; elija Global Accelerator para aceleración de red y puntos de entrada de difusión estática sin almacenamiento en caché.",
     "explanation": "Ambos utilizan infraestructura de borde, pero resuelven diferentes capas del problema.",
     "example": "CloudFront almacena en caché las imágenes del sitio web cerca de los espectadores; Global Accelerator en cambio acelera una conexión de juego que no se puede almacenar en caché a través de IP estáticas anycast.",
     "examCue": "Caché = CloudFront; ruta = Global Accelerator."
@@ -708,7 +708,7 @@
     "prompt": "¿Cómo afecta la replicación sincrónica y asincrónica a RPO?",
     "answer": "La replicación síncrona puede tener como objetivo RPO 0 pero agrega latencia y restricciones; La replicación asincrónica puede dejar un retraso en la replicación.",
     "explanation": "El método de replicación afecta la exposición a la pérdida de datos independientemente de la rapidez con la que se recupere la computación.",
-    "example": "Una escritura sincrónica espera ambas copias y puede tener como objetivo cero pérdida de datos; una réplica asincrónica puede quedarse varios segundos atrás.",
+    "example": "Una escritura sincrónica espera ambas copias y puede tener como objetivo cero pérdida de datos; una réplica asincrónica puede permanecer varios segundos atrás.",
     "examCue": "El retraso de replicación afecta a RPO."
   },
   {
@@ -826,7 +826,7 @@
   {
     "id": "clf-c02-2026-08-28-117",
     "prompt": "Las instancias EC2 privadas necesitan acceso a la misma región S3 sin una NAT gateway ni cargo de endpoint adicional. ¿Qué opción es mejor?",
-    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin cargo por endpoint por hora.",
     "explanation": "Los endpoints de puerta de enlace enrutan el tráfico S3 a través de tablas de rutas seleccionadas sin cargo adicional por endpoint.",
     "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
     "examCue": "S3 + tabla de rutas + sin cargo por endpoint."
@@ -836,7 +836,7 @@
     "prompt": "Una aplicación de juegos necesita direcciones IP estáticas anycast y tráfico UDP acelerado sin almacenamiento en caché de contenido. ¿Qué servicio encaja?",
     "answer": "AWS Global Accelerator.",
     "explanation": "Global Accelerator mejora las rutas de red para el tráfico TCP/UDP admitido y no actúa como caché CDN.",
-    "example": "Un juego multijugador global utiliza las IP estáticas anycast de Global Accelerator para mejorar las rutas UDP sin almacenar en caché los paquetes.",
+    "example": "Un juego multijugador global utiliza las IP estáticas Anycast de Global Accelerator para mejorar las rutas UDP sin almacenar en caché los paquetes.",
     "examCue": "Anycast estático más UDP = Global Accelerator."
   },
   {
@@ -907,7 +907,7 @@
     "id": "clf-c02-2026-08-28-127",
     "prompt": "¿Cuál es la salida directa de \"cdk synth\"?",
     "answer": "Una plantilla CloudFormation. CDK convierte las construcciones en esta descripción declarativa para su implementación.",
-    "explanation": "Las construcciones de CDK escritas en lenguajes de programación compatibles se sintetizan en la plantilla declarativa implementada por CloudFormation.",
+    "explanation": "Las construcciones CDK escritas en lenguajes de programación compatibles se sintetizan en la plantilla declarativa implementada por CloudFormation.",
     "example": "La ejecución de cdk synth en una pila de TypeScript genera la plantilla CloudFormation que describe sus recursos.",
     "examCue": "Sintetizador CDK → CloudFormation."
   },
@@ -1220,7 +1220,7 @@
     "prompt": "Compare los grupos de seguridad con las ACL de red.",
     "answer": "Los grupos de seguridad son controles con estado que solo permiten permisos en ENI de recursos; NACLs son controles de permitir/denegar sin estado en los límites de la subred.",
     "explanation": "Se pueden usar juntos para una protección en capas.",
-    "example": "Un grupo de seguridad permite HTTPS a un servidor y permite respuestas automáticamente; una subred NACL permite o niega por separado ambas direcciones de tráfico.",
+    "example": "Un grupo de seguridad permite HTTPS a un servidor y permite respuestas automáticamente; una subred NACL permite o deniega por separado ambas direcciones de tráfico.",
     "examCue": "SG = recurso/con estado; NACL = subred/sin estado."
   },
   {
@@ -1290,7 +1290,7 @@
   {
     "id": "clf-c02-2026-09-01-046",
     "prompt": "Las instancias EC2 privadas necesitan acceso a la misma región S3 sin NAT y sin cargo por hora de endpoint. ¿Qué criterio de valoración es la elección habitual?",
-    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin un cargo por endpoint.",
+    "answer": "Un endpoint de la VPC de puerta de enlace de S3. Proporciona acceso privado a S3 a través de entradas de la tabla de rutas sin cargo por endpoint por hora.",
     "explanation": "Los endpoints de puerta de enlace agregan rutas S3 y no tienen ningún cargo adicional por endpoint.",
     "example": "Las instancias privadas llegan a S3 a través de una entrada de la tabla de rutas sin utilizar una NAT gateway.",
     "examCue": "S3 + tabla de rutas + sin cargo por hora de endpoint = endpoint de puerta de enlace."
@@ -1436,7 +1436,7 @@
     "prompt": "¿Qué cuatro tipos de Savings Plans documenta AWS actualmente?",
     "answer": "Computación, Instancia EC2, SageMaker AI y Database Savings Plans.",
     "explanation": "El material de estudio más antiguo puede incluir menos tipos. La idea duradera es que cada plan descuenta una familia definida de uso elegible.",
-    "example": "Se puede aplicar un plan de ahorro de base de datos al uso de bases de datos elegibles en lugar de a la computación EC2.",
+    "example": "Se puede aplicar un Plan de Ahorro de Base de Datos al uso elegible de la base de datos en lugar del cómputo EC2.",
     "examCue": "No confíe en la lista anterior de tres tipos."
   },
   {
@@ -1611,7 +1611,7 @@
     "id": "clf-c02-2026-09-15-030",
     "prompt": "¿Qué hace Account Factory en AWS Control Tower?",
     "answer": "Aprovisiona cuentas de AWS estandarizadas mediante configuraciones aprobadas.",
-    "explanation": "Esto hace que las nuevas cuentas sean repetibles en lugar de reconstruir manualmente la gestión cada vez.",
+    "explanation": "Esto hace que las cuentas nuevas sean repetibles en lugar de reconstruir manualmente la gestión cada vez.",
     "example": "Un equipo solicita una cuenta de espacio aislado con la línea base de la red de la empresa.",
     "examCue": "Creación de cuenta repetible = Account Factory."
   },
@@ -1890,7 +1890,7 @@
   {
     "id": "clf-c02-2026-09-15-065",
     "prompt": "¿Cuándo debería una carga de trabajo utilizar RDS, DynamoDB o Redshift?",
-    "answer": "RDS para transacciones relacionales, DynamoDB para acceso a documentos/valor clave sin servidor a escala y Redshift para almacenamiento analítico.",
+    "answer": "RDS para transacciones relacionales, DynamoDB para acceso a documentos/valores clave sin servidor a escala y Redshift para almacenamiento analítico.",
     "explanation": "Estos servicios optimizan diferentes modelos de datos y patrones de acceso.",
     "example": "Los pedidos con relaciones SQL utilizan RDS; las sesiones usan DynamoDB; BI en toda la empresa utiliza Redshift.",
     "examCue": "Transacciones, valor clave, análisis."
@@ -1962,14 +1962,14 @@
   {
     "id": "clf-c02-2026-09-15-074",
     "prompt": "¿Qué planes premium AWS Support presenta actualmente AWS?",
-    "answer": "Soporte empresarial+, soporte empresarial y operaciones unificadas.",
+    "answer": "Business Support+, Enterprise Support y Operaciones Unificadas.",
     "explanation": "El material anterior de Developer, Business y Enterprise On-Ramp está en transición y no debe tratarse como la alineación actual duradera.",
     "example": "Una empresa compara Business Support+ con Enterprise Support para las necesidades de producción.",
     "examCue": "Utilice los nombres de los planes actuales, no una hoja de referencia antigua."
   },
   {
     "id": "clf-c02-2026-09-15-075",
-    "prompt": "¿Es confiable hoy en día la antigua regla “Basic obtiene siete Trusted Advisor controles y Business obtiene todos los controles”?",
+    "prompt": "¿Es confiable hoy la antigua regla “Basic obtiene siete Trusted Advisor controles y Business obtiene todos los controles”?",
     "answer": "No. El acceso y las funciones de Trusted Advisor han cambiado y dependen del plan de soporte actual y el tipo de recomendación.",
     "explanation": "Conozca el propósito y las categorías de Trusted Advisor; verificar los derechos actuales en lugar de memorizar el antiguo atajo.",
     "example": "Una página del plan actual, no una diapositiva del curso heredado, decide el acceso a las funciones.",
@@ -1979,7 +1979,7 @@
     "id": "clf-c02-2026-09-15-076",
     "prompt": "Un recurso de AWS parece estar enviando spam o alojando contenido abusivo. ¿Dónde se debe informar?",
     "answer": "AWS Trust & Safety a través del proceso de informes de abuso de AWS.",
-    "explanation": "AWS investiga los abusos reportados de los recursos de AWS mientras que los clientes siguen siendo responsables de su contenido y la seguridad de su cuenta.",
+    "explanation": "AWS investiga el abuso reportado de los recursos de AWS mientras que los clientes siguen siendo responsables de su contenido y la seguridad de su cuenta.",
     "example": "Un destinatario informa mensajes de phishing que se originan en un recurso alojado en AWS.",
     "examCue": "Informe de abuso de AWS = Confianza y seguridad."
   },
@@ -2043,8 +2043,536 @@
     "id": "clf-c02-2026-09-15-084",
     "prompt": "¿En qué se diferencian AWS Architecture Center y AWS Marketplace?",
     "answer": "Centro de Arquitectura enseña diseños y mejores prácticas; Marketplace permite a los clientes obtener software, datos y servicios de terceros.",
-    "explanation": "El Centro de arquitectura es una guía, mientras que Marketplace es un catálogo de adquisición e implementación.",
+    "explanation": "El Centro de arquitectura es una guía, mientras que Marketplace es un catálogo de adquisiciones e implementación.",
     "example": "Lea un patrón sin servidor en el Centro de arquitectura; suscribirse a un producto de seguridad en Marketplace.",
     "examCue": "Orientación versus catálogo."
+  },
+  {
+    "id": "clf-c02-2026-09-18-001",
+    "prompt": "¿Cuándo debería una empresa elegir AWS CloudHSM en lugar de AWS KMS?",
+    "answer": "Elija CloudHSM cuando se requieran HSM dedicados de un solo inquilino y control directo de usuarios, claves y operaciones criptográficas de HSM. Elija KMS para disfrutar de la experiencia habitual de claves de cifrado administradas integradas con los servicios de AWS.",
+    "explanation": "Ambos servicios protegen las claves con HSM. La diferencia a nivel de examen es el control operativo y la tenencia, no el atajo obsoleto de que KMS es solo \"FIPS Nivel 2\".",
+    "example": "Un banco con mandato para dispositivos HSM dedicados puede utilizar CloudHSM; una clave de cifrado S3 normalmente se ajusta a KMS.",
+    "examCue": "Control HSM dedicado de un solo inquilino = CloudHSM; Claves integradas administradas = KMS."
+  },
+  {
+    "id": "clf-c02-2026-09-18-002",
+    "prompt": "¿Cómo se divide la responsabilidad de un clúster AWS CloudHSM?",
+    "answer": "AWS opera el servicio físico y la infraestructura subyacente; el cliente administra los usuarios, las claves, las políticas y el uso criptográfico de HSM.",
+    "explanation": "CloudHSM ofrece al cliente más control y, por tanto, más responsabilidad operativa que KMS.",
+    "example": "AWS reemplaza el hardware defectuoso, mientras que el cliente controla quién puede usar una clave dentro del HSM.",
+    "examCue": "Usuarios y claves de HSM controlados por el cliente."
+  },
+  {
+    "id": "clf-c02-2026-09-18-003",
+    "prompt": "¿Cuál es el propósito principal de AWS Security Hub?",
+    "answer": "Centraliza las comprobaciones de la postura de seguridad y agrega los hallazgos de los servicios de seguridad de AWS y los productos de los socios.",
+    "explanation": "Security Hub ofrece a los equipos de seguridad una vista priorizada; no reemplaza los servicios que detectan vulnerabilidades, amenazas o datos sensibles.",
+    "example": "Un CISO revisa los hallazgos de GuardDuty, Inspector y Macie desde un solo panel.",
+    "examCue": "Hallazgos de seguridad centrales y controles de estándares = Security Hub."
+  },
+  {
+    "id": "clf-c02-2026-09-18-004",
+    "prompt": "Una empresa quiere un panel para GuardDuty amenazas, vulnerabilidades de Inspector y hallazgos de datos confidenciales de Macie. ¿Qué servicio encaja?",
+    "answer": "AWS Security Hub.",
+    "explanation": "Security Hub consume y normaliza los hallazgos de esos servicios para que el equipo pueda priorizar la corrección de forma centralizada.",
+    "example": "El equipo de seguridad filtra todos los hallazgos de alta gravedad en varias cuentas de AWS.",
+    "examCue": "Hallazgos agregados de múltiples servicios de seguridad."
+  },
+  {
+    "id": "clf-c02-2026-09-18-005",
+    "prompt": "¿Qué automatiza AWS Audit Manager?",
+    "answer": "Recopila continuamente evidencia que ayuda a una organización a evaluar su propio uso de AWS en comparación con los marcos de auditoría.",
+    "explanation": "Audit Manager reduce la recopilación manual de evidencia para las evaluaciones. No proporciona informes de cumplimiento de la infraestructura de AWS; esos provienen de Artifact.",
+    "example": "Un equipo de cumplimiento recopila evidencia de configuración para una evaluación de PCI DSS.",
+    "examCue": "Recopilación automatizada de evidencia para su auditoría = Audit Manager."
+  },
+  {
+    "id": "clf-c02-2026-09-18-006",
+    "prompt": "¿En qué se diferencian AWS Artifact, AWS Config y AWS Audit Manager?",
+    "answer": "Artifact proporciona documentos de cumplimiento de AWS; Config registra y evalúa las configuraciones de recursos; Audit Manager recopila evidencia para las evaluaciones de su organización.",
+    "explanation": "Recuerde los verbos: descargue informes de AWS, realice un seguimiento de la configuración y recopile evidencia de auditoría del cliente.",
+    "example": "Descargue un informe SOC de AWS desde Artifact, detecte un bucket público con Config y recopile evidencia de evaluación con Audit Manager.",
+    "examCue": "Artifact = documentos de AWS; Config = historial de recursos; Audit Manager = evidencia para evaluaciones."
+  },
+  {
+    "id": "clf-c02-2026-09-18-007",
+    "prompt": "¿Para qué se utiliza AWS Artifact?",
+    "answer": "Es el lugar de autoservicio para descargar informes de cumplimiento de AWS y administrar acuerdos seleccionados.",
+    "explanation": "Artifact documenta el cumplimiento de AWS y el lado de responsabilidad compartida de AWS; no escanea las cargas de trabajo de los clientes.",
+    "example": "Un auditor solicita informes SOC de AWS para la infraestructura de la nube.",
+    "examCue": "Informes y acuerdos de cumplimiento de AWS = Artifact."
+  },
+  {
+    "id": "clf-c02-2026-09-18-008",
+    "prompt": "Un equipo de seguridad debe aplicar la misma política AWS WAF en muchas cuentas en AWS Organizations. ¿Qué servicio encaja?",
+    "answer": "AWS Firewall Manager.",
+    "explanation": "Firewall Manager implementa y administra de manera centralizada políticas de protección en todas las cuentas y recursos.",
+    "example": "Un equipo central aplica una política de ACL web básica a aplicaciones propiedad de veinte cuentas.",
+    "examCue": "Política de firewall central de múltiples cuentas = Firewall Manager."
+  },
+  {
+    "id": "clf-c02-2026-09-18-009",
+    "prompt": "¿En qué se diferencian AWS Config y AWS AppConfig?",
+    "answer": "AWS Config realiza un seguimiento de las configuraciones y el cumplimiento de los recursos de AWS; AWS AppConfig implementa de forma segura la configuración de la aplicación y los indicadores de funciones en tiempo de ejecución.",
+    "explanation": "Los nombres similares esconden diferentes alcances: gobernanza de la infraestructura versus comportamiento de las aplicaciones.",
+    "example": "AWS Config marca un bucket público de S3; AppConfig activa una función de pago sin volver a implementar el código.",
+    "examCue": "Cumplimiento de recursos = Config; indicador de función en tiempo de ejecución = AppConfig."
+  },
+  {
+    "id": "clf-c02-2026-09-18-010",
+    "prompt": "¿Cuál es el propósito principal de Amazon SNS?",
+    "answer": "Publicar un mensaje en varios endpoints suscritos para alertas y distribución.",
+    "explanation": "SNS envía notificaciones a suscriptores como SQS, Lambda, endpoints HTTP, SMS o correo electrónico.",
+    "example": "Una alarma CloudWatch se publica una vez y notifica por correo electrónico más una función Lambda de operaciones.",
+    "examCue": "Tema y suscripciones = SNS."
+  },
+  {
+    "id": "clf-c02-2026-09-18-011",
+    "prompt": "¿Cuál es el propósito principal de Amazon SES?",
+    "answer": "Enviar y recibir correos electrónicos de solicitudes a escala, incluidos mensajes transaccionales y formateados.",
+    "explanation": "SES es el servicio de correo electrónico de aplicaciones, a diferencia de las notificaciones distribuidas de SNS o las bandejas de entrada de los empleados de WorkMail.",
+    "example": "Una aplicación envía por correo electrónico un enlace para restablecer la contraseña utilizando una plantilla HTML de marca.",
+    "examCue": "Correo electrónico de solicitud transaccional = SES."
+  },
+  {
+    "id": "clf-c02-2026-09-18-012",
+    "prompt": "¿Cómo se debe distinguir SNS, SES, Pinpoint y WorkMail?",
+    "answer": "SNS es una distribución de notificaciones de publicación/suscripción; SES es el correo electrónico de solicitud; Pinpoint son campañas de participación del cliente; WorkMail es el correo electrónico y los calendarios de los empleados.",
+    "explanation": "Identifique la audiencia y el flujo de trabajo: suscriptores del sistema, correo electrónico generado por aplicaciones, segmentos de marketing o buzones de correo de los empleados.",
+    "example": "Una alarma de facturación usa SNS, un recibo usa SES, una campaña usa Pinpoint y la bandeja de entrada de un empleado usa WorkMail.",
+    "examCue": "Fan-out, correo electrónico de aplicaciones, campaña, buzón de empleados."
+  },
+  {
+    "id": "clf-c02-2026-09-18-013",
+    "prompt": "¿Qué busca Amazon Inspector?",
+    "answer": "Escanea continuamente cargas de trabajo EC2 compatibles, imágenes de contenedores ECR y funciones Lambda en busca de vulnerabilidades de software y exposición no deseada de la red.",
+    "explanation": "El inspector produce hallazgos sobre software vulnerable y exposición. No es la función de detección de amenazas basada en registros de GuardDuty.",
+    "example": "Inspector identifica un paquete vulnerable crítico en una imagen ECR.",
+    "examCue": "Gestión de vulnerabilidades = Inspector."
+  },
+  {
+    "id": "clf-c02-2026-09-18-014",
+    "prompt": "¿En qué se diferencian Amazon Inspector y Amazon GuardDuty?",
+    "answer": "El inspector encuentra vulnerabilidades en cargas de trabajo e imágenes compatibles; GuardDuty detecta actividad sospechosa o maliciosa a partir de señales de seguridad.",
+    "explanation": "Una debilidad que podría explotarse es una vulnerabilidad. La evidencia de una amenaza activa es la detección de amenazas.",
+    "example": "El inspector señala una biblioteca obsoleta; GuardDuty señala el uso inusual de credenciales de una IP hostil.",
+    "examCue": "Vulnerabilidad = Inspector; comportamiento de amenaza = GuardDuty."
+  },
+  {
+    "id": "clf-c02-2026-09-18-015",
+    "prompt": "¿Cómo se complementan Inspector, GuardDuty, Macie, Security Hub y Trusted Advisor?",
+    "answer": "El inspector encuentra vulnerabilidades, GuardDuty detecta amenazas, Macie descubre datos confidenciales de S3, Security Hub agrega hallazgos de seguridad y Trusted Advisor ofrece recomendaciones más amplias de mejores prácticas para cuentas.",
+    "explanation": "Los servicios operan en diferentes capas, por lo que son complementos más que reemplazos.",
+    "example": "Security Hub muestra una amenaza GuardDuty, un Inspector CVE y un hallazgo de Macie PII juntos.",
+    "examCue": "Vulnerabilidad, amenaza, datos sensibles, agregación, recomendaciones."
+  },
+  {
+    "id": "clf-c02-2026-09-18-016",
+    "prompt": "¿Para qué está diseñado Amazon Macie?",
+    "answer": "Datos confidenciales, como información de identificación personal, almacenados en Amazon S3.",
+    "explanation": "Macie utiliza el descubrimiento de datos gestionados y produce hallazgos; No es un escáner de vulnerabilidad EC2 general.",
+    "example": "Macie encuentra números de pasaporte desprotegidos en un lago de datos de S3.",
+    "examCue": "Datos sensibles en S3 = Macie."
+  },
+  {
+    "id": "clf-c02-2026-09-18-017",
+    "prompt": "¿En qué se diferencian AWS Elemental MediaConvert y MediaConnect?",
+    "answer": "MediaConvert transcodifica vídeo basado en archivos; MediaConnect transporta transmisiones de video en vivo de alta calidad.",
+    "explanation": "El material fuente corrigió una diapositiva mal etiquetada: las marcas de agua y la conversión de archivos pertenecen a MediaConvert, no a MediaConnect.",
+    "example": "Convierta una película cargada a formatos de transmisión con MediaConvert; lleve una transmisión de deportes en vivo con MediaConnect.",
+    "examCue": "Conversión de archivos = MediaConvert; transporte en vivo = MediaConnect."
+  },
+  {
+    "id": "clf-c02-2026-09-18-018",
+    "prompt": "¿Cómo se debe tratar Amazon Elastic Transcoder en nuevas arquitecturas?",
+    "answer": "Como servicio heredado de transcodificación de archivos; AWS Elemental MediaConvert es la opción moderna para nuevos flujos de trabajo basados ​​en archivos.",
+    "explanation": "La guía CLF-C02 actual enumera ambos servicios fuera del alcance del examen principal, pero esta distinción corrige el material del curso.",
+    "example": "Una canalización heredada puede permanecer en Elastic Transcoder mientras un nuevo flujo de trabajo utiliza MediaConvert.",
+    "examCue": "Transcodificación heredada = Elastic Transcoder."
+  },
+  {
+    "id": "clf-c02-2026-09-18-019",
+    "prompt": "¿Cuál es el propósito básico de Elastic Load Balancing?",
+    "answer": "Distribuir el tráfico entrante entre objetivos saludables para que una aplicación pueda escalar y permanecer disponible.",
+    "explanation": "Un equilibrador de carga realiza comprobaciones de estado y detiene el enrutamiento del tráfico a objetivos registrados en mal estado.",
+    "example": "El tráfico se distribuye entre instancias EC2 en múltiples Availability Zones.",
+    "examCue": "Distribuya el tráfico entre objetivos saludables."
+  },
+  {
+    "id": "clf-c02-2026-09-18-020",
+    "prompt": "Una aplicación web debe enrutar /images y /api a diferentes grupos objetivo. ¿Qué balanceador de carga encaja?",
+    "answer": "Un equilibrador de carga de aplicaciones (ALB).",
+    "explanation": "ALB opera en la Capa 7 y puede enrutar solicitudes HTTP o HTTPS por ruta, host, encabezados y otros atributos de solicitud.",
+    "example": "Las solicitudes de api.example.com van a un grupo objetivo de API, mientras que las rutas estáticas van a otra parte.",
+    "examCue": "Enrutamiento compatible con solicitudes HTTP = ALB."
+  },
+  {
+    "id": "clf-c02-2026-09-18-021",
+    "prompt": "Una carga de trabajo necesita equilibrio de carga TCP o UDP de muy alto rendimiento y direcciones IP estáticas según Availability Zone. ¿Qué opción encaja?",
+    "answer": "Un equilibrador de carga de red (NLB).",
+    "explanation": "NLB opera en la Capa 4 y está diseñado para tráfico de transporte de alto rendimiento y baja latencia.",
+    "example": "Un juego en tiempo real envía tráfico UDP a través de un NLB.",
+    "examCue": "TCP/UDP, Capa 4, IP estática = NLB."
+  },
+  {
+    "id": "clf-c02-2026-09-18-022",
+    "prompt": "Una empresa debe ampliar una flota de firewalls de terceros que inspeccionen el tráfico de VPC. ¿Qué balanceador de carga encaja?",
+    "answer": "Un equilibrador de carga de puerta de enlace (GWLB).",
+    "explanation": "GWLB opera en la Capa 3 y utiliza GENEVE para insertar dispositivos de red virtuales de forma transparente en los flujos de tráfico.",
+    "example": "El tráfico pasa por una flota escalable de dispositivos de inspección antes de llegar a las cargas de trabajo.",
+    "examCue": "Dispositivos virtuales y GENEVE = GWLB."
+  },
+  {
+    "id": "clf-c02-2026-09-18-023",
+    "prompt": "¿En qué se diferencian ALB, NLB, GWLB y Classic Load Balancer?",
+    "answer": "ALB maneja el enrutamiento HTTP de Capa 7, NLB maneja el tráfico de Capa 4 de alto rendimiento, GWLB maneja dispositivos virtuales de Capa 3 y Classic Load Balancer es la generación heredada.",
+    "explanation": "Elija por tráfico y caso de uso objetivo, no por qué nombre suena más poderoso.",
+    "example": "Utilice ALB para rutas URL, NLB para TCP/UDP de baja latencia y GWLB para flotas de firewall.",
+    "examCue": "HTTP = ALB; TCP/UDP = NLB; dispositivos virtuales = GWLB; legado = CLB."
+  },
+  {
+    "id": "clf-c02-2026-09-18-101",
+    "prompt": "¿Cuál es el propósito principal de Amazon EMR?",
+    "answer": "Amazon EMR le ayuda a ejecutar marcos de big data administrados, como Apache Spark y Hadoop.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione clústeres administrados de Spark o Hadoop. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere a clústeres administrados de Spark o Hadoop; Amazon EMR es el servicio a evaluar.",
+    "examCue": "Busque: clústeres administrados de Spark o Hadoop."
+  },
+  {
+    "id": "clf-c02-2026-09-18-102",
+    "prompt": "¿Cuál es el propósito principal de Amazon OpenSearch Service?",
+    "answer": "Amazon OpenSearch Service le ayuda a buscar, analizar y visualizar grandes volúmenes de registros o documentos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione búsqueda administrada y análisis de registros. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita búsqueda administrada y análisis de registros; Amazon OpenSearch Service es el servicio a evaluar.",
+    "examCue": "Busque: búsqueda administrada y análisis de registros."
+  },
+  {
+    "id": "clf-c02-2026-09-18-103",
+    "prompt": "¿Cuál es el propósito principal de Amazon EventBridge?",
+    "answer": "Amazon EventBridge le ayuda a enrutar eventos entre aplicaciones y servicios de AWS mediante reglas.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el bus de eventos y el enrutamiento basado en eventos. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere al bus de eventos y al enrutamiento basado en eventos; Amazon EventBridge es el servicio a evaluar.",
+    "examCue": "Busque: bus de eventos y enrutamiento basado en eventos."
+  },
+  {
+    "id": "clf-c02-2026-09-18-104",
+    "prompt": "¿Cuál es el propósito principal de AWS Step Functions?",
+    "answer": "AWS Step Functions le ayuda a coordinar los pasos de la aplicación distribuida con flujos de trabajo visuales.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione máquinas de estado, reintentos y orquestación de flujo de trabajo. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita máquinas de estado, reintentos y orquestación del flujo de trabajo; AWS Step Functions es el servicio a evaluar.",
+    "examCue": "Busque: máquinas de estado, reintentos y orquestación de flujo de trabajo."
+  },
+  {
+    "id": "clf-c02-2026-09-18-105",
+    "prompt": "¿Cuál es el propósito principal de AWS Cost and Usage Reports?",
+    "answer": "AWS Cost and Usage Reports le ayuda a ofrecer los datos de uso y costos de AWS más detallados para su análisis.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione archivos de informes de facturación granulares. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita archivos de informes de facturación granulares; AWS Cost and Usage Reports es el servicio a evaluar.",
+    "examCue": "Busque: archivos de informes de facturación granulares."
+  },
+  {
+    "id": "clf-c02-2026-09-18-106",
+    "prompt": "¿Cuál es el propósito principal de AWS CLI?",
+    "answer": "AWS CLI le ayuda a administrar los servicios de AWS desde una interfaz de línea de comandos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione acceso mediante script o terminal a las API de AWS. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita acceso mediante script o terminal a las API de AWS; AWS CLI es el servicio a evaluar.",
+    "examCue": "Busque: acceso mediante script o terminal a las API de AWS."
+  },
+  {
+    "id": "clf-c02-2026-09-18-107",
+    "prompt": "¿Cuál es el propósito principal de AWS CodeBuild?",
+    "answer": "AWS CodeBuild le ayuda a compilar código fuente, ejecutar pruebas y producir artefactos de compilación.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la etapa de compilación totalmente administrada. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere a la etapa de construcción totalmente administrada; AWS CodeBuild es el servicio a evaluar.",
+    "examCue": "Busque: etapa de construcción totalmente administrada."
+  },
+  {
+    "id": "clf-c02-2026-09-18-108",
+    "prompt": "¿Cuál es el propósito principal de AWS CodePipeline?",
+    "answer": "AWS CodePipeline le ayuda a automatizar las etapas de lanzamiento de software desde el origen hasta la implementación.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la orquestación de canalización de entrega continua. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta es sobre la orquestación del proceso de entrega continua; AWS CodePipeline es el servicio a evaluar.",
+    "examCue": "Busque: orquestación de canalización de entrega continua."
+  },
+  {
+    "id": "clf-c02-2026-09-18-109",
+    "prompt": "¿Cuál es el propósito principal de Amazon AppStream 2.0?",
+    "answer": "Amazon AppStream 2.0 le ayuda a transmitir aplicaciones de escritorio de forma segura a un navegador web.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione transmitir una aplicación sin entregar un escritorio completo. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita transmitir una aplicación sin entregar un escritorio completo; Amazon AppStream 2.0 es el servicio a evaluar.",
+    "examCue": "Busque: transmitir una aplicación sin entregar un escritorio completo."
+  },
+  {
+    "id": "clf-c02-2026-09-18-110",
+    "prompt": "¿Cuál es el propósito principal de Amazon WorkSpaces Secure Browser?",
+    "answer": "Amazon WorkSpaces Secure Browser le ayuda a proporcionar acceso de navegador administrado y aislado a sitios internos y aplicaciones SaaS.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un navegador seguro en lugar de un escritorio virtual completo. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita un navegador seguro en lugar de un escritorio virtual completo; Amazon WorkSpaces Secure Browser es el servicio a evaluar.",
+    "examCue": "Busque: navegador seguro en lugar de un escritorio virtual completo."
+  },
+  {
+    "id": "clf-c02-2026-09-18-111",
+    "prompt": "¿Cuál es el propósito principal de AWS IoT Core?",
+    "answer": "AWS IoT Core lo ayuda a conectarse e intercambiar mensajes con grandes flotas de dispositivos IoT.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conectividad de dispositivos administrados y la mensajería MQTT. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pregunta sobre la conectividad de dispositivos administrados y la mensajería MQTT; AWS IoT Core es el servicio a evaluar.",
+    "examCue": "Busque: conectividad de dispositivo administrada y mensajería MQTT."
+  },
+  {
+    "id": "clf-c02-2026-09-18-112",
+    "prompt": "¿Cuál es el propósito principal de Amazon Comprehend?",
+    "answer": "Amazon Comprehend le ayuda a extraer sentimientos, entidades y significado del texto mediante PNL administrado.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione información en lenguaje natural a partir de texto. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita conocimientos en lenguaje natural a partir del texto; Amazon Comprehend es el servicio a evaluar.",
+    "examCue": "Busque: información en lenguaje natural a partir del texto."
+  },
+  {
+    "id": "clf-c02-2026-09-18-113",
+    "prompt": "¿Cuál es el propósito principal de Amazon Lex?",
+    "answer": "Amazon Lex le ayuda a crear chatbots conversacionales y de voz.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione interfaces de conversación mediante voz y texto. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita interfaces de conversación que utilicen voz y texto; Amazon Lex es el servicio a evaluar.",
+    "examCue": "Busque: interfaces de conversación que utilicen voz y texto."
+  },
+  {
+    "id": "clf-c02-2026-09-18-114",
+    "prompt": "¿Cuál es el propósito principal de Amazon Polly?",
+    "answer": "Amazon Polly le ayuda a convertir texto en voz realista.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione texto a voz. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita texto a voz; Amazon Polly es el servicio a evaluar.",
+    "examCue": "Busque: texto a voz."
+  },
+  {
+    "id": "clf-c02-2026-09-18-115",
+    "prompt": "¿Cuál es el propósito principal de Amazon Rekognition?",
+    "answer": "Amazon Rekognition le ayuda a analizar imágenes y vídeos en busca de objetos, caras, texto y contenido no seguro.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione visión por computadora para imágenes y videos. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita visión por computadora para imágenes y videos; Amazon Rekognition es el servicio a evaluar.",
+    "examCue": "Busque: visión por computadora para imágenes y videos."
+  },
+  {
+    "id": "clf-c02-2026-09-18-116",
+    "prompt": "¿Cuál es el propósito principal de Amazon SageMaker AI?",
+    "answer": "Amazon SageMaker AI le ayuda a crear, entrenar e implementar modelos de aprendizaje automático.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione una plataforma de aprendizaje automático personalizada de extremo a extremo. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta es sobre una plataforma de aprendizaje automático personalizada de un extremo a otro; Amazon SageMaker AI es el servicio a evaluar.",
+    "examCue": "Busque: plataforma de aprendizaje automático personalizada de un extremo a otro."
+  },
+  {
+    "id": "clf-c02-2026-09-18-117",
+    "prompt": "¿Cuál es el propósito principal de Amazon Textract?",
+    "answer": "Amazon Textract le ayuda a extraer texto impreso, escritura a mano, tablas y formularios de documentos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la extracción inteligente de documentos. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta es sobre la extracción inteligente de documentos; Amazon Textract es el servicio a evaluar.",
+    "examCue": "Busque: extracción inteligente de documentos."
+  },
+  {
+    "id": "clf-c02-2026-09-18-118",
+    "prompt": "¿Cuál es el propósito principal de Amazon Transcribe?",
+    "answer": "Amazon Transcribe le ayuda a convertir audio de voz en texto.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conversión de voz a texto. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita conversión de voz a texto; Amazon Transcribe es el servicio a evaluar.",
+    "examCue": "Busque: voz a texto."
+  },
+  {
+    "id": "clf-c02-2026-09-18-119",
+    "prompt": "¿Cuál es el propósito principal de Amazon Translate?",
+    "answer": "Amazon Translate le ayuda a traducir texto entre idiomas humanos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la traducción de idiomas administrada. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere a la traducción de idiomas gestionados; Amazon Translate es el servicio a evaluar.",
+    "examCue": "Busque: traducción de idiomas gestionada."
+  },
+  {
+    "id": "clf-c02-2026-09-18-120",
+    "prompt": "¿Cuál es el propósito principal de AWS Auto Scaling?",
+    "answer": "AWS Auto Scaling le ayuda a escalar varios recursos de AWS para satisfacer la demanda.",
+    "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione ajuste automático de capacidad y elasticidad. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta es sobre el ajuste automático de la capacidad y la elasticidad; AWS Auto Scaling es el servicio a evaluar.",
+    "examCue": "Busque: ajuste automático de capacidad y elasticidad."
+  },
+  {
+    "id": "clf-c02-2026-09-18-121",
+    "prompt": "¿Cuál es el propósito principal de AWS Health Dashboard?",
+    "answer": "AWS Health Dashboard le ayuda a mostrar eventos de AWS y problemas específicos de la cuenta que pueden afectar los recursos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione eventos de salud de recursos personalizados. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita eventos de salud de recursos personalizados; AWS Health Dashboard es el servicio a evaluar.",
+    "examCue": "Busque: eventos de salud de recursos personalizados."
+  },
+  {
+    "id": "clf-c02-2026-09-18-122",
+    "prompt": "¿Cuál es el propósito principal de AWS Service Catalog?",
+    "answer": "AWS Service Catalog lo ayuda a publicar productos en la nube aprobados para que los usuarios los lancen de manera consistente.",
+    "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione catálogo regido de productos preaprobados. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita catálogo regulado de productos preaprobados; AWS Service Catalog es el servicio a evaluar.",
+    "examCue": "Busque: catálogo regido de productos preaprobados."
+  },
+  {
+    "id": "clf-c02-2026-09-18-123",
+    "prompt": "¿Cuál es el propósito principal de Service Quotas?",
+    "answer": "Service Quotas lo ayuda a ver los límites del servicio y solicitar aumentos desde un solo lugar.",
+    "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione cuotas y solicitudes de aumento de límites. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita cuotas y solicitudes de aumento de límites; Service Quotas es el servicio a evaluar.",
+    "examCue": "Busque: cuotas y solicitudes de aumento de límites."
+  },
+  {
+    "id": "clf-c02-2026-09-18-124",
+    "prompt": "¿Cuál es el propósito principal de AWS Systems Manager?",
+    "answer": "AWS Systems Manager le ayuda a operar y automatizar flotas de recursos híbridos y de AWS de forma centralizada.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione parches, comandos remotos, inventario y almacén de parámetros. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita parches, comandos remotos, inventario y almacén de parámetros; AWS Systems Manager es el servicio a evaluar.",
+    "examCue": "Busque: parches, comandos remotos, inventario y almacén de parámetros."
+  },
+  {
+    "id": "clf-c02-2026-09-18-125",
+    "prompt": "¿Cuál es el propósito principal de AWS Application Discovery Service?",
+    "answer": "AWS Application Discovery Service lo ayuda a recopilar datos de dependencia y uso del servidor local para la planificación de la migración.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione descubrir cargas de trabajo existentes antes de la migración. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita descubrir las cargas de trabajo existentes antes de la migración; AWS Application Discovery Service es el servicio a evaluar.",
+    "examCue": "Busque: descubra cargas de trabajo existentes antes de la migración."
+  },
+  {
+    "id": "clf-c02-2026-09-18-126",
+    "prompt": "¿Cuál es el propósito principal de AWS Application Migration Service?",
+    "answer": "AWS Application Migration Service lo ayuda a levantar y trasladar servidores físicos, virtuales o en la nube a AWS.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el realojamiento de servidores con replicación a nivel de bloque. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita volver a alojar servidores con replicación a nivel de bloque; AWS Application Migration Service es el servicio a evaluar.",
+    "examCue": "Busque: volver a alojar servidores con replicación a nivel de bloque."
+  },
+  {
+    "id": "clf-c02-2026-09-18-127",
+    "prompt": "¿Cuál es el propósito principal de Migration Evaluator?",
+    "answer": "Migration Evaluator le ayuda a crear un caso de negocio basado en datos y una proyección de costos para la migración.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la evaluación de la migración y el caso comercial del TCO. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pide una evaluación de la migración y un caso de negocio del TCO; Migration Evaluator es el servicio a evaluar.",
+    "examCue": "Busque: evaluación de la migración y caso de negocio del TCO."
+  },
+  {
+    "id": "clf-c02-2026-09-18-128",
+    "prompt": "¿Cuál es el propósito principal de AWS Migration Hub?",
+    "answer": "AWS Migration Hub le ayuda a realizar un seguimiento de las migraciones de aplicaciones entre AWS y las herramientas de los socios en un solo lugar.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el panel central de progreso de la migración. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita el panel central de progreso de la migración; AWS Migration Hub es el servicio a evaluar.",
+    "examCue": "Busque: panel central de progreso de la migración."
+  },
+  {
+    "id": "clf-c02-2026-09-18-129",
+    "prompt": "¿Cuál es el propósito principal de AWS SCT?",
+    "answer": "AWS SCT le ayuda a evaluar y convertir esquemas de bases de datos para un motor de destino diferente.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la conversión de esquemas de bases de datos heterogéneas. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita la conversión de esquemas de bases de datos heterogéneas; AWS SCT es el servicio a evaluar.",
+    "examCue": "Busque: conversión de esquema de base de datos heterogénea."
+  },
+  {
+    "id": "clf-c02-2026-09-18-130",
+    "prompt": "¿Cuál es el propósito principal de Amazon Route 53?",
+    "answer": "Amazon Route 53 le ayuda a proporcionar DNS administrado, registro de dominio, políticas de enrutamiento y controles de estado.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione DNS y enrutamiento del tráfico de nombres de dominio. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere al enrutamiento del tráfico de nombres de dominio y DNS; Amazon Route 53 es el servicio a evaluar.",
+    "examCue": "Busque: DNS y enrutamiento del tráfico de nombres de dominio."
+  },
+  {
+    "id": "clf-c02-2026-09-18-131",
+    "prompt": "¿Cuál es el propósito principal de AWS Transit Gateway?",
+    "answer": "AWS Transit Gateway le ayuda a conectar muchas VPC y redes locales a través de un concentrador central.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el tránsito de red radial. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta se refiere al tránsito de la red radial; AWS Transit Gateway es el servicio a evaluar.",
+    "examCue": "Busque: tránsito de red radial."
+  },
+  {
+    "id": "clf-c02-2026-09-18-132",
+    "prompt": "¿Cuál es el propósito principal de AWS VPN?",
+    "answer": "AWS VPN le ayuda a proporcionar conectividad de red cifrada a través de Internet.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un término general para las opciones de VPN administradas por AWS. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita un término general para las opciones de VPN administradas por AWS; AWS VPN es el servicio a evaluar.",
+    "examCue": "Busque: término general para las opciones de VPN administradas por AWS."
+  },
+  {
+    "id": "clf-c02-2026-09-18-133",
+    "prompt": "¿Cuál es el propósito principal de AWS Site-to-Site VPN?",
+    "answer": "AWS Site-to-Site VPN le ayuda a conectar una red local a una VPC a través de túneles IPsec cifrados.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione un túnel cifrado de red a red. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita un túnel cifrado de red a red; AWS Site-to-Site VPN es el servicio a evaluar.",
+    "examCue": "Busque: túnel cifrado de red a red."
+  },
+  {
+    "id": "clf-c02-2026-09-18-134",
+    "prompt": "¿Cuál es el propósito principal de AWS Client VPN?",
+    "answer": "AWS Client VPN le ayuda a conectar usuarios remotos individuales de forma segura a AWS o a redes locales.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione VPN administrada para usuarios remotos. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta es sobre VPN administrada para usuarios remotos; AWS Client VPN es el servicio a evaluar.",
+    "examCue": "Busque: VPN administrada para usuarios remotos."
+  },
+  {
+    "id": "clf-c02-2026-09-18-135",
+    "prompt": "¿Cuál es el propósito principal de AWS Certificate Manager?",
+    "answer": "AWS Certificate Manager lo ayuda a aprovisionar y administrar certificados TLS para servicios integrados de AWS.",
+    "explanation": "Para CLF-C02, reconocer este servicio cuando el requisito mencione certificados públicos y privados administrados. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita certificados públicos y privados administrados; AWS Certificate Manager es el servicio a evaluar.",
+    "examCue": "Busque: certificados públicos y privados gestionados."
+  },
+  {
+    "id": "clf-c02-2026-09-18-136",
+    "prompt": "¿Cuál es el propósito principal de Amazon Cognito?",
+    "answer": "Amazon Cognito le ayuda a agregar el registro de clientes, el inicio de sesión y el control de acceso a las aplicaciones.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la identidad y la federación del usuario de la aplicación. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita la identidad y la federación del usuario de la aplicación; Amazon Cognito es el servicio a evaluar.",
+    "examCue": "Busque: identidad y federación del usuario de la aplicación."
+  },
+  {
+    "id": "clf-c02-2026-09-18-137",
+    "prompt": "¿Cuál es el propósito principal de AWS Directory Service?",
+    "answer": "AWS Directory Service le ayuda a ejecutar o conectar directorios compatibles con Microsoft Active Directory en AWS.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el directorio administrado y la integración de Active Directory. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pregunta sobre el directorio administrado y la integración de Active Directory; AWS Directory Service es el servicio a evaluar.",
+    "examCue": "Busque: directorio administrado e integración de Active Directory."
+  },
+  {
+    "id": "clf-c02-2026-09-18-138",
+    "prompt": "¿Cuál es el propósito principal de AWS RAM?",
+    "answer": "AWS RAM le ayuda a compartir recursos de AWS compatibles entre cuentas o dentro de una organización.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el intercambio de recursos entre cuentas sin duplicación. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pide compartir recursos entre cuentas sin duplicación; AWS RAM es el servicio a evaluar.",
+    "examCue": "Busque: intercambio de recursos entre cuentas sin duplicación."
+  },
+  {
+    "id": "clf-c02-2026-09-18-139",
+    "prompt": "¿Cuál es el propósito principal de AWS Secrets Manager?",
+    "answer": "AWS Secrets Manager le ayuda a almacenar, recuperar y rotar secretos de aplicaciones.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione contraseñas de bases de datos, claves API y rotación automática. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita contraseñas de bases de datos, claves API y rotación automática; AWS Secrets Manager es el servicio a evaluar.",
+    "examCue": "Busque: contraseñas de bases de datos, claves API y rotación automática."
+  },
+  {
+    "id": "clf-c02-2026-09-18-140",
+    "prompt": "¿Cuál es el propósito principal de AWS Backup?",
+    "answer": "AWS Backup lo ayuda a definir y monitorear de manera centralizada las políticas de respaldo en todos los servicios admitidos.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione copias de seguridad centralizadas basadas en políticas. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pide copias de seguridad centralizadas basadas en políticas; AWS Backup es el servicio a evaluar.",
+    "examCue": "Busque: copias de seguridad centralizadas basadas en políticas."
+  },
+  {
+    "id": "clf-c02-2026-09-18-141",
+    "prompt": "¿Cuál es el propósito principal de AWS Elastic Disaster Recovery?",
+    "answer": "AWS Elastic Disaster Recovery le ayuda a replicar servidores y recuperarlos rápidamente en AWS después de una interrupción.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione la replicación de recuperación ante desastres a nivel de bloque. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita la replicación de recuperación ante desastres a nivel de bloque; AWS Elastic Disaster Recovery es el servicio a evaluar.",
+    "examCue": "Busque: replicación de recuperación ante desastres a nivel de bloque."
+  },
+  {
+    "id": "clf-c02-2026-09-18-142",
+    "prompt": "¿Cuál es el propósito principal de Amazon S3 Glacier?",
+    "answer": "Amazon S3 Glacier le ayuda a archivar datos a los que rara vez se accede en clases de almacenamiento de archivo S3 de bajo costo.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el archivo a largo plazo con compensaciones de recuperación. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta pide un archivo a largo plazo con compensaciones de recuperación; Amazon S3 Glacier es el servicio a evaluar.",
+    "examCue": "Busque: archivo a largo plazo con compensaciones de recuperación."
+  },
+  {
+    "id": "clf-c02-2026-09-18-143",
+    "prompt": "¿Cuál es el propósito principal de AWS Storage Gateway?",
+    "answer": "AWS Storage Gateway le ayuda a conectar entornos locales al almacenamiento de AWS a través de puertas de enlace híbridas de archivos, volúmenes o cintas.",
+    "explanation": "Para CLF-C02, reconozca este servicio cuando el requisito mencione el puente de almacenamiento híbrido y la caché local. No se requieren detalles de implementación profundos.",
+    "example": "Una pregunta solicita un puente de almacenamiento híbrido y caché local; AWS Storage Gateway es el servicio a evaluar.",
+    "examCue": "Busque: puente de almacenamiento híbrido y caché local."
   }
 ]

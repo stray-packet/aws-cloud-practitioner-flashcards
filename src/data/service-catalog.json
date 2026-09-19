@@ -1,0 +1,1692 @@
+[
+  {
+    "id": "amazon-athena",
+    "name": "Amazon Athena",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Athena helps you run serverless SQL queries directly over data in Amazon S3.",
+    "hint": "Think: SQL over S3 without managing servers.",
+    "examCue": "SQL over S3 without managing servers",
+    "icon": "Arch_Amazon-Athena_64.svg"
+  },
+  {
+    "id": "amazon-emr",
+    "name": "Amazon EMR",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EMR helps you run managed big-data frameworks such as Apache Spark and Hadoop.",
+    "hint": "Think: managed Spark or Hadoop clusters.",
+    "examCue": "managed Spark or Hadoop clusters",
+    "icon": "Arch_Amazon-EMR_64.svg"
+  },
+  {
+    "id": "aws-glue",
+    "name": "AWS Glue",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "AWS Glue helps you discover, catalog, prepare, and transform data for analytics.",
+    "hint": "Think: serverless ETL and the Glue Data Catalog.",
+    "examCue": "serverless ETL and the Glue Data Catalog",
+    "icon": "Arch_AWS-Glue_64.svg"
+  },
+  {
+    "id": "amazon-kinesis",
+    "name": "Amazon Kinesis",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data",
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Kinesis helps you collect and process real-time streaming data.",
+    "hint": "Think: real-time streams such as clicks, logs, or telemetry.",
+    "examCue": "real-time streams such as clicks, logs, or telemetry",
+    "icon": "Arch_Amazon-Kinesis_64.svg"
+  },
+  {
+    "id": "amazon-opensearch-service",
+    "name": "Amazon OpenSearch Service",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon OpenSearch Service helps you search, analyze, and visualize large volumes of logs or documents.",
+    "hint": "Think: managed search and log analytics.",
+    "examCue": "managed search and log analytics",
+    "icon": "Arch_Amazon-OpenSearch-Service_64.svg"
+  },
+  {
+    "id": "amazon-quicksight",
+    "name": "Amazon QuickSight",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon QuickSight helps you build managed business-intelligence dashboards and visualizations.",
+    "hint": "Think: BI dashboards for business users.",
+    "examCue": "BI dashboards for business users",
+    "icon": "Arch_Amazon-Quick_64.svg"
+  },
+  {
+    "id": "amazon-redshift",
+    "name": "Amazon Redshift",
+    "officialCategory": "Analytics",
+    "groups": [
+      "Analytics & Data",
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Redshift helps you analyze large datasets in a cloud data warehouse.",
+    "hint": "Think: petabyte-scale OLAP and BI reporting.",
+    "examCue": "petabyte-scale OLAP and BI reporting",
+    "icon": "Arch_Amazon-Redshift_64.svg"
+  },
+  {
+    "id": "amazon-eventbridge",
+    "name": "Amazon EventBridge",
+    "officialCategory": "Application Integration",
+    "groups": [
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EventBridge helps you route events between applications and AWS services using rules.",
+    "hint": "Think: event bus and event-driven routing.",
+    "examCue": "event bus and event-driven routing",
+    "icon": "Arch_Amazon-EventBridge_64.svg"
+  },
+  {
+    "id": "amazon-sns",
+    "name": "Amazon SNS",
+    "officialCategory": "Application Integration",
+    "groups": [
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "Amazon SNS helps you push one message to many subscribed endpoints.",
+    "hint": "Think: publish/subscribe fan-out and notifications.",
+    "examCue": "publish/subscribe fan-out and notifications",
+    "icon": "Arch_Amazon-Simple-Notification-Service_64.svg"
+  },
+  {
+    "id": "amazon-sqs",
+    "name": "Amazon SQS",
+    "officialCategory": "Application Integration",
+    "groups": [
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "Amazon SQS helps you buffer messages in a durable queue so producers and consumers are decoupled.",
+    "hint": "Think: pull-based queue for independent workers.",
+    "examCue": "pull-based queue for independent workers",
+    "icon": "Arch_Amazon-Simple-Queue-Service_64.svg"
+  },
+  {
+    "id": "aws-step-functions",
+    "name": "AWS Step Functions",
+    "officialCategory": "Application Integration",
+    "groups": [
+      "Messaging & Workflows",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "AWS Step Functions helps you coordinate distributed application steps with visual workflows.",
+    "hint": "Think: state machines, retries, and workflow orchestration.",
+    "examCue": "state machines, retries, and workflow orchestration",
+    "icon": "Arch_AWS-Step-Functions_64.svg"
+  },
+  {
+    "id": "amazon-connect",
+    "name": "Amazon Connect",
+    "officialCategory": "Business Applications",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Connect helps you provide a managed cloud contact center for voice and chat.",
+    "hint": "Think: customer contact center and agent routing.",
+    "examCue": "customer contact center and agent routing",
+    "icon": "Arch_Amazon-Connect_64.svg"
+  },
+  {
+    "id": "amazon-ses",
+    "name": "Amazon SES",
+    "officialCategory": "Business Applications",
+    "groups": [
+      "Business & End-user Apps",
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "Amazon SES helps you send and receive scalable application email.",
+    "hint": "Think: transactional or bulk application email.",
+    "examCue": "transactional or bulk application email",
+    "icon": "Arch_Amazon-Simple-Email-Service_64.svg"
+  },
+  {
+    "id": "aws-budgets",
+    "name": "AWS Budgets",
+    "officialCategory": "Cloud Financial Management",
+    "groups": [
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Budgets helps you track cost or usage against thresholds and send alerts or actions.",
+    "hint": "Think: budget threshold and forecast alerts.",
+    "examCue": "budget threshold and forecast alerts",
+    "icon": "Arch_AWS-Budgets_64.svg"
+  },
+  {
+    "id": "aws-cost-and-usage-reports",
+    "name": "AWS Cost and Usage Reports",
+    "officialCategory": "Cloud Financial Management",
+    "groups": [
+      "Cost, Marketplace & Support",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "AWS Cost and Usage Reports helps you deliver the most detailed AWS cost and usage data for analysis.",
+    "hint": "Think: granular billing report files.",
+    "examCue": "granular billing report files",
+    "icon": "Arch_AWS-Cost-and-Usage-Report_64.svg"
+  },
+  {
+    "id": "aws-cost-explorer",
+    "name": "AWS Cost Explorer",
+    "officialCategory": "Cloud Financial Management",
+    "groups": [
+      "Cost, Marketplace & Support",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "AWS Cost Explorer helps you analyze historical cost and usage and create forecasts.",
+    "hint": "Think: visual cost analysis after resources run.",
+    "examCue": "visual cost analysis after resources run",
+    "icon": "Arch_AWS-Cost-Explorer_64.svg"
+  },
+  {
+    "id": "aws-marketplace",
+    "name": "AWS Marketplace",
+    "officialCategory": "Cloud Financial Management",
+    "groups": [
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Marketplace helps you find, buy, and deploy third-party software, data, and services.",
+    "hint": "Think: AWS catalog for third-party solutions.",
+    "examCue": "AWS catalog for third-party solutions",
+    "icon": "Arch_AWS-Marketplace_Light_64.svg"
+  },
+  {
+    "id": "aws-batch",
+    "name": "AWS Batch",
+    "officialCategory": "Compute",
+    "groups": [
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "AWS Batch helps you schedule and run batch jobs on automatically provisioned compute.",
+    "hint": "Think: queued batch workloads without managing a custom scheduler.",
+    "examCue": "queued batch workloads without managing a custom scheduler",
+    "icon": "Arch_AWS-Batch_64.svg"
+  },
+  {
+    "id": "amazon-ec2",
+    "name": "Amazon EC2",
+    "officialCategory": "Compute",
+    "groups": [
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EC2 helps you run resizable virtual machines with operating-system control.",
+    "hint": "Think: virtual servers and instance families.",
+    "examCue": "virtual servers and instance families",
+    "icon": "Arch_Amazon-EC2_64.svg"
+  },
+  {
+    "id": "aws-elastic-beanstalk",
+    "name": "AWS Elastic Beanstalk",
+    "officialCategory": "Compute",
+    "groups": [
+      "Compute & Serverless",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS Elastic Beanstalk helps you deploy web applications while AWS manages the supporting environment.",
+    "hint": "Think: managed application platform with access to underlying resources.",
+    "examCue": "managed application platform with access to underlying resources",
+    "icon": "Arch_AWS-Elastic-Beanstalk_64.svg"
+  },
+  {
+    "id": "amazon-lightsail",
+    "name": "Amazon Lightsail",
+    "officialCategory": "Compute",
+    "groups": [
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Lightsail helps you launch simplified virtual servers and common small-workload bundles.",
+    "hint": "Think: simple predictable bundle for a small site or app.",
+    "examCue": "simple predictable bundle for a small site or app",
+    "icon": "Arch_Amazon-Lightsail_64.svg"
+  },
+  {
+    "id": "aws-outposts",
+    "name": "AWS Outposts",
+    "officialCategory": "Compute",
+    "groups": [
+      "Compute & Serverless",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Outposts helps you run AWS infrastructure and services in an on-premises location.",
+    "hint": "Think: AWS hardware and experience on premises.",
+    "examCue": "AWS hardware and experience on premises",
+    "icon": "Arch_AWS-Outposts-family_64.svg"
+  },
+  {
+    "id": "amazon-ecr",
+    "name": "Amazon ECR",
+    "officialCategory": "Containers",
+    "groups": [
+      "Containers",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon ECR helps you store and manage container images in a private registry.",
+    "hint": "Think: container image registry.",
+    "examCue": "container image registry",
+    "icon": "Arch_Amazon-Elastic-Container-Registry_64.svg"
+  },
+  {
+    "id": "amazon-ecs",
+    "name": "Amazon ECS",
+    "officialCategory": "Containers",
+    "groups": [
+      "Containers",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon ECS helps you orchestrate containers with an AWS-native control plane.",
+    "hint": "Think: AWS-native container orchestration.",
+    "examCue": "AWS-native container orchestration",
+    "icon": "Arch_Amazon-Elastic-Container-Service_64.svg"
+  },
+  {
+    "id": "amazon-eks",
+    "name": "Amazon EKS",
+    "officialCategory": "Containers",
+    "groups": [
+      "Containers",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EKS helps you run managed Kubernetes clusters on AWS.",
+    "hint": "Think: Kubernetes compatibility and APIs.",
+    "examCue": "Kubernetes compatibility and APIs",
+    "icon": "Arch_Amazon-Elastic-Kubernetes-Service_64.svg"
+  },
+  {
+    "id": "aws-support",
+    "name": "AWS Support",
+    "officialCategory": "Customer Enablement",
+    "groups": [
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Support helps you provide account, billing, and technical support according to the selected plan.",
+    "hint": "Think: support plans and access to AWS experts.",
+    "examCue": "support plans and access to AWS experts",
+    "icon": "Arch_AWS-Support_64.svg"
+  },
+  {
+    "id": "amazon-aurora",
+    "name": "Amazon Aurora",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Aurora helps you run an AWS-built relational database compatible with MySQL or PostgreSQL.",
+    "hint": "Think: cloud-native relational performance and high availability.",
+    "examCue": "cloud-native relational performance and high availability",
+    "icon": "Arch_Amazon-Aurora_64.svg"
+  },
+  {
+    "id": "amazon-documentdb",
+    "name": "Amazon DocumentDB",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon DocumentDB helps you run a managed document database compatible with MongoDB workloads.",
+    "hint": "Think: JSON-like document database and MongoDB compatibility.",
+    "examCue": "JSON-like document database and MongoDB compatibility",
+    "icon": "Arch_Amazon-DocumentDB_64.svg"
+  },
+  {
+    "id": "amazon-dynamodb",
+    "name": "Amazon DynamoDB",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon DynamoDB helps you store key-value and document data in a serverless NoSQL database.",
+    "hint": "Think: single-digit-millisecond NoSQL at scale.",
+    "examCue": "single-digit-millisecond NoSQL at scale",
+    "icon": "Arch_Amazon-DynamoDB_64.svg"
+  },
+  {
+    "id": "amazon-elasticache",
+    "name": "Amazon ElastiCache",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon ElastiCache helps you cache frequently accessed data in memory with Valkey, Memcached, or Redis OSS engines.",
+    "hint": "Think: in-memory cache that reduces latency.",
+    "examCue": "in-memory cache that reduces latency",
+    "icon": "Arch_Amazon-ElastiCache_64.svg"
+  },
+  {
+    "id": "amazon-neptune",
+    "name": "Amazon Neptune",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Neptune helps you store and query highly connected graph data.",
+    "hint": "Think: relationships, fraud rings, or recommendation graphs.",
+    "examCue": "relationships, fraud rings, or recommendation graphs",
+    "icon": "Arch_Amazon-Neptune_64.svg"
+  },
+  {
+    "id": "amazon-rds",
+    "name": "Amazon RDS",
+    "officialCategory": "Database",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "Amazon RDS helps you operate managed relational database engines with routine administration handled by AWS.",
+    "hint": "Think: managed SQL engines such as MySQL, PostgreSQL, Oracle, and SQL Server.",
+    "examCue": "managed SQL engines such as MySQL, PostgreSQL, Oracle, and SQL Server",
+    "icon": "Arch_Amazon-RDS_64.svg"
+  },
+  {
+    "id": "aws-cli",
+    "name": "AWS CLI",
+    "officialCategory": "Developer Tools",
+    "groups": [
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS CLI helps you manage AWS services from a command-line interface.",
+    "hint": "Think: scripted or terminal access to AWS APIs.",
+    "examCue": "scripted or terminal access to AWS APIs",
+    "icon": "Arch_AWS-Command-Line-Interface_64.svg"
+  },
+  {
+    "id": "aws-codebuild",
+    "name": "AWS CodeBuild",
+    "officialCategory": "Developer Tools",
+    "groups": [
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS CodeBuild helps you compile source code, run tests, and produce build artifacts.",
+    "hint": "Think: fully managed build stage.",
+    "examCue": "fully managed build stage",
+    "icon": "Arch_AWS-CodeBuild_64.svg"
+  },
+  {
+    "id": "aws-codepipeline",
+    "name": "AWS CodePipeline",
+    "officialCategory": "Developer Tools",
+    "groups": [
+      "Observability & Developer Tools",
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "AWS CodePipeline helps you automate software release stages from source through deployment.",
+    "hint": "Think: continuous delivery pipeline orchestration.",
+    "examCue": "continuous delivery pipeline orchestration",
+    "icon": "Arch_AWS-CodePipeline_64.svg"
+  },
+  {
+    "id": "aws-x-ray",
+    "name": "AWS X-Ray",
+    "officialCategory": "Developer Tools",
+    "groups": [
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS X-Ray helps you trace requests across distributed application components.",
+    "hint": "Think: find latency and errors in a request path.",
+    "examCue": "find latency and errors in a request path",
+    "icon": "Arch_AWS-X-Ray_64.svg"
+  },
+  {
+    "id": "amazon-appstream-2-0",
+    "name": "Amazon AppStream 2.0",
+    "officialCategory": "End User Computing",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon AppStream 2.0 helps you stream desktop applications securely to a web browser.",
+    "hint": "Think: stream an application without delivering a full desktop.",
+    "examCue": "stream an application without delivering a full desktop",
+    "icon": "Arch-Category_End-User-Computing_64.svg"
+  },
+  {
+    "id": "amazon-workspaces",
+    "name": "Amazon WorkSpaces",
+    "officialCategory": "End User Computing",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon WorkSpaces helps you deliver managed persistent virtual desktops.",
+    "hint": "Think: desktop-as-a-service for employees.",
+    "examCue": "desktop-as-a-service for employees",
+    "icon": "Arch_Amazon-WorkSpaces_64.svg"
+  },
+  {
+    "id": "amazon-workspaces-secure-browser",
+    "name": "Amazon WorkSpaces Secure Browser",
+    "officialCategory": "End User Computing",
+    "groups": [
+      "Business & End-user Apps",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "Amazon WorkSpaces Secure Browser helps you provide isolated, managed browser access to internal sites and SaaS apps.",
+    "hint": "Think: secure browser rather than a full virtual desktop.",
+    "examCue": "secure browser rather than a full virtual desktop",
+    "icon": "Arch_Amazon-WorkSpaces_64.svg"
+  },
+  {
+    "id": "aws-amplify",
+    "name": "AWS Amplify",
+    "officialCategory": "Frontend Web and Mobile",
+    "groups": [
+      "Frontend & IoT",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS Amplify helps you build, deploy, and host web and mobile frontends with managed integrations.",
+    "hint": "Think: frontend and mobile developer platform.",
+    "examCue": "frontend and mobile developer platform",
+    "icon": "Arch_AWS-Amplify_64.svg"
+  },
+  {
+    "id": "aws-iot-core",
+    "name": "AWS IoT Core",
+    "officialCategory": "Internet of Things (IoT)",
+    "groups": [
+      "Frontend & IoT",
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "AWS IoT Core helps you connect and exchange messages with large fleets of IoT devices.",
+    "hint": "Think: managed device connectivity and MQTT messaging.",
+    "examCue": "managed device connectivity and MQTT messaging",
+    "icon": "Arch_AWS-IoT-Core_64.svg"
+  },
+  {
+    "id": "amazon-comprehend",
+    "name": "Amazon Comprehend",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Comprehend helps you extract sentiment, entities, and meaning from text using managed NLP.",
+    "hint": "Think: natural-language insights from text.",
+    "examCue": "natural-language insights from text",
+    "icon": "Arch_Amazon-Comprehend_64.svg"
+  },
+  {
+    "id": "amazon-lex",
+    "name": "Amazon Lex",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Lex helps you build conversational chatbots and voice bots.",
+    "hint": "Think: conversation interfaces using voice and text.",
+    "examCue": "conversation interfaces using voice and text",
+    "icon": "Arch_Amazon-Lex_64.svg"
+  },
+  {
+    "id": "amazon-polly",
+    "name": "Amazon Polly",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Polly helps you turn text into lifelike speech.",
+    "hint": "Think: text-to-speech.",
+    "examCue": "text-to-speech",
+    "icon": "Arch_Amazon-Polly_64.svg"
+  },
+  {
+    "id": "amazon-q",
+    "name": "Amazon Q",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Q helps you provide generative-AI assistance for work and software development.",
+    "hint": "Think: AWS generative AI assistant.",
+    "examCue": "AWS generative AI assistant",
+    "icon": "Arch_Amazon-Q_64.svg"
+  },
+  {
+    "id": "amazon-rekognition",
+    "name": "Amazon Rekognition",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Rekognition helps you analyze images and video for objects, faces, text, and unsafe content.",
+    "hint": "Think: computer vision for images and video.",
+    "examCue": "computer vision for images and video",
+    "icon": "Arch_Amazon-Rekognition_64.svg"
+  },
+  {
+    "id": "amazon-sagemaker-ai",
+    "name": "Amazon SageMaker AI",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon SageMaker AI helps you build, train, and deploy machine-learning models.",
+    "hint": "Think: end-to-end custom ML platform.",
+    "examCue": "end-to-end custom ML platform",
+    "icon": "Arch_Amazon-SageMaker-AI_64.svg"
+  },
+  {
+    "id": "amazon-textract",
+    "name": "Amazon Textract",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Textract helps you extract printed text, handwriting, tables, and forms from documents.",
+    "hint": "Think: intelligent document extraction.",
+    "examCue": "intelligent document extraction",
+    "icon": "Arch_Amazon-Textract_64.svg"
+  },
+  {
+    "id": "amazon-transcribe",
+    "name": "Amazon Transcribe",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Transcribe helps you convert speech audio into text.",
+    "hint": "Think: speech-to-text.",
+    "examCue": "speech-to-text",
+    "icon": "Arch_Amazon-Transcribe_64.svg"
+  },
+  {
+    "id": "amazon-translate",
+    "name": "Amazon Translate",
+    "officialCategory": "Machine Learning",
+    "groups": [
+      "AI & ML",
+      "Business & End-user Apps"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Translate helps you translate text between human languages.",
+    "hint": "Think: managed language translation.",
+    "examCue": "managed language translation",
+    "icon": "Arch_Amazon-Translate_64.svg"
+  },
+  {
+    "id": "aws-auto-scaling",
+    "name": "AWS Auto Scaling",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "AWS Auto Scaling helps you scale multiple AWS resources to match demand.",
+    "hint": "Think: automatic capacity adjustment and elasticity.",
+    "examCue": "automatic capacity adjustment and elasticity",
+    "icon": "Arch_AWS-Auto-Scaling_64.svg"
+  },
+  {
+    "id": "aws-cloudformation",
+    "name": "AWS CloudFormation",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS CloudFormation helps you provision AWS resources repeatedly from declarative templates.",
+    "hint": "Think: infrastructure as code using stacks.",
+    "examCue": "infrastructure as code using stacks",
+    "icon": "Arch_AWS-CloudFormation_64.svg"
+  },
+  {
+    "id": "aws-cloudtrail",
+    "name": "AWS CloudTrail",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Security & Threat Protection",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "AWS CloudTrail helps you record AWS account activity and API events for auditing.",
+    "hint": "Think: who called which AWS API and when.",
+    "examCue": "who called which AWS API and when",
+    "icon": "Arch_AWS-CloudTrail_64.svg"
+  },
+  {
+    "id": "amazon-cloudwatch",
+    "name": "Amazon CloudWatch",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon CloudWatch helps you collect metrics, logs, and alarms for operational monitoring.",
+    "hint": "Think: resource behavior, dashboards, logs, and alarms.",
+    "examCue": "resource behavior, dashboards, logs, and alarms",
+    "icon": "Arch_Amazon-CloudWatch_64.svg"
+  },
+  {
+    "id": "aws-compute-optimizer",
+    "name": "AWS Compute Optimizer",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Compute Optimizer helps you recommend better-sized compute resources from utilization data.",
+    "hint": "Think: rightsizing recommendations.",
+    "examCue": "rightsizing recommendations",
+    "icon": "Arch_AWS-Compute-Optimizer_64.svg"
+  },
+  {
+    "id": "aws-config",
+    "name": "AWS Config",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS Config helps you record resource configurations and evaluate them against rules.",
+    "hint": "Think: configuration history, drift, and compliance.",
+    "examCue": "configuration history, drift, and compliance",
+    "icon": "Arch_AWS-Config_64.svg"
+  },
+  {
+    "id": "aws-control-tower",
+    "name": "AWS Control Tower",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Identity & Access"
+    ],
+    "scope": "official",
+    "purpose": "AWS Control Tower helps you set up and govern a standardized multi-account landing zone.",
+    "hint": "Think: opinionated multi-account governance and controls.",
+    "examCue": "opinionated multi-account governance and controls",
+    "icon": "Arch_AWS-Control-Tower_64.svg"
+  },
+  {
+    "id": "aws-health-dashboard",
+    "name": "AWS Health Dashboard",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Health Dashboard helps you show AWS events and account-specific issues that can affect resources.",
+    "hint": "Think: personalized resource health events.",
+    "examCue": "personalized resource health events",
+    "icon": "Arch_AWS-Health-Dashboard_64.svg"
+  },
+  {
+    "id": "aws-license-manager",
+    "name": "AWS License Manager",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS License Manager helps you track and control software licenses across AWS and on premises.",
+    "hint": "Think: BYOL license rules and usage tracking.",
+    "examCue": "BYOL license rules and usage tracking",
+    "icon": "Arch_AWS-License-Manager_64.svg"
+  },
+  {
+    "id": "aws-management-console",
+    "name": "AWS Management Console",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Management Console helps you manage AWS through a web-based graphical interface.",
+    "hint": "Think: browser-based access to AWS services.",
+    "examCue": "browser-based access to AWS services",
+    "icon": "Arch_AWS-Management-Console_64.svg"
+  },
+  {
+    "id": "aws-organizations",
+    "name": "AWS Organizations",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Identity & Access",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "AWS Organizations helps you centrally organize accounts, apply policy boundaries, and consolidate billing.",
+    "hint": "Think: OUs, SCPs, and consolidated billing.",
+    "examCue": "OUs, SCPs, and consolidated billing",
+    "icon": "Arch_AWS-Organizations_64.svg"
+  },
+  {
+    "id": "aws-service-catalog",
+    "name": "AWS Service Catalog",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Service Catalog helps you publish approved cloud products for users to launch consistently.",
+    "hint": "Think: governed catalog of preapproved products.",
+    "examCue": "governed catalog of preapproved products",
+    "icon": "Arch_AWS-Service-Catalog_64.svg"
+  },
+  {
+    "id": "service-quotas",
+    "name": "Service Quotas",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "Service Quotas helps you view service limits and request increases from one place.",
+    "hint": "Think: quotas and limit-increase requests.",
+    "examCue": "quotas and limit-increase requests",
+    "icon": "Arch-Category_Management-Tools_64.svg"
+  },
+  {
+    "id": "aws-systems-manager",
+    "name": "AWS Systems Manager",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS Systems Manager helps you operate and automate fleets of AWS and hybrid resources centrally.",
+    "hint": "Think: patching, remote commands, inventory, and Parameter Store.",
+    "examCue": "patching, remote commands, inventory, and Parameter Store",
+    "icon": "Arch_AWS-Systems-Manager_64.svg"
+  },
+  {
+    "id": "aws-trusted-advisor",
+    "name": "AWS Trusted Advisor",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations",
+      "Cost, Marketplace & Support",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS Trusted Advisor helps you inspect an AWS environment and recommend best-practice improvements.",
+    "hint": "Think: account-level recommendations across cost, security, performance, and resilience.",
+    "examCue": "account-level recommendations across cost, security, performance, and resilience",
+    "icon": "Arch_AWS-Trusted-Advisor_64.svg"
+  },
+  {
+    "id": "aws-well-architected-tool",
+    "name": "AWS Well-Architected Tool",
+    "officialCategory": "Management and Governance",
+    "groups": [
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Well-Architected Tool helps you document structured workload reviews against Well-Architected pillars.",
+    "hint": "Think: workload review questions and improvement plan.",
+    "examCue": "workload review questions and improvement plan",
+    "icon": "Arch_AWS-Well-Architected-Tool_64.svg"
+  },
+  {
+    "id": "aws-application-discovery-service",
+    "name": "AWS Application Discovery Service",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Application Discovery Service helps you collect on-premises server usage and dependency data for migration planning.",
+    "hint": "Think: discover existing workloads before migration.",
+    "examCue": "discover existing workloads before migration",
+    "icon": "Arch_AWS-Application-Discovery-Service_64.svg"
+  },
+  {
+    "id": "aws-application-migration-service",
+    "name": "AWS Application Migration Service",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "AWS Application Migration Service helps you lift and shift physical, virtual, or cloud servers into AWS.",
+    "hint": "Think: rehost servers with block-level replication.",
+    "examCue": "rehost servers with block-level replication",
+    "icon": "Arch_AWS-Application-Migration-Service_64.svg"
+  },
+  {
+    "id": "aws-dms",
+    "name": "AWS DMS",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid",
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "AWS DMS helps you move or continuously replicate database data with minimal downtime.",
+    "hint": "Think: database migration and ongoing replication.",
+    "examCue": "database migration and ongoing replication",
+    "icon": "Arch_AWS-Database-Migration-Service_64.svg"
+  },
+  {
+    "id": "migration-evaluator",
+    "name": "Migration Evaluator",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "Migration Evaluator helps you build a data-driven business case and cost projection for migration.",
+    "hint": "Think: migration assessment and TCO business case.",
+    "examCue": "migration assessment and TCO business case",
+    "icon": "Arch_AWS-Migration-Evaluator_64.svg"
+  },
+  {
+    "id": "aws-migration-hub",
+    "name": "AWS Migration Hub",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Migration Hub helps you track application migrations across AWS and partner tools in one place.",
+    "hint": "Think: central migration progress dashboard.",
+    "examCue": "central migration progress dashboard",
+    "icon": "Arch_AWS-Migration-Hub_64.svg"
+  },
+  {
+    "id": "aws-sct",
+    "name": "AWS SCT",
+    "officialCategory": "Migration and Transfer",
+    "groups": [
+      "Migration & Hybrid",
+      "Databases & Caching"
+    ],
+    "scope": "official",
+    "purpose": "AWS SCT helps you assess and convert database schemas for a different target engine.",
+    "hint": "Think: heterogeneous database schema conversion.",
+    "examCue": "heterogeneous database schema conversion",
+    "icon": "Arch_AWS-Database-Migration-Service_64.svg"
+  },
+  {
+    "id": "amazon-api-gateway",
+    "name": "Amazon API Gateway",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon API Gateway helps you create, publish, protect, and monitor REST, HTTP, and WebSocket APIs.",
+    "hint": "Think: managed API front door.",
+    "examCue": "managed API front door",
+    "icon": "Arch_Amazon-API-Gateway_64.svg"
+  },
+  {
+    "id": "amazon-cloudfront",
+    "name": "Amazon CloudFront",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "Amazon CloudFront helps you cache and deliver content globally through edge locations.",
+    "hint": "Think: content delivery network and edge caching.",
+    "examCue": "content delivery network and edge caching",
+    "icon": "Arch_Amazon-CloudFront_64.svg"
+  },
+  {
+    "id": "aws-direct-connect",
+    "name": "AWS Direct Connect",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Direct Connect helps you provide a dedicated private network connection from a location to AWS.",
+    "hint": "Think: consistent private dedicated connectivity.",
+    "examCue": "consistent private dedicated connectivity",
+    "icon": "Arch_AWS-Direct-Connect_64.svg"
+  },
+  {
+    "id": "aws-global-accelerator",
+    "name": "AWS Global Accelerator",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery"
+    ],
+    "scope": "official",
+    "purpose": "AWS Global Accelerator helps you send TCP or UDP traffic through the AWS global network using static anycast IPs.",
+    "hint": "Think: global network acceleration without caching.",
+    "examCue": "global network acceleration without caching",
+    "icon": "Arch_AWS-Global-Accelerator_64.svg"
+  },
+  {
+    "id": "aws-privatelink",
+    "name": "AWS PrivateLink",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS PrivateLink helps you access supported services privately through VPC interface endpoints.",
+    "hint": "Think: private service connectivity without public internet.",
+    "examCue": "private service connectivity without public internet",
+    "icon": "Arch_AWS-PrivateLink_64.svg"
+  },
+  {
+    "id": "amazon-route-53",
+    "name": "Amazon Route 53",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Route 53 helps you provide managed DNS, domain registration, routing policies, and health checks.",
+    "hint": "Think: DNS and domain-name traffic routing.",
+    "examCue": "DNS and domain-name traffic routing",
+    "icon": "Arch_Amazon-Route-53_64.svg"
+  },
+  {
+    "id": "aws-transit-gateway",
+    "name": "AWS Transit Gateway",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Transit Gateway helps you connect many VPCs and on-premises networks through a central hub.",
+    "hint": "Think: hub-and-spoke network transit.",
+    "examCue": "hub-and-spoke network transit",
+    "icon": "Arch_AWS-Transit-Gateway_64.svg"
+  },
+  {
+    "id": "amazon-vpc",
+    "name": "Amazon VPC",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "Amazon VPC helps you create an isolated virtual network for AWS resources.",
+    "hint": "Think: subnets, route tables, gateways, and network controls.",
+    "examCue": "subnets, route tables, gateways, and network controls",
+    "icon": "Arch_Amazon-Virtual-Private-Cloud_64.svg"
+  },
+  {
+    "id": "aws-vpn",
+    "name": "AWS VPN",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS VPN helps you provide encrypted network connectivity over the internet.",
+    "hint": "Think: umbrella term for AWS managed VPN options.",
+    "examCue": "umbrella term for AWS managed VPN options",
+    "icon": "Arch_AWS-Site-to-Site-VPN_64.svg"
+  },
+  {
+    "id": "aws-site-to-site-vpn",
+    "name": "AWS Site-to-Site VPN",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Site-to-Site VPN helps you connect an on-premises network to a VPC through encrypted IPsec tunnels.",
+    "hint": "Think: network-to-network encrypted tunnel.",
+    "examCue": "network-to-network encrypted tunnel",
+    "icon": "Arch_AWS-Site-to-Site-VPN_64.svg"
+  },
+  {
+    "id": "aws-client-vpn",
+    "name": "AWS Client VPN",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Identity & Access"
+    ],
+    "scope": "official",
+    "purpose": "AWS Client VPN helps you connect individual remote users securely to AWS or on-premises networks.",
+    "hint": "Think: managed remote-user VPN.",
+    "examCue": "managed remote-user VPN",
+    "icon": "Arch_AWS-Client-VPN_64.svg"
+  },
+  {
+    "id": "elastic-load-balancing",
+    "name": "Elastic Load Balancing",
+    "officialCategory": "Networking and Content Delivery",
+    "groups": [
+      "Networking & Delivery",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Elastic Load Balancing helps you distribute incoming traffic across healthy targets.",
+    "hint": "Think: ALB for HTTP routing, NLB for high-performance L4, GWLB for appliances.",
+    "examCue": "ALB for HTTP routing, NLB for high-performance L4, GWLB for appliances",
+    "icon": "Arch_Elastic-Load-Balancing_64.svg"
+  },
+  {
+    "id": "aws-artifact",
+    "name": "AWS Artifact",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Artifact helps you download AWS compliance reports and manage selected agreements.",
+    "hint": "Think: AWS audit reports and compliance documents.",
+    "examCue": "AWS audit reports and compliance documents",
+    "icon": "Arch_AWS-Artifact_64.svg"
+  },
+  {
+    "id": "aws-certificate-manager",
+    "name": "AWS Certificate Manager",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Identity & Access"
+    ],
+    "scope": "official",
+    "purpose": "AWS Certificate Manager helps you provision and manage TLS certificates for integrated AWS services.",
+    "hint": "Think: managed public and private certificates.",
+    "examCue": "managed public and private certificates",
+    "icon": "Arch_AWS-Certificate-Manager_64.svg"
+  },
+  {
+    "id": "aws-cloudhsm",
+    "name": "AWS CloudHSM",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Identity & Access"
+    ],
+    "scope": "official",
+    "purpose": "AWS CloudHSM helps you operate dedicated single-tenant hardware security modules with customer-controlled keys.",
+    "hint": "Think: dedicated HSM and strict key control.",
+    "examCue": "dedicated HSM and strict key control",
+    "icon": "Arch_AWS-CloudHSM_64.svg"
+  },
+  {
+    "id": "amazon-cognito",
+    "name": "Amazon Cognito",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Frontend & IoT"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Cognito helps you add customer sign-up, sign-in, and access control to applications.",
+    "hint": "Think: application user identity and federation.",
+    "examCue": "application user identity and federation",
+    "icon": "Arch_Amazon-Cognito_64.svg"
+  },
+  {
+    "id": "amazon-detective",
+    "name": "Amazon Detective",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Detective helps you investigate security findings by connecting activity and resource relationships.",
+    "hint": "Think: security investigation after a finding.",
+    "examCue": "security investigation after a finding",
+    "icon": "Arch_Amazon-Detective_64.svg"
+  },
+  {
+    "id": "aws-directory-service",
+    "name": "AWS Directory Service",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Directory Service helps you run or connect Microsoft Active Directory-compatible directories on AWS.",
+    "hint": "Think: managed directory and Active Directory integration.",
+    "examCue": "managed directory and Active Directory integration",
+    "icon": "Arch_AWS-Directory-Service_64.svg"
+  },
+  {
+    "id": "aws-firewall-manager",
+    "name": "AWS Firewall Manager",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Firewall Manager helps you centrally apply firewall and protection policies across accounts and resources.",
+    "hint": "Think: organization-wide WAF, Shield, and firewall policies.",
+    "examCue": "organization-wide WAF, Shield, and firewall policies",
+    "icon": "Arch_AWS-Firewall-Manager_64.svg"
+  },
+  {
+    "id": "amazon-guardduty",
+    "name": "Amazon GuardDuty",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon GuardDuty helps you detect threats by analyzing AWS logs, events, and runtime signals.",
+    "hint": "Think: managed threat detection and suspicious behavior.",
+    "examCue": "managed threat detection and suspicious behavior",
+    "icon": "Arch_Amazon-GuardDuty_64.svg"
+  },
+  {
+    "id": "aws-iam",
+    "name": "AWS IAM",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Security & Threat Protection",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS IAM helps you control authentication and authorization for AWS identities and resources.",
+    "hint": "Think: users, groups, roles, and policies with least privilege.",
+    "examCue": "users, groups, roles, and policies with least privilege",
+    "icon": "Arch_AWS-Identity-and-Access-Management_64.svg"
+  },
+  {
+    "id": "aws-iam-identity-center",
+    "name": "AWS IAM Identity Center",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS IAM Identity Center helps you centrally assign workforce access to multiple AWS accounts and applications.",
+    "hint": "Think: single sign-on for workforce users.",
+    "examCue": "single sign-on for workforce users",
+    "icon": "Arch_AWS-IAM-Identity-Center_64.svg"
+  },
+  {
+    "id": "amazon-inspector",
+    "name": "Amazon Inspector",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Observability & Developer Tools"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Inspector helps you continuously scan EC2, ECR images, and Lambda functions for vulnerabilities.",
+    "hint": "Think: software vulnerabilities and unintended network exposure.",
+    "examCue": "software vulnerabilities and unintended network exposure",
+    "icon": "Arch_Amazon-Inspector_64.svg"
+  },
+  {
+    "id": "aws-kms",
+    "name": "AWS KMS",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS KMS helps you create and control encryption keys through a highly available managed service.",
+    "hint": "Think: integrated managed encryption keys.",
+    "examCue": "integrated managed encryption keys",
+    "icon": "Arch_AWS-Key-Management-Service_64.svg"
+  },
+  {
+    "id": "amazon-macie",
+    "name": "Amazon Macie",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon Macie helps you discover and protect sensitive data stored in Amazon S3.",
+    "hint": "Think: machine-learning discovery of PII in S3.",
+    "examCue": "machine-learning discovery of PII in S3",
+    "icon": "Arch_Amazon-Macie_64.svg"
+  },
+  {
+    "id": "aws-ram",
+    "name": "AWS RAM",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS RAM helps you share supported AWS resources across accounts or within an organization.",
+    "hint": "Think: cross-account resource sharing without duplication.",
+    "examCue": "cross-account resource sharing without duplication",
+    "icon": "Arch_AWS-Resource-Access-Manager_64.svg"
+  },
+  {
+    "id": "aws-secrets-manager",
+    "name": "AWS Secrets Manager",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Identity & Access",
+      "Security & Threat Protection"
+    ],
+    "scope": "official",
+    "purpose": "AWS Secrets Manager helps you store, retrieve, and rotate application secrets.",
+    "hint": "Think: database passwords, API keys, and automatic rotation.",
+    "examCue": "database passwords, API keys, and automatic rotation",
+    "icon": "Arch_AWS-Secrets-Manager_64.svg"
+  },
+  {
+    "id": "aws-security-hub",
+    "name": "AWS Security Hub",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Security Hub helps you aggregate and prioritize security findings and posture checks.",
+    "hint": "Think: central security findings and standards dashboard.",
+    "examCue": "central security findings and standards dashboard",
+    "icon": "Arch_AWS-Security-Hub_64.svg"
+  },
+  {
+    "id": "aws-shield",
+    "name": "AWS Shield",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Networking & Delivery"
+    ],
+    "scope": "official",
+    "purpose": "AWS Shield helps you protect applications against distributed denial-of-service attacks.",
+    "hint": "Think: DDoS protection.",
+    "examCue": "DDoS protection",
+    "icon": "Arch_AWS-Shield_64.svg"
+  },
+  {
+    "id": "aws-waf",
+    "name": "AWS WAF",
+    "officialCategory": "Security, Identity, and Compliance",
+    "groups": [
+      "Security & Threat Protection",
+      "Networking & Delivery"
+    ],
+    "scope": "official",
+    "purpose": "AWS WAF helps you filter malicious HTTP and HTTPS requests using web ACL rules.",
+    "hint": "Think: web request filtering such as IP, path, or SQL injection.",
+    "examCue": "web request filtering such as IP, path, or SQL injection",
+    "icon": "Arch_AWS-WAF_64.svg"
+  },
+  {
+    "id": "aws-fargate",
+    "name": "AWS Fargate",
+    "officialCategory": "Serverless",
+    "groups": [
+      "Compute & Serverless",
+      "Containers"
+    ],
+    "scope": "official",
+    "purpose": "AWS Fargate helps you run ECS tasks or EKS pods without managing servers.",
+    "hint": "Think: serverless compute for containers.",
+    "examCue": "serverless compute for containers",
+    "icon": "Arch_AWS-Fargate_64.svg"
+  },
+  {
+    "id": "aws-lambda",
+    "name": "AWS Lambda",
+    "officialCategory": "Serverless",
+    "groups": [
+      "Compute & Serverless",
+      "Messaging & Workflows"
+    ],
+    "scope": "official",
+    "purpose": "AWS Lambda helps you run event-driven code without provisioning servers.",
+    "hint": "Think: short-lived functions triggered by events.",
+    "examCue": "short-lived functions triggered by events",
+    "icon": "Arch_AWS-Lambda_64.svg"
+  },
+  {
+    "id": "aws-backup",
+    "name": "AWS Backup",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Governance & Operations"
+    ],
+    "scope": "official",
+    "purpose": "AWS Backup helps you centrally define and monitor backup policies across supported services.",
+    "hint": "Think: centralized policy-based backups.",
+    "examCue": "centralized policy-based backups",
+    "icon": "Arch_AWS-Backup_64.svg"
+  },
+  {
+    "id": "amazon-ebs",
+    "name": "Amazon EBS",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EBS helps you provide persistent block volumes for EC2 instances.",
+    "hint": "Think: block storage in one Availability Zone.",
+    "examCue": "block storage in one Availability Zone",
+    "icon": "Arch_Amazon-Elastic-Block-Store_64.svg"
+  },
+  {
+    "id": "amazon-efs",
+    "name": "Amazon EFS",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Compute & Serverless"
+    ],
+    "scope": "official",
+    "purpose": "Amazon EFS helps you provide elastic shared file storage for Linux workloads.",
+    "hint": "Think: regional NFS file system shared by many instances.",
+    "examCue": "regional NFS file system shared by many instances",
+    "icon": "Arch_Amazon-EFS_64.svg"
+  },
+  {
+    "id": "aws-elastic-disaster-recovery",
+    "name": "AWS Elastic Disaster Recovery",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Elastic Disaster Recovery helps you replicate servers and recover them quickly in AWS after disruption.",
+    "hint": "Think: block-level disaster-recovery replication.",
+    "examCue": "block-level disaster-recovery replication",
+    "icon": "Arch_AWS-Elastic-Disaster-Recovery_64.svg"
+  },
+  {
+    "id": "amazon-fsx",
+    "name": "Amazon FSx",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR"
+    ],
+    "scope": "official",
+    "purpose": "Amazon FSx helps you provide managed file systems optimized for Windows, Lustre, NetApp ONTAP, or OpenZFS needs.",
+    "hint": "Think: managed specialized file systems.",
+    "examCue": "managed specialized file systems",
+    "icon": "Arch_Amazon-FSx_64.svg"
+  },
+  {
+    "id": "amazon-s3",
+    "name": "Amazon S3",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Analytics & Data"
+    ],
+    "scope": "official",
+    "purpose": "Amazon S3 helps you store durable objects in buckets at virtually unlimited scale.",
+    "hint": "Think: object storage, storage classes, and lifecycle policies.",
+    "examCue": "object storage, storage classes, and lifecycle policies",
+    "icon": "Arch_Amazon-Simple-Storage-Service_64.svg"
+  },
+  {
+    "id": "amazon-s3-glacier",
+    "name": "Amazon S3 Glacier",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Cost, Marketplace & Support"
+    ],
+    "scope": "official",
+    "purpose": "Amazon S3 Glacier helps you archive rarely accessed data in low-cost S3 archival storage classes.",
+    "hint": "Think: long-term archive with retrieval tradeoffs.",
+    "examCue": "long-term archive with retrieval tradeoffs",
+    "icon": "Arch_Amazon-Simple-Storage-Service-Glacier_64.svg"
+  },
+  {
+    "id": "aws-storage-gateway",
+    "name": "AWS Storage Gateway",
+    "officialCategory": "Storage",
+    "groups": [
+      "Storage, Backup & DR",
+      "Migration & Hybrid"
+    ],
+    "scope": "official",
+    "purpose": "AWS Storage Gateway helps you connect on-premises environments to AWS storage through hybrid file, volume, or tape gateways.",
+    "hint": "Think: hybrid storage bridge and local cache.",
+    "examCue": "hybrid storage bridge and local cache",
+    "icon": "Arch_AWS-Storage-Gateway_64.svg"
+  },
+  {
+    "id": "aws-audit-manager",
+    "name": "AWS Audit Manager",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Security & Threat Protection",
+      "Governance & Operations"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS Audit Manager helps you automate evidence collection for customer compliance assessments.",
+    "hint": "Think: audit evidence and assessment reports.",
+    "examCue": "audit evidence and assessment reports",
+    "icon": "Arch_AWS-Audit-Manager_64.svg"
+  },
+  {
+    "id": "aws-appconfig",
+    "name": "AWS AppConfig",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Governance & Operations",
+      "Observability & Developer Tools"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS AppConfig helps you deploy application configuration and feature flags safely at runtime.",
+    "hint": "Think: feature flags without redeploying code.",
+    "examCue": "feature flags without redeploying code",
+    "icon": "Arch_AWS-AppConfig_64.svg"
+  },
+  {
+    "id": "amazon-pinpoint",
+    "name": "Amazon Pinpoint",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Business & End-user Apps",
+      "Messaging & Workflows"
+    ],
+    "scope": "supplementary",
+    "purpose": "Amazon Pinpoint helps you build segmented customer-engagement campaigns.",
+    "hint": "Think: marketing journeys and audience segments.",
+    "examCue": "marketing journeys and audience segments",
+    "icon": "Arch_Amazon-Pinpoint_64.svg"
+  },
+  {
+    "id": "amazon-workmail",
+    "name": "Amazon WorkMail",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "supplementary",
+    "purpose": "Amazon WorkMail helps you provide managed business email and calendars.",
+    "hint": "Think: employee mailbox and calendar service.",
+    "examCue": "employee mailbox and calendar service",
+    "icon": "Arch_Amazon-WorkMail_64.svg"
+  },
+  {
+    "id": "aws-elemental-mediaconvert",
+    "name": "AWS Elemental MediaConvert",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS Elemental MediaConvert helps you transcode file-based video into delivery formats.",
+    "hint": "Think: file-based video conversion and packaging.",
+    "examCue": "file-based video conversion and packaging",
+    "icon": "Arch_AWS-Elemental-MediaConvert_64.svg"
+  },
+  {
+    "id": "aws-elemental-mediaconnect",
+    "name": "AWS Elemental MediaConnect",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Business & End-user Apps",
+      "Networking & Delivery"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS Elemental MediaConnect helps you transport high-quality live video streams.",
+    "hint": "Think: reliable live video contribution transport.",
+    "examCue": "reliable live video contribution transport",
+    "icon": "Arch_AWS-Elemental-MediaConnect_64.svg"
+  },
+  {
+    "id": "amazon-elastic-transcoder",
+    "name": "Amazon Elastic Transcoder",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Business & End-user Apps"
+    ],
+    "scope": "supplementary",
+    "purpose": "Amazon Elastic Transcoder helps you transcode media files using a legacy AWS service.",
+    "hint": "Think: legacy file transcoding; prefer MediaConvert for new work.",
+    "examCue": "legacy file transcoding; prefer MediaConvert for new work",
+    "icon": "Arch-Category_Media-Services_64.svg"
+  },
+  {
+    "id": "amazon-timestream",
+    "name": "Amazon Timestream",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Databases & Caching",
+      "Analytics & Data"
+    ],
+    "scope": "supplementary",
+    "purpose": "Amazon Timestream helps you store and analyze time-series data such as IoT metrics.",
+    "hint": "Think: time-stamped measurements.",
+    "examCue": "time-stamped measurements",
+    "icon": "Arch_Amazon-Timestream_64.svg"
+  },
+  {
+    "id": "amazon-qldb",
+    "name": "Amazon QLDB",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Databases & Caching"
+    ],
+    "scope": "supplementary",
+    "purpose": "Amazon QLDB helps you store an immutable and cryptographically verifiable transaction journal.",
+    "hint": "Think: ledger history.",
+    "examCue": "ledger history",
+    "icon": "Arch-Category_Databases_64.svg"
+  },
+  {
+    "id": "aws-wavelength",
+    "name": "AWS Wavelength",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Networking & Delivery",
+      "Compute & Serverless"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS Wavelength helps you place AWS compute and storage within telecom networks for low-latency 5G applications.",
+    "hint": "Think: carrier-network edge computing.",
+    "examCue": "carrier-network edge computing",
+    "icon": "Arch_AWS-Wavelength_64.svg"
+  },
+  {
+    "id": "aws-network-firewall",
+    "name": "AWS Network Firewall",
+    "officialCategory": "Course supplementary",
+    "groups": [
+      "Security & Threat Protection",
+      "Networking & Delivery"
+    ],
+    "scope": "supplementary",
+    "purpose": "AWS Network Firewall helps you inspect and filter VPC network traffic with a managed stateful firewall.",
+    "hint": "Think: managed VPC network firewall.",
+    "examCue": "managed VPC network firewall",
+    "icon": "Arch_AWS-Network-Firewall_64.svg"
+  }
+]

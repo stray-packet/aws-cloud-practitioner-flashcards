@@ -23,6 +23,7 @@ export const flashcardSchema = z.object({
   certification: z.literal('CLF-C02'),
   studyDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   sourceChat: z.string().min(1),
+  collection: z.enum(['studied', 'extra']).default('studied'),
   domain: domainSchema,
   topics: z.array(z.string().min(1)).min(1),
   services: z.array(z.string().min(1)),

@@ -6,6 +6,7 @@ import { ExamView } from './components/ExamView'
 import { Layout, type ViewName } from './components/Layout'
 import { Overview } from './components/Overview'
 import { ReviewView } from './components/ReviewView'
+import { ServicesView } from './components/ServicesView'
 import { SettingsView } from './components/SettingsView'
 import { StatsView } from './components/StatsView'
 import type { RatingName } from './lib/scheduler'
@@ -63,8 +64,7 @@ function App() {
     return () => window.clearTimeout(timeout)
   }, [notice])
 
-  const rateCard = useCallback((card: Flashcard, rating: RatingName, mode: StudySessionOptions['mode']) => {
-    const reviewedAt = new Date()
+  const rateCard = useCallback((card: Flashcard, rating: RatingName, mode: StudySessionOptions['mode'], reviewedAt = new Date()) => {
     setStore((current) => {
       const update = applyReviewToStore(current, card.id, rating, mode, reviewedAt)
       if (user) void import('./lib/firebase').then(({ saveCloudReview }) => saveCloudReview(user, card.id, update.card, update.event)).catch(() => setNotice('Review saved locally; cloud sync will retry later.'))
@@ -76,10 +76,22 @@ function App() {
     setStore((current) => ({ ...current, examAttempts: [...current.examAttempts, { cardId, correct, answeredAt: new Date().toISOString() }] }))
   }, [])
 
+  const rateService = useCallback((cardId: string, rating: RatingName, reviewedAt: Date) => {
+    setStore((current) => applyReviewToStore(current, cardId, rating, 'custom', reviewedAt).store)
+  }, [])
+
   const updateSettings = useCallback((settings: StudySettings) => {
     setStore((current) => ({ ...current, settings }))
     if (user) void import('./lib/firebase').then(({ saveCloudSettings }) => saveCloudSettings(user, settings)).catch(() => setNotice('Settings saved locally.'))
   }, [user])
+
+  const toggleTheme = useCallback(() => {
+    setStore((current) => {
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const dark = current.settings.theme === 'dark' || (current.settings.theme === 'system' && systemDark)
+      return { ...current, settings: { ...current.settings, theme: dark ? 'light' : 'dark' } }
+    })
+  }, [])
 
   const navigate = useCallback((nextView: ViewName) => {
     if (nextView === 'study') setStudySession(defaultStudySession)
@@ -102,17 +114,18 @@ function App() {
 
   const content = useMemo(() => {
     switch (view) {
-      case 'study': return <ReviewView cards={cards} store={store} options={studySession} onRate={(card, rating) => rateCard(card, rating, studySession.mode)} onFinished={() => setView('overview')} />
+      case 'study': return <ReviewView cards={cards} store={store} options={studySession} onRate={(card, rating, reviewedAt) => rateCard(card, rating, studySession.mode, reviewedAt)} onFinished={() => setView('overview')} />
+      case 'services': return <ServicesView store={store} onRate={rateService} />
       case 'exam': return <ExamView cards={cards} onAttempt={recordExamAttempt} onExit={() => setView('overview')} />
       case 'browse': return <BrowseView cards={cards} />
       case 'stats': return <StatsView cards={cards} store={store} />
       case 'settings': return <SettingsView settings={store.settings} store={store} user={user} firebaseConfigured={firebaseConfigured} onChange={updateSettings} onSignIn={() => void import('./lib/firebase').then(({ signInWithGoogle }) => signInWithGoogle()).catch(() => setNotice('Google sign-in was not completed.'))} onSignOut={() => void import('./lib/firebase').then(({ signOutUser }) => signOutUser())} onExport={() => exportProgress(store)} onImport={importLocalProgress} />
       default: return <Overview cards={cards} store={store} onNavigate={navigate} onStartStudy={startStudy} />
     }
-  }, [importLocalProgress, navigate, recordExamAttempt, rateCard, startStudy, store, studySession, updateSettings, user, view])
+  }, [importLocalProgress, navigate, rateService, recordExamAttempt, rateCard, startStudy, store, studySession, updateSettings, user, view])
 
   return (
-    <Layout view={view} user={user} firebaseConfigured={firebaseConfigured} onNavigate={navigate}>
+    <Layout view={view} user={user} firebaseConfigured={firebaseConfigured} theme={store.settings.theme} onNavigate={navigate} onToggleTheme={toggleTheme}>
       {notice && <div className="notice" role="status">{notice}</div>}
       {content}
     </Layout>
